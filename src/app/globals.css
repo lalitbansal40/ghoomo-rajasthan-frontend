@@ -1,1 +1,34 @@
 @import "tailwindcss";
+
+/**
+ * The Ghoomo Rajasthan palette — taken from the logo (PLAN_ghoomo_rajasthan.md): the royal
+ * blue of the arch and "Ghoomo", the maroon of the fort and "Rajasthan", the gold of the
+ * arch's edge, the sun, the sand of the dunes, and the ivory ground the logo sits on.
+ *
+ * Contrast (WCAG AA, 4.5:1 for body text): ink and royal on ivory pass easily, white on royal
+ * and on maroon pass. White on gold or on sun does NOT — on those, write in royal or ink.
+ */
+@theme {
+  --color-royal: #1E3A7B;
+  --color-maroon: #8E1B1B;
+  --color-gold: #E0A93B;
+  --color-sun: #F5A623;
+  --color-sun-light: #FFD27A;
+  --color-sand: #F3D9A4;
+  --color-ivory: #FBF7EF;
+  --color-ink: #1B1B1F;
+  --color-muted: #5B5650;
+
+  --font-sans: var(--font-mukta), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-yatra), var(--font-mukta), serif;
+}
+
+html {
+  background: var(--color-ivory);
+  color: var(--color-ink);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}

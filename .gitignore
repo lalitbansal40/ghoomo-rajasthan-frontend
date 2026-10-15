@@ -47,3 +47,8 @@ next-env.d.ts
 
 # Photo originals and the logo reference stay outside the repo (see README).
 /scripts/.originals
+
+# Logo script tooling: downloaded fonts and its Python environment.
+/scripts/brand/fonts
+/scripts/brand/.venv
+/scripts/brand/__pycache__

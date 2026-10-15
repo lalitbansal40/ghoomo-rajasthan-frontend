@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { env } from '@/lib/env';
 import { SITE_LAUNCHED, brand } from '@/lib/site';
+import { mukta, yatra } from './fonts';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${mukta.variable} ${yatra.variable}`}>
       <body>{children}</body>
     </html>
   );
