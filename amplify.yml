@@ -1,0 +1,41 @@
+# Amplify Hosting build settings (the same as the Hello My Cab site's).
+#
+# baseDirectory MUST be .next. Amplify infers a build spec when this file is absent, but the
+# moment the file exists it overrides the console entirely — a wrong baseDirectory silently
+# produces a deploy with no server.
+#
+# ⚠️ Next.js 16: Amplify documents support "up through Next.js 15". It builds standard Next
+# output and runs it, but treat a build failure after a Next upgrade as expected.
+# ⚠️ On-demand ISR (revalidatePath/Tag from a request) purges nothing on Amplify, and streaming
+# loading.tsx skeletons do not show — pages refresh on their `revalidate` timer instead.
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        # Next 16 needs Node 20.9+. Pinned, so an Amplify image update cannot change it.
+        - nvm install 22
+        - nvm use 22
+        - node -v
+        - npm ci
+        # Put back the build cache saved outside the deploy (see the build phase).
+        - if [ -d .next-cache ]; then mkdir -p .next && rm -rf .next/cache && mv .next-cache .next/cache; fi
+    build:
+      commands:
+        # env.ts throws on a missing NEXT_PUBLIC_SITE_URL, so a half-configured environment
+        # fails here rather than deploying canonicals that point at the wrong host.
+        - npm run build
+        # Amplify refuses a deploy over 220 MB (the Hello My Cab site hit it on 3 Oct 2026).
+        # Not needed to run the site: .next/cache (moved OUT, still cached below) and the
+        # server source maps.
+        - rm -rf .next-cache && if [ -d .next/cache ]; then mv .next/cache .next-cache; fi
+        - find .next -name '*.map' -type f -delete
+        - du -sh .next
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+      - .next-cache/**/*

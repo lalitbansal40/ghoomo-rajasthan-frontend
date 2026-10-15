@@ -1,0 +1,49 @@
+import type { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
+  images: {
+    // No remote patterns on purpose: every photograph is a file in `public/img` — a second
+    // host in front of the hero is a second DNS lookup, a second handshake, and somebody
+    // else's outage. 40 for faint background textures, 75 for everything actually looked at;
+    // Next only serves the qualities listed here.
+    qualities: [40, 75],
+    // AVIF first — about half the bytes of WebP for photographs; WebP for browsers that cannot.
+    formats: ['image/avif', 'image/webp'],
+    // A resized image is cached for 30 days: the source files only change with a deploy.
+    minimumCacheTTL: 2592000,
+  },
+
+  // Stamped once, at build time — the sitemap's `lastmod` once the site is live.
+  env: { BUILD_TIME: new Date().toISOString() },
+
+  // `experimental.inlineCss` (as on the Hello My Cab site) is left off until there are real
+  // pages to measure it on: it trades deploy size for first paint (Phase 2).
+
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          // Two years, subdomains included, preload-eligible: no first request over http.
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          // Send the page, not the query string, to anything we link out to.
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+        ],
+      },
+      {
+        // The brand files and photos: a day fresh, a week of the old one while the new one
+        // is fetched (these names do not change when the file does).
+        source: '/:path(brand|img)/:file*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=86400, stale-while-revalidate=604800' },
+        ],
+      },
+    ];
+  },
+};
+
+export default nextConfig;
