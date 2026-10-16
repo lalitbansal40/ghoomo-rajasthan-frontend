@@ -18,8 +18,10 @@ for (const [k, v] of Object.entries(t.radius)) L.push(`  --radius-${k}: ${v};`);
 for (const [k, v] of Object.entries(t.shadow)) L.push(`  --shadow-${k}: ${v};`);
 L.push(`  --ease-out: ${t.motion['ease-out']};`);
 for (const k of ['dur-fast', 'dur', 'dur-slow']) L.push(`  --${k}: ${t.motion[k]};`);
-L.push('  --font-sans: var(--font-mukta), ui-sans-serif, system-ui, sans-serif;');
-L.push('  --font-display: var(--font-display-face), var(--font-mukta), serif;');
+// 'Rupee' first: the ₹ sign from the phone's own font (globals.css), so ₹ alone does not pull
+// Mukta's latin-ext files onto every page.
+L.push("  --font-sans: 'Rupee', var(--font-mukta), ui-sans-serif, system-ui, sans-serif;");
+L.push("  --font-display: 'Rupee', var(--font-display-face), var(--font-mukta), serif;");
 L.push(`  --container-site: ${t.layout.container};`);
 L.push('}');
 L.push('');

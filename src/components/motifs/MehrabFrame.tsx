@@ -21,7 +21,11 @@ export function MehrabFrame({
   src: string;
   alt: string;
   sizes?: string;
-  /** The LCP image — Next 16 `preload` (replaces the deprecated `priority`). */
+  /**
+   * The LCP image — Next 16 `preload` (replaces the deprecated `priority`), fetched at high
+   * priority and eagerly: `preload` alone left it Low and lazy, behind the scripts on a slow
+   * phone (LCP 3.1 s, 16 Oct 2026).
+   */
   preload?: boolean;
   className?: string;
 }) {
@@ -31,7 +35,16 @@ export function MehrabFrame({
         className="absolute inset-0"
         style={{ maskImage: MASK, WebkitMaskImage: MASK, maskSize: '100% 100%', WebkitMaskSize: '100% 100%' }}
       >
-        <Image src={src} alt={alt} fill sizes={sizes} preload={preload} className="object-cover" />
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes={sizes}
+          preload={preload}
+          fetchPriority={preload ? 'high' : undefined}
+          loading={preload ? 'eager' : undefined}
+          className="object-cover"
+        />
       </div>
       <svg
         viewBox={VIEW}

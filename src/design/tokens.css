@@ -47,8 +47,8 @@
   --dur-fast: 150ms;
   --dur: 250ms;
   --dur-slow: 400ms;
-  --font-sans: var(--font-mukta), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-display-face), var(--font-mukta), serif;
+  --font-sans: 'Rupee', var(--font-mukta), ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Rupee', var(--font-display-face), var(--font-mukta), serif;
   --container-site: 72rem;
 }
 
