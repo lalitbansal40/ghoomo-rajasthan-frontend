@@ -13,7 +13,7 @@ import { MobileMenu, type MenuItem } from './MobileMenu';
  * this language is shown as "Soon", never as a link to a 404 (i18n/pages.ts). Sticky; the
  * phone menu is the only client code.
  */
-export function Header({ locale }: { locale: Locale }) {
+export function Header({ locale, path }: { locale: Locale; /** This page's path — for the language switch. */ path: string }) {
   const t = dict(locale);
   const items: MenuItem[] = NAV.map((n) => ({
     label: t.nav[n.key],
@@ -24,9 +24,9 @@ export function Header({ locale }: { locale: Locale }) {
     <header className="sticky top-0 z-40 border-b border-gold-300/70 bg-ivory/95 backdrop-blur supports-[backdrop-filter]:bg-ivory/80">
       <div className="relative mx-auto flex h-16 max-w-[var(--container-site)] items-center gap-3 px-4 sm:px-6">
         <Link href={localePath('/', locale)} aria-label={t.brand.home} className="shrink-0">
-          <Image src="/brand/logo-horizontal.svg" alt={t.brand.logoAlt} width={420} height={120} priority className="h-11 w-auto" />
+          <Image src="/brand/logo-horizontal.svg" alt={t.brand.logoAlt} width={420} height={120} preload className="h-11 w-auto" />
         </Link>
-        <nav aria-label={t.nav.label} className="ml-4 hidden flex-1 md:block">
+        <nav aria-label={t.nav.label} className="ml-4 hidden flex-1 lg:block">
           <ul className="flex items-center gap-1">
             {items.map((it) => (
               <li key={it.label}>
@@ -62,14 +62,14 @@ export function Header({ locale }: { locale: Locale }) {
           </a>
           {/* A wrapper hides it on a phone: on the link itself `hidden` would fight its inline-flex. */}
           <span className="hidden sm:inline-flex">
-            <LangSwitch />
+            <LangSwitch path={path} />
           </span>
           <MobileMenu items={items} openLabel={t.nav.menu} closeLabel={t.nav.close} />
         </div>
       </div>
       {/* On a phone the language switch sits under the bar, where there is room for it. */}
       <div className="flex justify-end px-4 pb-2 sm:hidden">
-        <LangSwitch />
+        <LangSwitch path={path} />
       </div>
     </header>
   );

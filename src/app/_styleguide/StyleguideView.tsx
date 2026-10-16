@@ -132,7 +132,8 @@ const ratio = (a: string, b: string) => {
   const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p);
   return ((x + 0.05) / (y + 0.05)).toFixed(1);
 };
-const isDark = (hex: string) => lum(hex) < 0.3;
+/** White or ink on a swatch — whichever reads better. */
+const labelOn = (hex: string) => (Number(ratio('#FFFFFF', hex)) >= Number(ratio('#1B1B1F', hex)) ? '#FFFFFF' : '#1B1B1F');
 
 const TYPE_SAMPLE = {
   en: 'Jaisalmer at sunset',
@@ -157,7 +158,7 @@ export function StyleguideView({ locale, now }: { locale: Locale; now: number })
 
   return (
     <>
-      <Header locale={locale} />
+      <Header locale={locale} path={locale === 'hi' ? '/hi/styleguide' : '/styleguide'} />
       <nav
         aria-label="Style guide"
         className="sticky top-16 z-30 -mb-px overflow-x-auto border-b border-gold-300 bg-sand-50/95 backdrop-blur max-sm:top-[6.5rem]"
@@ -188,7 +189,7 @@ export function StyleguideView({ locale, now }: { locale: Locale; now: number })
               <div className="rounded-[var(--radius-md)] bg-white p-4 shadow-card">
                 <Image src="/brand/logo-horizontal.svg" alt="" width={420} height={120} className="h-14 w-auto" />
               </div>
-              <div className="flex items-end gap-4 rounded-[var(--radius-md)] bg-white p-4 shadow-card">
+              <div className="flex flex-wrap items-end gap-4 rounded-[var(--radius-md)] bg-white p-4 shadow-card">
                 {[16, 32, 64, 96].map((z) => (
                   <Image key={z} src="/brand/logo-icon.svg" alt="" width={z} height={z} unoptimized />
                 ))}
@@ -209,7 +210,7 @@ export function StyleguideView({ locale, now }: { locale: Locale; now: number })
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-6">
             {Object.entries(tokens.color).map(([name, hex]) => (
               <div key={name} className="overflow-hidden rounded-[var(--radius-sm)] bg-white ring-1 ring-black/10">
-                <div className="flex h-16 items-end p-2 text-small font-semibold" style={{ background: hex, color: isDark(hex) ? '#fff' : '#1B1B1F' }}>
+                <div className="flex h-16 items-end p-2 text-small font-semibold" style={{ background: hex, color: labelOn(hex) }}>
                   {name}
                 </div>
                 <p className="p-2 text-[0.75rem] leading-5 text-muted">
@@ -331,7 +332,7 @@ export function StyleguideView({ locale, now }: { locale: Locale; now: number })
           <h3 className="text-h3 mt-10 text-royal-700">{s.cards}</h3>
           <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {PACKAGES.slice(0, 3).map((p, i) => (
-              <PackageCard key={p.slug} pkg={p} href="#parts" locale={locale} priority={i === 0} />
+              <PackageCard key={p.slug} pkg={p} href="#parts" locale={locale} preload={i === 0} />
             ))}
           </div>
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

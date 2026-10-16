@@ -26,6 +26,7 @@ export const metadata: Metadata = {
 export default function RefundPage() {
   return (
     <DocPage
+      path="/refund"
       title="Cancellation and refund"
       updated="16 October 2026"
       intro="In short: cancelling costs at most the minimum advance, and whatever you paid beyond it is returned to you."

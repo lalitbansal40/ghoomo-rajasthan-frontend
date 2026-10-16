@@ -19,6 +19,7 @@ export const metadata: Metadata = {
 export default function PhotoCreditsPage() {
   return (
     <DocPage
+      path="/photo-credits"
       title="Photo credits"
       intro="The photographs on this site are from Wikimedia Commons, used under the licence each one was published with. Thank you to every photographer below."
     >

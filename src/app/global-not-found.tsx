@@ -27,7 +27,7 @@ export default function GlobalNotFound() {
     <html lang="en">
       <body className="min-h-dvh bg-ivory text-ink">
         <main className="mx-auto flex min-h-dvh max-w-xl flex-col items-center justify-center px-4 py-12 text-center">
-          <Image src="/brand/logo-icon.svg" alt="" width={96} height={96} priority />
+          <Image src="/brand/logo-icon.svg" alt="" width={96} height={96} preload />
           <h1 className="text-h1 mt-6 text-royal-600">{en.common.notFoundTitle}</h1>
           <p className="mt-3 text-muted">{en.common.notFoundBody}</p>
           <Link href="/" className="mt-4 font-semibold text-maroon-600 underline underline-offset-4">

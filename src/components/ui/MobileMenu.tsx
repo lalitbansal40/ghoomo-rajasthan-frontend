@@ -11,7 +11,7 @@ export interface MenuItem {
 }
 
 /**
- * The phone menu: a button that opens a panel of links. Esc closes it and gives focus back to
+ * The phone and tablet menu (below 1024 px — the full menu does not fit a 768 px tablet): a button that opens a panel of links. Esc closes it and gives focus back to
  * the button; the first link takes focus on opening. Small, and the only client code the header
  * needs.
  */
@@ -34,7 +34,7 @@ export function MobileMenu({ items, openLabel, closeLabel }: { items: MenuItem[]
   }, [open]);
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button
         ref={button}
         type="button"

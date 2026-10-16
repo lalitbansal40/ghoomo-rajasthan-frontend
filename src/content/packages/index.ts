@@ -6,7 +6,7 @@
  * sample set (src/content/rajasthan); the day plans are written here. While this is true every
  * package page is noindex, out of the sitemap, and every price carries a "Sample" badge — a
  * made-up price must never be what a search engine or a customer takes as ours.
- * Set it to false in the same commit that puts the real packages in.
+ * It goes false in the very commit that brings the real packages.
  *
  * ⚠️ Nothing guessed: a place named here is really on that road, a season is the commonly
  * published one. Where in doubt, the line is left out rather than written.

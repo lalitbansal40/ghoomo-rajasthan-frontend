@@ -22,6 +22,7 @@ const updated = '16 October 2026';
 export default function PrivacyPage() {
   return (
     <DocPage
+      path="/privacy"
       title="Privacy"
       updated={updated}
       intro="We ask for as little as a tour needs, keep it only for the trip and our accounts, and never sell it."

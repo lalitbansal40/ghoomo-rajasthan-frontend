@@ -19,12 +19,13 @@ export function PackageCard({
   pkg,
   href,
   locale,
-  priority = false,
+  preload = false,
 }: {
   pkg: TourPackage;
   href: string;
   locale: Locale;
-  priority?: boolean;
+  /** The LCP image — Next 16 `preload` (replaces the deprecated `priority`). */
+  preload?: boolean;
 }) {
   const t = dict(locale);
   const p = photo(pkg.photo);
@@ -42,7 +43,7 @@ export function PackageCard({
             alt={p.alt}
             fill
             sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
-            priority={priority}
+            preload={preload}
             className="object-cover"
           />
         ) : null}

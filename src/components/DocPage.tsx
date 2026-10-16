@@ -9,17 +9,20 @@ export function DocPage({
   title,
   intro,
   updated,
+  path,
   children,
 }: {
   title: string;
   intro?: string;
   /** "Last updated" — the legal pages carry it. */
   updated?: string;
+  /** This page's path — for the header's language switch. */
+  path: string;
   children: React.ReactNode;
 }) {
   return (
     <div className="flex min-h-dvh flex-col">
-      <Header locale="en" />
+      <Header locale="en" path={path} />
       <main className="mx-auto w-full max-w-[68ch] flex-1 px-4 py-10">
         <h1 className="text-h1 text-royal-600">{title}</h1>
         {updated ? <p className="mt-2 text-sm text-muted">Last updated {updated}</p> : null}

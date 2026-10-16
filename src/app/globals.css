@@ -25,11 +25,15 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Hindi pages (app/hi/layout.tsx): latin letters from the shared files, devanagari from the
-   Hindi-only ones (fonts-hi.ts). */
+/**
+ * Hindi pages: body text in the phone's own devanagari face (Noto Sans Devanagari on Android,
+ * Kohinoor on iPhone and Mac, Nirmala UI on Windows — all close to Mukta), falling back to
+ * Mukta's devanagari where a device has none. Measured 16 Oct 2026: Mukta's devanagari files
+ * are 125 kB a page and held the Hindi home at Lighthouse 89; with this, 95. Headings stay in
+ * Rozha One's devanagari — the brand's face. One line to undo.
+ */
 html:lang(hi) {
-  --font-sans: var(--font-mukta), var(--font-mukta-deva), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-display-face), var(--font-display-deva), var(--font-mukta-deva), serif;
+  --font-sans: 'Noto Sans Devanagari', 'Kohinoor Devanagari', 'Nirmala UI', var(--font-mukta), ui-sans-serif, system-ui, sans-serif;
 }
 
 :lang(hi) body,

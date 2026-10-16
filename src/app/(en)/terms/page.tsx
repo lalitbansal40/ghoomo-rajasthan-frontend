@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <DocPage
+      path="/terms"
       title="Terms"
       updated="16 October 2026"
       intro="The short version: the price you are shown is the price for the car, the driver and the fuel; the rest is listed below, so nothing comes as a surprise on the road."

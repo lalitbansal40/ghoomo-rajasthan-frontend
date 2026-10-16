@@ -15,13 +15,14 @@ export function MehrabFrame({
   src,
   alt,
   sizes = '(min-width: 768px) 360px, 80vw',
-  priority = false,
+  preload = false,
   className = '',
 }: {
   src: string;
   alt: string;
   sizes?: string;
-  priority?: boolean;
+  /** The LCP image — Next 16 `preload` (replaces the deprecated `priority`). */
+  preload?: boolean;
   className?: string;
 }) {
   return (
@@ -30,7 +31,7 @@ export function MehrabFrame({
         className="absolute inset-0"
         style={{ maskImage: MASK, WebkitMaskImage: MASK, maskSize: '100% 100%', WebkitMaskSize: '100% 100%' }}
       >
-        <Image src={src} alt={alt} fill sizes={sizes} priority={priority} className="object-cover" />
+        <Image src={src} alt={alt} fill sizes={sizes} preload={preload} className="object-cover" />
       </div>
       <svg
         viewBox={VIEW}
