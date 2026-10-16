@@ -60,6 +60,13 @@ export const hi: Dictionary = {
     km: (n: number) => `${n} किमी`,
     popular: 'लोकप्रिय',
     new: 'नया',
+    car: 'गाड़ी',
+    book: 'व्हाट्सऐप पर बुक करें',
+    highlights: 'ख़ास बातें',
+    citiesOnTour: 'इस टूर के शहर',
+    moreTours: 'और टूर',
+    sampleTour: 'यह नमूना टूर है — असली दाम व्हाट्सऐप पर पूछें।',
+    tourQuestions: 'इस टूर के बारे में सवाल',
   },
   form: {
     name: 'आपका नाम',

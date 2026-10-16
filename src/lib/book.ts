@@ -16,7 +16,7 @@ export function bookPackageLink(
   return whatsappLink(
     locale === 'hi'
       ? `नमस्ते, मुझे ${tour.name} (${tour.days} दिन / ${tour.nights} रात) ${vehicle} में बुक करना है। कब जाना है: ___ , कितने लोग: ___`
-      : `Namaste, I want to book ${tour.name} (${tour.days}D/${tour.nights}N) in a ${vehicle}. Travel date: ___ , people: ___`,
+      : `Namaste, I want to book ${tour.name} (${tour.days}D/${tour.nights}N), car: ${vehicle}. Travel date: ___ , people: ___`,
   );
 }
 

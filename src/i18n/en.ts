@@ -56,6 +56,13 @@ export const en = {
     km: (n: number) => `${n} km`,
     popular: 'Popular',
     new: 'New',
+    car: 'Car',
+    book: 'Book on WhatsApp',
+    highlights: 'Highlights',
+    citiesOnTour: 'Cities on this tour',
+    moreTours: 'More tours',
+    sampleTour: 'This is a sample tour — ask on WhatsApp for the real price.',
+    tourQuestions: 'Questions about this tour',
   },
   form: {
     name: 'Your name',
