@@ -5,7 +5,7 @@ import { Home } from '../_home/Home';
 export const metadata: Metadata = {
   title: { absolute: 'Ghoomo Rajasthan — Rajasthan tour packages with car & driver' },
   description:
-    'Tours across Rajasthan — Jaipur, Udaipur, Jodhpur, Jaisalmer and more — with one car and one driver who knows the road. Day-by-day plans, the price before you go.',
+    'Rajasthan tours — Jaipur, Udaipur, Jodhpur, Jaisalmer — with one car and a driver who knows the road. Day-by-day plans, the price before you go.',
   alternates: alternates('/', 'en'),
 };
 

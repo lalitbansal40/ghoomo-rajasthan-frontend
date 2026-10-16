@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const pkg = packageBySlug((await params).slug);
   if (!pkg) return {};
   return {
-    title: `${pkg.name} — ${pkg.days}D/${pkg.nights}N Rajasthan tour`,
+    title: `${pkg.name} — ${pkg.days}D/${pkg.nights}N tour`,
     description: tourDescription(pkg, 'en'),
     alternates: alternates(`/packages/${pkg.slug}`, 'en'),
   };
