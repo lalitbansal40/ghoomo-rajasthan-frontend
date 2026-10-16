@@ -52,3 +52,6 @@ next-env.d.ts
 /scripts/brand/fonts
 /scripts/brand/.venv
 /scripts/brand/__pycache__
+
+# npm run audit output
+/audit-out

@@ -10,7 +10,8 @@
     "photos": "node scripts/photos.mjs",
     "routes:list": "node scripts/list-routes.mjs",
     "tokens": "node scripts/tokens.mjs",
-    "contrast": "node scripts/contrast.mjs"
+    "contrast": "node scripts/contrast.mjs",
+    "audit": "node scripts/audit.mjs"
   },
   "dependencies": {
     "next": "16.3.4",
@@ -22,8 +23,10 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "axe-core": "^4.14.0",
     "eslint": "^9",
     "eslint-config-next": "16.3.4",
+    "puppeteer-core": "^24.43.1",
     "sharp": "^0.35.4",
     "tailwindcss": "^4.3.3",
     "typescript": "^5"
