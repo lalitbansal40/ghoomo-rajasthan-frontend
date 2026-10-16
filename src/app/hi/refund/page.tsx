@@ -53,7 +53,7 @@ export default function HindiRefundPage() {
 
       <DocSection title="रिफ़ंड आप तक कैसे पहुँचता है">
         <p>
-          Cashfree से, उसी कार्ड, UPI अकाउंट या बैंक अकाउंट में जिससे पैसा आया था। किसी दूसरे में कभी नहीं।
+          Razorpay से, उसी कार्ड, UPI अकाउंट या बैंक अकाउंट में जिससे पैसा आया था। किसी दूसरे में कभी नहीं।
         </p>
       </DocSection>
 

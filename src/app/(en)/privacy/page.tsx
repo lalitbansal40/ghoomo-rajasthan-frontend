@@ -18,8 +18,8 @@ const updated = '16 October 2026';
  * Written for Ghoomo Rajasthan in its own words, on the structure of hellomycabs.com's privacy
  * page. What it says has to stay true of the site: today it collects nothing (no form, no
  * account); bookings — and with them name, number and pickup — come in Phase 4, paid through
- * Cashfree (Hello My Cab's payment gateway). Change this page in the same commit as anything
- * that changes those facts — and the Hindi one (hi/privacy) with it.
+ * Razorpay (owner, 16 Oct 2026: Ghoomo on Razorpay, Hello My Cab on Cashfree). Change this page
+ * in the same commit as anything that changes those facts — and the Hindi one (hi/privacy).
  */
 export default function PrivacyPage() {
   return (
@@ -62,7 +62,7 @@ export default function PrivacyPage() {
         </ul>
         <p>
           We do not ask for your location, your date of birth or any identity document. Card, UPI and bank
-          details never reach us: you pay on Cashfree&rsquo;s own page, and we are told only whether the
+          details never reach us: you pay on Razorpay&rsquo;s own page, and we are told only whether the
           payment went through.
         </p>
       </DocSection>
@@ -73,7 +73,7 @@ export default function PrivacyPage() {
             booking.
           </li>
           <li>
-            <strong>Cashfree</strong>, our payment gateway — the amount and the booking reference.
+            <strong>Razorpay</strong>, our payment provider — the amount and the booking reference.
           </li>
           <li>
             <strong>{brand.parent}</strong> — the same company, whose drivers, cars and booking system

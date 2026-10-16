@@ -63,7 +63,7 @@ export default function RefundPage() {
       </DocSection>
       <DocSection title="How the refund reaches you">
         <p>
-          Through Cashfree, back to the same card, UPI account or bank account the money came from — never
+          Through Razorpay, back to the same card, UPI account or bank account the money came from — never
           to a different one.
         </p>
       </DocSection>
