@@ -239,6 +239,176 @@ export const PHOTOS: Photo[] = [
     "licence": "CC BY-SA 4.0",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Harshnath_Temple-Sikar-Rajasthan-DSC0007.jpg",
     "changes": "Cropped to 16:9 and 4:3, resized, converted to WebP"
+  },
+  {
+    "key": "abhaneri-chand-baori",
+    "alt": "The steps of Chand Baori, the step-well at Abhaneri",
+    "big": "/img/abhaneri-chand-baori-1280.webp",
+    "card": "/img/abhaneri-chand-baori-640.webp",
+    "credit": "Gerd Eichmann",
+    "licence": "CC BY-SA 4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Abhaneri-Chand_Baori-12-Stufenbrunnen-2018-gje.jpg",
+    "changes": "Cropped to 16:9 and 4:3, resized, converted to WebP"
+  },
+  {
+    "key": "bhangarh-ruins",
+    "alt": "The ruined bazaar street of Bhangarh under the Aravalli hills",
+    "big": "/img/bhangarh-ruins-1280.webp",
+    "card": "/img/bhangarh-ruins-640.webp",
+    "credit": "BangDanC",
+    "licence": "CC0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bhangarh_Fort_of_Rajasthan.jpg",
+    "changes": "Cropped to 16:9 and 4:3, resized, converted to WebP"
+  },
+  {
+    "key": "sambhar-lake",
+    "alt": "The sun setting over Sambhar salt lake",
+    "big": "/img/sambhar-lake-1280.webp",
+    "card": "/img/sambhar-lake-640.webp",
+    "credit": "Nawanshu91",
+    "licence": "CC BY-SA 3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sambhar_lake_sunset_scene.JPG",
+    "changes": "Cropped to 16:9 and 4:3, resized, converted to WebP"
+  },
+  {
+    "key": "mandawa-fresco",
+    "alt": "A painted ceiling in a haveli at Mandawa, Shekhawati",
+    "big": "/img/mandawa-fresco-1280.webp",
+    "card": "/img/mandawa-fresco-640.webp",
+    "credit": "Priyaparul6",
+    "licence": "CC BY-SA 4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Golden_Haveli_-_Mandawa_-_Rajasthan_-_IMG_2110.jpg",
+    "changes": "Cropped to 16:9 and 4:3, resized, converted to WebP"
+  },
+  {
+    "key": "khatu-shyam-gate",
+    "alt": "The entrance gate on the road to Khatu Shyam ji",
+    "big": "/img/khatu-shyam-gate-1280.webp",
+    "card": "/img/khatu-shyam-gate-640.webp",
+    "credit": "TheSlumPanda",
+    "licence": "CC BY-SA 4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Khatu_Shyam_Ji_Entrance_Gate.jpg",
+    "changes": "Cropped to 16:9 and 4:3, resized, converted to WebP"
+  },
+  {
+    "key": "alwar-bala-quila",
+    "alt": "Bala Quila, the fort on the hill above Alwar",
+    "big": "/img/alwar-bala-quila-1280.webp",
+    "card": "/img/alwar-bala-quila-640.webp",
+    "credit": "Pinakpani",
+    "licence": "CC BY-SA 4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alwar_fort_or_Bala_Quila_09.jpg",
+    "changes": "Cropped to 16:9 and 4:3, resized, converted to WebP"
+  },
+  {
+    "key": "keoladeo-storks",
+    "alt": "Painted storks nesting at Keoladeo National Park, Bharatpur",
+    "big": "/img/keoladeo-storks-1280.webp",
+    "card": "/img/keoladeo-storks-640.webp",
+    "credit": "Rohit Sharma",
+    "licence": "CC BY-SA 4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Painted_stork_colony_at_Keoladeo_national_park_(Dec,24).jpg",
+    "changes": "Cropped to 16:9 and 4:3, resized, converted to WebP"
+  },
+  {
+    "key": "karauli-palace",
+    "alt": "The City Palace of Karauli",
+    "big": "/img/karauli-palace-1280.webp",
+    "card": "/img/karauli-palace-640.webp",
+    "credit": "Jitendra Sharma",
+    "licence": "CC BY-SA 3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:City_palace_of_Karouli.JPG",
+    "changes": "Cropped to 16:9 and 4:3, resized, converted to WebP"
+  },
+  {
+    "key": "neemrana-fort",
+    "alt": "Neemrana Fort-Palace on its hillside",
+    "big": "/img/neemrana-fort-1280.webp",
+    "card": "/img/neemrana-fort-640.webp",
+    "credit": "Archit Ratan",
+    "licence": "CC BY 2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Neemrana_fort.jpg",
+    "changes": "Cropped to 16:9 and 4:3, resized, converted to WebP"
+  },
+  {
+    "key": "bundi-garh-palace",
+    "alt": "Bundi's Garh Palace and Taragarh fort above the blue town",
+    "big": "/img/bundi-garh-palace-1280.webp",
+    "card": "/img/bundi-garh-palace-640.webp",
+    "credit": "Daniel VILLAFRUELA",
+    "licence": "CC BY-SA 3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bundi-Taragarh_fort-Garh_Palace-20131016.jpg",
+    "changes": "Cropped to 16:9 and 4:3, resized, converted to WebP"
+  },
+  {
+    "key": "jhalawar-gagron",
+    "alt": "Gagron Fort across the river, near Jhalawar",
+    "big": "/img/jhalawar-gagron-1280.webp",
+    "card": "/img/jhalawar-gagron-640.webp",
+    "credit": "Siddharth 36",
+    "licence": "CC BY-SA 4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gagron_Fort_Jhalawar_Rajasthan_DSC_2153.jpg",
+    "changes": "Cropped to 16:9 and 4:3, resized, converted to WebP"
+  },
+  {
+    "key": "kumbhalgarh-wall",
+    "alt": "The great wall of Kumbhalgarh running over the Aravalli hills",
+    "big": "/img/kumbhalgarh-wall-1280.webp",
+    "card": "/img/kumbhalgarh-wall-640.webp",
+    "credit": "Kanika Gaur",
+    "licence": "CC BY-SA 4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_great_wall_of_Kumbhalgarh_Fort.jpg",
+    "changes": "Cropped to 16:9 and 4:3, resized, converted to WebP"
+  },
+  {
+    "key": "ranakpur-temple",
+    "alt": "The marble Jain temple at Ranakpur",
+    "big": "/img/ranakpur-temple-1280.webp",
+    "card": "/img/ranakpur-temple-640.webp",
+    "credit": "Ingo Mehling",
+    "licence": "CC BY-SA 3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jain_Temple_Ranakpur.jpg",
+    "changes": "Cropped to 16:9 and 4:3, resized, converted to WebP"
+  },
+  {
+    "key": "nathdwara-town",
+    "alt": "The rooftops of Nathdwara town",
+    "big": "/img/nathdwara-town-1280.webp",
+    "card": "/img/nathdwara-town-640.webp",
+    "credit": "Parth Maniar",
+    "licence": "CC BY 2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nathdwara,_Rajasthan,_India.jpg",
+    "changes": "Cropped to 16:9 and 4:3, resized, converted to WebP"
+  },
+  {
+    "key": "banswara-mahi",
+    "alt": "The Mahi Bajaj Sagar dam near Banswara",
+    "big": "/img/banswara-mahi-1280.webp",
+    "card": "/img/banswara-mahi-640.webp",
+    "credit": "Ibrahim Bohra",
+    "licence": "CC BY-SA 4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mahi_Bajaj_Sagar_Dam,_Banswara.jpg",
+    "changes": "Cropped to 16:9 and 4:3, resized, converted to WebP"
+  },
+  {
+    "key": "osian-sachiya-mata",
+    "alt": "The gate of the Sachiya Mata temple at Osian",
+    "big": "/img/osian-sachiya-mata-1280.webp",
+    "card": "/img/osian-sachiya-mata-640.webp",
+    "credit": "Schwiki",
+    "licence": "CC BY-SA 3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Osiya-temple_and_Architecture_05.jpg",
+    "changes": "Cropped to 16:9 and 4:3, resized, converted to WebP"
+  },
+  {
+    "key": "barmer-kiradu",
+    "alt": "The carved temples of Kiradu near Barmer",
+    "big": "/img/barmer-kiradu-1280.webp",
+    "card": "/img/barmer-kiradu-640.webp",
+    "credit": "Akshita raina",
+    "licence": "CC BY-SA 4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kiradu_ke_Mandir_-_Barmer_-_Rajasthan_-_011.jpg",
+    "changes": "Cropped to 16:9 and 4:3, resized, converted to WebP"
   }
 ];
 
