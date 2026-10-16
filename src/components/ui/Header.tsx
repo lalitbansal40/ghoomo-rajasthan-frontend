@@ -60,7 +60,10 @@ export function Header({ locale }: { locale: Locale }) {
           >
             <Icon name="phone" size={20} />
           </a>
-          <LangSwitch className="hidden sm:inline-flex" />
+          {/* A wrapper hides it on a phone: on the link itself `hidden` would fight its inline-flex. */}
+          <span className="hidden sm:inline-flex">
+            <LangSwitch />
+          </span>
           <MobileMenu items={items} openLabel={t.nav.menu} closeLabel={t.nav.close} />
         </div>
       </div>

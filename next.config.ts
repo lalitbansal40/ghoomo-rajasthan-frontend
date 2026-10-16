@@ -24,6 +24,11 @@ const nextConfig: NextConfig = {
     // measure it on: it trades deploy size for first paint (Phase 2).
   },
 
+  async redirects() {
+    // Phase 0's /brand grew into the style guide (Phase 1). Not permanent: a team page.
+    return [{ source: '/brand', destination: '/styleguide', permanent: false }];
+  },
+
   async headers() {
     return [
       {
