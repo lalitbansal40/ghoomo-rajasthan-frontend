@@ -3,11 +3,12 @@ import Image from 'next/image';
 import { ContactButtons } from '@/components/ContactButtons';
 import { Dunes } from '@/components/Dunes';
 import { Footer } from '@/components/Footer';
+import { alternates } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: { absolute: 'Ghoomo Rajasthan — coming soon' },
   description: 'Tours across Rajasthan with a car and a driver who knows the road. Coming soon.',
-  alternates: { canonical: '/' },
+  alternates: alternates('/', 'en'),
 };
 
 /**

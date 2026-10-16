@@ -25,6 +25,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Hindi pages (app/hi/layout.tsx): latin letters from the shared files, devanagari from the
+   Hindi-only ones (fonts-hi.ts). */
+html:lang(hi) {
+  --font-sans: var(--font-mukta), var(--font-mukta-deva), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display-face), var(--font-display-deva), var(--font-mukta-deva), serif;
+}
+
 :lang(hi) body,
 body:lang(hi) {
   line-height: 1.7;
