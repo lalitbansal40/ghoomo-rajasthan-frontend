@@ -26,3 +26,22 @@ test('Ranthambore is the name in the URL', () => {
 test('the held routes are the ten we meant', () => {
   assert.equal(ROUTES.filter((r) => r.held).length, 10);
 });
+
+test('every route text belongs to a route, and names real tours', async () => {
+  const { ROUTE_TEXT } = await import('./text/index.ts');
+  const { PACKAGES } = await import('../packages/index.ts');
+  const pairs = new Set(ROUTES.map((r) => `${r.pickup}-${r.drop}`));
+  const slugs = new Set(PACKAGES.map((p: { slug: string }) => p.slug));
+  for (const [k, t] of Object.entries(ROUTE_TEXT)) {
+    assert.ok(pairs.has(k), `text for ${k}, which is not a route`);
+    for (const s of t.packages ?? []) assert.ok(slugs.has(s), `${k}: no tour ${s}`);
+    assert.equal(t.en.intro.length, t.hi.intro.length, `${k}: both languages`);
+    assert.equal(t.en.onTheWay?.length ?? 0, t.hi.onTheWay?.length ?? 0, `${k}: the same stops in both`);
+    assert.equal(Boolean(t.en.tip), Boolean(t.hi.tip), `${k}: tip in both`);
+  }
+});
+
+test('no held route has words (they stay out of search)', async () => {
+  const { ROUTE_TEXT } = await import('./text/index.ts');
+  for (const r of ROUTES.filter((x) => x.held)) assert.ok(!ROUTE_TEXT[`${r.pickup}-${r.drop}`], r.slug);
+});
