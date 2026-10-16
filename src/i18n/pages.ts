@@ -9,10 +9,10 @@ export const PAGES: Record<string, readonly Locale[]> = {
   '/': ['en', 'hi'],
   '/packages': ['en', 'hi'],
   '/styleguide': ['en', 'hi'],
-  '/contact': ['en'],
-  '/privacy': ['en'],
-  '/terms': ['en'],
-  '/refund': ['en'],
+  '/contact': ['en', 'hi'],
+  '/privacy': ['en', 'hi'],
+  '/terms': ['en', 'hi'],
+  '/refund': ['en', 'hi'],
   '/photo-credits': ['en'],
 };
 

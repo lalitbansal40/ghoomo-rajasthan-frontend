@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { alternates } from '@/lib/seo';
 import { DocPage, DocSection } from '@/components/DocPage';
 import { Owner } from '@/components/Owner';
 import { brand } from '@/lib/site';
@@ -7,7 +8,7 @@ import { brand } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Privacy',
   description: 'What Ghoomo Rajasthan keeps about you, why, who else sees it, and how to have it removed.',
-  alternates: { canonical: '/privacy' },
+  alternates: alternates('/privacy', 'en'),
 };
 
 // TO FILL (owner): legalName, gstin, email in src/lib/site.ts — this page shows them by itself.
@@ -17,7 +18,8 @@ const updated = '16 October 2026';
  * Written for Ghoomo Rajasthan in its own words, on the structure of hellomycabs.com's privacy
  * page. What it says has to stay true of the site: today it collects nothing (no form, no
  * account); bookings — and with them name, number and pickup — come in Phase 4, paid through
- * Razorpay. Change this page in the same commit as anything that changes those facts.
+ * Cashfree (Hello My Cab's payment gateway). Change this page in the same commit as anything
+ * that changes those facts — and the Hindi one (hi/privacy) with it.
  */
 export default function PrivacyPage() {
   return (
@@ -60,7 +62,7 @@ export default function PrivacyPage() {
         </ul>
         <p>
           We do not ask for your location, your date of birth or any identity document. Card, UPI and bank
-          details never reach us: you pay on Razorpay&rsquo;s own page, and we are told only whether the
+          details never reach us: you pay on Cashfree&rsquo;s own page, and we are told only whether the
           payment went through.
         </p>
       </DocSection>
@@ -71,7 +73,7 @@ export default function PrivacyPage() {
             booking.
           </li>
           <li>
-            <strong>Razorpay</strong>, our payment provider — the amount and the booking reference.
+            <strong>Cashfree</strong>, our payment gateway — the amount and the booking reference.
           </li>
           <li>
             <strong>{brand.parent}</strong> — the same company, whose drivers, cars and booking system

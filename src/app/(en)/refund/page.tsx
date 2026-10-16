@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { alternates } from '@/lib/seo';
 import { DocPage, DocSection } from '@/components/DocPage';
 import { brand } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Cancellation and refund',
   description: 'What cancelling a Ghoomo Rajasthan booking costs, and what comes back to you.',
-  alternates: { canonical: '/refund' },
+  alternates: alternates('/refund', 'en'),
 };
 
 /**
@@ -62,7 +63,7 @@ export default function RefundPage() {
       </DocSection>
       <DocSection title="How the refund reaches you">
         <p>
-          Through Razorpay, back to the same card, UPI account or bank account the money came from — never
+          Through Cashfree, back to the same card, UPI account or bank account the money came from — never
           to a different one.
         </p>
       </DocSection>

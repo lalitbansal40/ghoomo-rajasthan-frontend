@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { alternates } from '@/lib/seo';
 import { DocPage, DocSection } from '@/components/DocPage';
 import { Owner } from '@/components/Owner';
 import { EXCLUDES, INCLUDES } from '@/content/packages';
@@ -8,7 +9,7 @@ import { brand } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Terms',
   description: 'The terms of a Ghoomo Rajasthan tour: the price, what it covers, paying, cancelling and what we ask of you.',
-  alternates: { canonical: '/terms' },
+  alternates: alternates('/terms', 'en'),
 };
 
 // TO FILL (owner): legalName, gstin, email in src/lib/site.ts — shown here by themselves.
@@ -58,7 +59,7 @@ export default function TermsPage() {
       </DocSection>
       <DocSection title="Paying">
         <p>
-          A booking made online is confirmed with an advance paid through Razorpay — at least ₹500, or 20%
+          A booking made online is confirmed with an advance paid through Cashfree — at least ₹500, or 20%
           of the fare above ₹2,500. The rest is paid to the driver during the trip. A booking is confirmed
           only once the advance has reached us.
         </p>
