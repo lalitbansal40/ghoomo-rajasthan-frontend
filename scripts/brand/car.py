@@ -11,7 +11,15 @@ WIN_FRONT = 'M 24.6 16 L 36 6.3 L 56.5 6.3 L 56.5 16 Z'
 WIN_MID = 'M 59.5 6.3 L 82 6.3 L 82 16 L 59.5 16 Z'
 WIN_REAR = 'M 85 6.3 L 103.5 6.3 C 106.5 6.3 108 7.2 109.5 9.4 L 113.6 16 L 85 16 Z'
 
-def car(font_path, body='#FFFFFF', outline='#1E3A7B', text='#8E1B1B', stripe='#E0A93B', glass='#1E3A7B', tyre='#1B1B1F'):
+def wheel(cx, tyre, animated):
+    """A wheel; animated → in a group the site can spin (with spokes, so the spin shows)."""
+    if not animated:
+        return f'<circle cx="{cx}" cy="32" r="6.4" fill="{tyre}"/><circle cx="{cx}" cy="32" r="2.7" fill="#BFC5CC"/>'
+    return (f'<g class="gr-wheel" style="transform-origin:{cx}px 32px">'
+            f'<circle cx="{cx}" cy="32" r="6.4" fill="{tyre}"/><circle cx="{cx}" cy="32" r="2.7" fill="#BFC5CC"/>'
+            f'<path d="M {cx} 29.4 V 34.6 M {cx - 2.6} 32 H {cx + 2.6}" stroke="{tyre}" stroke-width=".9"/></g>')
+
+def car(font_path, body='#FFFFFF', outline='#1E3A7B', text='#8E1B1B', stripe='#E0A93B', glass='#1E3A7B', tyre='#1B1B1F', animated=False):
     d, w, b = text_path(font_path, 'Ghoomo Rajasthan', 7.4)
     tw = b[2] - b[0]
     tx = 61 - tw / 2 - b[0]
@@ -31,8 +39,8 @@ def car(font_path, body='#FFFFFF', outline='#1E3A7B', text='#8E1B1B', stripe='#E
         f'<rect x="115" y="19.6" width="3.4" height="4.6" rx="1" fill="#C0392B"/>',
         f'<path d="M 27.5 15 L 31 13.2 L 32 15.4 Z" fill="{outline}"/>',
         # wheels
-        f'<circle cx="23" cy="32" r="6.4" fill="{tyre}"/><circle cx="23" cy="32" r="2.7" fill="#BFC5CC"/>',
-        f'<circle cx="99" cy="32" r="6.4" fill="{tyre}"/><circle cx="99" cy="32" r="2.7" fill="#BFC5CC"/>',
+        wheel(23, tyre, animated),
+        wheel(99, tyre, animated),
     ]
     return ''.join(parts)
 

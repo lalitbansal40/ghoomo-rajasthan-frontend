@@ -79,3 +79,27 @@ h3 {
     rgb(251 247 239 / 0) 60%
   );
 }
+
+/* ── Motifs (src/components/motifs) — light motion, transform only ─────────────────────── */
+@keyframes gr-sway {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-1.5px) rotate(-1.2deg); }
+  75% { transform: translateY(-0.5px) rotate(1deg); }
+}
+.gr-camel-walk {
+  transform-origin: 50% 100%;
+  animation: gr-sway 1.6s var(--ease-out) infinite;
+}
+@keyframes gr-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes gr-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1px); }
+}
+.gr-car-moving {
+  animation: gr-bounce 0.9s ease-in-out infinite;
+}
+.gr-car-moving .gr-wheel {
+  animation: gr-spin 0.9s linear infinite;
+}

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { ContactButtons } from '@/components/ContactButtons';
-import { Dunes } from '@/components/Dunes';
+import { DuneDivider } from '@/components/motifs';
 import { Footer } from '@/components/Footer';
 import { alternates } from '@/lib/seo';
 
@@ -50,7 +50,7 @@ export default function Home() {
           <ContactButtons />
         </div>
       </main>
-      <Dunes />
+      <DuneDivider />
       <Footer />
     </div>
   );

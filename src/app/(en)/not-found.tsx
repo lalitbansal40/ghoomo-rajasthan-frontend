@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ContactButtons } from '@/components/ContactButtons';
-import { Dunes } from '@/components/Dunes';
+import { DuneDivider } from '@/components/motifs';
 
 export default function NotFound() {
   return (
@@ -17,7 +17,7 @@ export default function NotFound() {
           <ContactButtons />
         </div>
       </div>
-      <Dunes />
+      <DuneDivider />
     </main>
   );
 }

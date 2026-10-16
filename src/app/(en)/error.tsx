@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { ContactButtons } from '@/components/ContactButtons';
-import { Dunes } from '@/components/Dunes';
+import { DuneDivider } from '@/components/motifs';
 
 export default function Error({ retry }: { error: Error & { digest?: string }; retry: () => void }) {
   return (
@@ -22,7 +22,7 @@ export default function Error({ retry }: { error: Error & { digest?: string }; r
           <ContactButtons />
         </div>
       </div>
-      <Dunes />
+      <DuneDivider />
     </main>
   );
 }
