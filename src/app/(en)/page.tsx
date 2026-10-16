@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { ContactButtons } from '@/components/ContactButtons';
 import { DuneDivider } from '@/components/motifs';
-import { Footer } from '@/components/Footer';
+import { Footer } from '@/components/ui/Footer';
 import { alternates } from '@/lib/seo';
 
 export const metadata: Metadata = {
@@ -51,7 +51,7 @@ export default function Home() {
         </div>
       </main>
       <DuneDivider />
-      <Footer />
+      <Footer locale="en" variant="compact" />
     </div>
   );
 }
