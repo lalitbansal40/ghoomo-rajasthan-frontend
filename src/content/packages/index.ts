@@ -44,6 +44,22 @@ export interface TourPackage {
   itinerary: DayPlan[];
   /** A key in content/photos.ts. */
   photo: string;
+  /** Cities on the tour, by the keys of content/destinations.ts — written by hand, not matched. */
+  cities: string[];
+  /** The Hindi of everything above that is words (required — a missing one fails the build). */
+  hi: TourText;
+}
+
+/** The parts of a tour that are words — one per language. */
+export interface TourText {
+  name: string;
+  startsFrom: string;
+  endsAt: string;
+  route: string[];
+  bestMonths: string;
+  goodFor: string[];
+  highlights: string[];
+  itinerary: DayPlan[];
 }
 
 const price = (dzire: number, ertiga: number, crysta: number): TourPackage['fromRupees'] => [
@@ -67,6 +83,13 @@ export const EXCLUDES = [
   'Hotels and meals',
   'Entry tickets, guides and safari permits',
   'Toll, parking and state tax, as they arise',
+];
+export const INCLUDES_HI = ['टूर के हर दिन गाड़ी और ड्राइवर', 'डीज़ल', 'ड्राइवर का भत्ता और उसका ठहरना'];
+export const EXCLUDES_HI = [
+  'जीएसटी, किराए के ऊपर 5%',
+  'होटल और खाना',
+  'एंट्री टिकट, गाइड और सफ़ारी परमिट',
+  'टोल, पार्किंग और स्टेट टैक्स — जितना लगे',
 ];
 
 export const PACKAGES: TourPackage[] = [
@@ -107,6 +130,38 @@ export const PACKAGES: TourPackage[] = [
       },
     ],
     photo: 'jaipur-hawa-mahal',
+    cities: ['JAIPUR'],
+    hi: {
+      name: 'जयपुर पिंक सिटी वीकेंड',
+      startsFrom: 'जयपुर',
+      endsAt: 'जयपुर',
+      route: ['आमेर किला', 'जयगढ़', 'नाहरगढ़', 'सिटी पैलेस', 'हवा महल', 'जल महल'],
+      bestMonths: 'अक्टूबर से मार्च',
+      goodFor: ['परिवार', 'कपल', 'राजस्थान पहली बार आने वाले'],
+      highlights: [
+        'सुबह जल्दी आमेर किला — गर्मी और भीड़ से पहले',
+        'नाहरगढ़ से पुराने शहर पर सूर्यास्त',
+        'चारदीवारी वाले शहर में पैदल घूमना, गाड़ी इंतज़ार करती है',
+        'होटल, स्टेशन या एयरपोर्ट से पिकअप',
+      ],
+      itinerary: [
+        {
+          day: 1,
+          title: 'पहाड़ियों पर क़िले',
+          morning: 'आमेर किला — शीश महल और आँगन, नीचे बसा शहर।',
+          afternoon: 'आमेर के ऊपर जयगढ़ किला, फिर मानसागर झील में जल महल पर रुकना।',
+          evening: 'नाहरगढ़ ऊपर से जयपुर का सूर्यास्त।',
+          stay: 'जयपुर',
+        },
+        {
+          day: 2,
+          title: 'चारदीवारी वाला शहर',
+          morning: 'पुराने शहर में साथ-साथ सिटी पैलेस और जंतर मंतर।',
+          afternoon: 'सड़क से हवा महल, फिर पिंक सिटी के बाज़ार।',
+          evening: 'आपके होटल, स्टेशन या एयरपोर्ट पर छोड़ना।',
+        },
+      ],
+    },
   },
   {
     slug: 'ajmer-pushkar-darshan',
@@ -145,6 +200,38 @@ export const PACKAGES: TourPackage[] = [
       },
     ],
     photo: 'pushkar-ghats',
+    cities: ['JAIPUR', 'AJMER', 'PUSHKAR'],
+    hi: {
+      name: 'अजमेर–पुष्कर दर्शन',
+      startsFrom: 'जयपुर',
+      endsAt: 'जयपुर',
+      route: ['जयपुर', 'अजमेर', 'पुष्कर', 'जयपुर'],
+      bestMonths: 'अक्टूबर से मार्च',
+      goodFor: ['तीर्थयात्री', 'परिवार', 'छोटी छुट्टी'],
+      highlights: [
+        'अजमेर शरीफ़ दरगाह और आना सागर झील',
+        'ब्रह्मा मंदिर और पुष्कर झील के घाट',
+        'पुष्कर की शाम की आरती',
+        'दूसरे दिन शाम तक वापस जयपुर',
+      ],
+      itinerary: [
+        {
+          day: 1,
+          title: 'जयपुर से अजमेर और पुष्कर',
+          morning: 'नाश्ते के बाद जयपुर से अजमेर के लिए निकलना।',
+          afternoon: 'अजमेर शरीफ़ दरगाह, फिर आना सागर झील का किनारा।',
+          evening: 'आगे पुष्कर — पुष्कर झील के घाटों पर आरती।',
+          stay: 'पुष्कर',
+        },
+        {
+          day: 2,
+          title: 'पुष्कर, और वापस जयपुर',
+          morning: 'ब्रह्मा मंदिर और झील के आसपास की गलियाँ।',
+          afternoon: 'वापस जयपुर का रास्ता।',
+          evening: 'आपके होटल, घर, स्टेशन या एयरपोर्ट पर छोड़ना।',
+        },
+      ],
+    },
   },
   {
     slug: 'lakes-and-forts',
@@ -204,6 +291,59 @@ export const PACKAGES: TourPackage[] = [
       },
     ],
     photo: 'chittorgarh-vijay-stambh',
+    cities: ['JAIPUR', 'UDAIPUR'],
+    hi: {
+      name: 'झीलें और क़िले',
+      startsFrom: 'जयपुर',
+      endsAt: 'जयपुर',
+      route: ['जयपुर', 'चित्तौड़गढ़', 'उदयपुर', 'कुंभलगढ़', 'जयपुर'],
+      bestMonths: 'सितंबर से मार्च',
+      goodFor: ['परिवार', 'इतिहास पसंद करने वाले', 'कपल'],
+      highlights: [
+        'चित्तौड़गढ़ — भारत के सबसे बड़े क़िलों में से एक',
+        'उदयपुर — सिटी पैलेस और लेक पिछोला में नाव',
+        'कुंभलगढ़ की लंबी दीवारें',
+        'पाँचों दिन एक गाड़ी और एक ड्राइवर',
+      ],
+      itinerary: [
+        {
+          day: 1,
+          title: 'जयपुर से चित्तौड़गढ़',
+          morning: 'सुबह जल्दी जयपुर से दक्षिण की ओर।',
+          afternoon: 'चित्तौड़गढ़ किला — विजय स्तंभ और राणा कुंभा का महल।',
+          stay: 'चित्तौड़गढ़',
+        },
+        {
+          day: 2,
+          title: 'चित्तौड़गढ़ से उदयपुर',
+          morning: 'उदयपुर का रास्ता।',
+          afternoon: 'लेक पिछोला के ऊपर सिटी पैलेस।',
+          evening: 'सूर्यास्त के समय लेक पिछोला में नाव।',
+          stay: 'उदयपुर',
+        },
+        {
+          day: 3,
+          title: 'उदयपुर',
+          morning: 'सहेलियों की बाड़ी और फ़तेह सागर झील।',
+          afternoon: 'जगदीश मंदिर और झील के पास पुराने शहर की गलियाँ।',
+          evening: 'उदयपुर में अपना समय।',
+          stay: 'उदयपुर',
+        },
+        {
+          day: 4,
+          title: 'कुंभलगढ़',
+          morning: 'अरावली की पहाड़ियों में कुंभलगढ़ तक।',
+          afternoon: 'किला और उसकी दीवारें, जो पहाड़ियों पर कई किलोमीटर तक चलती हैं।',
+          stay: 'कुंभलगढ़',
+        },
+        {
+          day: 5,
+          title: 'वापस जयपुर',
+          morning: 'जयपुर तक लंबा रास्ता।',
+          evening: 'आपके होटल, घर, स्टेशन या एयरपोर्ट पर छोड़ना।',
+        },
+      ],
+    },
   },
   {
     slug: 'royal-rajasthan-circuit',
@@ -277,6 +417,73 @@ export const PACKAGES: TourPackage[] = [
       },
     ],
     photo: 'jodhpur-mehrangarh',
+    cities: ['JAIPUR', 'JODHPUR', 'JAISALMER', 'UDAIPUR'],
+    hi: {
+      name: 'रॉयल राजस्थान सर्किट',
+      startsFrom: 'जयपुर',
+      endsAt: 'जयपुर',
+      route: ['जयपुर', 'जोधपुर', 'जैसलमेर', 'उदयपुर', 'जयपुर'],
+      bestMonths: 'अक्टूबर से मार्च',
+      goodFor: ['राजस्थान की पहली लंबी यात्रा', 'परिवार', 'ग्रुप'],
+      highlights: [
+        'नीले शहर जोधपुर के ऊपर मेहरानगढ़ किला',
+        'जैसलमेर के पास रेत के टीलों पर एक शाम',
+        'उदयपुर की झीलें और महल',
+        'पूरा सर्किट जानने वाला ड्राइवर',
+      ],
+      itinerary: [
+        {
+          day: 1,
+          title: 'जयपुर से जोधपुर',
+          morning: 'जयपुर से पश्चिम की ओर जोधपुर।',
+          evening: 'पुराने शहर का घंटाघर बाज़ार।',
+          stay: 'जोधपुर',
+        },
+        {
+          day: 2,
+          title: 'जोधपुर',
+          morning: 'नीले घरों के ऊपर ऊँचा मेहरानगढ़ किला।',
+          afternoon: 'जसवंत थड़ा, फिर बाहर से उम्मेद भवन।',
+          stay: 'जोधपुर',
+        },
+        {
+          day: 3,
+          title: 'जोधपुर से जैसलमेर',
+          morning: 'थार के बीच से जैसलमेर तक।',
+          evening: 'सूर्यास्त के समय गड़ीसर झील।',
+          stay: 'जैसलमेर',
+        },
+        {
+          day: 4,
+          title: 'जैसलमेर और रेत के टीले',
+          morning: 'जैसलमेर किला — जिसमें आज भी लोग रहते हैं — और हवेलियाँ।',
+          afternoon: 'सम के टीलों की ओर।',
+          evening: 'टीलों पर सूर्यास्त; चाहें तो ऊँट की सवारी (वहीं भुगतान)।',
+          stay: 'जैसलमेर',
+        },
+        {
+          day: 5,
+          title: 'जैसलमेर से उदयपुर',
+          morning: 'टूर का सबसे लंबा रास्ता — सुबह जल्दी निकलना।',
+          evening: 'उदयपुर पहुँचना।',
+          stay: 'उदयपुर',
+        },
+        {
+          day: 6,
+          title: 'उदयपुर',
+          morning: 'सिटी पैलेस।',
+          afternoon: 'सहेलियों की बाड़ी और फ़तेह सागर झील।',
+          evening: 'लेक पिछोला में नाव।',
+          stay: 'उदयपुर',
+        },
+        {
+          day: 7,
+          title: 'वापस जयपुर',
+          morning: 'उदयपुर से जयपुर।',
+          evening: 'आपके होटल, घर, स्टेशन या एयरपोर्ट पर छोड़ना।',
+        },
+      ],
+    },
   },
   {
     slug: 'ranthambore-wildlife',
@@ -314,6 +521,37 @@ export const PACKAGES: TourPackage[] = [
       },
     ],
     photo: 'ranthambore-fort',
+    cities: ['JAIPUR', 'RANTHAMBORE'],
+    hi: {
+      name: 'रणथंभौर वाइल्डलाइफ़',
+      startsFrom: 'जयपुर',
+      endsAt: 'जयपुर',
+      route: ['जयपुर', 'सवाई माधोपुर (रणथंभौर)', 'जयपुर'],
+      bestMonths: 'अक्टूबर से जून (बारिश में पार्क बंद रहता है)',
+      goodFor: ['जंगल और जानवर पसंद करने वाले', 'परिवार', 'फ़ोटोग्राफ़र'],
+      highlights: [
+        'सुबह या दोपहर की सफ़ारी के लिए गेट पर छोड़ना',
+        'पार्क के अंदर रणथंभौर किला',
+        'अगले दिन शाम तक वापस जयपुर',
+        'सफ़ारी परमिट आप ख़ुद वन विभाग की साइट पर बुक करते हैं',
+      ],
+      itinerary: [
+        {
+          day: 1,
+          title: 'जयपुर से रणथंभौर',
+          morning: 'जयपुर से सवाई माधोपुर।',
+          afternoon: 'दोपहर की सफ़ारी के लिए पार्क पर छोड़ना (आपका परमिट)।',
+          stay: 'सवाई माधोपुर',
+        },
+        {
+          day: 2,
+          title: 'सफ़ारी और वापसी',
+          morning: 'सुबह की सफ़ारी (आपका परमिट), या रणथंभौर किला।',
+          afternoon: 'वापस जयपुर का रास्ता।',
+          evening: 'आपके होटल, घर, स्टेशन या एयरपोर्ट पर छोड़ना।',
+        },
+      ],
+    },
   },
   {
     slug: 'udaipur-mount-abu',
@@ -358,7 +596,78 @@ export const PACKAGES: TourPackage[] = [
       },
     ],
     photo: 'mount-abu-nakki',
+    cities: ['UDAIPUR', 'MOUNT_ABU'],
+    hi: {
+      name: 'उदयपुर–माउंट आबू',
+      startsFrom: 'उदयपुर',
+      endsAt: 'उदयपुर',
+      route: ['उदयपुर', 'माउंट आबू', 'उदयपुर'],
+      bestMonths: 'पूरे साल — गर्मी में मैदानों से ठंडी राहत',
+      goodFor: ['परिवार', 'कपल', 'गर्मी की छुट्टियाँ'],
+      highlights: [
+        'दिलवाड़ा जैन मंदिर',
+        'नक्की झील और सनसेट पॉइंट',
+        'राजस्थान का इकलौता हिल स्टेशन',
+        'उदयपुर से शुरू और उदयपुर पर ख़त्म',
+      ],
+      itinerary: [
+        {
+          day: 1,
+          title: 'उदयपुर से माउंट आबू',
+          morning: 'पहाड़ियों में ऊपर माउंट आबू तक।',
+          evening: 'सनसेट पॉइंट, फिर नक्की झील के किनारे शाम।',
+          stay: 'माउंट आबू',
+        },
+        {
+          day: 2,
+          title: 'माउंट आबू',
+          morning: 'दिलवाड़ा मंदिर — संगमरमर की नक्काशी देखने लायक है।',
+          afternoon: 'गुरु शिखर, अरावली की सबसे ऊँची चोटी।',
+          evening: 'नक्की झील में नाव।',
+          stay: 'माउंट आबू',
+        },
+        {
+          day: 3,
+          title: 'वापस उदयपुर',
+          morning: 'पहाड़ से नीचे उदयपुर।',
+          evening: 'आपके होटल, स्टेशन या एयरपोर्ट पर छोड़ना।',
+        },
+      ],
+    },
   },
 ];
 
 export const packageBySlug = (slug: string) => PACKAGES.find((p) => p.slug === slug) ?? null;
+
+/** A tour in one language: its words in that language, the rest as they are. */
+export function pkgIn(pkg: TourPackage, locale: 'en' | 'hi') {
+  const words: TourText =
+    locale === 'hi'
+      ? pkg.hi
+      : {
+          name: pkg.name,
+          startsFrom: pkg.startsFrom,
+          endsAt: pkg.endsAt,
+          route: pkg.route,
+          bestMonths: pkg.bestMonths,
+          goodFor: pkg.goodFor,
+          highlights: pkg.highlights,
+          itinerary: pkg.itinerary,
+        };
+  return {
+    ...words,
+    slug: pkg.slug,
+    days: pkg.days,
+    nights: pkg.nights,
+    fromRupees: pkg.fromRupees,
+    photo: pkg.photo,
+    cities: pkg.cities,
+    includes: locale === 'hi' ? INCLUDES_HI : INCLUDES,
+    excludes: locale === 'hi' ? EXCLUDES_HI : EXCLUDES,
+  };
+}
+export type LocalTour = ReturnType<typeof pkgIn>;
+
+/** The cheapest car's price — what a card says "from". */
+export const cheapest = (pkg: { fromRupees: TourPackage['fromRupees'] }) =>
+  [...pkg.fromRupees].sort((a, b) => a.rupees - b.rupees)[0];
