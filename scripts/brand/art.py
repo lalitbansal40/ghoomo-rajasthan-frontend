@@ -105,3 +105,21 @@ def icon_svg(size_attr=''):
     """Square app/fav icon: the arch, the sun and the camel — the simple mark, centred."""
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -1 240 240"{size_attr} role="img">'
             f'<title>Ghoomo Rajasthan</title>{mark(False)}</svg>')
+
+
+def swoosh():
+    """The gold sweep under the picture — the dune that runs out of the window in the owner's
+    logo — from the left foot of the arch out past its right side."""
+    return ('<path fill="url(#sw)" d="M 6 222 C 50 214 92 214 132 208 C 160 204 182 196 198 184 '
+            'C 192 200 170 214 136 220 C 98 227 52 226 6 222 Z"/>')
+
+def swoosh_defs():
+    return ('<linearGradient id="sw" x1="0" y1="0" x2="1" y2="0">'
+            f'<stop offset="0" stop-color="{GOLD}" stop-opacity=".2"/><stop offset=".45" stop-color="{GOLD}"/>'
+            f'<stop offset="1" stop-color="{SUN}"/></linearGradient>')
+
+def mark_with_car(font_path):
+    """The full mark with the car parked in front of the window, on the gold sweep."""
+    from car import car
+    return (mark(True).replace('</defs>', swoosh_defs() + '</defs>', 1) + swoosh() +
+            f'<g transform="translate(72 181) scale(1.05)">{car(font_path)}</g>')

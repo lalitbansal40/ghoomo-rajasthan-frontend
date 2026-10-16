@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { env } from '@/lib/env';
 import { SITE_LAUNCHED, brand } from '@/lib/site';
 import { Analytics } from '@/components/Analytics';
-import { mukta, yatra } from './fonts';
+import { display, mukta } from './fonts';
 import './globals.css';
 
 /**
@@ -36,7 +36,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${mukta.variable} ${yatra.variable}`}>
+    <html lang="en" className={`${mukta.variable} ${display.variable}`}>
       <body className="min-h-dvh bg-ivory text-ink">
         {children}
         <Analytics />

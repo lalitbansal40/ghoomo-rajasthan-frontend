@@ -20,7 +20,7 @@
   --color-muted: #5B5650;
 
   --font-sans: var(--font-mukta), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-yatra), var(--font-mukta), serif;
+  --font-display: var(--font-display-face), var(--font-mukta), serif;
 }
 
 html {

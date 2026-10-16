@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 /**
  * The coming-soon page (Phase 0): the logo, what we will be, and the two ways to reach us
- * today. No photograph — the logo is the largest thing on the screen and it is a 13 kB SVG,
+ * today. No photograph — the logo is the largest thing on the screen and it is a 20 kB SVG,
  * so the first paint is the whole page.
  */
 export default function Home() {
@@ -29,10 +29,10 @@ export default function Home() {
         <Image
           src="/brand/logo-full.svg"
           alt="Ghoomo Rajasthan"
-          width={406}
-          height={513}
+          width={533}
+          height={519}
           priority
-          className="h-auto w-[70vw] max-w-[360px]"
+          className="h-auto w-[86vw] max-w-[440px]"
         />
         {/* The logo above already says the name; the heading says it for screen readers. */}
         <h1 className="mt-8 font-display text-3xl text-maroon sm:text-5xl">

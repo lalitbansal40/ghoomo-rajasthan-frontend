@@ -1,4 +1,4 @@
-import { Mukta, Yatra_One } from 'next/font/google';
+import { Mukta, Rozha_One } from 'next/font/google';
 
 /**
  * Mukta for reading: one family that also has Hindi (devanagari), so the Hindi pages to come
@@ -14,14 +14,15 @@ export const mukta = Mukta({
 });
 
 /**
- * Yatra One for headings — the logo's lettering (the default until the owner picks between
- * Yatra One, Rozha One and Cinzel Decorative on /brand). Not preloaded: no heading is the
- * largest thing on a page, so first paint does not wait for it.
+ * Rozha One for headings — the logo's lettering (chosen 16 Oct 2026 from Yatra One, Rozha One
+ * and Cinzel Decorative: the closest to the owner's logo, a classical high-contrast serif with
+ * an Indian hand). Not preloaded: no heading is the largest thing on a page, so first paint
+ * does not wait for it.
  */
-export const yatra = Yatra_One({
+export const display = Rozha_One({
   subsets: ['latin'],
   weight: '400',
   display: 'swap',
-  variable: '--font-yatra',
+  variable: '--font-display-face',
   preload: false,
 });

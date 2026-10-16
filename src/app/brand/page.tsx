@@ -17,8 +17,8 @@ const rozha = Rozha_One({ subsets: ['latin'], weight: '400', display: 'swap' });
 const cinzel = Cinzel_Decorative({ subsets: ['latin'], weight: '700', display: 'swap' });
 
 const FONTS = [
-  { key: 'yatra', name: 'Yatra One', className: yatra.className, note: 'Desi, hand-painted feel — closest to the logo. The default.' },
-  { key: 'rozha', name: 'Rozha One', className: rozha.className, note: 'Bold and classical, like a printed poster.' },
+  { key: 'yatra', name: 'Yatra One', className: yatra.className, note: 'Desi, hand-painted feel.' },
+  { key: 'rozha', name: 'Rozha One', className: rozha.className, note: 'Chosen (16 Oct 2026) — a classical serif with an Indian hand, the closest to the logo.' },
   { key: 'cinzel', name: 'Cinzel Decorative', className: cinzel.className, note: 'Royal, carved-in-stone capitals.' },
 ];
 
@@ -34,11 +34,11 @@ const COLOURS = [
 ];
 
 const FILES = [
-  { file: 'logo-full.svg', use: 'Hero, about, print' },
+  { file: 'logo-full.svg', use: 'Hero, about, print — with the car, the brand on its side' },
   { file: 'logo-horizontal.svg', use: 'Header, email signature' },
   { file: 'logo-icon.svg', use: 'Favicon, app icon, WhatsApp / social picture' },
-  { file: 'logo-white.svg', use: 'On photos and dark backgrounds', dark: true },
-  { file: 'logo-mono.svg', use: 'Bills, stamps' },
+  { file: 'logo-white.svg', use: 'On photos and dark backgrounds (one colour — no car)', dark: true },
+  { file: 'logo-mono.svg', use: 'Bills, stamps (one colour — no car)' },
 ];
 
 export default function BrandPage() {
@@ -48,7 +48,7 @@ export default function BrandPage() {
       <p className="mt-2 text-muted">For the team. Not linked from the site and hidden from search.</p>
 
       <section className="mt-10">
-        <h2 className="text-2xl font-bold text-royal">1. The lettering — choose one</h2>
+        <h2 className="text-2xl font-bold text-royal">1. The lettering — Rozha One</h2>
         <div className="mt-4 grid gap-6 md:grid-cols-3">
           {FONTS.map((f) => (
             <figure key={f.key} className="rounded-2xl border border-gold/40 bg-white p-4">

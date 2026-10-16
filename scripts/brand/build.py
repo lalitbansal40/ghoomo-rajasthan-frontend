@@ -2,14 +2,14 @@
 
     python3 -m venv .venv && .venv/bin/pip install fonttools uharfbuzz
     sh fetch-fonts.sh                     # the three Google Fonts (OFL), into ./fonts
-    .venv/bin/python build.py yatra       # or rozha / cinzel — the font the owner picks
+    .venv/bin/python build.py rozha       # the lettering: rozha (chosen 16 Oct 2026), yatra or cinzel
 
 The lettering is turned into paths, so no font is loaded to show the logo.
 """
 import sys, os
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from art import mark, icon_svg, ROYAL, MAROON, GOLD
+from art import mark, mark_with_car, icon_svg, ROYAL, MAROON, GOLD
 from textpath import text_path
 
 FONTS = {
@@ -45,12 +45,12 @@ def full(font, one_colour=None):
     K = 1.35  # the picture, larger than the words' natural size
     W = max(W, 200 * K + 40)
     cx = W / 2
-    A = 236 * K
+    A = (236 if one_colour else 230) * K
     c1 = one_colour or ROYAL; c2 = one_colour or MAROON; cg = one_colour or GOLD
     if one_colour:
         art = (f'<g transform="translate({cx - 100 * K:.1f} 0) scale({K})">' + mono_mark(one_colour) + '</g>')
     else:
-        art = f'<g transform="translate({cx - 100 * K:.1f} 0) scale({K})">{mark(True)}</g>'
+        art = f'<g transform="translate({cx - 100 * K:.1f} 0) scale({K})">{mark_with_car(FONTS[font][0])}</g>'
     t1x, t1y, h1 = placed(d1, b1, cx, A + 6)
     t2x, t2y, h2 = placed(d2, b2, cx, A + 6 + h1 + 26)
     star_y = A + 6 + h1 + 13
@@ -94,7 +94,7 @@ def horizontal(font):
     W = tx0 + w + 6
     return svg(f'0 0 {W:.0f} 120', body)
 
-def write_all(out, font='yatra'):
+def write_all(out, font='rozha'):
     os.makedirs(out, exist_ok=True)
     open(f'{out}/logo-full.svg', 'w').write(full(font)[0])
     open(f'{out}/logo-horizontal.svg', 'w').write(horizontal(font))
@@ -104,7 +104,7 @@ def write_all(out, font='yatra'):
 
 
 if __name__ == '__main__':
-    font = sys.argv[1] if len(sys.argv) > 1 else 'yatra'
+    font = sys.argv[1] if len(sys.argv) > 1 else 'rozha'
     brand = os.path.join(HERE, '../../public/brand')
     write_all(brand, font)
     os.makedirs(os.path.join(brand, 'options'), exist_ok=True)
