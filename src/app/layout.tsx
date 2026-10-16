@@ -30,6 +30,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: '#1E3A7B',
+  // Light only (owner, 16 Oct 2026) — a phone in dark mode must not darken the page's controls.
+  colorScheme: 'light',
   width: 'device-width',
   initialScale: 1,
 };

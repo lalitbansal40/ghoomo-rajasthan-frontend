@@ -1,26 +1,16 @@
 @import "tailwindcss";
+/* Colours, radius, shadow, motion and the type scale — generated from src/design/tokens.json. */
+@import "../design/tokens.css";
 
 /**
- * The Ghoomo Rajasthan palette — taken from the logo (PLAN_ghoomo_rajasthan.md): the royal
- * blue of the arch and "Ghoomo", the maroon of the fort and "Rajasthan", the gold of the
- * arch's edge, the sun, the sand of the dunes, and the ivory ground the logo sits on.
+ * Light only (owner, 16 Oct 2026: no dark mode yet). Without this a phone in dark mode can
+ * darken form controls and scrollbars on an ivory page.
  *
- * Contrast (WCAG AA, 4.5:1 for body text): ink and royal on ivory pass easily, white on royal
- * and on maroon pass. White on gold or on sun does NOT — on those, write in royal or ink.
+ * Contrast (WCAG AA) is checked by `npm run contrast`. Never: white on gold or sun — on those,
+ * write in ink.
  */
-@theme {
-  --color-royal: #1E3A7B;
-  --color-maroon: #8E1B1B;
-  --color-gold: #E0A93B;
-  --color-sun: #F5A623;
-  --color-sun-light: #FFD27A;
-  --color-sand: #F3D9A4;
-  --color-ivory: #FBF7EF;
-  --color-ink: #1B1B1F;
-  --color-muted: #5B5650;
-
-  --font-sans: var(--font-mukta), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-display-face), var(--font-mukta), serif;
+:root {
+  color-scheme: light;
 }
 
 html {
@@ -30,5 +20,55 @@ html {
 
 body {
   font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+:lang(hi) body,
+body:lang(hi) {
+  line-height: 1.7;
+}
+
+/* One focus ring for everything a keyboard can reach — gold-700, not the logo's gold-500:
+   it has to stand 3:1 against ivory and sand (npm run contrast). */
+:focus-visible {
+  outline: 2px solid var(--color-gold-700);
+  outline-offset: 2px;
+}
+
+/* Headings never leave one word alone on a line, in either language. */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+/**
+ * Light motion (owner, 16 Oct 2026), and none at all for anyone who asked their phone for less.
+ * `.motion-off` does the same on demand — the style guide's "animation off" switch.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+.motion-off *,
+.motion-off *::before,
+.motion-off *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* The sun behind a hero: a soft glow, not a picture. */
+.sun-glow {
+  background-image: radial-gradient(
+    circle at 50% 30%,
+    rgb(255 210 122 / 0.55) 0,
+    rgb(245 166 35 / 0.12) 34%,
+    rgb(251 247 239 / 0) 60%
+  );
 }
