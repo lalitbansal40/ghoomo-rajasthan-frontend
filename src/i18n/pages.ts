@@ -7,6 +7,7 @@ import type { Locale } from './index';
  */
 export const PAGES: Record<string, readonly Locale[]> = {
   '/': ['en', 'hi'],
+  '/packages': ['en', 'hi'],
   '/styleguide': ['en', 'hi'],
   '/contact': ['en'],
   '/privacy': ['en'],
@@ -15,7 +16,13 @@ export const PAGES: Record<string, readonly Locale[]> = {
   '/photo-credits': ['en'],
 };
 
-export const exists = (barePath: string, locale: Locale) => PAGES[barePath]?.includes(locale) ?? false;
+/** Families of pages (a page per tour): every path under the prefix exists in these languages. */
+const PREFIXES: Array<[string, readonly Locale[]]> = [['/packages/', ['en', 'hi']]];
+
+export const exists = (barePath: string, locale: Locale) =>
+  PAGES[barePath]?.includes(locale) ??
+  PREFIXES.find(([prefix]) => barePath.startsWith(prefix))?.[1].includes(locale) ??
+  false;
 
 /** The menu (owner, 16 Oct 2026): Packages · Destinations · Cab · Desert Safari · Contact. */
 export const NAV = [

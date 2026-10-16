@@ -1,3 +1,4 @@
+import type { Locale } from '@/i18n';
 import { Footer } from './ui/Footer';
 import { Header } from './ui/Header';
 
@@ -10,6 +11,7 @@ export function DocPage({
   intro,
   updated,
   path,
+  locale = 'en',
   children,
 }: {
   title: string;
@@ -18,18 +20,23 @@ export function DocPage({
   updated?: string;
   /** This page's path — for the header's language switch. */
   path: string;
+  locale?: Locale;
   children: React.ReactNode;
 }) {
   return (
     <div className="flex min-h-dvh flex-col">
-      <Header locale="en" path={path} />
+      <Header locale={locale} path={path} />
       <main className="mx-auto w-full max-w-[68ch] flex-1 px-4 py-10">
         <h1 className="text-h1 text-royal-600">{title}</h1>
-        {updated ? <p className="mt-2 text-sm text-muted">Last updated {updated}</p> : null}
+        {updated ? (
+          <p className="mt-2 text-sm text-muted">
+            {locale === 'hi' ? 'आख़िरी बदलाव' : 'Last updated'} {updated}
+          </p>
+        ) : null}
         {intro ? <p className="mt-4 text-ink/80">{intro}</p> : null}
         <div className="doc mt-8">{children}</div>
       </main>
-      <Footer locale="en" />
+      <Footer locale={locale} />
     </div>
   );
 }
