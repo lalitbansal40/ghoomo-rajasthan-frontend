@@ -69,17 +69,5 @@ export const destination = (key: string) => DESTINATIONS.find((d) => d.key === k
 /** The tours that go to a city (by each package's own `cities` list). */
 export const packagesFor = (key: string) => PACKAGES.filter((p) => p.cities.includes(key));
 
-/** City keys → their names, for cities the backend knows that are not in DESTINATIONS. */
-export const CITY_HI: Record<string, string> = {
-  JAIPUR: 'जयपुर',
-  UDAIPUR: 'उदयपुर',
-  JODHPUR: 'जोधपुर',
-  AJMER: 'अजमेर',
-  KOTA: 'कोटा',
-  SIKAR: 'सीकर',
-  JAISALMER: 'जैसलमेर',
-  PUSHKAR: 'पुष्कर',
-  BIKANER: 'बीकानेर',
-  DELHI: 'दिल्ली',
-  AGRA: 'आगरा',
-};
+/** The city names live in content/cities.ts; re-exported for the callers that import them here. */
+export { CITY_HI } from './cities';

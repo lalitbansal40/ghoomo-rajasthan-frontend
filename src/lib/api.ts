@@ -1,3 +1,4 @@
+import { cache } from 'react';
 import { env } from './env';
 
 /**
@@ -172,6 +173,20 @@ export interface AllFares {
   }>;
 }
 
+/** A day in one city: so many hours and km for a fixed fare, then by the hour (/fare/local). */
+export interface LocalFares {
+  gstPercent: number;
+  packages: Array<{
+    vehicle: string;
+    label: string;
+    includedHours: number;
+    includedKm: number;
+    baseFareRupees: number;
+    extraPerHour: number;
+    extraPerKm: number;
+  }>;
+}
+
 export const api = {
   cities: () => get<{ cityList: City[] }>('/cities').then((d) => d.cityList),
   vehicles: () =>
@@ -183,7 +198,36 @@ export const api = {
   routes: () => get<{ count: number; routes: RouteSummary[] }>('/routes'),
   /** Every route's one-way and round-trip fares, in one request. */
   allFares: () => get<AllFares>('/fares/all'),
+  /** Any pair's one-way fare — Ghoomo's own roads, which /fares/all does not carry. */
+  oneway: (pickup: string, drop: string) =>
+    get<OnewayFare>(`/fare/oneway?pickup=${encodeURIComponent(pickup)}&drop=${encodeURIComponent(drop)}`),
+  /** A same-day round trip; its vehicles carry the per-km rates every longer trip is billed at. */
+  roundtrip: (pickup: string, drop: string) =>
+    get<RoundtripFare>(`/fare/roundtrip?pickup=${encodeURIComponent(pickup)}&drop=${encodeURIComponent(drop)}`),
+  local: (city: string) => get<LocalFares>(`/fare/local?city=${encodeURIComponent(city)}`),
 };
+
+/**
+ * The same reads, but never throwing: null when the backend cannot be reached or says no.
+ * A page shows "fare on WhatsApp" for a null — a build never fails on the backend, and the
+ * next revalidate (a day) brings the fare back. No retry: a retry during a build only
+ * multiplies the load on a backend that is already struggling (hellomycabs.com, measured).
+ */
+const orNull = <T>(p: Promise<T>): Promise<T | null> => p.catch(() => null);
+export const safe = {
+  allFares: cache(() => orNull(api.allFares())),
+  vehicles: cache(() => orNull(api.vehicles())),
+  oneway: cache((pickup: string, drop: string) => orNull(api.oneway(pickup, drop))),
+  roundtrip: cache((pickup: string, drop: string) => orNull(api.roundtrip(pickup, drop))),
+  local: cache((city: string) => orNull(api.local(city))),
+};
+
+/** Run `fn` over `items` at most `size` at a time — so a build never asks the backend for 50 things at once. */
+export async function inBatches<T, R>(items: T[], size: number, fn: (item: T) => Promise<R>): Promise<R[]> {
+  const out: R[] = [];
+  for (let i = 0; i < items.length; i += size) out.push(...(await Promise.all(items.slice(i, i + size).map(fn))));
+  return out;
+}
 
 /** JAIPUR → jaipur, DELHI_AIRPORT → delhi-airport. The slug every route URL uses. */
 export const toSlug = (cityKey: string): string => cityKey.toLowerCase().replace(/_/g, '-');
