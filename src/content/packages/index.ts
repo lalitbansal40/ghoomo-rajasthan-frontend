@@ -203,7 +203,7 @@ export const PACKAGES: TourPackage[] = [
         evening: 'Dropped at your hotel, home, the station or the airport.',
       },
     ],
-    photo: 'chittorgarh-fort',
+    photo: 'chittorgarh-vijay-stambh',
   },
   {
     slug: 'royal-rajasthan-circuit',
@@ -357,7 +357,7 @@ export const PACKAGES: TourPackage[] = [
         evening: 'Dropped at your hotel, the station or the airport.',
       },
     ],
-    photo: 'mount-abu-dilwara',
+    photo: 'mount-abu-nakki',
   },
 ];
 
