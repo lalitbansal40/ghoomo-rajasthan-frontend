@@ -1,0 +1,101 @@
+pickup_key,drop_key,from,to,km,rajasthan,fixed_fare,ghoomo_text_written
+AJMER,JAIPUR,Ajmer,Jaipur,163,both,yes,no
+AJMER,KOTA,Ajmer,Kota,240,both,yes,no
+AJMER,SIKAR,Ajmer,Sikar,180,both,yes,no
+JAIPUR,AJMER,Jaipur,Ajmer,163,both,yes,no
+JAIPUR,JODHPUR,Jaipur,Jodhpur,371,both,no,no
+JAIPUR,KOTA,Jaipur,Kota,246,both,yes,no
+JAIPUR,SIKAR,Jaipur,Sikar,131,both,yes,no
+JAIPUR,UDAIPUR,Jaipur,Udaipur,432,both,no,no
+JODHPUR,JAIPUR,Jodhpur,Jaipur,371,both,no,no
+KOTA,AJMER,Kota,Ajmer,240,both,yes,no
+KOTA,JAIPUR,Kota,Jaipur,246,both,yes,no
+KOTA,SIKAR,Kota,Sikar,359,both,yes,no
+SIKAR,AJMER,Sikar,Ajmer,180,both,yes,no
+SIKAR,JAIPUR,Sikar,Jaipur,131,both,yes,no
+SIKAR,KOTA,Sikar,Kota,359,both,yes,no
+UDAIPUR,JAIPUR,Udaipur,Jaipur,432,both,no,no
+AGRA,AJMER,Agra,Ajmer,448,one end,yes,no
+AGRA,JAIPUR,Agra,Jaipur,289,one end,yes,no
+AGRA,KOTA,Agra,Kota,398,one end,yes,no
+AGRA,SIKAR,Agra,Sikar,374,one end,yes,no
+AJMER,AGRA,Ajmer,Agra,448,one end,yes,no
+AJMER,CHANDIGARH,Ajmer,Chandigarh,677,one end,yes,no
+AJMER,DELHI,Ajmer,Delhi,455,one end,yes,no
+AJMER,DELHI_AIRPORT,Ajmer,Delhi Airport (IGI),439,one end,yes,no
+AJMER,HARIDWAR,Ajmer,Haridwar,676,one end,yes,no
+AJMER,NOIDA,Ajmer,Noida,465,one end,yes,no
+CHANDIGARH,AJMER,Chandigarh,Ajmer,677,one end,yes,no
+CHANDIGARH,JAIPUR,Chandigarh,Jaipur,567,one end,yes,no
+CHANDIGARH,KOTA,Chandigarh,Kota,807,one end,yes,no
+CHANDIGARH,SIKAR,Chandigarh,Sikar,497,one end,yes,no
+DELHI,AJMER,Delhi,Ajmer,455,one end,yes,no
+DELHI,JAIPUR,Delhi,Jaipur,306,one end,yes,no
+DELHI,KOTA,Delhi,Kota,522,one end,yes,no
+DELHI,SIKAR,Delhi,Sikar,302,one end,yes,no
+DELHI_AIRPORT,AJMER,Delhi Airport (IGI),Ajmer,439,one end,yes,no
+DELHI_AIRPORT,JAIPUR,Delhi Airport (IGI),Jaipur,291,one end,yes,no
+DELHI_AIRPORT,KOTA,Delhi Airport (IGI),Kota,509,one end,yes,no
+DELHI_AIRPORT,SIKAR,Delhi Airport (IGI),Sikar,285,one end,yes,no
+HARIDWAR,AJMER,Haridwar,Ajmer,676,one end,yes,no
+HARIDWAR,JAIPUR,Haridwar,Jaipur,533,one end,yes,no
+HARIDWAR,KOTA,Haridwar,Kota,745,one end,yes,no
+HARIDWAR,SIKAR,Haridwar,Sikar,511,one end,yes,no
+JAIPUR,AGRA,Jaipur,Agra,289,one end,yes,no
+JAIPUR,CHANDIGARH,Jaipur,Chandigarh,567,one end,yes,no
+JAIPUR,DELHI,Jaipur,Delhi,306,one end,yes,no
+JAIPUR,DELHI_AIRPORT,Jaipur,Delhi Airport (IGI),291,one end,yes,no
+JAIPUR,HARIDWAR,Jaipur,Haridwar,533,one end,yes,no
+JAIPUR,NOIDA,Jaipur,Noida,312,one end,yes,no
+KOTA,AGRA,Kota,Agra,398,one end,yes,no
+KOTA,CHANDIGARH,Kota,Chandigarh,807,one end,yes,no
+KOTA,DELHI,Kota,Delhi,522,one end,yes,no
+KOTA,DELHI_AIRPORT,Kota,Delhi Airport (IGI),509,one end,yes,no
+KOTA,HARIDWAR,Kota,Haridwar,745,one end,yes,no
+KOTA,NOIDA,Kota,Noida,519,one end,yes,no
+NOIDA,AJMER,Noida,Ajmer,465,one end,yes,no
+NOIDA,JAIPUR,Noida,Jaipur,312,one end,yes,no
+NOIDA,KOTA,Noida,Kota,519,one end,yes,no
+NOIDA,SIKAR,Noida,Sikar,317,one end,yes,no
+SIKAR,AGRA,Sikar,Agra,374,one end,yes,no
+SIKAR,CHANDIGARH,Sikar,Chandigarh,497,one end,yes,no
+SIKAR,DELHI,Sikar,Delhi,302,one end,yes,no
+SIKAR,DELHI_AIRPORT,Sikar,Delhi Airport (IGI),285,one end,yes,no
+SIKAR,HARIDWAR,Sikar,Haridwar,511,one end,yes,no
+SIKAR,NOIDA,Sikar,Noida,317,one end,yes,no
+AGRA,CHANDIGARH,Agra,Chandigarh,538,no,yes,no
+AGRA,DELHI,Agra,Delhi,232,no,yes,no
+AGRA,DELHI_AIRPORT,Agra,Delhi Airport (IGI),231,no,yes,no
+AGRA,HARIDWAR,Agra,Haridwar,401,no,yes,no
+AGRA,NOIDA,Agra,Noida,212,no,yes,no
+CHANDIGARH,AGRA,Chandigarh,Agra,538,no,yes,no
+CHANDIGARH,DELHI,Chandigarh,Delhi,312,no,yes,no
+CHANDIGARH,DELHI_AIRPORT,Chandigarh,Delhi Airport (IGI),318,no,yes,no
+CHANDIGARH,HARIDWAR,Chandigarh,Haridwar,207,no,yes,no
+CHANDIGARH,NOIDA,Chandigarh,Noida,327,no,yes,no
+DEHRADUN,DELHI,Dehradun,Delhi,268,no,no,no
+DELHI,AGRA,Delhi,Agra,232,no,yes,no
+DELHI,CHANDIGARH,Delhi,Chandigarh,312,no,yes,no
+DELHI,DEHRADUN,Delhi,Dehradun,268,no,no,no
+DELHI,DELHI_AIRPORT,Delhi,Delhi Airport (IGI),17,no,yes,no
+DELHI,HARIDWAR,Delhi,Haridwar,228,no,yes,no
+DELHI,LUDHIANA,Delhi,Ludhiana,372,no,no,no
+DELHI,MOHALI,Delhi,Mohali,309,no,no,no
+DELHI,NOIDA,Delhi,Noida,26,no,yes,no
+DELHI_AIRPORT,AGRA,Delhi Airport (IGI),Agra,231,no,yes,no
+DELHI_AIRPORT,CHANDIGARH,Delhi Airport (IGI),Chandigarh,318,no,yes,no
+DELHI_AIRPORT,DELHI,Delhi Airport (IGI),Delhi,17,no,yes,no
+DELHI_AIRPORT,HARIDWAR,Delhi Airport (IGI),Haridwar,242,no,yes,no
+DELHI_AIRPORT,NOIDA,Delhi Airport (IGI),Noida,38,no,yes,no
+HARIDWAR,AGRA,Haridwar,Agra,401,no,yes,no
+HARIDWAR,CHANDIGARH,Haridwar,Chandigarh,207,no,yes,no
+HARIDWAR,DELHI,Haridwar,Delhi,228,no,yes,no
+HARIDWAR,DELHI_AIRPORT,Haridwar,Delhi Airport (IGI),242,no,yes,no
+HARIDWAR,NOIDA,Haridwar,Noida,226,no,yes,no
+LUDHIANA,DELHI,Ludhiana,Delhi,372,no,no,no
+MOHALI,DELHI,Mohali,Delhi,309,no,no,no
+NOIDA,AGRA,Noida,Agra,212,no,yes,no
+NOIDA,CHANDIGARH,Noida,Chandigarh,327,no,yes,no
+NOIDA,DELHI,Noida,Delhi,26,no,yes,no
+NOIDA,DELHI_AIRPORT,Noida,Delhi Airport (IGI),38,no,yes,no
+NOIDA,HARIDWAR,Noida,Haridwar,226,no,yes,no
