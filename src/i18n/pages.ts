@@ -21,6 +21,7 @@ export const PAGES: Record<string, readonly Locale[]> = {
 const PREFIXES: Array<[string, readonly Locale[]]> = [
   ['/packages/', ['en', 'hi']],
   ['/destinations/', ['en', 'hi']],
+  ['/cab/', ['en', 'hi']],
 ];
 
 export const exists = (barePath: string, locale: Locale) =>

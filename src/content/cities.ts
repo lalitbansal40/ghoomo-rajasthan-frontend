@@ -61,3 +61,13 @@ export function cityName(key: string, locale: Locale): string {
   if (locale === 'hi') return CITY_HI[key] ?? CITY_EN[key] ?? title(key);
   return CITY_EN[key] ?? title(key);
 }
+
+/** Where a backend town is the stop for a place better known by another name. */
+const PLACE_NAME: Record<string, { en: string; hi: string }> = {
+  SAWAI_MADHOPUR: { en: 'Ranthambore (Sawai Madhopur)', hi: 'रणथंभौर (सवाई माधोपुर)' },
+};
+
+/** A route end as a traveller reads it — "Ranthambore (Sawai Madhopur)" rather than the town alone. */
+export function routeEndName(key: string, locale: Locale): string {
+  return PLACE_NAME[key]?.[locale] ?? cityName(key, locale);
+}

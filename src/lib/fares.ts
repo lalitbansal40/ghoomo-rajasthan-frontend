@@ -28,6 +28,8 @@ export interface OnewayView {
   rows: FareRow[];
   /** True when any car's fare has a toll on the bill. */
   tollOnBill: boolean;
+  /** The backend's airport charge on this road, rupees; 0 when none. */
+  airportSurcharge: number;
 }
 
 /**
@@ -56,6 +58,7 @@ export function onewayView(fare: OnewayFare | null | undefined): OnewayView | nu
     gstPercent: fare.gstPercent ?? 5,
     rows,
     tollOnBill: rows.some((r) => r.tollRupees > 0),
+    airportSurcharge: Math.max(0, fare.airportSurcharge ?? 0),
   };
 }
 

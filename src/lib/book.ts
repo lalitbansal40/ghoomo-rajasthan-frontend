@@ -20,7 +20,8 @@ export function bookPackageLink(
   );
 }
 
-export function bookRouteLink(from: string, to: string, locale: Locale): string {
+export function bookRouteLink(from: string, to: string, locale: Locale, car?: string): string {
+  if (car) return whatsappLink(dict(locale).route.bookMessage(from, to, car));
   return whatsappLink(
     locale === 'hi'
       ? `नमस्ते, ${from} से ${to} के लिए कैब चाहिए। तारीख: ___ , कितने लोग: ___`

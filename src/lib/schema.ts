@@ -102,3 +102,29 @@ export function itemListJsonLd(items: Array<{ name: string; path: string }>) {
     itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, url: abs(it.path) })),
   };
 }
+
+/** A cab route: the service, the two ends, and the lowest fare as an offer — only when there is one. */
+export function taxiServiceJsonLd(o: {
+  name: string;
+  from: string;
+  to: string;
+  path: string;
+  locale: Locale;
+  lowestRupees: number | null;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'TaxiService',
+    name: o.name,
+    url: abs(o.path),
+    inLanguage: LANG_TAG[o.locale].hreflang,
+    provider: { '@id': abs('/#agency') },
+    areaServed: [
+      { '@type': 'City', name: o.from },
+      { '@type': 'City', name: o.to },
+    ],
+    ...(o.lowestRupees
+      ? { offers: { '@type': 'Offer', price: o.lowestRupees, priceCurrency: 'INR', url: abs(o.path), availability: 'https://schema.org/InStock' } }
+      : {}),
+  };
+}

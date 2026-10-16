@@ -38,7 +38,7 @@ export function RouteCard({
           {from} <span className="text-gold-700">→</span> {to}
         </p>
         <p className="text-small text-muted">
-          {[km ? t.pkg.km(km) : null, fromRupees ? `${t.pkg.from} ${formatRupees(fromRupees)}` : null].filter(Boolean).join(' · ')}
+          {[km ? t.pkg.km(km) : null, fromRupees ? t.fare.fromAmount(formatRupees(fromRupees)) : null].filter(Boolean).join(' · ')}
           {sample ? (
             <Badge tone="sample" className="ml-2 align-middle">
               {t.pkg.sample}
