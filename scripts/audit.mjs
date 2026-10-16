@@ -9,8 +9,8 @@
  *     critical accessibility problem
  *   · FAIL if <html lang> is wrong, the page is indexable before launch, or an English page
  *     preloads a devanagari font
- * Then, with animation reduced, FAIL if anything on /styleguide still animates; and Lighthouse
- * (mobile, three runs, the median) on / and /hi: performance, accessibility and best practices
+ * Then, with animation reduced, FAIL if anything on the home page still animates; and Lighthouse
+ * (mobile, three runs, the median) on / and /hi and a tour page in each: performance, accessibility and best practices
  * at least 95, CLS under 0.05, TBT under 150 ms (LCP is reported — see below). Exits 1 on any FAIL.
  */
 import puppeteer from 'puppeteer-core';
@@ -25,7 +25,12 @@ const CHROME = process.env.CHROME_PATH ?? '/Applications/Google Chrome.app/Conte
 const arg = (k) => process.argv.find((a) => a.startsWith(`--${k}=`))?.slice(k.length + 3);
 const OUT = arg('out') ?? 'audit-out';
 const LIGHTHOUSE = !process.argv.includes('--no-lighthouse');
-const PAGES = (arg('pages') ?? '/,/hi,/styleguide,/hi/styleguide,/privacy,/contact,/kuch-bhi').split(',');
+const TOUR = '/packages/royal-rajasthan-circuit';
+const PAGES = (
+  arg('pages') ?? `/,/hi,/packages,/hi/packages,${TOUR},/hi${TOUR},/hi/refund,/contact,/kuch-bhi,/packages/nahi-hai`
+).split(',');
+/** Pages that must answer 404 — an unknown path, and a tour that does not exist. */
+const MISSING = (path) => path.includes('kuch-bhi') || path.includes('nahi-hai');
 const SIZES = [
   ['phone', 360, 780, true],
   ['tablet', 768, 1024, true],
@@ -71,13 +76,13 @@ for (const path of PAGES) {
     }));
     // 304 is the browser's cache answering for the same page — as good as a 200.
     const status = res?.status() === 304 ? 200 : (res?.status() ?? 0);
-    const expectStatus = path.includes('kuch-bhi') ? 404 : 200;
+    const expectStatus = MISSING(path) ? 404 : 200;
     if (status !== expectStatus) fail(`${path} ${name}: status ${status}, expected ${expectStatus}`);
     if (info.sw > w) fail(`${path} ${name}: ${info.sw}px wide on a ${w}px screen`);
     const realErrors = errors.filter((e) => !(expectStatus === 404 && /404/.test(e)));
     if (realErrors.length) fail(`${path} ${name}: console — ${realErrors.slice(0, 3).join(' | ')}`);
     if (name === 'phone') {
-      if (!path.includes('kuch-bhi') && info.lang !== (hindi ? 'hi' : 'en')) fail(`${path}: <html lang="${info.lang}">`);
+      if (!MISSING(path) && info.lang !== (hindi ? 'hi' : 'en')) fail(`${path}: <html lang="${info.lang}">`);
       if (!/noindex/.test(info.robots)) fail(`${path}: indexable before launch (robots "${info.robots}")`);
       // Devanagari faces carry unicode-range U+0900–097F; find which preloaded files are those.
       const deva = await page.evaluate(async (urls) => {
@@ -104,11 +109,11 @@ for (const path of PAGES) {
   }
 }
 
-// Reduced motion: nothing on the style guide may still animate.
+// Reduced motion: nothing on the home page (the car on the dunes, the sun) may still animate.
 {
   const page = await browser.newPage();
   await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
-  await page.goto(`${BASE}/styleguide`, { waitUntil: 'load' });
+  await page.goto(`${BASE}/`, { waitUntil: 'load' });
   const moving = await page.evaluate(() =>
     [...document.querySelectorAll('*')].filter((el) => getComputedStyle(el).animationName !== 'none').map((el) => el.className.toString().slice(0, 40)),
   );
@@ -122,7 +127,7 @@ await browser.close();
 if (LIGHTHOUSE) {
   const dir = mkdtempSync(join(tmpdir(), 'ghoomo-lh-'));
   const median = (xs) => [...xs].sort((a, b) => a - b)[Math.floor(xs.length / 2)];
-  for (const path of ['/', '/hi']) {
+  for (const path of ['/', '/hi', TOUR, `/hi${TOUR}`]) {
     const runs = [];
     for (let i = 0; i < 3; i++) {
       const out = join(dir, `r${i}.json`);
