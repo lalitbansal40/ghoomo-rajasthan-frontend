@@ -144,7 +144,7 @@ export function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Locale }) 
                   name={d[locale].name}
                   line={d[locale].line}
                   photoKey={d.photo}
-                  href={`${localePath('/packages', locale)}?city=${d.key.toLowerCase().replace(/_/g, '-')}`}
+                  href={localePath(`/destinations/${d.slug}`, locale)}
                   locale={locale}
                 />
               ))}

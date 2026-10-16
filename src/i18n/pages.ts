@@ -8,6 +8,7 @@ import type { Locale } from './index';
 export const PAGES: Record<string, readonly Locale[]> = {
   '/': ['en', 'hi'],
   '/packages': ['en', 'hi'],
+  '/destinations': ['en', 'hi'],
   '/styleguide': ['en', 'hi'],
   '/contact': ['en', 'hi'],
   '/privacy': ['en', 'hi'],
@@ -17,7 +18,10 @@ export const PAGES: Record<string, readonly Locale[]> = {
 };
 
 /** Families of pages (a page per tour): every path under the prefix exists in these languages. */
-const PREFIXES: Array<[string, readonly Locale[]]> = [['/packages/', ['en', 'hi']]];
+const PREFIXES: Array<[string, readonly Locale[]]> = [
+  ['/packages/', ['en', 'hi']],
+  ['/destinations/', ['en', 'hi']],
+];
 
 export const exists = (barePath: string, locale: Locale) =>
   PAGES[barePath]?.includes(locale) ??

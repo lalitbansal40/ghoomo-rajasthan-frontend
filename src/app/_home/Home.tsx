@@ -1,6 +1,7 @@
 import { dict, localePath, type Locale } from '@/i18n';
 import { PACKAGES, cheapest, pkgIn, PACKAGES_ARE_SAMPLE } from '@/content/packages';
 import { DESTINATIONS, packagesFor } from '@/content/destinations';
+import { PLACES } from '@/content/places';
 import { popularRoutes } from '@/content/popular-routes';
 import { DAY_BUCKETS, HERO, HOME_FAQ, HOW, SECTIONS, WHY } from '@/content/home';
 import { photo } from '@/content/photos';
@@ -147,17 +148,23 @@ export async function Home({ locale }: { locale: Locale }) {
         <section className="mx-auto max-w-[var(--container-site)] px-4 py-12 sm:px-6 sm:py-16">
           <SectionHeader eyebrow={L(SECTIONS.placesEyebrow)} title={L(SECTIONS.places)} />
           <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {DESTINATIONS.map((d) => (
+            {/* Eight on the home page — two full rows; the rest are a tap away. */}
+            {DESTINATIONS.slice(0, 8).map((d) => (
               <DestinationCard
                 key={d.key}
                 name={d[locale].name}
                 line={d[locale].line}
                 photoKey={d.photo}
                 tours={packagesFor(d.key).length || undefined}
-                href={`${localePath('/packages', locale)}?city=${d.key.toLowerCase().replace(/_/g, '-')}`}
+                href={localePath(`/destinations/${d.slug}`, locale)}
                 locale={locale}
               />
             ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Button variant="secondary" href={localePath('/destinations', locale)}>
+              {t.place.seeAll(PLACES.length)}
+            </Button>
           </div>
         </section>
 

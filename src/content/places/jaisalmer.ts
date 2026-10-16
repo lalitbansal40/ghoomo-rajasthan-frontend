@@ -1,0 +1,70 @@
+import type { Place } from './types.ts';
+
+// Hindi of the English below (hi:) — owner to read; keep in step with the English.
+export const jaisalmer: Place = {
+  slug: 'jaisalmer',
+  key: 'JAISALMER',
+  region: 'marwar',
+  tags: ['fort', 'desert', 'heritage'],
+  lat: 26.9157,
+  lng: 70.9083,
+  cityKey: 'JAISALMER',
+  photo: 'jaisalmer-fort',
+  featured: true,
+  en: {
+    name: 'Jaisalmer',
+    line: 'The golden fort and the dunes of the Thar',
+    intro: [
+      'Jaisalmer is built of yellow sandstone, and in the late afternoon the whole fort turns gold. It is a living fort: people still live and keep shops inside its walls, in lanes that wind up between the temples and the havelis.',
+      'Out of town the Thar begins. The dunes at Sam and Khuri are where the camel rides, jeep safaris and desert camps are, and a night under the desert sky is what most people come this far for.',
+    ],
+    see: [
+      { name: 'Jaisalmer Fort (Sonar Quila)', line: 'The living fort — its palace, Jain temples and the lanes inside.' },
+      { name: 'Patwon ki Haveli', line: 'Five havelis in a row, their stone carved like lace.' },
+      { name: 'Salim Singh ki Haveli', line: 'The minister’s mansion with its peacock-shaped brackets.' },
+      { name: 'Gadisar Lake', line: 'The old reservoir with shrines on the water; best at sunrise.' },
+      { name: 'Sam sand dunes', line: 'The big dunes west of town — camel rides, sunset and the camps.' },
+      { name: 'Khuri', line: 'Quieter dunes and a village of mud houses, south-west of town.' },
+      { name: 'Kuldhara', line: 'An abandoned village on the road to Sam, with its own legends.' },
+      { name: 'Bada Bagh', line: 'Royal cenotaphs on a ridge outside the city.' },
+    ],
+    when: 'October to March. Desert days are pleasant then and the nights cold — bring something warm for the camp. The Desert Festival is held around the full moon of Magh (January–February). Summer is extreme; come only if you must, and keep to mornings and evenings.',
+    days: 'Two days: one for the fort and havelis, one for the dunes with a night in a camp. It is usually reached from Jodhpur, and pairs with Bikaner to the north-east.',
+    reach: 'Jaisalmer has a railway station with trains from Jodhpur, Jaipur and Delhi. Its airport has few flights; most people fly to Jodhpur and drive.',
+    faq: [
+      { q: 'How many days in Jaisalmer?', a: 'Two days, with one night in a desert camp. Three if you want both Sam and Khuri.' },
+      { q: 'Sam or Khuri — which dunes?', a: 'Sam has the larger dunes and more camps; Khuri is smaller and quieter. Both have camel rides and sunset points.' },
+      { q: 'Can we book the desert safari with you?', a: 'Yes — camel rides, jeep safaris and camp stays are on our desert safari page.' },
+      { q: 'Is a desert camp safe for a family?', a: 'Yes; the camps are run for families and groups, with tents, meals and a fire. Nights in winter are cold — carry warm clothes.' },
+      { q: 'Is Jaisalmer too far for a short tour?', a: 'It is far west; most people drive from Jodhpur. With four or five days, Jodhpur and Jaisalmer together make a good desert tour.' },
+    ],
+  },
+  hi: {
+    name: 'जैसलमेर',
+    line: 'सोनार क़िला और थार के रेत के टीले',
+    intro: [
+      'जैसलमेर पीले बलुआ पत्थर से बना है, और ढलती दोपहर में पूरा क़िला सुनहरा हो जाता है। ये ज़िंदा क़िला है: लोग आज भी इसकी दीवारों के अंदर रहते हैं और दुकानें चलाते हैं, मंदिरों और हवेलियों के बीच घूमती गलियों में।',
+      'शहर से बाहर थार शुरू होता है। सम और खुड़ी के धोरों पर ऊँट की सवारी, जीप सफ़ारी और कैंप हैं, और रेगिस्तान के आसमान के नीचे एक रात — ज़्यादातर लोग इतनी दूर इसी के लिए आते हैं।',
+    ],
+    see: [
+      { name: 'जैसलमेर क़िला (सोनार क़िला)', line: 'ज़िंदा क़िला — महल, जैन मंदिर और अंदर की गलियाँ।' },
+      { name: 'पटवों की हवेली', line: 'एक कतार में पाँच हवेलियाँ, पत्थर पर जाली जैसी नक्काशी।' },
+      { name: 'सालिम सिंह की हवेली', line: 'दीवान की हवेली, मोर के आकार के झरोखों वाली।' },
+      { name: 'गड़ीसर झील', line: 'पुराना तालाब, पानी पर छतरियाँ; सूर्योदय पर सबसे सुंदर।' },
+      { name: 'सम के धोरे', line: 'शहर के पश्चिम में बड़े टीले — ऊँट की सवारी, सूर्यास्त और कैंप।' },
+      { name: 'खुड़ी', line: 'शांत टीले और कच्चे घरों का गाँव, शहर के दक्षिण-पश्चिम में।' },
+      { name: 'कुलधरा', line: 'सम के रास्ते में उजड़ा हुआ गाँव, अपनी कहानियों के साथ।' },
+      { name: 'बड़ा बाग़', line: 'शहर के बाहर पहाड़ी पर राजाओं की छतरियाँ।' },
+    ],
+    when: 'अक्टूबर से मार्च। तब रेगिस्तान के दिन सुहाने और रातें ठंडी होती हैं — कैंप के लिए गर्म कपड़े रखें। मरु महोत्सव माघ की पूर्णिमा के आस-पास (जनवरी–फ़रवरी) होता है। गर्मी बहुत तेज़ होती है; ज़रूरी हो तभी आएँ, और सुबह-शाम ही घूमें।',
+    days: 'दो दिन: एक क़िले और हवेलियों के लिए, एक टीलों के लिए, कैंप में एक रात के साथ। ज़्यादातर लोग जोधपुर से आते हैं, और उत्तर-पूर्व में बीकानेर साथ जुड़ता है।',
+    reach: 'जैसलमेर स्टेशन पर जोधपुर, जयपुर और दिल्ली से ट्रेनें आती हैं। यहाँ के हवाई अड्डे पर उड़ानें कम हैं; ज़्यादातर लोग जोधपुर तक उड़कर गाड़ी से आते हैं।',
+    faq: [
+      { q: 'जैसलमेर में कितने दिन?', a: 'दो दिन, रेगिस्तान के कैंप में एक रात के साथ। सम और खुड़ी दोनों चाहिए तो तीन।' },
+      { q: 'सम या खुड़ी — कौन-से टीले?', a: 'सम के टीले बड़े हैं और कैंप ज़्यादा; खुड़ी छोटा और शांत है। दोनों जगह ऊँट की सवारी और सूर्यास्त देखने की जगह है।' },
+      { q: 'क्या डेज़र्ट सफ़ारी आपसे बुक हो सकती है?', a: 'हाँ — ऊँट की सवारी, जीप सफ़ारी और कैंप की रात हमारे डेज़र्ट सफ़ारी पेज पर हैं।' },
+      { q: 'क्या परिवार के लिए रेगिस्तान का कैंप सुरक्षित है?', a: 'हाँ; कैंप परिवारों और ग्रुप के लिए ही चलते हैं — टेंट, खाना और अलाव। सर्दी की रातें ठंडी होती हैं, गर्म कपड़े साथ रखें।' },
+      { q: 'क्या छोटे टूर के लिए जैसलमेर बहुत दूर है?', a: 'ये पश्चिम में दूर है; ज़्यादातर लोग जोधपुर से गाड़ी से आते हैं। चार-पाँच दिन हों तो जोधपुर और जैसलमेर साथ में अच्छा रेगिस्तानी टूर बनता है।' },
+    ],
+  },
+};

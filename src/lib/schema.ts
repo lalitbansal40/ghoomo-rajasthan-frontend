@@ -2,6 +2,8 @@ import { env } from './env';
 import { brand } from './site';
 import { LANG_TAG, localePath, type Locale } from '@/i18n';
 import { PACKAGES_ARE_SAMPLE, cheapest, type LocalTour } from '@/content/packages';
+import type { Place } from '@/content/places';
+import { photo } from '@/content/photos';
 
 /**
  * Structured data for search engines. Rendered only after launch (components/JsonLd) — and the
@@ -71,5 +73,32 @@ export function touristTripJsonLd(tour: LocalTour, locale: Locale, description: 
             url: abs(localePath(`/packages/${tour.slug}`, locale)),
           },
         }),
+  };
+}
+
+/** A place page: the destination, where it is, and the sights it lists as attractions. */
+export function touristDestinationJsonLd(place: Place, locale: Locale) {
+  const t = place[locale];
+  const p = place.photo ? photo(place.photo) : null;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'TouristDestination',
+    name: t.name,
+    description: t.line,
+    url: abs(localePath(`/destinations/${place.slug}`, locale)),
+    inLanguage: LANG_TAG[locale].hreflang,
+    ...(p ? { image: abs(p.big) } : {}),
+    geo: { '@type': 'GeoCoordinates', latitude: place.lat, longitude: place.lng },
+    containedInPlace: { '@type': 'State', name: 'Rajasthan' },
+    includesAttraction: t.see.map((s) => ({ '@type': 'TouristAttraction', name: s.name, description: s.line })),
+  };
+}
+
+/** A hub page's list — the destinations, or the cab routes. */
+export function itemListJsonLd(items: Array<{ name: string; path: string }>) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, url: abs(it.path) })),
   };
 }

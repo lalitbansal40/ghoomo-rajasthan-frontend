@@ -1,4 +1,4 @@
-import type { Locale } from '@/i18n';
+import { dict, type Locale } from '@/i18n';
 import { whatsappLink } from './site';
 
 /**
@@ -26,6 +26,11 @@ export function bookRouteLink(from: string, to: string, locale: Locale): string 
       ? `नमस्ते, ${from} से ${to} के लिए कैब चाहिए। तारीख: ___ , कितने लोग: ___`
       : `Namaste, I need a cab from ${from} to ${to}. Date: ___ , people: ___`,
   );
+}
+
+/** A place page's "plan on WhatsApp": the place named, the date and people to fill in. */
+export function bookPlaceLink(name: string, locale: Locale): string {
+  return whatsappLink(dict(locale).place.bookMessage(name));
 }
 
 export function enquireLink(locale: Locale): string {

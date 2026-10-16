@@ -39,8 +39,8 @@ export const REGIONS: Region[] = [
   },
   {
     key: 'ajmer',
-    en: { name: 'Ajmer and Pushkar', line: 'The Dargah, the holy lake, eleven kilometres apart' },
-    hi: { name: 'अजमेर और पुष्कर', line: 'दरगाह शरीफ़ और पवित्र झील, बस थोड़ी दूरी पर' },
+    en: { name: 'Ajmer and Pushkar', line: 'The Dargah and the holy lake, either side of one hill' },
+    hi: { name: 'अजमेर और पुष्कर', line: 'दरगाह शरीफ़ और पवित्र झील, एक पहाड़ी के दोनों ओर' },
   },
   {
     key: 'hadoti',

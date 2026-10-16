@@ -1,0 +1,70 @@
+import type { Place } from './types.ts';
+
+// Hindi of the English below (hi:) — owner to read; keep in step with the English.
+export const jaipur: Place = {
+  slug: 'jaipur',
+  key: 'JAIPUR',
+  region: 'dhoondhar',
+  tags: ['fort', 'heritage'],
+  lat: 26.9124,
+  lng: 75.7873,
+  cityKey: 'JAIPUR',
+  photo: 'jaipur-amer',
+  featured: true,
+  en: {
+    name: 'Jaipur',
+    line: 'The Pink City — a fort on every hill',
+    intro: [
+      'Most journeys through Rajasthan begin in Jaipur, and it rewards more than the one day it usually gets. The old city inside its walls is laid out in a grid, its bazaars named for what they sell, its fronts washed the terracotta pink that gave the city its name.',
+      'Around it the Aravalli hills carry a chain of forts — Amer, Jaigarh, Nahargarh — and the best way to see them is the way they were meant to be seen: early, before the heat, with a car waiting at the gate.',
+    ],
+    see: [
+      { name: 'Amer Fort', line: 'The palace on the hill above Maota lake; go when it opens, before the crowds.' },
+      { name: 'City Palace', line: 'Still partly the royal family’s home; courtyards, gates and the museum.' },
+      { name: 'Hawa Mahal', line: 'The honeycomb façade on the bazaar — best from the café terraces across the road.' },
+      { name: 'Jantar Mantar', line: 'Stone instruments for reading the sky, a UNESCO World Heritage Site.' },
+      { name: 'Nahargarh', line: 'The fort on the ridge over the city — come for the sunset.' },
+      { name: 'Jaigarh', line: 'Amer’s guardian fort, home to the great Jaivana cannon.' },
+      { name: 'Jal Mahal', line: 'The palace in the lake, seen from the road to Amer.' },
+      { name: 'Albert Hall', line: 'The city museum, lit up in the evening.' },
+    ],
+    when: 'October to March is the season: warm days, cool nights. April to June is very hot — see the forts early in the morning and keep the afternoons for indoors. The rains (July to September) turn the hills green.',
+    days: 'Two or three days for the city and its forts. It pairs with Ajmer and Pushkar, Ranthambore, or Shekhawati’s painted towns, each a drive away.',
+    reach: 'Jaipur Junction is one of the best-connected stations in north India, and Jaipur International Airport (Sanganer) has flights from most large cities.',
+    faq: [
+      { q: 'How many days do I need in Jaipur?', a: 'Two full days covers the forts and the old city; a third lets you add a day trip — Abhaneri’s step-well, or the road towards Ajmer.' },
+      { q: 'Can one car take us round all the forts?', a: 'Yes. A day in the city with a car and driver (the local fare below) is how most people see Amer, Jaigarh and Nahargarh in one day.' },
+      { q: 'What is the best time of day for Amer Fort?', a: 'As soon as it opens. The light is soft, the climb is cooler and the courtyards are quiet.' },
+      { q: 'Is Jaipur good with children and older parents?', a: 'Yes. Most sights have a car drop close to the gate; Amer has a steep climb, and the car can take you up the back road to the upper gate.' },
+      { q: 'Where should we go after Jaipur?', a: 'Ajmer and Pushkar are a short drive; Ranthambore for tigers; Udaipur or Jodhpur for a longer tour — every road is on our cab page.' },
+    ],
+  },
+  hi: {
+    name: 'जयपुर',
+    line: 'गुलाबी शहर — हर पहाड़ी पर एक क़िला',
+    intro: [
+      'राजस्थान का सफ़र ज़्यादातर जयपुर से शुरू होता है, और ये शहर एक दिन से ज़्यादा का हक़दार है। परकोटे के अंदर का पुराना शहर सीधी गलियों में बसा है, बाज़ार अपने सामान के नाम से जाने जाते हैं, और दीवारों का गुलाबी रंग ही शहर की पहचान है।',
+      'चारों ओर अरावली की पहाड़ियों पर क़िलों की कतार है — आमेर, जयगढ़, नाहरगढ़। इन्हें देखने का सही तरीका वही है जो पहले था: सुबह जल्दी, धूप से पहले, और गेट पर गाड़ी इंतज़ार करती हुई।',
+    ],
+    see: [
+      { name: 'आमेर क़िला', line: 'मावठा झील के ऊपर पहाड़ी पर महल; खुलते ही जाएँ, भीड़ से पहले।' },
+      { name: 'सिटी पैलेस', line: 'आज भी राजपरिवार का घर; आँगन, दरवाज़े और संग्रहालय।' },
+      { name: 'हवा महल', line: 'बाज़ार पर जालीदार महल — सामने की छतों से सबसे अच्छा दिखता है।' },
+      { name: 'जंतर मंतर', line: 'आसमान नापने के पत्थर के यंत्र, यूनेस्को विश्व धरोहर।' },
+      { name: 'नाहरगढ़', line: 'शहर के ऊपर पहाड़ी पर क़िला — सूरज ढलते समय आइए।' },
+      { name: 'जयगढ़', line: 'आमेर का रखवाला क़िला, जहाँ बड़ी जयबाण तोप है।' },
+      { name: 'जल महल', line: 'झील के बीच महल, आमेर के रास्ते में दिखता है।' },
+      { name: 'अल्बर्ट हॉल', line: 'शहर का संग्रहालय, शाम को रोशनी में।' },
+    ],
+    when: 'अक्टूबर से मार्च सबसे अच्छा मौसम है: दिन गुनगुने, रातें ठंडी। अप्रैल से जून बहुत गर्मी होती है — क़िले सुबह जल्दी देखें, दोपहर अंदर बिताएँ। बारिश (जुलाई–सितंबर) में पहाड़ियाँ हरी हो जाती हैं।',
+    days: 'शहर और क़िलों के लिए दो-तीन दिन। साथ में अजमेर-पुष्कर, रणथंभौर या शेखावाटी की हवेलियाँ — सब थोड़ी ड्राइव पर।',
+    reach: 'जयपुर जंक्शन उत्तर भारत के सबसे जुड़े स्टेशनों में से है, और जयपुर अंतरराष्ट्रीय हवाई अड्डे (सांगानेर) पर ज़्यादातर बड़े शहरों से उड़ानें आती हैं।',
+    faq: [
+      { q: 'जयपुर में कितने दिन चाहिए?', a: 'दो पूरे दिन में क़िले और पुराना शहर हो जाते हैं; तीसरे दिन आभानेरी की बावड़ी या अजमेर की ओर एक दिन की सैर जोड़ सकते हैं।' },
+      { q: 'क्या एक गाड़ी सारे क़िले घुमा देगी?', a: 'हाँ। शहर में एक दिन गाड़ी और ड्राइवर के साथ (नीचे लोकल किराया) — ज़्यादातर लोग ऐसे ही एक दिन में आमेर, जयगढ़ और नाहरगढ़ देखते हैं।' },
+      { q: 'आमेर क़िला किस समय जाएँ?', a: 'खुलते ही। रोशनी नरम होती है, चढ़ाई ठंडी रहती है और आँगन शांत होते हैं।' },
+      { q: 'क्या जयपुर बच्चों और बुज़ुर्गों के लिए ठीक है?', a: 'हाँ। ज़्यादातर जगह गाड़ी गेट के पास तक जाती है; आमेर की चढ़ाई खड़ी है, पर गाड़ी पीछे के रास्ते से ऊपर के गेट तक ले जा सकती है।' },
+      { q: 'जयपुर के बाद कहाँ जाएँ?', a: 'अजमेर-पुष्कर पास हैं; बाघों के लिए रणथंभौर; लंबे टूर के लिए उदयपुर या जोधपुर — हर रास्ता हमारे कैब पेज पर है।' },
+    ],
+  },
+};
