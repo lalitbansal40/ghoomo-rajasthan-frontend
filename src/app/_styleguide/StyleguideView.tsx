@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import tokens from '@/design/tokens.json';
 import { dict, formatRupees, type Locale } from '@/i18n';
-import { EXCLUDES, INCLUDES, PACKAGES, PACKAGES_ARE_SAMPLE } from '@/content/packages';
+import { EXCLUDES, INCLUDES, PACKAGES, PACKAGES_ARE_SAMPLE, pkgIn } from '@/content/packages';
 import { photo } from '@/content/photos';
 import { brand, whatsappLink } from '@/lib/site';
 import { Camel, Car, DuneDivider, FortSun, Jaali, MehrabFrame, SparkleDivider } from '@/components/motifs';
@@ -332,7 +332,7 @@ export function StyleguideView({ locale, now }: { locale: Locale; now: number })
           <h3 className="text-h3 mt-10 text-royal-700">{s.cards}</h3>
           <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {PACKAGES.slice(0, 3).map((p, i) => (
-              <PackageCard key={p.slug} pkg={p} href="#parts" locale={locale} preload={i === 0} />
+              <PackageCard key={p.slug} tour={pkgIn(p, locale)} href="#parts" locale={locale} preload={i === 0} />
             ))}
           </div>
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -434,7 +434,7 @@ export function StyleguideView({ locale, now }: { locale: Locale; now: number })
               <SectionHeader eyebrow={t.nav.packages} title={locale === 'hi' ? 'लोकप्रिय टूर' : 'Popular tours'} intro={PACKAGES_ARE_SAMPLE ? `${t.pkg.sample} — ${s.warning}` : undefined} />
               <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {PACKAGES.slice(3, 6).map((p) => (
-                  <PackageCard key={p.slug} pkg={p} href="#sample" locale={locale} />
+                  <PackageCard key={p.slug} tour={pkgIn(p, locale)} href="#sample" locale={locale} />
                 ))}
               </div>
               <div className="mt-12 grid items-start gap-8 md:grid-cols-[1fr_1.4fr]">

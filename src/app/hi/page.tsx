@@ -1,16 +1,16 @@
 import type { Metadata } from 'next';
-import { dict } from '@/i18n';
 import { alternates } from '@/lib/seo';
-import { ComingSoon } from '../_home/ComingSoon';
-
-const t = dict('hi');
+import { Home } from '../_home/Home';
 
 export const metadata: Metadata = {
-  title: { absolute: `${t.brand.name} — ${t.common.comingSoon}` },
-  description: t.brand.tagline,
+  title: { absolute: 'घूमो राजस्थान — गाड़ी और ड्राइवर के साथ राजस्थान टूर पैकेज' },
+  description:
+    'जयपुर, उदयपुर, जोधपुर, जैसलमेर और भी बहुत कुछ — एक गाड़ी और ऐसे ड्राइवर के साथ जो रास्ता जानता है। दिन-ब-दिन प्लान, जाने से पहले दाम पक्का।',
   alternates: alternates('/', 'hi'),
 };
 
-export default function HindiHome() {
-  return <ComingSoon locale="hi" />;
+export const revalidate = 86400;
+
+export default function HindiHomePage() {
+  return <Home locale="hi" />;
 }

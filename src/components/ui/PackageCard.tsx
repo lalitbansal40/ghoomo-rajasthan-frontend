@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { dict, type Locale } from '@/i18n';
 import { photo } from '@/content/photos';
-import type { TourPackage } from '@/content/packages';
+import { cheapest, type LocalTour } from '@/content/packages';
 import { Badge } from './Badge';
 import { Icon } from './Icon';
 import { PriceTag } from './PriceTag';
@@ -12,25 +12,25 @@ import { PriceTag } from './PriceTag';
  * places and "+N more"), three highlights, the lowest price. The whole card is ONE link (no
  * link inside a link); the "See the tour" line is part of it, not a second link.
  *
- * Package text is English until the Hindi package content is written (Phase 3) — the labels
- * around it follow `locale`.
+ * The tour comes already in the page's language (pkgIn).
  */
 export function PackageCard({
-  pkg,
+  tour,
   href,
   locale,
   preload = false,
 }: {
-  pkg: TourPackage;
+  /** The tour in the page's language (content/packages pkgIn). */
+  tour: LocalTour;
   href: string;
   locale: Locale;
   /** The LCP image — Next 16 `preload` (replaces the deprecated `priority`). */
   preload?: boolean;
 }) {
   const t = dict(locale);
-  const p = photo(pkg.photo);
-  const cheapest = [...pkg.fromRupees].sort((a, b) => a.rupees - b.rupees)[0];
-  const road = pkg.route.length > 4 ? [...pkg.route.slice(0, 3), t.pkg.more(pkg.route.length - 3)] : pkg.route;
+  const p = photo(tour.photo);
+  const low = cheapest(tour);
+  const road = tour.route.length > 4 ? [...tour.route.slice(0, 3), t.pkg.more(tour.route.length - 3)] : tour.route;
   return (
     <Link
       href={href}
@@ -48,17 +48,17 @@ export function PackageCard({
           />
         ) : null}
         <Badge tone="days" className="absolute left-3 top-3">
-          {t.pkg.daysNightsShort(pkg.days, pkg.nights)}
+          {t.pkg.daysNightsShort(tour.days, tour.nights)}
         </Badge>
       </div>
       <div className="flex flex-1 flex-col gap-3 p-4">
-        <h3 className="text-h3 text-royal-700">{pkg.name}</h3>
+        <h3 className="text-h3 text-royal-700">{tour.name}</h3>
         <p className="text-small flex flex-wrap items-center gap-x-1 text-muted">
           <Icon name="mapPin" size={16} className="text-maroon-600" />
           {road.join(' → ')}
         </p>
         <ul className="text-small flex flex-col gap-1">
-          {pkg.highlights.slice(0, 3).map((h) => (
+          {tour.highlights.slice(0, 3).map((h) => (
             <li key={h} className="flex gap-2">
               <Icon name="check" size={16} className="mt-0.5 text-success" />
               <span>{h}</span>
@@ -66,7 +66,7 @@ export function PackageCard({
           ))}
         </ul>
         <div className="mt-auto flex items-end justify-between gap-3 pt-2">
-          <PriceTag rupees={cheapest.rupees} vehicle={cheapest.vehicle} locale={locale} />
+          <PriceTag rupees={low.rupees} vehicle={low.vehicle} locale={locale} />
           <span className="inline-flex items-center gap-1 font-semibold text-royal-600 group-hover:underline">
             {t.cta.viewPackage}
             <Icon name="arrow" size={18} />

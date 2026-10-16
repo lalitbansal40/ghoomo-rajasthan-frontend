@@ -1,16 +1,17 @@
 import type { Metadata } from 'next';
-import { dict } from '@/i18n';
 import { alternates } from '@/lib/seo';
-import { ComingSoon } from '../_home/ComingSoon';
-
-const t = dict('en');
+import { Home } from '../_home/Home';
 
 export const metadata: Metadata = {
-  title: { absolute: `${t.brand.name} — ${t.common.comingSoon.toLowerCase()}` },
-  description: `${t.brand.tagline} ${t.common.comingSoon}.`,
+  title: { absolute: 'Ghoomo Rajasthan — Rajasthan tour packages with car & driver' },
+  description:
+    'Tours across Rajasthan — Jaipur, Udaipur, Jodhpur, Jaisalmer and more — with one car and one driver who knows the road. Day-by-day plans, the price before you go.',
   alternates: alternates('/', 'en'),
 };
 
-export default function Home() {
-  return <ComingSoon locale="en" />;
+// The cab fares come from the Hello My Cab backend; a day's cache, like hellomycabs.com.
+export const revalidate = 86400;
+
+export default function HomePage() {
+  return <Home locale="en" />;
 }
