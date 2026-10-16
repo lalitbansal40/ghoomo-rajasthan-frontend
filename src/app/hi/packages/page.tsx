@@ -1,0 +1,14 @@
+import type { Metadata } from 'next';
+import { alternates } from '@/lib/seo';
+import { ToursList } from '../../_tours/ToursList';
+
+export const metadata: Metadata = {
+  title: 'राजस्थान टूर पैकेज — गाड़ी और ड्राइवर के साथ',
+  description:
+    '2 से 7 दिन के राजस्थान टूर — जयपुर, उदयपुर, जोधपुर, जैसलमेर, पुष्कर, रणथंभौर, माउंट आबू। एक गाड़ी, एक ड्राइवर, हर दिन का प्लान।',
+  alternates: alternates('/packages', 'hi'),
+};
+
+export default function HindiToursPage() {
+  return <ToursList locale="hi" />;
+}
