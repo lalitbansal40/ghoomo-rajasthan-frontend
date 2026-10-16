@@ -9,12 +9,13 @@ import { pkgIn } from '@/content/packages';
 import { photo } from '@/content/photos';
 import { safe } from '@/lib/api';
 import { cheapest, localView } from '@/lib/fares';
-import { routeFares } from '@/lib/route-fares';
+import { routeFares, roundtripRates } from '@/lib/route-fares';
 import { bookPlaceLink } from '@/lib/book';
 import { brand } from '@/lib/site';
 import { touristDestinationJsonLd } from '@/lib/schema';
 import { JsonLd } from '@/components/JsonLd';
 import { LocalFareTable } from '@/components/LocalFareTable';
+import { PerKmTable } from '@/components/PerKmTable';
 import { FortSun, MehrabFrame } from '@/components/motifs';
 import {
   Badge,
@@ -63,6 +64,8 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
   // The car in town: this place's own local fare, or the nearest town's.
   const town = fareCity(place);
   const local = town && place.nearest?.how !== 'roundTrip' ? localView(await safe.local(town)) : null;
+  // A day out from a bigger town: the per-km rates the round trip is billed at.
+  const perKm = place.nearest?.how === 'roundTrip' ? await roundtripRates() : null;
 
   // Roads that end here — only once the cab pages exist (Step 3), never a link to a 404.
   const showRoads = exists('/cab/x', locale) && place.cityKey;
@@ -191,10 +194,8 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
             <div className="mt-4">
               {local ? (
                 <LocalFareTable view={local} locale={locale} />
-              ) : place.nearest?.how === 'roundTrip' && exists('/cab', locale) ? (
-                <Button variant="secondary" href={`${localePath('/cab', locale)}#darshan`}>
-                  {t.nav.cab}
-                </Button>
+              ) : perKm ? (
+                <PerKmTable view={perKm} locale={locale} />
               ) : (
                 <p className="font-semibold text-royal-700" data-fare="none">
                   {t.fare.onWhatsapp}

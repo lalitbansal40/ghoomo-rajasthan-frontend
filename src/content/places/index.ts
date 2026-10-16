@@ -1,30 +1,81 @@
 import type { RegionKey } from '../regions.ts';
 import type { Place } from './types.ts';
+import { abhaneri } from './abhaneri.ts';
 import { ajmer } from './ajmer.ts';
+import { alwar } from './alwar.ts';
+import { banswara } from './banswara.ts';
+import { barmer } from './barmer.ts';
+import { bhangarh } from './bhangarh.ts';
+import { bharatpur } from './bharatpur.ts';
 import { bikaner } from './bikaner.ts';
+import { bundi } from './bundi.ts';
 import { chittorgarh } from './chittorgarh.ts';
 import { jaipur } from './jaipur.ts';
 import { jaisalmer } from './jaisalmer.ts';
+import { jhalawar } from './jhalawar.ts';
 import { jodhpur } from './jodhpur.ts';
+import { karauli } from './karauli.ts';
+import { khatuShyamJi } from './khatu-shyam-ji.ts';
+import { kota } from './kota.ts';
+import { kumbhalgarh } from './kumbhalgarh.ts';
+import { mandawa } from './mandawa.ts';
+import { mehandipurBalaji } from './mehandipur-balaji.ts';
 import { mountAbu } from './mount-abu.ts';
+import { nathdwara } from './nathdwara.ts';
+import { neemrana } from './neemrana.ts';
+import { osian } from './osian.ts';
 import { pushkar } from './pushkar.ts';
+import { ranakpur } from './ranakpur.ts';
 import { ranthambore } from './ranthambore.ts';
+import { salasarBalaji } from './salasar-balaji.ts';
+import { sambharLake } from './sambhar-lake.ts';
 import { udaipur } from './udaipur.ts';
 
 export type { Place, PlaceTag, PlaceText } from './types.ts';
 
-/** Every place with a page, in the order the destinations page lists each region's. */
+/**
+ * Every place with a page (owner, 16 Oct 2026: "poora Rajasthan cover karna hai"), region by
+ * region, in the order the destinations page lists them.
+ */
 export const PLACES: Place[] = [
+  // dhoondhar
   jaipur,
+  abhaneri,
+  bhangarh,
+  sambharLake,
+  // shekhawati
+  mandawa,
+  khatuShyamJi,
+  salasarBalaji,
+  // braj
+  alwar,
+  bharatpur,
+  mehandipurBalaji,
+  karauli,
+  neemrana,
+  // ajmer
+  ajmer,
+  pushkar,
+  // hadoti
+  kota,
+  bundi,
+  jhalawar,
+  // ranthambore
+  ranthambore,
+  // mewar
   udaipur,
+  chittorgarh,
+  kumbhalgarh,
+  ranakpur,
+  nathdwara,
+  banswara,
+  // marwar
   jodhpur,
   jaisalmer,
-  pushkar,
-  ajmer,
-  mountAbu,
+  osian,
+  barmer,
   bikaner,
-  ranthambore,
-  chittorgarh,
+  mountAbu,
 ];
 
 const bySlug = new Map(PLACES.map((p) => [p.slug, p]));

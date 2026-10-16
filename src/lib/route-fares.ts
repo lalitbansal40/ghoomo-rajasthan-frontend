@@ -16,3 +16,16 @@ export async function routeFares(route: GhoomoRoute): Promise<{ oneway: OnewayVi
   const [ow, rt] = await Promise.all([safe.oneway(route.pickup, route.drop), safe.roundtrip(route.pickup, route.drop)]);
   return { oneway: onewayView(ow), roundtrip: roundtripView(rt) };
 }
+
+/**
+ * The per-km rates every multi-day or out-and-back trip is billed at — read off one ordinary
+ * (not hill) round trip, Jaipur–Ajmer, whose vehicles carry them. A hill road's rate is
+ * higher; `hillRates` reads it off Udaipur–Mount Abu.
+ */
+export async function roundtripRates(): Promise<RoundtripView | null> {
+  return roundtripView(await safe.roundtrip('JAIPUR', 'AJMER'));
+}
+export async function hillRates(): Promise<RoundtripView | null> {
+  const v = roundtripView(await safe.roundtrip('UDAIPUR', 'MOUNT_ABU'));
+  return v?.hill ? v : null;
+}
