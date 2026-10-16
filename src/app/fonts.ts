@@ -1,11 +1,13 @@
 import { Mukta, Yatra_One } from 'next/font/google';
 
 /**
- * Mukta for reading: one family for English and Hindi (devanagari), so a Hinglish line never
- * mixes two faces. Three weights only — what the pages use.
+ * Mukta for reading: one family that also has Hindi (devanagari), so the Hindi pages to come
+ * (Phase 3) match the English ones. Latin only for now — every word on the site is in Roman
+ * script (Hinglish included), and each subset listed is three more font files preloaded on
+ * every page. Add 'devanagari' with the first page written in it. Three weights only.
  */
 export const mukta = Mukta({
-  subsets: ['latin', 'devanagari'],
+  subsets: ['latin'],
   weight: ['400', '600', '700'],
   display: 'swap',
   variable: '--font-mukta',
