@@ -3,7 +3,7 @@ import { OG_SIZE, tourImage } from '../../../_og/tourImage';
 export const size = OG_SIZE;
 export const contentType = 'image/png';
 export const alt = 'Ghoomo Rajasthan tour';
-export const revalidate = 86400;
+export const revalidate = 0;
 
 // Keep per-tour PNGs out of the build artifact; generate them on first request.
 

@@ -1,27 +1,23 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { PACKAGES, packageBySlug } from '@/content/packages';
+import { catalogPackage as packageBySlug } from '@/lib/catalog';
 import { alternates } from '@/lib/seo';
 import { TourPage, tourDescription } from '../../../_tours/TourPage';
 
-// The six tours are built ahead; any other slug is a 404.
-export const dynamicParams = false;
-export function generateStaticParams() {
-  return PACKAGES.map((p) => ({ slug: p.slug }));
-}
+export const dynamicParams = true;
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const pkg = packageBySlug((await params).slug);
+  const pkg = await packageBySlug((await params).slug);
   if (!pkg) return {};
   return {
-    title: `${pkg.name} — ${pkg.days}D/${pkg.nights}N tour`,
+    title: pkg.seoTitle || `${pkg.name} — ${pkg.days}D/${pkg.nights}N tour`,
     description: tourDescription(pkg, 'en'),
     alternates: alternates(`/packages/${pkg.slug}`, 'en'),
   };
 }
 
 export default async function TourPageEn({ params }: { params: Promise<{ slug: string }> }) {
-  const pkg = packageBySlug((await params).slug);
+  const pkg = await packageBySlug((await params).slug);
   if (!pkg) notFound();
   return <TourPage pkg={pkg} locale="en" />;
 }

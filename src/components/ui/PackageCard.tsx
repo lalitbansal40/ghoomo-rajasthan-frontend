@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { dict, type Locale } from '@/i18n';
-import { photo } from '@/content/photos';
+import { tourPhoto } from '@/lib/tour-photo';
 import { cheapest, type LocalTour } from '@/content/packages';
 import { Badge } from './Badge';
 import { Icon } from './Icon';
@@ -28,7 +28,7 @@ export function PackageCard({
   preload?: boolean;
 }) {
   const t = dict(locale);
-  const p = photo(tour.photo);
+  const p = tourPhoto(tour, locale);
   const low = cheapest(tour);
   const road = tour.route.length > 4 ? [...tour.route.slice(0, 3), t.pkg.more(tour.route.length - 3)] : tour.route;
   return (
@@ -40,6 +40,7 @@ export function PackageCard({
         {p ? (
           <Image
             src={p.card}
+            unoptimized={tour.media.length > 0}
             alt={p.alt}
             fill
             sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
@@ -66,7 +67,8 @@ export function PackageCard({
           ))}
         </ul>
         <div className="mt-auto flex items-end justify-between gap-3 pt-2">
-          <PriceTag rupees={low.rupees} vehicle={low.vehicle} locale={locale} />
+          <PriceTag rupees={low?.rupees} vehicle={low?.vehicle} sample={tour.isSample} gst={tour.isSample} locale={locale} />
+          {tour.taxNote ? <p className="text-small text-muted">{tour.taxNote}</p> : null}
           <span className="inline-flex items-center gap-1 font-semibold text-royal-600 group-hover:underline">
             {t.cta.viewPackage}
             <Icon name="arrow" size={18} />

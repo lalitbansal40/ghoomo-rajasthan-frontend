@@ -25,7 +25,8 @@ const CHROME = process.env.CHROME_PATH ?? '/Applications/Google Chrome.app/Conte
 const arg = (k) => process.argv.find((a) => a.startsWith(`--${k}=`))?.slice(k.length + 3);
 const OUT = arg('out') ?? 'audit-out';
 const LIGHTHOUSE = !process.argv.includes('--no-lighthouse');
-const TOUR = '/packages/royal-rajasthan-circuit';
+const { catalogPaths } = await import('./catalog-pages.mjs');
+const TOUR = (await catalogPaths(BASE))[0] ?? '/packages';
 const PAGES = (
   arg('pages') ??
   [
@@ -39,7 +40,7 @@ const PAGES = (
 /** Pages that must answer 404 — an unknown path, and a tour that does not exist. */
 const MISSING = (path) => path.includes('kuch-bhi') || path.includes('nahi-hai');
 /** Lighthouse: the home pages, and one page of each new kind. */
-const LH_PAGES = ['/', '/hi', '/destinations/jaisalmer', '/hi/cab/jaipur-to-udaipur', '/cab', '/desert-safari'];
+const LH_PAGES = (arg('lh-pages') ?? ['/', '/hi', TOUR, `/hi${TOUR}`, '/destinations/jaisalmer', '/hi/cab/jaipur-to-udaipur', '/cab', '/desert-safari'].join(',')).split(',');
 const SIZES = [
   ['phone', 360, 780, true],
   ['tablet', 768, 1024, true],

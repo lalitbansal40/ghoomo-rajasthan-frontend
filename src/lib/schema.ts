@@ -1,7 +1,7 @@
 import { env } from './env';
 import { brand } from './site';
 import { LANG_TAG, localePath, type Locale } from '@/i18n';
-import { PACKAGES_ARE_SAMPLE, cheapest, type LocalTour } from '@/content/packages';
+import { type LocalTour } from '@/content/packages';
 import type { Place } from '@/content/places';
 import { photo } from '@/content/photos';
 
@@ -48,7 +48,6 @@ export function websiteJsonLd(locale: Locale) {
 }
 
 export function touristTripJsonLd(tour: LocalTour, locale: Locale, description: string) {
-  const low = cheapest(tour);
   return {
     '@context': 'https://schema.org',
     '@type': 'TouristTrip',
@@ -62,17 +61,7 @@ export function touristTripJsonLd(tour: LocalTour, locale: Locale, description: 
       '@type': 'ItemList',
       itemListElement: tour.itinerary.map((d, i) => ({ '@type': 'ListItem', position: i + 1, name: d.title })),
     },
-    ...(PACKAGES_ARE_SAMPLE
-      ? {}
-      : {
-          offers: {
-            '@type': 'Offer',
-            price: low.rupees,
-            priceCurrency: 'INR',
-            availability: 'https://schema.org/InStock',
-            url: abs(localePath(`/packages/${tour.slug}`, locale)),
-          },
-        }),
+
   };
 }
 

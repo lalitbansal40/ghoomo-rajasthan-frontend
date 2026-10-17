@@ -14,9 +14,12 @@ const { ROUTES } = await import(root + 'src/content/routes/list.ts');
 const { routeIndexable } = await import(root + 'src/content/routes/indexable.ts');
 const { PLACES } = await import(root + 'src/content/places/index.ts');
 
+const { catalogPaths } = await import('./catalog-pages.mjs');
+const currentPackagePaths = await catalogPaths(BASE);
 const held = new Set(ROUTES.filter((r) => r.held).map((r) => `/cab/${r.slug}`));
 const both = (p) => [p, p === '/' ? '/hi' : `/hi${p}`];
 const expected = [
+  ...currentPackagePaths.flatMap(both),
   ...['/', '/packages', '/destinations', '/cab', '/desert-safari', '/about', '/contact', '/privacy', '/terms', '/refund'].flatMap(both),
   ...PLACES.flatMap((p) => both(`/destinations/${p.slug}`)),
   ...ROUTES.filter(routeIndexable).flatMap((r) => both(`/cab/${r.slug}`)),

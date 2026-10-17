@@ -8,6 +8,7 @@ import type { Dictionary } from './en';
  * numbers in Indian digits (₹27,999), the way people read them on any Hindi site.
  */
 export const hi: Dictionary = {
+  catalog: { enquire: 'इस टूर के बारे में पूछें', exitPreview: 'प्रीव्यू बंद करें', unavailable: 'टूर की जानकारी अभी उपलब्ध नहीं है। यात्रा की योजना के लिए हमसे संपर्क करें।', onRequest: 'किराए के लिए संपर्क करें', preview: 'निजी प्रीव्यू' },
   brand: {
     name: 'घूमो राजस्थान',
     tagline: 'राजस्थान घूमिए — गाड़ी और ऐसे ड्राइवर के साथ जो रास्ता जानता है।',

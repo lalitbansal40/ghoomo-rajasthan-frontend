@@ -1,7 +1,8 @@
+import { catalog, toursInCity } from '@/lib/catalog';
+import { CatalogNotice } from '@/components/CatalogNotice';
 import { dict, localePath, type Locale } from '@/i18n';
 import { PLACES } from '@/content/places';
 import { REGIONS } from '@/content/regions';
-import { packagesFor } from '@/content/destinations';
 import { enquireLink } from '@/lib/book';
 import { brand } from '@/lib/site';
 import { itemListJsonLd } from '@/lib/schema';
@@ -24,7 +25,10 @@ const LABEL_SIDE: Record<string, 'left' | 'right' | 'above' | 'below'> = {
 };
 
 /** Every place, on a map and by region — /destinations and /hi/destinations. */
-export function DestinationsList({ locale }: { locale: Locale }) {
+export async function DestinationsList({ locale }: { locale: Locale }) {
+  const catalogState = await catalog();
+  const PACKAGES = catalogState.packages;
+  const packagesFor = (key: string) => toursInCity(PACKAGES, key);
   const t = dict(locale);
   const pt = t.place;
   const path = localePath('/destinations', locale);
@@ -39,6 +43,7 @@ export function DestinationsList({ locale }: { locale: Locale }) {
     <>
       <Header locale={locale} path={path} />
       <main className="mx-auto max-w-[var(--container-site)] px-4 pb-24 pt-6 sm:px-6 md:pb-12">
+        <CatalogNotice unavailable={catalogState.unavailable} locale={locale} />
         <Breadcrumbs items={crumbs} locale={locale} />
         <div className="mt-6 grid items-center gap-8 lg:grid-cols-[1fr_minmax(0,420px)]">
           <SectionHeader as="h1" align="left" className="!max-w-2xl" title={pt.listTitle} intro={pt.listIntro(PLACES.length)} />

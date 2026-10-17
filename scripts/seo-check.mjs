@@ -7,7 +7,8 @@
  */
 const BASE = (process.env.BASE_URL ?? 'http://localhost:3300').replace(/\/+$/, '');
 const root = new URL('..', import.meta.url).pathname;
-const { PACKAGES } = await import(root + 'src/content/packages/index.ts');
+const { catalogPaths } = await import('./catalog-pages.mjs');
+const packagePaths = await catalogPaths(BASE);
 const { PLACES } = await import(root + 'src/content/places/index.ts');
 const { ROUTES } = await import(root + 'src/content/routes/list.ts');
 const both = (p) => [p, p === '/' ? '/hi' : `/hi${p}`];
@@ -19,7 +20,7 @@ const ALL = process.argv.includes('--all');
 const PAGES = [
   ...CORE.flatMap(both),
   '/photo-credits',
-  ...PACKAGES.flatMap((p) => both(`/packages/${p.slug}`)),
+  ...packagePaths.flatMap(both),
   ...(ALL ? PLACES.map((p) => p.slug) : SAMPLE_PLACES).flatMap((s) => both(`/destinations/${s}`)),
   ...(ALL ? ROUTES.map((r) => r.slug) : SAMPLE_ROUTES).flatMap((s) => both(`/cab/${s}`)),
 ];

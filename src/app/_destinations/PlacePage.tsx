@@ -1,10 +1,11 @@
+import { catalog, toursInCity } from '@/lib/catalog';
+import { CatalogNotice } from '@/components/CatalogNotice';
 import { dict, localePath, type Locale } from '@/i18n';
 import { exists } from '@/i18n/pages';
 import { PLACES, fareCity, type Place } from '@/content/places';
 import { region } from '@/content/regions';
 import { cityName } from '@/content/cities';
 import { LINKABLE_ROUTES } from '@/content/routes/list';
-import { packagesFor } from '@/content/destinations';
 import { pkgIn } from '@/content/packages';
 import { photo } from '@/content/photos';
 import { safe } from '@/lib/api';
@@ -59,6 +60,9 @@ export function placeDescription(place: Place, locale: Locale): string {
 
 /** One place, in either language: what to see, when, how long, the roads there and a car in town. */
 export async function PlacePage({ place, locale }: { place: Place; locale: Locale }) {
+  const catalogState = await catalog();
+  const PACKAGES = catalogState.packages;
+  const packagesFor = (key: string) => toursInCity(PACKAGES, key);
   const t = dict(locale);
   const pt = t.place;
   const txt = place[locale];
@@ -96,6 +100,7 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
     <>
       <Header locale={locale} path={path} />
       <main className="mx-auto max-w-[var(--container-site)] px-4 pb-24 pt-6 sm:px-6 md:pb-12">
+        <CatalogNotice unavailable={catalogState.unavailable} locale={locale} />
         <Breadcrumbs items={crumbs} locale={locale} />
 
         {/* ── The top: photo in the jharokha, name, line, intro ─────────── */}

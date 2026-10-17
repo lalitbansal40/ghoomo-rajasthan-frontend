@@ -16,9 +16,11 @@ export function MehrabFrame({
   alt,
   sizes = '(min-width: 768px) 360px, 80vw',
   preload = false,
+  unoptimized = false,
   className = '',
 }: {
   src: string;
+  unoptimized?: boolean;
   alt: string;
   sizes?: string;
   /**
@@ -37,6 +39,7 @@ export function MehrabFrame({
       >
         <Image
           src={src}
+          unoptimized={unoptimized}
           alt={alt}
           fill
           sizes={sizes}

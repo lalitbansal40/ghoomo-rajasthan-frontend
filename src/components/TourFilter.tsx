@@ -14,7 +14,7 @@ export interface FilterItem {
   slug: string;
   cities: string[];
   days: number;
-  price: number;
+  price: number | null;
 }
 
 export function TourFilter({
@@ -73,8 +73,8 @@ export function TourFilter({
       if (bucket && (it.days < bucket.min || it.days > bucket.max)) return false;
       return true;
     });
-    if (order === 'days') keep.sort((a, b) => a.it.days - b.it.days || a.it.price - b.it.price);
-    if (order === 'price') keep.sort((a, b) => a.it.price - b.it.price);
+    if (order === 'days') keep.sort((a, b) => a.it.days - b.it.days || (a.it.price ?? Infinity) - (b.it.price ?? Infinity));
+    if (order === 'price') keep.sort((a, b) => (a.it.price ?? Infinity) - (b.it.price ?? Infinity));
     return keep.map(({ i }) => i);
   }, [items, city, days, order, dayBuckets]);
 

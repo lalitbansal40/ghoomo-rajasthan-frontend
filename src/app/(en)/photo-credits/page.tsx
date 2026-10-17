@@ -1,3 +1,5 @@
+import { catalog } from '@/lib/catalog';
+import { CatalogNotice } from '@/components/CatalogNotice';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { DocPage } from '@/components/DocPage';
@@ -16,14 +18,18 @@ export const metadata: Metadata = {
  * the Commons API). CC BY and CC BY-SA require the author, the licence, the source and any
  * change to be named; every file here is cropped and resized, so that is said too.
  */
-export default function PhotoCreditsPage() {
+export default async function PhotoCreditsPage() {
+  const state = await catalog();
+  const managed = [...new Map(state.packages.flatMap((p) => p.media ?? []).map((m) => [m.id, m])).values()];
   return (
     <DocPage
       path="/photo-credits"
       title="Photo credits"
-      intro="The photographs on this site are from Wikimedia Commons, used under the licence each one was published with. Thank you to every photographer below."
+      intro="Credits, sources, licences and changes for the photographs used on this site. Thank you to every photographer below."
     >
+      <CatalogNotice unavailable={state.unavailable} locale="en" />
       <ul className="grid gap-5 sm:grid-cols-2">
+        {managed.map((m) => <li key={m.id}><Image unoptimized src={m.variants.card} alt={m.alt.en} width={640} height={480} className="h-auto w-full" /><p>{m.credit} · {m.licence}</p><p className="break-words">{m.sourceUrl}</p><p>{m.changes}</p></li>)}
         {PHOTOS.map((p) => {
           const licence = LICENCE_URL[p.licence];
           return (

@@ -1,8 +1,10 @@
 import { dict, localePath, type Locale } from '@/i18n';
-import { PACKAGES, PACKAGES_ARE_SAMPLE, pkgIn, type TourPackage } from '@/content/packages';
-import { destination } from '@/content/destinations';
+import { pkgIn, type TourPackage } from '@/content/packages';
+import { PLACES } from '@/content/places';
 import { TOUR_FAQ } from '@/content/home';
-import { photo } from '@/content/photos';
+import { tourPhoto } from '@/lib/tour-photo';
+import { catalog } from '@/lib/catalog';
+import { ManagedGallery } from '@/components/ManagedGallery';
 import { brand } from '@/lib/site';
 import { bookPackageLink } from '@/lib/book';
 import { touristTripJsonLd } from '@/lib/schema';
@@ -32,15 +34,17 @@ import {
 /** What a tour page says about itself in a search result and a share — its own words. */
 export function tourDescription(pkg: TourPackage, locale: Locale): string {
   const t = pkgIn(pkg, locale);
+  if (t.seoDescription) return t.seoDescription;
   const lead = locale === 'hi' ? `${t.days} दिन / ${t.nights} रात: ` : `${t.days} days, ${t.nights} nights: `;
   return (lead + t.highlights.slice(0, 3).join(' · ')).slice(0, 155);
 }
 
 /** One tour, in either language — photo, price by car, book, the days, what is in the price. */
-export function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Locale }) {
+export async function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Locale }) {
   const t = dict(locale);
   const tour = pkgIn(pkg, locale);
-  const p = photo(tour.photo);
+  const p = tourPhoto(tour, locale);
+  const { packages: PACKAGES } = await catalog();
   const path = localePath(`/packages/${tour.slug}`, locale);
   const crumbs = [
     { label: locale === 'hi' ? 'होम' : 'Home', href: localePath('/', locale) },
@@ -48,16 +52,16 @@ export function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Locale }) 
     { label: tour.name },
   ];
   const others = PACKAGES.filter((x) => x.slug !== pkg.slug).slice(0, 3).map((x) => pkgIn(x, locale));
-  const cities = tour.cities.map(destination).filter((d) => d !== null);
-  const faq = TOUR_FAQ[locale];
-  const cheapestCar = [...tour.fromRupees].sort((a, b) => a.rupees - b.rupees)[0].vehicle;
+  const cities = tour.cities.map((key) => PLACES.find((p) => p.key === key)).filter((p) => p !== undefined);
+  const faq = tour.isSample ? TOUR_FAQ[locale] : (tour.faq ?? []).map((f) => ({ q: f.question, a: f.answer }));
+  const cheapestCar = [...tour.fromRupees].sort((a, b) => a.rupees - b.rupees)[0]?.vehicle ?? '';
 
   return (
     <>
       <Header locale={locale} path={path} />
       <main className="mx-auto max-w-[var(--container-site)] px-4 pb-24 pt-6 sm:px-6 md:pb-12">
         <Breadcrumbs items={crumbs} locale={locale} />
-        {PACKAGES_ARE_SAMPLE ? (
+        {tour.isSample ? (
           <div className="mt-4 max-w-2xl">
             <Alert tone="warning">{t.pkg.sampleTour}</Alert>
           </div>
@@ -67,7 +71,7 @@ export function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Locale }) 
         <div className="mt-6 grid items-start gap-8 md:grid-cols-[minmax(0,340px)_1fr] lg:gap-12">
           {p ? (
             <div className="relative mx-auto w-[64vw] max-w-[320px] md:w-full">
-              <MehrabFrame src={p.big} alt={p.alt} preload sizes="(min-width: 768px) 340px, 64vw" />
+              <MehrabFrame unoptimized={Boolean(tour.media.length)} src={p.big} alt={p.alt} preload sizes="(min-width: 768px) 340px, 64vw" />
               <PhotoCredit photo={p} label={t.common.photoBy} />
             </div>
           ) : null}
@@ -76,6 +80,7 @@ export function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Locale }) 
               <Badge tone="days">{t.pkg.daysNightsShort(tour.days, tour.nights)}</Badge>
             </div>
             <h1 className="text-h1 mt-3 text-royal-600">{tour.name}</h1>
+            {tour.summary ? <p className="mt-3 text-muted">{tour.summary}</p> : null}
             <p className="mt-3 flex flex-wrap items-center gap-x-1.5 text-muted">
               <Icon name="mapPin" size={18} className="text-maroon-600" />
               {tour.route.join(' → ')}
@@ -85,7 +90,7 @@ export function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Locale }) 
                 tour={tour}
                 prices={tour.fromRupees}
                 locale={locale}
-                labels={{ car: t.pkg.car, book: t.pkg.book, call: `${t.cta.call} · ${brand.phone}` }}
+                labels={{ car: t.pkg.car, book: t.catalog.enquire, call: `${t.cta.call} · ${brand.phone}` }}
               />
             </div>
           </div>
@@ -153,27 +158,28 @@ export function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Locale }) 
         ) : null}
 
         {/* ── Questions ────────────────────────────────────────────────── */}
-        <section className="mx-auto mt-12 max-w-3xl">
+        {faq.length ? <section className="mx-auto mt-12 max-w-3xl">
           <SectionHeader title={t.pkg.tourQuestions} />
           <div className="mt-6">
             <FAQ items={faq} />
           </div>
-        </section>
+        </section> : null}
 
         {/* ── More tours ───────────────────────────────────────────────── */}
-        <section className="mt-12">
+        {others.length ? <section className="mt-12">
           <h2 className="text-h2 text-royal-600">{t.pkg.moreTours}</h2>
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {others.map((x) => (
               <PackageCard key={x.slug} tour={x} href={localePath(`/packages/${x.slug}`, locale)} locale={locale} />
             ))}
           </div>
-        </section>
+        </section> : null}
       </main>
+      <ManagedGallery tour={tour} locale={locale} />
       <Footer locale={locale} />
       <StickyCta>
         <Button variant="primary" href={bookPackageLink(tour, cheapestCar, locale)}>
-          {locale === 'hi' ? 'बुक करें' : 'Book'}
+          {t.catalog.enquire}
         </Button>
         <Button variant="call" href={brand.phoneHref}>
           {t.cta.call}

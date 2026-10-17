@@ -1,6 +1,8 @@
+import { catalog, toursInCity } from '@/lib/catalog';
+import { CatalogNotice } from '@/components/CatalogNotice';
 import { dict, localePath, type Locale } from '@/i18n';
-import { PACKAGES, cheapest, pkgIn, PACKAGES_ARE_SAMPLE } from '@/content/packages';
-import { DESTINATIONS, packagesFor } from '@/content/destinations';
+import { cheapest, pkgIn } from '@/content/packages';
+import { DESTINATIONS } from '@/content/destinations';
 import { PLACES } from '@/content/places';
 import { popularRoutes } from '@/content/popular-routes';
 import { DAY_BUCKETS, HERO, HOME_FAQ, HOW, SECTIONS, WHY } from '@/content/home';
@@ -34,6 +36,10 @@ import { travelAgencyJsonLd, websiteJsonLd } from '@/lib/schema';
  * the two ways to reach us. One photo is preloaded (the hero's); everything else is SVG or lazy.
  */
 export async function Home({ locale }: { locale: Locale }) {
+  const catalogState = await catalog();
+  const PACKAGES = catalogState.packages;
+  const PACKAGES_ARE_SAMPLE = catalogState.sample;
+  const packagesFor = (key: string) => toursInCity(PACKAGES, key);
   const t = dict(locale);
   const L = <K extends { en: string; hi: string }>(x: K) => x[locale];
   // Hawa Mahal: a tall façade that fills the tall jharokha (a wide fort photo showed only wall).
@@ -46,6 +52,7 @@ export async function Home({ locale }: { locale: Locale }) {
     <>
       <Header locale={locale} path={path} />
       <main className="pb-24 md:pb-0">
+        <CatalogNotice unavailable={catalogState.unavailable} locale={locale} />
         {/* ── Hero ─────────────────────────────────────────────────────────── */}
         <section className="sun-glow relative overflow-hidden">
           <Jaali opacity={0.07} />
@@ -89,7 +96,7 @@ export async function Home({ locale }: { locale: Locale }) {
           ) : null}
           <div className="mt-8">
             <TourFilter
-              items={tours.map((x) => ({ slug: x.slug, cities: x.cities, days: x.days, price: cheapest(x).rupees }))}
+              items={tours.map((x) => ({ slug: x.slug, cities: x.cities, days: x.days, price: cheapest(x)?.rupees ?? null }))}
               cities={DESTINATIONS.filter((d) => packagesFor(d.key).length).map((d) => ({ key: d.key, label: d[locale].name }))}
               dayBuckets={DAY_BUCKETS.map((b) => ({
                 key: b.key,

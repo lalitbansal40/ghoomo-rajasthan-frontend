@@ -1,11 +1,10 @@
 import Link from 'next/link';
-import type { Photo } from '@/content/photos';
 
 /**
  * The small line a free-licence photo asks for, in its corner: "Photo: {author} · {licence}",
  * linking to /photo-credits where the source and the changes are named.
  */
-export function PhotoCredit({ photo, label, href = '/photo-credits' }: { photo: Photo; label: string; href?: string }) {
+export function PhotoCredit({ photo, label, href = '/photo-credits' }: { photo: { credit: string; licence: string }; label: string; href?: string }) {
   return (
     <Link
       href={href}

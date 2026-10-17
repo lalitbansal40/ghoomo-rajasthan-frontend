@@ -1,10 +1,10 @@
 import type { Locale } from '@/i18n';
 import { whatsappLink } from './site.ts';
 
-const enquiryUrl = (type: string, product: string, name?: string) => {
+const enquiryUrl = (type: string, product: string, name?: string, locale: Locale = 'en') => {
   const q = new URLSearchParams({ type, product });
   if (name) q.set('name', name.slice(0, 80));
-  return `/enquiry?${q.toString()}`;
+  return `${locale === 'hi' ? '/hi' : ''}/enquiry?${q.toString()}`;
 };
 
 /**
@@ -17,11 +17,10 @@ const enquiryUrl = (type: string, product: string, name?: string) => {
 export function bookPackageLink(
   tour: { slug?: string; name: string; days: number; nights: number },
   _vehicle: string,
-  _locale: Locale,
+  locale: Locale,
 ): string {
   void _vehicle;
-  void _locale;
-  return enquiryUrl('package', tour.slug ?? 'custom-tour', tour.name);
+  return enquiryUrl('package', tour.slug ?? 'custom-tour', tour.name, locale);
 }
 
 const vehicleKey = (label?: string) => {
@@ -35,22 +34,20 @@ const vehicleKey = (label?: string) => {
 };
 
 export function bookRouteLink(from: string, to: string, locale: Locale, car?: string, held = false): string {
-  if (held) return enquiryUrl('cab', `${from}-to-${to}`, `${from} to ${to}`);
+  if (held) return enquiryUrl('cab', `${from}-to-${to}`, `${from} to ${to}`, locale);
   const query = new URLSearchParams({ from, to, car: vehicleKey(car) });
   return `${locale === 'hi' ? '/hi' : ''}/booking?${query.toString()}`;
 }
 
 /** A place page's "plan on WhatsApp": the place named, the date and people to fill in. */
-export function bookPlaceLink(name: string, _locale: Locale): string {
-  void _locale;
-  return enquiryUrl('custom', 'custom-trip', name);
+export function bookPlaceLink(name: string, locale: Locale): string {
+  return enquiryUrl('custom', 'custom-trip', name, locale);
 }
 
 /** A safari's "Book": the place and the safari named, the date and people to fill in. */
-export function bookSafariLink(place: string, offer: string, _locale: Locale): string {
-  void _locale;
+export function bookSafariLink(place: string, offer: string, locale: Locale): string {
   const slug = `${place}-${offer}`.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 100) || 'desert-safari';
-  return enquiryUrl('safari', slug, `${offer}, ${place}`);
+  return enquiryUrl('safari', slug, `${offer}, ${place}`, locale);
 }
 
 export function enquireLink(locale: Locale): string {

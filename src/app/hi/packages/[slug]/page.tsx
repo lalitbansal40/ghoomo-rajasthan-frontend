@@ -1,27 +1,24 @@
 // Hindi of (en)/packages/[slug]/page.tsx — the words are in content/packages (hi:) and i18n/hi.ts; owner to read.
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { PACKAGES, packageBySlug } from '@/content/packages';
+import { catalogPackage as packageBySlug } from '@/lib/catalog';
 import { alternates } from '@/lib/seo';
 import { TourPage, tourDescription } from '../../../_tours/TourPage';
 
-export const dynamicParams = false;
-export function generateStaticParams() {
-  return PACKAGES.map((p) => ({ slug: p.slug }));
-}
+export const dynamicParams = true;
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const pkg = packageBySlug((await params).slug);
+  const pkg = await packageBySlug((await params).slug);
   if (!pkg) return {};
   return {
-    title: `${pkg.hi.name} — ${pkg.days} दिन / ${pkg.nights} रात टूर`,
+    title: pkg.hi.seoTitle || `${pkg.hi.name} — ${pkg.days} दिन / ${pkg.nights} रात टूर`,
     description: tourDescription(pkg, 'hi'),
     alternates: alternates(`/packages/${pkg.slug}`, 'hi'),
   };
 }
 
 export default async function TourPageHi({ params }: { params: Promise<{ slug: string }> }) {
-  const pkg = packageBySlug((await params).slug);
+  const pkg = await packageBySlug((await params).slug);
   if (!pkg) notFound();
   return <TourPage pkg={pkg} locale="hi" />;
 }

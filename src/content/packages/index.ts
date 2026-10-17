@@ -13,6 +13,8 @@
  */
 export const PACKAGES_ARE_SAMPLE = true;
 
+export interface ManagedTourMedia { id: string; credit: string; licence: string; sourceUrl: string; changes: string; alt: { en: string; hi: string }; variants: { cover: string; card: string; og: string } }
+
 export type Car = 'Dzire' | 'Ertiga' | 'Innova Crysta';
 
 export interface DayPlan {
@@ -26,6 +28,16 @@ export interface DayPlan {
 }
 
 export interface TourPackage {
+  summary?: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  routePairs?: Array<{ pickup: string; drop: string }>;
+  isSample?: boolean;
+  media?: ManagedTourMedia[];
+  coverId?: string;
+  contentRevision?: number;
+  taxNote?: string;
+  faq?: Array<{ question: string; answer: string }>;
   slug: string;
   name: string;
   days: number;
@@ -52,6 +64,13 @@ export interface TourPackage {
 
 /** The parts of a tour that are words — one per language. */
 export interface TourText {
+  summary?: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  includes?: string[];
+  excludes?: string[];
+  taxNote?: string;
+  faq?: Array<{ question: string; answer: string }>;
   name: string;
   startsFrom: string;
   endsAt: string;
@@ -646,6 +665,9 @@ export function pkgIn(pkg: TourPackage, locale: 'en' | 'hi') {
       ? pkg.hi
       : {
           name: pkg.name,
+          summary: pkg.summary,
+          seoTitle: pkg.seoTitle,
+          seoDescription: pkg.seoDescription,
           startsFrom: pkg.startsFrom,
           endsAt: pkg.endsAt,
           route: pkg.route,
@@ -662,8 +684,14 @@ export function pkgIn(pkg: TourPackage, locale: 'en' | 'hi') {
     fromRupees: pkg.fromRupees,
     photo: pkg.photo,
     cities: pkg.cities,
-    includes: locale === 'hi' ? INCLUDES_HI : INCLUDES,
-    excludes: locale === 'hi' ? EXCLUDES_HI : EXCLUDES,
+    includes: locale === 'hi' ? (pkg.hi.includes ?? INCLUDES_HI) : pkg.includes,
+    excludes: locale === 'hi' ? (pkg.hi.excludes ?? EXCLUDES_HI) : pkg.excludes,
+    taxNote: locale === 'hi' ? (pkg.hi.taxNote ?? '') : (pkg.taxNote ?? ''),
+    faq: locale === 'hi' ? pkg.hi.faq : pkg.faq,
+    isSample: pkg.isSample ?? PACKAGES_ARE_SAMPLE,
+    media: pkg.media ?? [],
+    coverId: pkg.coverId,
+    contentRevision: pkg.contentRevision,
   };
 }
 export type LocalTour = ReturnType<typeof pkgIn>;

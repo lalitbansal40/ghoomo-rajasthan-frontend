@@ -2,6 +2,8 @@ import { ImageResponse } from 'next/og';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import sharp from 'sharp';
+import { env } from '@/lib/env';
+import { managedMediaUrl } from '@/lib/catalog-contract';
 import { photo } from '@/content/photos';
 
 /**
@@ -21,12 +23,14 @@ export async function ogCard({
   sub,
   price,
   photoKey,
+  imageUrl,
 }: {
   title: string;
   meta?: string;
   sub?: string;
   price?: string | null;
   photoKey?: string;
+  imageUrl?: string;
 }) {
   const root = process.cwd();
   const [font, icon, fort, pic] = await Promise.all([
@@ -34,6 +38,16 @@ export async function ogCard({
     readFile(join(root, 'public/brand/icon-192.png')),
     readFile(join(root, 'public/brand/icon-512.png')),
     (async () => {
+      if (imageUrl) {
+        const url = managedMediaUrl(imageUrl, env.apiBaseUrl);
+        const response = await fetch(url, { cache: 'no-store', redirect: 'error', signal: AbortSignal.timeout(8000) });
+        if (!response.ok || !response.headers.get('content-type')?.startsWith('image/')) return null;
+        const reader = response.body?.getReader(); if (!reader) return null;
+        const chunks: Uint8Array[] = []; let size = 0;
+        try { while (true) { const { done, value } = await reader.read(); if (done) break; size += value.length; if (size > 4 * 1024 * 1024) throw new Error('OG image too large'); chunks.push(value); } } finally { await reader.cancel(); }
+        const jpg = await sharp(Buffer.concat(chunks), { limitInputPixels: 24_000_000 }).resize(520, 630, { fit: 'cover' }).jpeg({ quality: 80 }).toBuffer();
+        return `data:image/jpeg;base64,${jpg.toString('base64')}`;
+      }
       const p = photoKey ? photo(photoKey) : null;
       if (!p) return null;
       // Satori draws PNG/JPEG, not WebP: the photo is converted, at the size it is shown.
@@ -74,6 +88,6 @@ export async function ogCard({
         )}
       </div>
     ),
-    { ...OG_SIZE, fonts: [{ name: 'Rozha', data: font, weight: 400, style: 'normal' }] },
+    { ...OG_SIZE, headers: { 'Cache-Control': 'no-store' }, fonts: [{ name: 'Rozha', data: font, weight: 400, style: 'normal' }] },
   );
 }

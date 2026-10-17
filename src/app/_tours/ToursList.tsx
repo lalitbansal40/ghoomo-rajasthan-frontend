@@ -1,6 +1,8 @@
+import { catalog, toursInCity } from '@/lib/catalog';
+import { CatalogNotice } from '@/components/CatalogNotice';
 import { dict, localePath, type Locale } from '@/i18n';
-import { PACKAGES, PACKAGES_ARE_SAMPLE, cheapest, pkgIn } from '@/content/packages';
-import { DESTINATIONS, packagesFor } from '@/content/destinations';
+import { cheapest, pkgIn } from '@/content/packages';
+import { DESTINATIONS } from '@/content/destinations';
 import { DAY_BUCKETS, HOME_FAQ, SECTIONS } from '@/content/home';
 import { brand } from '@/lib/site';
 import { enquireLink } from '@/lib/book';
@@ -11,7 +13,11 @@ import { Alert, Breadcrumbs, Button, EmptyState, FAQ, Footer, Header, PackageCar
 import { DuneDivider } from '@/components/motifs';
 
 /** The tours list, in either language: filter by city and days, sort, every tour as a card. */
-export function ToursList({ locale }: { locale: Locale }) {
+export async function ToursList({ locale }: { locale: Locale }) {
+  const catalogState = await catalog();
+  const PACKAGES = catalogState.packages;
+  const PACKAGES_ARE_SAMPLE = catalogState.sample;
+  const packagesFor = (key: string) => toursInCity(PACKAGES, key);
   const t = dict(locale);
   const L = <K extends { en: string; hi: string }>(x: K) => x[locale];
   const tours = PACKAGES.map((p) => pkgIn(p, locale));
@@ -27,6 +33,7 @@ export function ToursList({ locale }: { locale: Locale }) {
     <>
       <Header locale={locale} path={path} />
       <main className="mx-auto max-w-[var(--container-site)] px-4 pb-24 pt-6 sm:px-6 md:pb-12">
+        <CatalogNotice unavailable={catalogState.unavailable} locale={locale} />
         <Breadcrumbs items={crumbs} locale={locale} />
         <SectionHeader as="h1" align="left" className="mt-6 !max-w-3xl" title={L(SECTIONS.toursTitle)} intro={L(SECTIONS.toursPageIntro)} />
         {PACKAGES_ARE_SAMPLE ? (
@@ -37,7 +44,7 @@ export function ToursList({ locale }: { locale: Locale }) {
         <div className="mt-8">
           <TourFilter
             sort
-            items={tours.map((x) => ({ slug: x.slug, cities: x.cities, days: x.days, price: cheapest(x).rupees }))}
+            items={tours.map((x) => ({ slug: x.slug, cities: x.cities, days: x.days, price: cheapest(x)?.rupees ?? null }))}
             cities={DESTINATIONS.filter((d) => packagesFor(d.key).length).map((d) => ({ key: d.key, label: d[locale].name }))}
             dayBuckets={DAY_BUCKETS.map((b) => ({
               key: b.key,

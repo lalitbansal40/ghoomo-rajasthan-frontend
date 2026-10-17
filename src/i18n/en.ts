@@ -4,6 +4,7 @@
  * text of its own — it reads it from here.
  */
 export const en = {
+  catalog: { enquire: 'Enquire about this tour', exitPreview: 'Exit preview', unavailable: 'Tour details are temporarily unavailable. Please contact us to plan your trip.', onRequest: 'Contact us for the price', preview: 'Private preview' },
   brand: {
     name: 'Ghoomo Rajasthan',
     tagline: 'Tours across Rajasthan with a car and a driver who knows the road.',

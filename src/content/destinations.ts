@@ -1,4 +1,3 @@
-import { PACKAGES } from './packages';
 import { PLACES } from './places';
 
 /**
@@ -23,9 +22,6 @@ export const DESTINATIONS: Destination[] = PLACES.filter((p) => p.featured && p.
 }));
 
 export const destination = (key: string) => DESTINATIONS.find((d) => d.key === key) ?? null;
-
-/** The tours that go to a city (by each package's own `cities` list). */
-export const packagesFor = (key: string) => PACKAGES.filter((p) => p.cities.includes(key));
 
 /** The city names live in content/cities.ts; re-exported for the callers that import them here. */
 export { CITY_HI } from './cities';

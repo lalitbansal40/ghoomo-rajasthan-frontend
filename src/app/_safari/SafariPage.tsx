@@ -1,10 +1,12 @@
+import { catalog } from '@/lib/catalog';
+import { CatalogNotice } from '@/components/CatalogNotice';
 import Image from 'next/image';
 import { dict, formatRupees, localePath, type Locale } from '@/i18n';
 import { SAFARI, SAFARI_FAQ, SAFARI_IS_SAMPLE } from '@/content/safari';
 import { routeByPair } from '@/content/routes/list';
 import { routeEndName } from '@/content/cities';
 import { placeBySlug } from '@/content/places';
-import { PACKAGES, pkgIn } from '@/content/packages';
+import { pkgIn } from '@/content/packages';
 import { photo } from '@/content/photos';
 import { safe } from '@/lib/api';
 import { cheapest, localView } from '@/lib/fares';
@@ -43,6 +45,8 @@ const ROADS_TO_DUNES: Array<[string, string]> = [
 
 /** /desert-safari — four places, what each sells, when to go, and the car to get there. */
 export async function SafariPage({ locale }: { locale: Locale }) {
+  const catalogState = await catalog();
+  const PACKAGES = catalogState.packages;
   const t = dict(locale);
   const s = t.safari;
   const path = localePath('/desert-safari', locale);
@@ -66,6 +70,7 @@ export async function SafariPage({ locale }: { locale: Locale }) {
     <>
       <Header locale={locale} path={path} />
       <main className="mx-auto max-w-[var(--container-site)] px-4 pb-24 pt-6 sm:px-6 md:pb-12">
+        <CatalogNotice unavailable={catalogState.unavailable} locale={locale} />
         <Breadcrumbs items={crumbs} locale={locale} />
 
         {/* ── Top: the camel at sunset, the promise ───────────────────── */}

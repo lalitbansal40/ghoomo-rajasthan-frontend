@@ -1,3 +1,5 @@
+import { catalog } from '@/lib/catalog';
+import { CatalogNotice } from '@/components/CatalogNotice';
 import { dict, formatRupees, localePath, type Locale } from '@/i18n';
 import { exists } from '@/i18n/pages';
 import { LINKABLE_ROUTES, routeByPair, type GhoomoRoute } from '@/content/routes/list';
@@ -7,7 +9,7 @@ import { routeKey } from '@/lib/slug';
 import { cityName, routeEndName } from '@/content/cities';
 import { PLACES, placeForCity } from '@/content/places';
 import { region } from '@/content/regions';
-import { packageBySlug, pkgIn } from '@/content/packages';
+import { pkgIn } from '@/content/packages';
 import { cheapest, type OnewayView } from '@/lib/fares';
 import { routeFares } from '@/lib/route-fares';
 import { routeFaq } from '@/lib/route-faq';
@@ -60,15 +62,15 @@ export function routeDescription(route: GhoomoRoute, oneway: OnewayView | null, 
 
 /** One road, in either language: the fare by car, the round trip, what is on the way, and booking. */
 export async function RoutePage({ route, locale }: { route: GhoomoRoute; locale: Locale }) {
+  const catalogState = await catalog();
   const t = dict(locale);
   const rt = t.route;
   const { from, to } = routeNames(route, locale);
   const path = localePath(`/cab/${route.slug}`, locale);
   const text = ROUTE_TEXT[routeKey(route.pickup, route.drop)]?.[locale];
-  const packages = (ROUTE_TEXT[routeKey(route.pickup, route.drop)]?.packages ?? [])
-    .map(packageBySlug)
-    .filter((p) => p !== null)
-    .map((p) => pkgIn(p, locale));
+  const authored = new Set(ROUTE_TEXT[routeKey(route.pickup, route.drop)]?.packages ?? []);
+  const cityKey = (key: string) => key === 'SAWAI_MADHOPUR' ? 'RANTHAMBORE' : key;
+  const packages = catalogState.packages.filter((p) => authored.has(p.slug) || p.routePairs?.some((pair) => pair.pickup === route.pickup && pair.drop === route.drop) || (p.cities.includes(cityKey(route.pickup)) && p.cities.includes(cityKey(route.drop)))).map((p) => pkgIn(p, locale));
   const { oneway, roundtrip } = await routeFares(route);
   const low = cheapest(oneway);
   const reg = region(route.region);
@@ -103,6 +105,7 @@ export async function RoutePage({ route, locale }: { route: GhoomoRoute; locale:
     <>
       <Header locale={locale} path={path} />
       <main className="mx-auto max-w-[var(--container-site)] px-4 pb-24 pt-6 sm:px-6 md:pb-12">
+        <CatalogNotice unavailable={catalogState.unavailable} locale={locale} />
         <Breadcrumbs items={crumbs} locale={locale} />
 
         {/* ── Title, the road, the fares ──────────────────────────────── */}

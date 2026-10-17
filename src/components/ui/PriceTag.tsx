@@ -15,7 +15,7 @@ export function PriceTag({
   gst = true,
   className = '',
 }: {
-  rupees: number;
+  rupees?: number;
   vehicle?: string;
   locale: Locale;
   sample?: boolean;
@@ -26,10 +26,10 @@ export function PriceTag({
   return (
     <div className={`flex flex-col ${className}`}>
       <div className="flex flex-wrap items-center gap-2">
-        <span className="text-small text-muted">{t.pkg.from}</span>
+        <span className="text-small text-muted">{rupees == null ? null : t.pkg.from}</span>
         {sample ? <Badge tone="sample">{t.pkg.samplePrice}</Badge> : null}
       </div>
-      <span className="text-price text-maroon-600">{formatRupees(rupees)}</span>
+      <span className="text-price text-maroon-600">{rupees == null ? t.catalog.onRequest : formatRupees(rupees, true)}</span>
       <span className="text-small text-muted">
         {[vehicle, gst ? t.pkg.gstExtra : null].filter(Boolean).join(' · ')}
       </span>
