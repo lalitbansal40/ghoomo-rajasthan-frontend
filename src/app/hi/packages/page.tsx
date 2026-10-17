@@ -1,3 +1,4 @@
+// Hindi of (en)/packages/page.tsx — the words are in content/packages (hi:) and i18n/hi.ts; owner to read.
 import type { Metadata } from 'next';
 import { alternates } from '@/lib/seo';
 import { ToursList } from '../../_tours/ToursList';

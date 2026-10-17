@@ -1,3 +1,4 @@
+// Hindi of (en)/packages/[slug]/page.tsx — the words are in content/packages (hi:) and i18n/hi.ts; owner to read.
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { PACKAGES, packageBySlug } from '@/content/packages';
