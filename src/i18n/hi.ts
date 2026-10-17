@@ -16,6 +16,7 @@ export const hi: Dictionary = {
     home: 'घूमो राजस्थान — होम',
   },
   nav: {
+    about: 'हमारे बारे में',
     label: 'मुख्य',
     packages: 'पैकेज',
     destinations: 'घूमने की जगहें',
@@ -247,6 +248,7 @@ export const hi: Dictionary = {
     dismiss: 'बंद करें',
   },
   common: {
+    popularRoutes: 'लोकप्रिय कैब रास्ते',
     comingSoon: 'जल्द आ रहा है',
     photoBy: 'फ़ोटो',
     credits: 'फ़ोटो क्रेडिट',

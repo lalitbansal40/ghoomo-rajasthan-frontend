@@ -2,6 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { dict, localePath, type Locale } from '@/i18n';
 import { NAV, exists } from '@/i18n/pages';
+import { REGIONS } from '@/content/regions';
+import { PLACES } from '@/content/places';
 import { brand, whatsappLink } from '@/lib/site';
 import { Icon } from './Icon';
 import { LangSwitch } from './LangSwitch';
@@ -15,10 +17,16 @@ import { MobileMenu, type MenuItem } from './MobileMenu';
  */
 export function Header({ locale, path }: { locale: Locale; /** This page's path — for the language switch. */ path: string }) {
   const t = dict(locale);
+  // The destinations menu opens onto its regions (only those with a place in them).
+  const regions = REGIONS.filter((r) => PLACES.some((p) => p.region === r.key)).map((r) => ({
+    label: r[locale].name,
+    href: `${localePath('/destinations', locale)}?region=${r.key}`,
+  }));
   const items: MenuItem[] = NAV.map((n) => ({
     label: t.nav[n.key],
     href: exists(n.path, locale) ? localePath(n.path, locale) : null,
     soon: t.nav.soon,
+    ...(n.key === 'destinations' && exists(n.path, locale) ? { children: regions } : {}),
   }));
   return (
     <header className="sticky top-0 z-40 border-b border-gold-300/70 bg-ivory/95 backdrop-blur supports-[backdrop-filter]:bg-ivory/80">
@@ -29,12 +37,25 @@ export function Header({ locale, path }: { locale: Locale; /** This page's path 
         <nav aria-label={t.nav.label} className="ml-4 hidden flex-1 lg:block">
           <ul className="flex items-center gap-1">
             {items.map((it) => (
-              <li key={it.label}>
+              <li key={it.label} className={it.children?.length ? 'group relative' : undefined}>
                 {it.href ? (
                   <Link href={it.href} className="rounded-full px-3 py-2 font-semibold text-royal-700 hover:bg-royal-50">
                     {it.label}
                   </Link>
-                ) : (
+                ) : null}
+                {/* The regions: shown on hover, and on keyboard focus inside — no script. */}
+                {it.href && it.children?.length ? (
+                  <ul className="invisible absolute left-0 top-full z-50 w-64 rounded-[var(--radius-md)] bg-white p-2 opacity-0 shadow-raised ring-1 ring-black/5 transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                    {it.children.map((c) => (
+                      <li key={c.href}>
+                        <Link href={c.href} className="block rounded-[var(--radius-sm)] px-3 py-2 text-royal-700 hover:bg-royal-50">
+                          {c.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+                {it.href ? null : (
                   <span aria-disabled className="cursor-default rounded-full px-3 py-2 font-semibold text-muted" title={it.soon}>
                     {it.label}
                   </span>

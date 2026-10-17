@@ -71,6 +71,15 @@ export function ToursList({ locale }: { locale: Locale }) {
             ))}
           </TourFilter>
         </div>
+        {/* Each tour city's own page — what to see there, when, and a car in town. */}
+        <p className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-1 text-small">
+          <span className="font-semibold text-muted">{L(SECTIONS.aboutPlaces)}</span>
+          {DESTINATIONS.filter((d) => packagesFor(d.key).length).map((d) => (
+            <a key={d.key} href={localePath(`/destinations/${d.slug}`, locale)} className="text-royal-600 underline">
+              {d[locale].name}
+            </a>
+          ))}
+        </p>
 
         <section className="mx-auto mt-16 max-w-3xl">
           <SectionHeader title={L(SECTIONS.faq)} />

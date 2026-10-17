@@ -8,6 +8,8 @@ export interface MenuItem {
   label: string;
   href: string | null;
   soon?: string;
+  /** A short list under the item — the destinations menu's regions. */
+  children?: Array<{ label: string; href: string }>;
 }
 
 /**
@@ -50,7 +52,7 @@ export function MobileMenu({ items, openLabel, closeLabel }: { items: MenuItem[]
         <div
           ref={panel}
           id="gr-mobile-menu"
-          className="absolute inset-x-0 top-full border-b border-gold-300 bg-ivory px-4 pb-4 shadow-raised"
+          className="absolute inset-x-0 top-full max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-gold-300 bg-ivory px-4 pb-4 shadow-raised"
         >
           <ul className="flex flex-col">
             {items.map((it) => (
@@ -63,7 +65,19 @@ export function MobileMenu({ items, openLabel, closeLabel }: { items: MenuItem[]
                   >
                     {it.label}
                   </Link>
-                ) : (
+                ) : null}
+                {it.href && it.children?.length ? (
+                  <ul className="-mt-1 mb-2 grid grid-cols-2 gap-x-3 pl-3">
+                    {it.children.map((c) => (
+                      <li key={c.href}>
+                        <Link href={c.href} onClick={() => setOpen(false)} className="flex min-h-10 items-center text-royal-600">
+                          {c.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+                {it.href ? null : (
                   <span aria-disabled className="flex min-h-12 items-center justify-between text-lg font-semibold text-muted">
                     {it.label}
                     <span className="text-small rounded-full bg-sand-100 px-2">{it.soon}</span>

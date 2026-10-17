@@ -27,6 +27,14 @@ export const SECTIONS = {
   },
   allTours: { en: 'All tours', hi: 'सभी टूर' },
   routes: { en: 'Cab between cities', hi: 'शहरों के बीच कैब' },
+  aboutPlaces: { en: 'About the places on these tours:', hi: 'इन टूर की जगहों के बारे में:' },
+  allRoutes: { en: 'All roads and fares', hi: 'सारे रास्ते और किराए' },
+  safariTitle: { en: 'A night in the desert', hi: 'रेगिस्तान में एक रात' },
+  safariLine: {
+    en: 'Camel rides at sunset, jeeps on the dunes and desert camps — Jaisalmer, Bikaner, Pushkar, Osian.',
+    hi: 'सूर्यास्त पर ऊँट की सवारी, टीलों पर जीप और रेगिस्तानी कैंप — जैसलमेर, बीकानेर, पुष्कर, ओसियां।',
+  },
+  safariCta: { en: 'See desert safaris', hi: 'डेज़र्ट सफ़ारी देखें' },
   routesEyebrow: { en: 'One way', hi: 'एक तरफ़' },
   routesIntro: {
     en: 'Fares from the Hello My Cab network — the car and driver for the drive.',

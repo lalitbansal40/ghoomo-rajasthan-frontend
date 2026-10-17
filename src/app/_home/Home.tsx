@@ -6,11 +6,12 @@ import { popularRoutes } from '@/content/popular-routes';
 import { DAY_BUCKETS, HERO, HOME_FAQ, HOW, SECTIONS, WHY } from '@/content/home';
 import { photo } from '@/content/photos';
 import { brand } from '@/lib/site';
-import { bookRouteLink, enquireLink } from '@/lib/book';
+import { enquireLink } from '@/lib/book';
+import { routeSlug } from '@/content/routes/list';
 import { faqJsonLd } from '@/components/ui/FAQ';
 import { JsonLd } from '@/components/JsonLd';
 import { TourFilter } from '@/components/TourFilter';
-import { Car, DuneDivider, FortSun, Jaali, MehrabFrame, SparkleDivider } from '@/components/motifs';
+import { Camel, Car, DuneDivider, FortSun, Jaali, MehrabFrame, SparkleDivider } from '@/components/motifs';
 import {
   Alert,
   Button,
@@ -134,12 +135,17 @@ export async function Home({ locale }: { locale: Locale }) {
                     to={r.to}
                     km={r.km}
                     fromRupees={r.fromRupees}
-                    href={bookRouteLink(r.from, r.to, locale)}
+                    href={localePath(`/cab/${routeSlug(r.pickup, r.drop)}`, locale)}
                     locale={locale}
                   />
                 ))}
               </div>
               <p className="mt-4 text-center text-small text-muted">{L(SECTIONS.routesNote)}</p>
+              <div className="mt-6 text-center">
+                <Button variant="secondary" href={localePath('/cab', locale)} icon={null} iconRight="arrow">
+                  {L(SECTIONS.allRoutes)}
+                </Button>
+              </div>
             </div>
           </section>
         ) : null}
@@ -166,6 +172,23 @@ export async function Home({ locale }: { locale: Locale }) {
               {t.place.seeAll(PLACES.length)}
             </Button>
           </div>
+        </section>
+
+        {/* ── The desert: a banner, no photo (the home page carries one already) ── */}
+        <section className="mx-auto max-w-[var(--container-site)] px-4 pb-12 sm:px-6">
+          <a
+            href={localePath('/desert-safari', locale)}
+            className="flex flex-col items-center gap-4 rounded-[var(--radius-lg)] bg-sand-200 p-6 text-center ring-1 ring-gold-300 hover:ring-gold-500 sm:flex-row sm:text-left"
+          >
+            <Camel walking size={80} />
+            <span className="flex-1">
+              <span className="text-h2 block text-royal-700">{L(SECTIONS.safariTitle)}</span>
+              <span className="mt-1 block text-ink/80">{L(SECTIONS.safariLine)}</span>
+            </span>
+            <span className="inline-flex items-center gap-1 font-semibold text-royal-600">
+              {L(SECTIONS.safariCta)} <Icon name="arrow" />
+            </span>
+          </a>
         </section>
 
         {/* ── Why us ──────────────────────────────────────────────────────── */}

@@ -3,11 +3,27 @@ import { dict, localePath, type Locale } from '@/i18n';
 import { NAV, exists } from '@/i18n/pages';
 import { brand, whatsappLink } from '@/lib/site';
 import { DuneDivider, FortSun } from '@/components/motifs';
+import { REGIONS } from '@/content/regions';
+import { PLACES } from '@/content/places';
+import { routeBySlug } from '@/content/routes/list';
+import { routeEndName } from '@/content/cities';
+
+/** The roads the footer lists — the most asked-for, all in Rajasthan, none held. */
+const FOOTER_ROUTES = [
+  'jaipur-to-udaipur',
+  'jaipur-to-jodhpur',
+  'jaipur-to-jaisalmer',
+  'jaipur-to-ajmer',
+  'delhi-to-jaipur',
+  'udaipur-to-jodhpur',
+  'jodhpur-to-jaisalmer',
+  'jaipur-to-ranthambore',
+];
 
 /**
- * The foot of every page. `full`: the fort against the sun on a band of dunes, three columns
- * (explore, company, legal) — one under another on a phone — and how to reach us. `compact`:
- * the coming-soon page's thin strip. Links only to pages that exist in this language.
+ * The foot of every page. `full`: the fort against the sun on a band of dunes, then explore,
+ * destinations by region, popular cab routes, how to reach us and legal — one under another on
+ * a phone. `compact`: the coming-soon page's thin strip. Links only to pages that exist in this language.
  */
 export function Footer({ locale, variant = 'full' }: { locale: Locale; variant?: 'full' | 'compact' }) {
   const t = dict(locale);
@@ -49,15 +65,46 @@ export function Footer({ locale, variant = 'full' }: { locale: Locale; variant?:
         <DuneDivider />
       </div>
       <div className="bg-sand-200 px-4 pb-10 sm:px-6">
-        <div className="mx-auto grid max-w-[var(--container-site)] gap-8 sm:grid-cols-3">
+        <div className="mx-auto grid max-w-[var(--container-site)] gap-8 sm:grid-cols-2 lg:grid-cols-5">
           <div>
             <h2 className="text-h3 text-royal-700">{t.common.explore}</h2>
             <ul className="mt-3 flex flex-col gap-2">
               {NAV.map((n) => (
                 <li key={n.key}>{exists(n.path, locale) ? link(n.path, t.nav[n.key]) : <span className="text-muted">{t.nav[n.key]} · {t.nav.soon}</span>}</li>
               ))}
+              {exists('/about', locale) ? <li>{link('/about', t.nav.about)}</li> : null}
             </ul>
           </div>
+          {exists('/destinations', locale) ? (
+            <div>
+              <h2 className="text-h3 text-royal-700">{t.nav.destinations}</h2>
+              <ul className="mt-3 flex flex-col gap-2">
+                {REGIONS.filter((r) => PLACES.some((p) => p.region === r.key)).map((r) => (
+                  <li key={r.key}>
+                    <Link href={`${localePath('/destinations', locale)}?region=${r.key}`} className="underline-offset-4 hover:underline">
+                      {r[locale].name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+          {exists('/cab/x', locale) ? (
+            <div>
+              <h2 className="text-h3 text-royal-700">{t.common.popularRoutes}</h2>
+              <ul className="mt-3 flex flex-col gap-2">
+                {FOOTER_ROUTES.map(routeBySlug)
+                  .filter((r) => r && !r.held)
+                  .map((r) => (
+                    <li key={r!.slug}>
+                      <Link href={localePath(`/cab/${r!.slug}`, locale)} className="underline-offset-4 hover:underline">
+                        {routeEndName(r!.pickup, locale)} → {routeEndName(r!.drop, locale)}
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          ) : null}
           <div>
             <h2 className="text-h3 text-royal-700">{t.common.talkToUs}</h2>
             <ul className="mt-3 flex flex-col gap-2">

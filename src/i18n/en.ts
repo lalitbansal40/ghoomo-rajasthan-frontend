@@ -12,6 +12,7 @@ export const en = {
     home: 'Ghoomo Rajasthan — home',
   },
   nav: {
+    about: 'About us',
     label: 'Main',
     packages: 'Packages',
     destinations: 'Destinations',
@@ -243,6 +244,7 @@ export const en = {
     dismiss: 'Close',
   },
   common: {
+    popularRoutes: 'Popular cab routes',
     comingSoon: 'Coming soon',
     photoBy: 'Photo',
     credits: 'Photo credits',
