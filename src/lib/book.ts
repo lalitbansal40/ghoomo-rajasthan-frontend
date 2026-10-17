@@ -34,6 +34,11 @@ export function bookPlaceLink(name: string, locale: Locale): string {
   return whatsappLink(dict(locale).place.bookMessage(name));
 }
 
+/** A safari's "Book": the place and the safari named, the date and people to fill in. */
+export function bookSafariLink(place: string, offer: string, locale: Locale): string {
+  return whatsappLink(dict(locale).safari.bookMessage(place, offer));
+}
+
 export function enquireLink(locale: Locale): string {
   return whatsappLink(
     locale === 'hi'
