@@ -1,14 +1,28 @@
 /**
  * Every page's title, description, canonical and hreflang — against a running build:
  *   npx next start -p 3300 & npm run seo:check     (BASE_URL=… to point elsewhere)
+ *   npm run seo:check -- --all                      every place and every road too (~330 pages)
  * FAIL: a title over 60 characters, a description over 155 (or missing), the same title on two
  * pages, a canonical that is not the page itself, an hreflang twin that does not point back.
  */
 const BASE = (process.env.BASE_URL ?? 'http://localhost:3300').replace(/\/+$/, '');
-const SLUGS = ['jaipur-pink-city-weekend', 'ajmer-pushkar-darshan', 'lakes-and-forts', 'royal-rajasthan-circuit', 'ranthambore-wildlife', 'udaipur-mount-abu'];
-const PAGES = ['/', '/hi', '/packages', '/hi/packages', '/contact', '/privacy', '/terms', '/refund', '/photo-credits',
-  ...SLUGS.flatMap((s) => [`/packages/${s}`, `/hi/packages/${s}`]),
-  ...(process.argv.includes('--hi-legal') ? ['/hi/contact', '/hi/privacy', '/hi/terms', '/hi/refund'] : [])];
+const root = new URL('..', import.meta.url).pathname;
+const { PACKAGES } = await import(root + 'src/content/packages/index.ts');
+const { PLACES } = await import(root + 'src/content/places/index.ts');
+const { ROUTES } = await import(root + 'src/content/routes/list.ts');
+const both = (p) => [p, p === '/' ? '/hi' : `/hi${p}`];
+const CORE = ['/', '/packages', '/destinations', '/cab', '/desert-safari', '/about', '/contact', '/privacy', '/terms', '/refund'];
+/** Without --all: every hub, every tour, and a sample of places and roads of every kind. */
+const SAMPLE_PLACES = ['jaipur', 'jaisalmer', 'khatu-shyam-ji', 'salasar-balaji'];
+const SAMPLE_ROUTES = ['jaipur-to-udaipur', 'udaipur-to-jaipur', 'jaipur-to-delhi', 'jaipur-to-ranthambore', 'delhi-to-agra', 'ajmer-to-pushkar'];
+const ALL = process.argv.includes('--all');
+const PAGES = [
+  ...CORE.flatMap(both),
+  '/photo-credits',
+  ...PACKAGES.flatMap((p) => both(`/packages/${p.slug}`)),
+  ...(ALL ? PLACES.map((p) => p.slug) : SAMPLE_PLACES).flatMap((s) => both(`/destinations/${s}`)),
+  ...(ALL ? ROUTES.map((r) => r.slug) : SAMPLE_ROUTES).flatMap((s) => both(`/cab/${s}`)),
+];
 
 const fails = [];
 const seen = new Map();
@@ -32,7 +46,7 @@ for (const path of PAGES) {
   const own = new URL(path, 'https://x').pathname;
   if (!canon) fails.push(`${path}: no canonical`);
   else if (new URL(canon).pathname.replace(/\/$/, '') !== own.replace(/\/$/, '')) fails.push(`${path}: canonical ${canon}`);
-  console.log(`${path}  [${len(title)}] ${title}  · desc ${len(desc)}`);
+  if (!ALL) console.log(`${path}  [${len(title)}] ${title}  · desc ${len(desc)}`);
 }
 // hreflang pairs point both ways.
 for (const [path, { alts }] of Object.entries(info)) {
@@ -44,5 +58,6 @@ for (const [path, { alts }] of Object.entries(info)) {
     if (info[twin] && !back) fails.push(`${path}: hreflang ${lang} → ${twin}, which does not point back`);
   }
 }
+console.log(`${PAGES.length} pages checked`);
 console.log(fails.length ? `\n${fails.length} FAIL\n${fails.map((f) => '  ' + f).join('\n')}` : '\nall SEO checks passed');
 process.exit(fails.length ? 1 : 0);

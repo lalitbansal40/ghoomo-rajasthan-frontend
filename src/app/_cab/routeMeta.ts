@@ -13,10 +13,13 @@ import { routeDescription, routeIndexable, routeNames } from './RoutePage';
  */
 export async function routeMetadata(route: GhoomoRoute, locale: Locale): Promise<Metadata> {
   const { from, to } = routeNames(route, locale);
-  const base = dict(locale).route.title(from, to);
+  // "Ranthambore (Sawai Madhopur)" reads well on the page; in a title the bracket is dropped if it will not fit.
+  const full = dict(locale).route.title(from, to);
+  const short = dict(locale).route.title(from.replace(/ \(.*\)$/, ''), to.replace(/ \(.*\)$/, ''));
   const tails = locale === 'hi' ? [' — गाड़ी के हिसाब से किराया', ''] : [' — fares by car, sights on the way', ' — fares by car', ''];
   const suffix = locale === 'hi' ? ' · घूमो राजस्थान' : ' · Ghoomo Rajasthan';
-  const title = base + (tails.find((tail) => (base + tail + suffix).length <= 60) ?? '');
+  const base = [...(full + suffix)].length <= 60 ? full : short;
+  const title = base + (tails.find((tail) => [...(base + tail + suffix)].length <= 60) ?? '');
   const { oneway } = await routeFares(route);
   return {
     title,

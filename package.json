@@ -13,6 +13,7 @@
     "contrast": "node scripts/contrast.mjs",
     "audit": "node scripts/audit.mjs",
     "seo:check": "node scripts/seo-check.mjs",
+    "links:check": "node scripts/links-check.mjs",
     "copy:check": "node scripts/copy-check.mjs",
     "test": "node --test 'src/**/*.test.ts'"
   },

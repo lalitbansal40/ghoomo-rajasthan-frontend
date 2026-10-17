@@ -38,6 +38,17 @@ import {
 /** The places whose desert safari is sold on /desert-safari (anchors there by the same slug). */
 export const SAFARI_PLACES = new Set(['jaisalmer', 'bikaner', 'pushkar', 'osian']);
 
+/**
+ * A place page's title: as much of "— what to see, when to go" as fits in 60 characters with
+ * the " · Ghoomo Rajasthan" the layout adds.
+ */
+export function placeTitle(place: Place, locale: Locale): string {
+  const name = place[locale].name;
+  const tails = locale === 'hi' ? [' — क्या देखें, कब जाएँ', ' — क्या देखें', ''] : [' — what to see, when to go', ' — what to see', ''];
+  const suffix = locale === 'hi' ? ' · घूमो राजस्थान' : ' · Ghoomo Rajasthan';
+  return name + (tails.find((tail) => [...(name + tail + suffix)].length <= 60) ?? '');
+}
+
 /** What a place page says about itself in a search result — its line and its first sights. */
 export function placeDescription(place: Place, locale: Locale): string {
   const t = place[locale];

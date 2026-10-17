@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { PLACES, placeBySlug } from '@/content/places';
 import { alternates } from '@/lib/seo';
-import { PlacePage, placeDescription } from '../../../_destinations/PlacePage';
+import { PlacePage, placeDescription, placeTitle } from '../../../_destinations/PlacePage';
 
 // Every place is built ahead; any other slug is a 404.
 export const dynamicParams = false;
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ place: st
   const p = placeBySlug((await params).place);
   if (!p) return {};
   return {
-    title: `${p.en.name} — what to see, when to go`,
+    title: placeTitle(p, 'en'),
     description: placeDescription(p, 'en'),
     alternates: alternates(`/destinations/${p.slug}`, 'en'),
   };

@@ -2,6 +2,7 @@ import { dict, formatRupees, localePath, type Locale } from '@/i18n';
 import { exists } from '@/i18n/pages';
 import { LINKABLE_ROUTES, routeByPair, type GhoomoRoute } from '@/content/routes/list';
 import { ROUTE_TEXT } from '@/content/routes/text';
+import { routeIndexable } from '@/content/routes/indexable';
 import { routeKey } from '@/lib/slug';
 import { cityName, routeEndName } from '@/content/cities';
 import { PLACES, placeForCity } from '@/content/places';
@@ -40,8 +41,7 @@ export function routeNames(route: GhoomoRoute, locale: Locale) {
   return { from: routeEndName(route.pickup, locale), to: routeEndName(route.drop, locale) };
 }
 
-/** Whether search engines may see this route: words of our own, and not held. */
-export const routeIndexable = (route: GhoomoRoute) => !route.held && Boolean(ROUTE_TEXT[routeKey(route.pickup, route.drop)]);
+export { routeIndexable } from '@/content/routes/indexable';
 
 /** A route's search-result line: the distance and the lowest fare when known, then its own first words. */
 export function routeDescription(route: GhoomoRoute, oneway: OnewayView | null, locale: Locale): string {

@@ -6,9 +6,9 @@ import { CabHub } from '../../_cab/CabHub';
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: 'Cab with driver in Rajasthan — fares by car',
+  title: 'Cab with driver in Rajasthan — fares',
   description:
-    'One-way cabs between cities, a car and driver for a Rajasthan tour by the km, a car for the day in town, and Tempo Travellers for groups — every fare shown.',
+    'One-way cabs between cities, a car and driver for a Rajasthan tour by the km, a car for the day in town and Tempo Travellers — every fare shown.',
   alternates: alternates('/cab', 'en'),
 };
 

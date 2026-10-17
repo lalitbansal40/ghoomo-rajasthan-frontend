@@ -4,7 +4,7 @@ import { alternates } from '@/lib/seo';
 import { DestinationsList } from '../../_destinations/DestinationsList';
 
 export const metadata: Metadata = {
-  title: 'राजस्थान घूमने की जगहें — क़िले, झीलें, रेगिस्तान',
+  title: 'राजस्थान घूमने की जगहें, इलाक़े के हिसाब से',
   description: 'राजस्थान की हर देखने लायक जगह, इलाक़े के हिसाब से — क्या देखें, कब जाएँ, कितने दिन, और वहाँ ले जाने के लिए ड्राइवर के साथ गाड़ी।',
   alternates: alternates('/destinations', 'hi'),
 };
