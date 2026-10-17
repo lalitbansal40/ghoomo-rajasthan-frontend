@@ -1,5 +1,11 @@
-import { dict, type Locale } from '@/i18n';
-import { whatsappLink } from './site';
+import type { Locale } from '@/i18n';
+import { whatsappLink } from './site.ts';
+
+const enquiryUrl = (type: string, product: string, name?: string) => {
+  const q = new URLSearchParams({ type, product });
+  if (name) q.set('name', name.slice(0, 80));
+  return `/enquiry?${q.toString()}`;
+};
 
 /**
  * Every "Book" on the site goes through here (owner, 16 Oct 2026: booking the Hello My Cab
@@ -9,34 +15,42 @@ import { whatsappLink } from './site';
  */
 
 export function bookPackageLink(
-  tour: { name: string; days: number; nights: number },
-  vehicle: string,
-  locale: Locale,
+  tour: { slug?: string; name: string; days: number; nights: number },
+  _vehicle: string,
+  _locale: Locale,
 ): string {
-  return whatsappLink(
-    locale === 'hi'
-      ? `नमस्ते, मुझे ${tour.name} (${tour.days} दिन / ${tour.nights} रात) ${vehicle} में बुक करना है। कब जाना है: ___ , कितने लोग: ___`
-      : `Namaste, I want to book ${tour.name} (${tour.days}D/${tour.nights}N), car: ${vehicle}. Travel date: ___ , people: ___`,
-  );
+  void _vehicle;
+  void _locale;
+  return enquiryUrl('package', tour.slug ?? 'custom-tour', tour.name);
 }
 
-export function bookRouteLink(from: string, to: string, locale: Locale, car?: string): string {
-  if (car) return whatsappLink(dict(locale).route.bookMessage(from, to, car));
-  return whatsappLink(
-    locale === 'hi'
-      ? `नमस्ते, ${from} से ${to} के लिए कैब चाहिए। तारीख: ___ , कितने लोग: ___`
-      : `Namaste, I need a cab from ${from} to ${to}. Date: ___ , people: ___`,
-  );
+const vehicleKey = (label?: string) => {
+  const value = label?.toLowerCase() ?? '';
+  if (value.includes('hatchback')) return 'hatchback';
+  if (value.includes('ertiga')) return 'ertiga';
+  if (value.includes('crysta')) return 'crysta';
+  if (value.includes('traveller')) return 'tt_12';
+  if (value.includes('urbania')) return 'urbania';
+  return 'dzire';
+};
+
+export function bookRouteLink(from: string, to: string, locale: Locale, car?: string, held = false): string {
+  if (held) return enquiryUrl('cab', `${from}-to-${to}`, `${from} to ${to}`);
+  const query = new URLSearchParams({ from, to, car: vehicleKey(car) });
+  return `${locale === 'hi' ? '/hi' : ''}/booking?${query.toString()}`;
 }
 
 /** A place page's "plan on WhatsApp": the place named, the date and people to fill in. */
-export function bookPlaceLink(name: string, locale: Locale): string {
-  return whatsappLink(dict(locale).place.bookMessage(name));
+export function bookPlaceLink(name: string, _locale: Locale): string {
+  void _locale;
+  return enquiryUrl('custom', 'custom-trip', name);
 }
 
 /** A safari's "Book": the place and the safari named, the date and people to fill in. */
-export function bookSafariLink(place: string, offer: string, locale: Locale): string {
-  return whatsappLink(dict(locale).safari.bookMessage(place, offer));
+export function bookSafariLink(place: string, offer: string, _locale: Locale): string {
+  void _locale;
+  const slug = `${place}-${offer}`.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 100) || 'desert-safari';
+  return enquiryUrl('safari', slug, `${offer}, ${place}`);
 }
 
 export function enquireLink(locale: Locale): string {

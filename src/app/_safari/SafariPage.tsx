@@ -141,7 +141,7 @@ export async function SafariPage({ locale }: { locale: Locale }) {
                           {SAFARI_IS_SAMPLE ? <Badge tone="sample">{t.pkg.samplePrice}</Badge> : null}
                         </div>
                         <div className="mt-4">
-                          <Button variant="whatsapp" size="sm" href={bookSafariLink(sp.name, ot.name, locale)}>
+                          <Button variant="primary" size="sm" href={bookSafariLink(sp.name, ot.name, locale)}>
                             {s.book}
                           </Button>
                         </div>

@@ -3,27 +3,14 @@
 import { useState } from 'react';
 import { postGhoomo } from '@/lib/api';
 import { indianMobile, validEnquiryDate } from '@/lib/enquiry';
-import type { Locale } from '@/i18n';
+import { dict, type Locale } from '@/i18n';
 
 type EnquiryType = 'package' | 'safari' | 'cab' | 'custom';
-
-const copy = {
-  en: {
-    name: 'Your name', phone: 'Mobile number', date: 'Travel date', flexible: 'Dates are flexible',
-    travellers: 'Travellers', type: 'What are you planning?', package: 'Tour package', safari: 'Desert safari', cab: 'Cab trip', custom: 'Custom trip / not sure yet',
-    vehicle: 'Preferred car (optional)', choose: 'No preference', message: 'Anything else we should know? (optional)', consent: 'I agree that Ghoomo Rajasthan may contact me about this travel enquiry. Read our', privacy: 'privacy policy', terms: 'terms', submit: 'Send enquiry', sending: 'Sending…', success: 'Enquiry received. Our team will contact you to discuss the details. Price and availability will be confirmed by the team.', retry: 'We could not send this just now. Please try again.', required: 'Please complete the required fields.', phoneError: 'Enter a valid 10-digit Indian mobile number.', dateError: 'Choose today or a later date.', consentError: 'Please agree before sending your enquiry.',
-  },
-  hi: {
-    name: 'आपका नाम', phone: 'मोबाइल नंबर', date: 'यात्रा की तारीख़', flexible: 'तारीख़ तय नहीं है',
-    travellers: 'यात्रियों की संख्या', type: 'आप क्या प्लान कर रहे हैं?', package: 'टूर पैकेज', safari: 'डेज़र्ट सफ़ारी', cab: 'कैब यात्रा', custom: 'अपनी यात्रा / अभी तय नहीं',
-    vehicle: 'पसंदीदा गाड़ी (ज़रूरी नहीं)', choose: 'कोई पसंद नहीं', message: 'हमें और कुछ बताना चाहेंगे? (ज़रूरी नहीं)', consent: 'मैं इस यात्रा पूछताछ के बारे में घूमो राजस्थान से संपर्क पाने के लिए सहमत हूँ। पढ़ें', privacy: 'प्राइवेसी नीति', terms: 'शर्तें', submit: 'पूछताछ भेजें', sending: 'भेज रहे हैं…', success: 'आपकी पूछताछ मिल गई है। हमारी टीम जानकारी तय करने के लिए आपसे संपर्क करेगी। दाम और उपलब्धता टीम बताएगी।', retry: 'अभी भेज नहीं पाए। कृपया फिर कोशिश करें।', required: 'ज़रूरी जानकारी भरें।', phoneError: '10 अंकों का सही भारतीय मोबाइल नंबर लिखें।', dateError: 'आज या उसके बाद की तारीख़ चुनें।', consentError: 'पूछताछ भेजने से पहले सहमति दें।',
-  },
-} as const;
 
 export function EnquiryForm({ locale, initialType = 'custom', productSlug = 'custom-trip', productLabel = '' }: {
   locale: Locale; initialType?: EnquiryType; productSlug?: string; productLabel?: string;
 }) {
-  const t = copy[locale];
+  const t = dict(locale).enquiry;
   const [type, setType] = useState<EnquiryType>(initialType);
   const [date, setDate] = useState('');
   const [flexible, setFlexible] = useState(false);
@@ -34,7 +21,7 @@ export function EnquiryForm({ locale, initialType = 'custom', productSlug = 'cus
   const [phone, setPhone] = useState('');
   const [travellers, setTravellers] = useState('2');
   const [vehicleType, setVehicleType] = useState('');
-  const [message, setMessage] = useState(productLabel ? `${locale === 'hi' ? 'चुना हुआ विकल्प' : 'Selected'}: ${productLabel}` : '');
+  const [message, setMessage] = useState(productLabel ? `${dict(locale).enquiry.selected}: ${productLabel}` : '');
   const [consent, setConsent] = useState(false);
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
@@ -77,7 +64,7 @@ export function EnquiryForm({ locale, initialType = 'custom', productSlug = 'cus
       <label className={label}>{t.travellers}<input className={field} type="number" min={1} max={50} required value={travellers} onChange={e => setTravellers(e.target.value)} /></label>
       <label className={label}>{t.date}<input className={field} type="date" disabled={flexible} min={new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' })} required={!flexible} value={date} onChange={e => setDate(e.target.value)} /></label>
       <label className="flex min-h-12 items-center gap-3 self-end text-sm"><input type="checkbox" className="size-5 accent-royal" checked={flexible} onChange={e => setFlexible(e.target.checked)} />{t.flexible}</label>
-      <label className={label}>{t.vehicle}<select className={field} value={vehicleType} onChange={e => setVehicleType(e.target.value)}><option value="">{t.choose}</option><option value="hatchback">Hatchback</option><option value="dzire">Sedan</option><option value="ertiga">Ertiga</option><option value="crysta">Innova Crysta</option></select></label>
+      <label className={label}>{t.vehicle}<select className={field} value={vehicleType} onChange={e => setVehicleType(e.target.value)}><option value="">{t.choose}</option><option value="hatchback">{t.hatchback}</option><option value="dzire">{t.dzire}</option><option value="ertiga">{t.ertiga}</option><option value="crysta">{t.crysta}</option></select></label>
     </div>
     <label className={label}>{t.message}<textarea className={`${field} min-h-24`} maxLength={500} value={message} onChange={e => setMessage(e.target.value)} /></label>
     <label className="flex items-start gap-3 text-sm leading-6"><input className="mt-1 size-5 shrink-0 accent-royal" type="checkbox" required checked={consent} onChange={e => setConsent(e.target.checked)} /><span>{t.consent} <a className="text-royal underline" href={locale === 'hi' ? '/hi/privacy' : '/privacy'}>{t.privacy}</a> · <a className="text-royal underline" href={locale === 'hi' ? '/hi/terms' : '/terms'}>{t.terms}</a>.</span></label>

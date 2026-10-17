@@ -54,6 +54,21 @@ export async function postGhoomo<T>(path: string, payload: unknown, signal?: Abo
   return body.data as T;
 }
 
+/** Uncached browser read for checkout data; personal booking reads use the Ghoomo namespace. */
+export async function getPublic<T>(path: string, signal?: AbortSignal): Promise<T> {
+  const res = await fetch(`${env.apiBaseUrl}/public${path}`, { cache: 'no-store', signal, headers: { accept: 'application/json' } });
+  const body = await res.json().catch(() => null);
+  if (!res.ok || !body?.ok) throw new ApiError(body?.error?.code ?? 'REQUEST_FAILED', body?.error?.message ?? 'Request failed');
+  return body.data as T;
+}
+
+export async function getGhoomo<T>(path: string, signal?: AbortSignal): Promise<T> {
+  const res = await fetch(`${env.apiBaseUrl}/public/ghoomo${path}`, { cache: 'no-store', signal, headers: { accept: 'application/json' } });
+  const body = await res.json().catch(() => null);
+  if (!res.ok || !body?.ok) throw new ApiError(body?.error?.code ?? 'REQUEST_FAILED', body?.error?.message ?? 'Request failed');
+  return body.data as T;
+}
+
 // ── shapes the backend actually returns ───────────────────────────────────────
 export interface City {
   name: string; // JAIPUR — the key every other endpoint takes

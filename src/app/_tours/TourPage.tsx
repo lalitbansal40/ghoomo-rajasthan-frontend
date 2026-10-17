@@ -172,7 +172,7 @@ export function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Locale }) 
       </main>
       <Footer locale={locale} />
       <StickyCta>
-        <Button variant="whatsapp" href={bookPackageLink(tour, cheapestCar, locale)}>
+        <Button variant="primary" href={bookPackageLink(tour, cheapestCar, locale)}>
           {locale === 'hi' ? 'बुक करें' : 'Book'}
         </Button>
         <Button variant="call" href={brand.phoneHref}>

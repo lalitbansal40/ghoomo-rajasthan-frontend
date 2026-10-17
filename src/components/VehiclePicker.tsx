@@ -38,7 +38,7 @@ export function VehiclePicker({
       </div>
       <PriceTag rupees={chosen.rupees} vehicle={chosen.vehicle} locale={locale} />
       <div className="flex flex-col gap-3 sm:flex-row">
-        <Button variant="whatsapp" size="lg" href={bookPackageLink(tour, chosen.vehicle, locale)}>
+        <Button variant="primary" size="lg" href={bookPackageLink(tour, chosen.vehicle, locale)}>
           {labels.book}
         </Button>
         <Button variant="call" size="lg" href={brand.phoneHref}>

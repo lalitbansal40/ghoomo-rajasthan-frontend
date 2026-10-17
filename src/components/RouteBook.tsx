@@ -31,7 +31,7 @@ export function RouteBook({
           </Chip>
         ))}
       </div>
-      <Button variant="whatsapp" size="lg" href={messages[car] ?? whatsappLink()}>
+      <Button variant="primary" size="lg" href={messages[car] ?? whatsappLink()}>
         {labels.book}
       </Button>
     </div>

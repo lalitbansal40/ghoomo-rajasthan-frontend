@@ -15,6 +15,8 @@ export const PAGES: Record<string, readonly Locale[]> = {
   '/styleguide': ['en', 'hi'],
   '/contact': ['en', 'hi'],
   '/enquiry': ['en', 'hi'],
+  '/booking': ['en', 'hi'],
+  '/my-bookings': ['en', 'hi'],
   '/privacy': ['en', 'hi'],
   '/terms': ['en', 'hi'],
   '/refund': ['en', 'hi'],
@@ -23,6 +25,7 @@ export const PAGES: Record<string, readonly Locale[]> = {
 
 /** Families of pages (a page per tour): every path under the prefix exists in these languages. */
 const PREFIXES: Array<[string, readonly Locale[]]> = [
+  ['/booking/', ['en', 'hi']],
   ['/packages/', ['en', 'hi']],
   ['/destinations/', ['en', 'hi']],
   ['/cab/', ['en', 'hi']],
@@ -40,4 +43,5 @@ export const NAV = [
   { key: 'cab', path: '/cab' },
   { key: 'desertSafari', path: '/desert-safari' },
   { key: 'contact', path: '/contact' },
+  { key: 'myBookings', path: '/my-bookings' },
 ] as const;

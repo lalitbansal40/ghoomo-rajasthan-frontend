@@ -87,7 +87,7 @@ export async function RoutePage({ route, locale }: { route: GhoomoRoute; locale:
   const arriving = placeForCity(route.drop);
 
   const cars = (oneway?.rows ?? []).slice().sort((a, b) => a.rupees - b.rupees);
-  const bookLinks = Object.fromEntries(cars.map((c) => [c.key, bookRouteLink(from, to, locale, c.label)]));
+  const bookLinks = Object.fromEntries(cars.map((c) => [c.key, bookRouteLink(route.pickup, route.drop, locale, c.key, Boolean(route.held))]));
   const faq = routeFaq(from, to, oneway, roundtrip, locale);
   const roundLow = roundtrip?.rows.filter((r) => !r.van).sort((a, b) => a.rupees - b.rupees)[0];
 
@@ -150,7 +150,7 @@ export async function RoutePage({ route, locale }: { route: GhoomoRoute; locale:
                   labels={{ choose: rt.chooseCar, book: rt.book }}
                 />
               ) : (
-                <Button variant="whatsapp" size="lg" href={bookRouteLink(from, to, locale)}>
+                <Button variant="primary" size="lg" href={bookRouteLink(route.pickup, route.drop, locale, undefined, Boolean(route.held))}>
                   {rt.book}
                 </Button>
               )}
@@ -292,7 +292,7 @@ export async function RoutePage({ route, locale }: { route: GhoomoRoute; locale:
       </main>
       <Footer locale={locale} />
       <StickyCta>
-        <Button variant="whatsapp" href={low ? bookLinks[low.key] : bookRouteLink(from, to, locale)}>
+        <Button variant="primary" href={low ? bookLinks[low.key] : bookRouteLink(route.pickup, route.drop, locale, undefined, Boolean(route.held))}>
           {t.cta.whatsapp}
         </Button>
         <Button variant="call" href={brand.phoneHref}>

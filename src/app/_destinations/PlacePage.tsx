@@ -129,7 +129,7 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
               ))}
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button variant="whatsapp" href={bookPlaceLink(txt.name, locale)}>
+              <Button variant="primary" href={bookPlaceLink(txt.name, locale)}>
                 {pt.plan}
               </Button>
               <Button variant="call" href={brand.phoneHref}>
@@ -273,7 +273,7 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
       <Footer locale={locale} />
       <StickyCta>
         {/* The short label: two buttons must fit a 360 px phone side by side, in Hindi too. */}
-        <Button variant="whatsapp" href={bookPlaceLink(txt.name, locale)}>
+        <Button variant="primary" href={bookPlaceLink(txt.name, locale)}>
           {t.cta.whatsapp}
         </Button>
         <Button variant="call" href={brand.phoneHref}>
@@ -284,4 +284,3 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
     </>
   );
 }
-
