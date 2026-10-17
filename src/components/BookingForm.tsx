@@ -5,6 +5,7 @@ import { ApiError, getPublic, postGhoomo, type City, type Vehicle } from '@/lib/
 import { indianMobile } from '@/lib/enquiry';
 import { dict, type Locale } from '@/i18n';
 import { cityName } from '@/content/cities';
+import { CityPicker } from '@/components/CityPicker';
 
 type Trip = 'one_way' | 'round_trip';
 type Quote = {
@@ -66,7 +67,7 @@ export function BookingForm({ locale, from = '', to = '', car = '' }: { locale: 
 
   async function getQuote(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault(); setError(''); setDisabled(false);
-    if (!date || !pickup || !drop || pickup === drop || !selectedVehicle || Number(pax) < 1 || Number(pax) > (selectedVehicle.seats ?? 4)) return setError(t.missing);
+    if (!date || !city(pickup) || !city(drop) || pickup === drop || !selectedVehicle || Number(pax) < 1 || Number(pax) > (selectedVehicle.seats ?? 4)) return setError(t.missing);
     if (new Date(indiaIso(date, time)).getTime() < Date.now() + 2 * 60 * 60 * 1000 - 60_000) return setError(t.missing);
     if (trip === 'round_trip' && (!returnDate || returnDate < date || (returnDate === date && returnTime <= time))) return setError(t.missing);
     setBusy(true);
@@ -113,8 +114,8 @@ export function BookingForm({ locale, from = '', to = '', car = '' }: { locale: 
     <form onSubmit={getQuote} className="space-y-5">
       <div className="grid gap-4 sm:grid-cols-2">
         <label className={label}>{t.trip}<select className={field} value={trip} onChange={e => { const next = e.target.value as Trip; setTrip(next); setQuote(null); const nextVehicles = vehicles.filter(v => v.tripTypes.includes(next)); if (!nextVehicles.some(v => v.key === vehicle) && nextVehicles[0]) setVehicle(nextVehicles[0].key); }}><option value="one_way">{t.one}</option><option value="round_trip">{t.round}</option></select></label>
-        <label className={label}>{t.from}<select className={field} required value={pickup} onChange={e => { setPickup(e.target.value); setQuote(null); }}><option value="">{t.chooseCity}</option>{cities.map(c => <option key={c.name} value={c.name}>{cityName(c.name, locale)}</option>)}</select></label>
-        <label className={label}>{t.to}<select className={field} required value={drop} onChange={e => { setDrop(e.target.value); setQuote(null); }}><option value="">{t.chooseCity}</option>{cities.map(c => <option key={c.name} value={c.name}>{cityName(c.name, locale)}</option>)}</select></label>
+        <CityPicker label={t.from} placeholder={t.chooseCity} cities={cities} value={pickup} cityLabel={city => cityName(city.name, locale)} onChange={city => { setPickup(city); setQuote(null); }} />
+        <CityPicker label={t.to} placeholder={t.chooseCity} cities={cities} value={drop} cityLabel={city => cityName(city.name, locale)} onChange={city => { setDrop(city); setQuote(null); }} />
         <label className={label}>{t.car}<select className={field} required value={vehicle} onChange={e => { setVehicle(e.target.value); setQuote(null); }}>{allowedVehicles.map(v => <option key={v.key} value={v.key}>{localizedVehicle(v.key, v.label, locale)}{v.seats ? ` · ${v.seats} ${t.seats}` : ''}</option>)}</select></label>
         <label className={label}>{t.passengers}<input className={field} type="number" min="1" max={selectedVehicle?.seats ?? 4} required value={pax} onChange={e => setPax(e.target.value)} /></label>
         <label className={label}>{t.date}<input className={field} type="date" min={dateMin} required value={date} onChange={e => { setDate(e.target.value); setQuote(null); }} /></label>

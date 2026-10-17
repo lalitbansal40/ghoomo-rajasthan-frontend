@@ -89,6 +89,7 @@ export function BookingReturn({ id, locale }: { id: string; locale: Locale }) {
         <div className="flex justify-between gap-4"><dt>{t.taxPaid}</dt><dd>{money(view.gstPaid)}</dd></div>
         <div className="flex justify-between gap-4"><dt>{t.balance}</dt><dd>{money(Math.max(0, view.booking.totalPayable - view.amountPaid))}</dd></div>
       </dl>
+      {view.billUrl ? <p className="mt-5"><a className="font-semibold text-royal underline" href={view.billUrl} target="_blank" rel="noreferrer" referrerPolicy="no-referrer">{t.bill}</a></p> : null}
       {!view.paid ? <><p className="mt-5 text-sm text-muted">{t.paymentSupport}</p>{canRetry ? <button className="mt-5 min-h-12 rounded-lg bg-maroon-600 px-5 py-3 font-semibold text-white disabled:opacity-60" disabled={busy || token === null} onClick={retry}>{busy ? t.paymentLoading : t.retry}</button> : null}</> : null}
     </> : null}
     <p className="mt-6"><a className="font-semibold text-royal underline" href={locale === 'hi' ? '/hi/contact' : '/contact'}>{t.help}</a></p>
