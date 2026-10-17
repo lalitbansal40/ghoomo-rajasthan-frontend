@@ -10,7 +10,7 @@
  *   · FAIL if <html lang> is wrong, the page is indexable before launch, or an English page
  *     preloads a devanagari font
  * Then, with animation reduced, FAIL if anything on the home page still animates; and Lighthouse
- * (mobile, three runs, the median) on / and /hi and a tour page in each: performance, accessibility and best practices
+ * (mobile, three runs, the median) on / and /hi and one page of each Phase 3 kind: performance, accessibility and best practices
  * at least 95, CLS under 0.05, TBT under 150 ms (LCP is reported — see below). Exits 1 on any FAIL.
  */
 import puppeteer from 'puppeteer-core';
@@ -27,10 +27,19 @@ const OUT = arg('out') ?? 'audit-out';
 const LIGHTHOUSE = !process.argv.includes('--no-lighthouse');
 const TOUR = '/packages/royal-rajasthan-circuit';
 const PAGES = (
-  arg('pages') ?? `/,/hi,/packages,/hi/packages,${TOUR},/hi${TOUR},/hi/refund,/contact,/kuch-bhi,/packages/nahi-hai`
+  arg('pages') ??
+  [
+    '/', '/hi', '/packages', '/hi/packages', TOUR, `/hi${TOUR}`,
+    '/destinations', '/hi/destinations/jaisalmer', '/destinations/khatu-shyam-ji', '/destinations/salasar-balaji',
+    '/cab', '/cab/jaipur-to-udaipur', '/hi/cab/udaipur-to-jaipur', '/cab/delhi-to-agra',
+    '/desert-safari', '/hi/about', '/hi/refund', '/contact',
+    '/kuch-bhi', '/packages/nahi-hai', '/cab/nahi-hai', '/destinations/nahi-hai',
+  ].join(',')
 ).split(',');
 /** Pages that must answer 404 — an unknown path, and a tour that does not exist. */
 const MISSING = (path) => path.includes('kuch-bhi') || path.includes('nahi-hai');
+/** Lighthouse: the home pages, and one page of each new kind. */
+const LH_PAGES = ['/', '/hi', '/destinations/jaisalmer', '/hi/cab/jaipur-to-udaipur', '/cab', '/desert-safari'];
 const SIZES = [
   ['phone', 360, 780, true],
   ['tablet', 768, 1024, true],
@@ -109,16 +118,17 @@ for (const path of PAGES) {
   }
 }
 
-// Reduced motion: nothing on the home page (the car on the dunes, the sun) may still animate.
-{
+// Reduced motion: nothing on the home page (the car on the dunes, the sun, the camel) or the
+// safari page (the walking camel) may still animate.
+for (const p of ['/', '/desert-safari']) {
   const page = await browser.newPage();
   await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
-  await page.goto(`${BASE}/`, { waitUntil: 'load' });
+  await page.goto(`${BASE}${p}`, { waitUntil: 'load' });
   const moving = await page.evaluate(() =>
     [...document.querySelectorAll('*')].filter((el) => getComputedStyle(el).animationName !== 'none').map((el) => el.className.toString().slice(0, 40)),
   );
-  if (moving.length) fail(`reduced motion: ${moving.length} element(s) still animate — ${moving.slice(0, 3).join(' | ')}`);
-  else console.log('\nreduced motion: nothing animates ✓');
+  if (moving.length) fail(`reduced motion ${p}: ${moving.length} element(s) still animate — ${moving.slice(0, 3).join(' | ')}`);
+  else console.log(`\nreduced motion ${p}: nothing animates ✓`);
   await page.close();
 }
 await browser.close();
@@ -127,7 +137,7 @@ await browser.close();
 if (LIGHTHOUSE) {
   const dir = mkdtempSync(join(tmpdir(), 'ghoomo-lh-'));
   const median = (xs) => [...xs].sort((a, b) => a - b)[Math.floor(xs.length / 2)];
-  for (const path of ['/', '/hi', TOUR, `/hi${TOUR}`]) {
+  for (const path of LH_PAGES) {
     const runs = [];
     for (let i = 0; i < 3; i++) {
       const out = join(dir, `r${i}.json`);
