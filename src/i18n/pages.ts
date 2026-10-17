@@ -9,6 +9,7 @@ export const PAGES: Record<string, readonly Locale[]> = {
   '/': ['en', 'hi'],
   '/packages': ['en', 'hi'],
   '/destinations': ['en', 'hi'],
+  '/cab': ['en', 'hi'],
   '/styleguide': ['en', 'hi'],
   '/contact': ['en', 'hi'],
   '/privacy': ['en', 'hi'],

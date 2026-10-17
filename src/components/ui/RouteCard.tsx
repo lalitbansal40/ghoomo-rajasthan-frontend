@@ -28,7 +28,7 @@ export function RouteCard({
   return (
     <Link
       href={href}
-      className="group flex items-center gap-4 rounded-[var(--radius-md)] bg-white p-4 shadow-card ring-1 ring-black/5 hover:ring-royal-200"
+      className="group flex min-w-0 items-center gap-4 rounded-[var(--radius-md)] bg-white p-4 shadow-card ring-1 ring-black/5 hover:ring-royal-200"
     >
       <span aria-hidden className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-royal-50 text-royal-600">
         <Icon name="car" size={22} />
