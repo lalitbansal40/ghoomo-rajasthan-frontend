@@ -14,6 +14,7 @@ export const PAGES: Record<string, readonly Locale[]> = {
   '/about': ['en', 'hi'],
   '/styleguide': ['en', 'hi'],
   '/contact': ['en', 'hi'],
+  '/enquiry': ['en', 'hi'],
   '/privacy': ['en', 'hi'],
   '/terms': ['en', 'hi'],
   '/refund': ['en', 'hi'],

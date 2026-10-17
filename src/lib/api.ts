@@ -38,6 +38,22 @@ async function get<T>(path: string, revalidate = DAY): Promise<T> {
   return body.data as T;
 }
 
+/** Browser-side, uncached write to the server-owned Ghoomo public API namespace. */
+export async function postGhoomo<T>(path: string, payload: unknown, signal?: AbortSignal): Promise<T> {
+  const res = await fetch(`${env.apiBaseUrl}/public/ghoomo${path}`, {
+    method: 'POST',
+    cache: 'no-store',
+    signal,
+    headers: { accept: 'application/json', 'content-type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  const body = await res.json().catch(() => null);
+  if (!res.ok || !body?.ok) {
+    throw new ApiError(body?.error?.code ?? 'REQUEST_FAILED', body?.error?.message ?? 'Request failed');
+  }
+  return body.data as T;
+}
+
 // ── shapes the backend actually returns ───────────────────────────────────────
 export interface City {
   name: string; // JAIPUR — the key every other endpoint takes
