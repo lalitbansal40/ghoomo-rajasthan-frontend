@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next';
+import { FONT_ASSETS } from './src/app/font-assets';
 
 const nextConfig: NextConfig = {
   images: {
@@ -31,6 +32,10 @@ const nextConfig: NextConfig = {
 
   async headers() {
     return [
+      ...FONT_ASSETS.map((source) => ({
+        source,
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      })),
       {
         source: '/:path*',
         headers: [

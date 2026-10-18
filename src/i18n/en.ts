@@ -1,3 +1,4 @@
+import { ERROR_COPY } from './error-copy';
 /**
  * Every short piece of interface text, in English. hi.ts must have every key (its type is
  * built from this one, so a missing key fails the build). No component writes user-facing
@@ -260,7 +261,7 @@ export const en = {
     loadingBooking: 'Your booking is on its way…',
     empty: 'Nothing here yet',
     error: 'Something went wrong',
-    retry: 'Try again',
+    retry: ERROR_COPY.en.retry,
     dismiss: 'Close',
   },
   common: {
@@ -273,8 +274,8 @@ export const en = {
     notFoundTitle: 'This road does not lead anywhere',
     notFoundBody: 'The page you were looking for is not here. Let us help you find your way.',
     goHome: 'Go to the home page',
-    errorTitle: 'Something went wrong',
-    errorBody: 'Something went wrong on our side. Please try again.',
+    errorTitle: ERROR_COPY.en.title,
+    errorBody: ERROR_COPY.en.body,
     explore: 'Explore',
     company: 'Company',
     legal: 'Legal',

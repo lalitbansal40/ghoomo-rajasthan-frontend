@@ -1,6 +1,6 @@
-import { dict, formatRupees, type Locale } from '@/i18n';
+import { dict, type Locale } from '@/i18n';
+import { PriceTagView } from './PriceTagView';
 import { PACKAGES_ARE_SAMPLE } from '@/content/packages';
-import { Badge } from './Badge';
 
 /**
  * "from ₹27,999" for a car — the price people compare. While the packages are samples the
@@ -23,16 +23,6 @@ export function PriceTag({
   className?: string;
 }) {
   const t = dict(locale);
-  return (
-    <div className={`flex flex-col ${className}`}>
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="text-small text-muted">{rupees == null ? null : t.pkg.from}</span>
-        {sample ? <Badge tone="sample">{t.pkg.samplePrice}</Badge> : null}
-      </div>
-      <span className="text-price text-maroon-600">{rupees == null ? t.catalog.onRequest : formatRupees(rupees, true)}</span>
-      <span className="text-small text-muted">
-        {[vehicle, gst ? t.pkg.gstExtra : null].filter(Boolean).join(' · ')}
-      </span>
-    </div>
-  );
+  return <PriceTagView rupees={rupees} vehicle={vehicle} sample={sample} gst={gst} className={className}
+    labels={{ from: t.pkg.from, samplePrice: t.pkg.samplePrice, onRequest: t.catalog.onRequest, gstExtra: t.pkg.gstExtra }} />;
 }

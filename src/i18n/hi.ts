@@ -1,3 +1,4 @@
+import { ERROR_COPY } from './error-copy';
 import type { Dictionary } from './en';
 
 /**
@@ -264,7 +265,7 @@ export const hi: Dictionary = {
     loadingBooking: 'आपकी बुकिंग बन रही है…',
     empty: 'अभी यहाँ कुछ नहीं है',
     error: 'कुछ गड़बड़ हो गई',
-    retry: 'फिर से कोशिश करें',
+    retry: ERROR_COPY.hi.retry,
     dismiss: 'बंद करें',
   },
   common: {
@@ -277,8 +278,8 @@ export const hi: Dictionary = {
     notFoundTitle: 'यह रास्ता कहीं नहीं जाता',
     notFoundBody: 'जो पेज आप ढूँढ रहे थे वह यहाँ नहीं है। चलिए, सही रास्ता ढूँढते हैं।',
     goHome: 'होम पेज पर जाएँ',
-    errorTitle: 'कुछ गड़बड़ हो गई',
-    errorBody: 'हमारी तरफ़ से कुछ गड़बड़ हुई। कृपया फिर से कोशिश करें।',
+    errorTitle: ERROR_COPY.hi.title,
+    errorBody: ERROR_COPY.hi.body,
     explore: 'घूमें',
     company: 'कंपनी',
     legal: 'नियम',

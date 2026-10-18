@@ -3,24 +3,26 @@
 import { useState } from 'react';
 import { Chip } from '@/components/ui/Chip';
 import { Button } from '@/components/ui/Button';
-import { PriceTag } from '@/components/ui/PriceTag';
+import { PriceTagView, type PriceLabels } from '@/components/ui/PriceTagView';
 import { bookPackageLink } from '@/lib/book';
 import { brand } from '@/lib/site';
 import type { Locale } from '@/i18n';
 
 /**
- * Choose the car: its price shows, and "Book" carries that car into the WhatsApp message
- * (Phase 4: into the booking form). Starts on the cheapest car.
+ * Choose a car to compare the package's published rates. The CTA keeps the stable
+ * package enquiry context; publication does not enable booking or checkout.
  */
 export function VehiclePicker({
   tour,
   prices,
   locale,
   labels,
+  priceLabels,
 }: {
   tour: { slug: string; name: string; days: number; nights: number; isSample?: boolean; taxNote?: string };
   prices: Array<{ vehicle: string; rupees: number }>;
   locale: Locale;
+  priceLabels: PriceLabels;
   labels: { car: string; book: string; call: string };
 }) {
   const sorted = [...prices].sort((a, b) => a.rupees - b.rupees);
@@ -36,7 +38,7 @@ export function VehiclePicker({
           </Chip>
         ))}
       </div> : null}
-      <PriceTag rupees={chosen?.rupees} vehicle={chosen?.vehicle} sample={tour.isSample} gst={tour.isSample} locale={locale} />
+      <PriceTagView rupees={chosen?.rupees} vehicle={chosen?.vehicle} sample={tour.isSample} gst={tour.isSample} labels={priceLabels} />
       {tour.taxNote ? <p>{tour.taxNote}</p> : null}
       <div className="flex flex-col gap-3 sm:flex-row">
         <Button variant="primary" size="lg" href={bookPackageLink(tour, chosen?.vehicle ?? '', locale)}>

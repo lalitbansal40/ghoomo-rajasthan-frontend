@@ -17,11 +17,11 @@ function words(value: unknown): TourText & { includes: string[]; excludes: strin
 }
 export function parseCatalogPackage(value: unknown, apiBase: string): TourPackage {
   const p = record(value); const slug = str(p.slug, 100);
-  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) || p.schemaVersion !== 1 || p.isSample !== false || p.saleEligibility !== 'enquiry_only' || p.currency !== 'INR' || p.rateBasis !== 'per_car_tour') fail();
+  if (slug.length < 3 || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) || p.schemaVersion !== 1 || p.isSample !== false || p.saleEligibility !== 'enquiry_only' || p.currency !== 'INR' || p.rateBasis !== 'per_car_tour') fail();
   const en = words(p.en); const hi = words(p.hi); const days = integer(p.days, 1, 30); const nights = integer(p.nights, 0, days - 1);
   if (en.itinerary.length !== days || hi.itinerary.length !== days) fail();
   const labels: Record<string, Car> = { dzire: 'Dzire', ertiga: 'Ertiga', crysta: 'Innova Crysta' };
-  const fromRupees = arr(p.rates, 3).map((x) => { const r = record(x); const key = str(r.vehicle); if (!labels[key]) fail(); return { vehicle: labels[key], rupees: integer(r.amountPaise, 1, 1_000_000_000) / 100 }; });
+  const fromRupees = arr(p.rates, 3).map((x) => { const r = record(x); const key = str(r.vehicle); if (!Object.hasOwn(labels, key)) fail(); return { vehicle: labels[key], rupees: integer(r.amountPaise, 1, 1_000_000_000) / 100 }; });
   if ((p.priceMode === 'from') !== (fromRupees.length > 0) || !['from', 'on_request'].includes(String(p.priceMode)) || new Set(fromRupees.map((r) => r.vehicle)).size !== fromRupees.length) fail();
   const media: ManagedTourMedia[] = arr(p.media, 12).map((x) => {
     const m = record(x); const rights = record(m.rights); const alt = record(rights.alt); const variants = record(m.variants); const id = str(m.id, 24);

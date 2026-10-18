@@ -15,7 +15,7 @@
  */
 import puppeteer from 'puppeteer-core';
 import { execFileSync } from 'node:child_process';
-import { mkdirSync, readFileSync, mkdtempSync } from 'node:fs';
+import { mkdirSync, readFileSync, mkdtempSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -103,7 +103,7 @@ for (const path of PAGES) {
             return [];
           }
         });
-        return urls.filter((u) => css.some((c) => c.includes(u.split('/').pop()) && /U\+900/i.test(c)));
+        return urls.filter((u) => /devanagari|rozha-one-hindi/i.test(u) || css.some((c) => c.includes(u.split('/').pop()) && /U\+0?900/i.test(c)));
       }, info.preloads);
       if (!hindi && deva.length) fail(`${path}: preloads ${deva.length} devanagari font file(s) on an English page`);
       // axe — serious and critical only
@@ -137,11 +137,13 @@ await browser.close();
 // Lighthouse, mobile (Lighthouse's default), three runs each, the median.
 if (LIGHTHOUSE) {
   const dir = mkdtempSync(join(tmpdir(), 'ghoomo-lh-'));
+  const results = [];
+  console.log(`\nLighthouse raw reports: ${dir}`);
   const median = (xs) => [...xs].sort((a, b) => a - b)[Math.floor(xs.length / 2)];
   for (const path of LH_PAGES) {
     const runs = [];
     for (let i = 0; i < 3; i++) {
-      const out = join(dir, `r${i}.json`);
+      const out = join(dir, `${path.replaceAll('/','_') || '_home'}-r${i}.json`);
       execFileSync(
         'npx',
         ['-y', 'lighthouse@12', BASE + path, '--quiet', '--output=json', `--output-path=${out}`,
@@ -154,6 +156,7 @@ if (LIGHTHOUSE) {
     const audit = (a) => median(runs.map((r) => r.audits[a].numericValue));
     const perf = score('performance'), a11y = score('accessibility'), bp = score('best-practices');
     const lcp = audit('largest-contentful-paint'), cls = audit('cumulative-layout-shift'), tbt = audit('total-blocking-time');
+    results.push({path,performance:perf,accessibility:a11y,bestPractices:bp,lcpMs:lcp,cls,tbtMs:tbt,runs:3,method:'median'});
     console.log(`\nLighthouse ${path}: performance ${perf} · accessibility ${a11y} · best practices ${bp} · LCP ${(lcp / 1000).toFixed(2)}s · CLS ${cls.toFixed(3)} · TBT ${Math.round(tbt)}ms`);
     if (perf < 95) fail(`Lighthouse ${path}: performance ${perf} < 95`);
     if (a11y < 95) fail(`Lighthouse ${path}: accessibility ${a11y} < 95`);
@@ -166,6 +169,7 @@ if (LIGHTHOUSE) {
     if (cls > 0.05) fail(`Lighthouse ${path}: CLS ${cls.toFixed(3)} > 0.05`);
     if (tbt > 150) fail(`Lighthouse ${path}: TBT ${Math.round(tbt)}ms > 150ms`);
   }
+  writeFileSync(join(OUT,'lighthouse-summary.json'),JSON.stringify({base:BASE,results,failures:fails,rawReports:dir},null,2));
 }
 
 console.log(fails.length ? `\n${fails.length} FAIL` : '\nall checks passed');

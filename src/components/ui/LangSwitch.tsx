@@ -18,9 +18,11 @@ export function LangSwitch({ path, className = '' }: { path: string; className?:
   // phone's own font, so they do not pull a 65 kB Hindi font file onto every English page
   // (measured 16 Oct 2026).
   const own = here === 'en' ? { fontFamily: 'system-ui, sans-serif' } : undefined;
+  // Crossing root layouts needs a document navigation; prefetching would load the other locale's fonts.
   return (
     <Link
       href={href}
+      prefetch={false}
       hrefLang={LANG_TAG[there].hreflang}
       lang={LANG_TAG[there].html}
       className={`inline-flex min-h-10 items-center gap-1 rounded-full border border-royal-200 px-3 text-[0.9375rem] font-semibold text-royal-700 hover:bg-royal-50 ${className}`}

@@ -14,7 +14,17 @@ export const catalog = cache(async (): Promise<{ packages: TourPackage[]; unavai
   try {
     const response = await fetch(`${env.apiBaseUrl}/public/ghoomo/packages`, { cache: 'no-store', signal: AbortSignal.timeout(8000) });
     if (!response.ok) throw new Error('CATALOG_UNAVAILABLE');
-    const body = await response.json();
+    const reader = response.body?.getReader(); if (!reader) throw new Error('CATALOG_INVALID');
+    const chunks: Uint8Array[] = []; let bytes = 0;
+    try {
+      while (true) {
+        const { done, value } = await reader.read(); if (done) break;
+        bytes += value.byteLength;
+        if (bytes > 2 * 1024 * 1024 + 64 * 1024) throw new Error('CATALOG_TOO_LARGE');
+        chunks.push(value);
+      }
+    } finally { await reader.cancel(); }
+    const body = JSON.parse(Buffer.concat(chunks).toString('utf8'));
     if (!body?.ok || !Array.isArray(body.data?.items) || body.data.items.length > 200) throw new Error('CATALOG_INVALID');
     const packages = body.data.items.map((p: unknown) => parseCatalogPackage(p, env.apiBaseUrl));
     if (new Set(packages.map((p: TourPackage) => p.slug)).size !== packages.length) throw new Error('CATALOG_INVALID');

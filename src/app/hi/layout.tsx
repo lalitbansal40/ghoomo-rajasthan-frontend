@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import { Analytics } from '@/components/Analytics';
 import { baseMetadata } from '@/lib/seo';
-import { display, mukta } from '../fonts';
+import { display } from '../fonts';
+import { HINDI_HEADING_FONT } from '../font-assets';
 import '../globals.css';
 
 /**
@@ -23,7 +24,8 @@ export const viewport: Viewport = {
 
 export default function HindiLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="hi" className={`${mukta.variable} ${display.variable}`}>
+    <html lang="hi" className={display.variable}>
+      <head><link rel="preload" as="font" type="font/woff2" href={HINDI_HEADING_FONT} crossOrigin="anonymous" /></head>
       <body className="min-h-dvh bg-ivory text-ink">
         {children}
         <Analytics />

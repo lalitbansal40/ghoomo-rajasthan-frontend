@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./body-fonts.css";
 /* Colours, radius, shadow, motion and the type scale — generated from src/design/tokens.json. */
 @import "../design/tokens.css";
 
@@ -44,7 +45,16 @@ body {
  * are 125 kB a page and held the Hindi home at Lighthouse 89; with this, 95. Headings stay in
  * Rozha One's devanagari — the brand's face. One line to undo.
  */
+@font-face {
+  font-family: 'GR Rozha One Hindi';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/rozha-one-hindi-1eee6e4144eb.woff2') format('woff2');
+}
+
 html:lang(hi) {
+  --font-display-face: 'GR Rozha One Hindi', 'Rozha One', 'Rozha One Fallback';
   --font-sans: 'Rupee', 'Noto Sans Devanagari', 'Kohinoor Devanagari', 'Nirmala UI', var(--font-mukta), ui-sans-serif, system-ui, sans-serif;
 }
 

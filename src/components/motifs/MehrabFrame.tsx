@@ -17,10 +17,13 @@ export function MehrabFrame({
   sizes = '(min-width: 768px) 360px, 80vw',
   preload = false,
   unoptimized = false,
+  srcSet,
   className = '',
 }: {
   src: string;
   unoptimized?: boolean;
+  /** Verified pre-generated managed derivatives, bypassing the long-lived optimizer. */
+  srcSet?: string;
   alt: string;
   sizes?: string;
   /**
@@ -33,11 +36,15 @@ export function MehrabFrame({
 }) {
   return (
     <div className={`relative ${className}`} style={{ aspectRatio: '148 / 218' }}>
+      {preload && srcSet ? <link rel="preload" as="image" href={src} imageSrcSet={srcSet} imageSizes={sizes} fetchPriority="high" /> : null}
       <div
         className="absolute inset-0"
         style={{ maskImage: MASK, WebkitMaskImage: MASK, maskSize: '100% 100%', WebkitMaskSize: '100% 100%' }}
       >
-        <Image
+        {srcSet ? (
+          // eslint-disable-next-line @next/next/no-img-element -- verified managed derivatives need native srcSet without the optimizer cache
+          <img src={src} srcSet={srcSet} sizes={sizes} alt={alt} loading={preload ? 'eager' : 'lazy'} fetchPriority={preload ? 'high' : undefined} decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+        ) : <Image
           src={src}
           unoptimized={unoptimized}
           alt={alt}
@@ -47,7 +54,7 @@ export function MehrabFrame({
           fetchPriority={preload ? 'high' : undefined}
           loading={preload ? 'eager' : undefined}
           className="object-cover"
-        />
+        />}
       </div>
       <svg
         viewBox={VIEW}

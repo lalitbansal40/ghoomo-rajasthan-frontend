@@ -14,9 +14,10 @@ test('converts paise once and rejects fake zero/duplicate rates', () => {
   const f = { ...fixture(), priceMode: 'from', rates: [{ vehicle: 'dzire', amountPaise: 12345 }] }; assert.equal(parseCatalogPackage(f, base).fromRupees[0].rupees, 123.45);
   assert.throws(() => parseCatalogPackage({ ...f, rates: [{ vehicle: 'dzire', amountPaise: 0 }] }, base));
   assert.throws(() => parseCatalogPackage({ ...f, rates: [...f.rates, ...f.rates] }, base));
+  assert.throws(() => parseCatalogPackage({ ...f, rates: [{vehicle: 'constructor', amountPaise: 100}] }, base));
 });
 test('rejects sample, payable, malformed or partially localized packages', () => {
-  for (const change of [{ isSample: true }, { saleEligibility: 'bookable' }, { schemaVersion: 2 }, { hi: {} }, { days: 2 }, { coverId: null }]) assert.throws(() => parseCatalogPackage({ ...fixture(), ...change }, base));
+  for (const change of [{ isSample: true }, { saleEligibility: 'bookable' }, { schemaVersion: 2 }, { hi: {} }, { days: 2 }, { coverId: null }, { slug: 'a' }]) assert.throws(() => parseCatalogPackage({ ...fixture(), ...change }, base));
 });
 test('managed images cannot escape exact origin/path or carry query credentials', () => {
   for (const url of ['https://evil.invalid/api/v1/public/ghoomo/media/abcdefabcdefabcdefabcdef/cover', '/api/v1/users/one/avatar', '/api/v1/public/ghoomo/media/abcdefabcdefabcdefabcdef/cover?token=secret', '//evil.invalid/cover']) assert.throws(() => managedMediaUrl(url, base));

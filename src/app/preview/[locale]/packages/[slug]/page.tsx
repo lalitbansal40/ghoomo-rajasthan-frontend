@@ -11,7 +11,7 @@ export default async function PreviewPage({ params }: { params: Promise<{ locale
   if (!preview) return <main className="mx-auto max-w-4xl p-6"><h1>{t.catalog.preview}</h1><PreviewExchange locale={locale as Locale} /></main>;
   if (preview.slug !== slug || preview.locale !== locale) notFound();
   const content = preview.content; const words = content[locale];
-  return <main className="mx-auto max-w-4xl space-y-5 p-6"><aside>{t.catalog.preview} · {preview.contentRevision} · {preview.expiresAt}<form action="/preview/exit" method="post"><button type="submit">{t.catalog.exitPreview}</button></form></aside>
+  return <main className="mx-auto max-w-4xl space-y-5 p-6"><PreviewExchange locale={locale as Locale} active /><aside>{t.catalog.preview} · {preview.contentRevision} · {preview.expiresAt}<form action="/preview/exit" method="post"><button type="submit">{t.catalog.exitPreview}</button></form></aside>
     {content.isSample ? <p>{t.pkg.sampleTour}</p> : null}
     <h1 className="text-h1">{words.title || t.catalog.preview}</h1><p>{words.summary}</p><p>{words.route.join(' → ')}</p>
     <p>{content.days} / {content.nights} · {words.bestMonths}</p>

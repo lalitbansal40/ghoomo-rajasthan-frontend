@@ -10,26 +10,22 @@ import { bookPackageLink } from '@/lib/book';
 import { touristTripJsonLd } from '@/lib/schema';
 import { JsonLd } from '@/components/JsonLd';
 import { VehiclePicker } from '@/components/VehiclePicker';
-import { MehrabFrame } from '@/components/motifs';
-import {
-  Alert,
-  Badge,
-  Breadcrumbs,
-  Button,
-  DestinationCard,
-  FAQ,
-  Footer,
-  Header,
-  Icon,
-  IncludesList,
-  ItineraryTimeline,
-  PackageCard,
-  PhotoCredit,
-  SectionHeader,
-  StickyCta,
-  breadcrumbJsonLd,
-  faqJsonLd,
-} from '@/components/ui';
+import { MehrabFrame } from '@/components/motifs/MehrabFrame';
+import { Alert } from '@/components/ui/Alert';
+import { Badge } from '@/components/ui/Badge';
+import { Breadcrumbs, breadcrumbJsonLd } from '@/components/ui/Breadcrumbs';
+import { Button } from '@/components/ui/Button';
+import { DestinationCard } from '@/components/ui/DestinationCard';
+import { FAQ, faqJsonLd } from '@/components/ui/FAQ';
+import { Footer } from '@/components/ui/Footer';
+import { Header } from '@/components/ui/Header';
+import { Icon } from '@/components/ui/Icon';
+import { IncludesList } from '@/components/ui/IncludesList';
+import { ItineraryTimeline } from '@/components/ui/ItineraryTimeline';
+import { PackageCard } from '@/components/ui/PackageCard';
+import { PhotoCredit } from '@/components/ui/PhotoCredit';
+import { SectionHeader } from '@/components/ui/SectionHeader';
+import { StickyCta } from '@/components/ui/StickyCta';
 
 /** What a tour page says about itself in a search result and a share — its own words. */
 export function tourDescription(pkg: TourPackage, locale: Locale): string {
@@ -68,10 +64,10 @@ export async function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Loca
         ) : null}
 
         {/* ── The top: photo, name, road, price by car, book ─────────────── */}
-        <div className="mt-6 grid items-start gap-8 md:grid-cols-[minmax(0,340px)_1fr] lg:gap-12">
+        <div className="mt-6 grid items-start gap-8 lg:grid-cols-[minmax(0,340px)_1fr] lg:gap-12">
           {p ? (
             <div className="relative mx-auto w-[64vw] max-w-[320px] md:w-full">
-              <MehrabFrame unoptimized={Boolean(tour.media.length)} src={p.big} alt={p.alt} preload sizes="(min-width: 768px) 340px, 64vw" />
+              <MehrabFrame unoptimized={Boolean(tour.media.length)} srcSet={tour.media.length ? `${p.card} 640w, ${p.big} 1280w` : undefined} src={p.big} alt={p.alt} preload sizes="(min-width: 768px) 340px, 64vw" />
               <PhotoCredit photo={p} label={t.common.photoBy} />
             </div>
           ) : null}
@@ -90,6 +86,7 @@ export async function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Loca
                 tour={tour}
                 prices={tour.fromRupees}
                 locale={locale}
+                priceLabels={{ from: t.pkg.from, samplePrice: t.pkg.samplePrice, onRequest: t.catalog.onRequest, gstExtra: t.pkg.gstExtra }}
                 labels={{ car: t.pkg.car, book: t.catalog.enquire, call: `${t.cta.call} · ${brand.phone}` }}
               />
             </div>

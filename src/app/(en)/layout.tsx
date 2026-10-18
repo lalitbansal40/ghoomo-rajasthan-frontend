@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import { Analytics } from '@/components/Analytics';
 import { baseMetadata } from '@/lib/seo';
-import { display, mukta } from '../fonts';
+import { display } from '../fonts';
+import { BODY_LATIN_PRELOADS } from '../font-assets';
 import '../globals.css';
 
 /**
@@ -26,7 +27,10 @@ export const viewport: Viewport = {
 
 export default function EnglishLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${mukta.variable} ${display.variable}`}>
+    <html lang="en" className={display.variable}>
+      <head>
+        {BODY_LATIN_PRELOADS.map((href) => <link key={href} rel="preload" as="font" type="font/woff2" href={href} crossOrigin="anonymous" />)}
+      </head>
       <body className="min-h-dvh bg-ivory text-ink">
         {children}
         <Analytics />
