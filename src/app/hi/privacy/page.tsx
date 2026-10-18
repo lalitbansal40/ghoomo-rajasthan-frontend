@@ -1,7 +1,7 @@
 // Hindi of (en)/privacy — owner to read; keep in step with the English.
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { alternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 import { DocPage, DocSection } from '@/components/DocPage';
 import { Owner } from '@/components/Owner';
 import { brand } from '@/lib/site';
@@ -9,7 +9,7 @@ import { brand } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'प्राइवेसी',
   description: 'घूमो राजस्थान आपकी कौन-सी जानकारी रखता है, क्यों, और कौन देखता है। और उसे हटवाना हो तो कैसे।',
-  alternates: alternates('/privacy', 'hi'),
+  ...pageMetadata('/privacy', 'hi'),
 };
 
 const updated = '18 अक्टूबर 2026';

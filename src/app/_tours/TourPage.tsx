@@ -182,7 +182,7 @@ export async function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Loca
           {t.cta.call}
         </Button>
       </StickyCta>
-      <JsonLd eligible={!tour.isSample} data={[touristTripJsonLd(tour, locale, tourDescription(pkg, locale)), breadcrumbJsonLd(crumbs), faqJsonLd(faq)]} />
+      <JsonLd path={`/packages/${pkg.slug}`} locale={locale} revision={pkg.contentRevision} eligible={!tour.isSample} data={[touristTripJsonLd(tour, locale, tourDescription(pkg, locale)), breadcrumbJsonLd(crumbs), faqJsonLd(faq)]} />
     </>
   );
 }

@@ -213,7 +213,7 @@ export async function CabHub({ locale }: { locale: Locale }) {
           {t.cta.call}
         </Button>
       </StickyCta>
-      <JsonLd
+      <JsonLd path="/cab" locale={locale}
         data={[
           itemListJsonLd(LINKABLE_ROUTES.map((r) => ({ name: t.route.title(routeEndName(r.pickup, locale), routeEndName(r.drop, locale)), path: localePath(`/cab/${r.slug}`, locale) }))),
           breadcrumbJsonLd(crumbs),

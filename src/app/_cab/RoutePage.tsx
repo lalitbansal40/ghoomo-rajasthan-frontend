@@ -304,7 +304,7 @@ export async function RoutePage({ route, locale }: { route: GhoomoRoute; locale:
         </Button>
       </StickyCta>
       {routeIndexable(route) ? (
-        <JsonLd
+        <JsonLd path={`/cab/${route.slug}`} locale={locale} eligible={routeIndexable(route)}
           data={[
             taxiServiceJsonLd({ name: rt.title(from, to), from, to, path, locale, lowestRupees: low?.rupees ?? null }),
             breadcrumbJsonLd(crumbs),

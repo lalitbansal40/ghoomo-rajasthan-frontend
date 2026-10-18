@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { EnquiryForm } from '@/components/EnquiryForm';
 import { DocPage } from '@/components/DocPage';
-import { alternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 import { safeProductSlug } from '@/lib/enquiry';
 
-export const metadata: Metadata = { title: 'Plan your Rajasthan trip', robots: { index: false, follow: false }, alternates: alternates('/enquiry', 'en') };
+export const metadata: Metadata = { title: 'Plan your Rajasthan trip', robots: { index: false, follow: false }, ...pageMetadata('/enquiry', 'en') };
 
 export default async function EnquiryPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;

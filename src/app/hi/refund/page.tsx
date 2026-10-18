@@ -2,14 +2,14 @@
 // Every figure is the booking system's (see the comment in (en)/refund) — the same numbers here.
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { alternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 import { DocPage, DocSection } from '@/components/DocPage';
 import { brand } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'कैंसल और रिफ़ंड',
   description: 'घूमो राजस्थान की बुकिंग कैंसल करने में कितना लगता है, और आपको कितना वापस मिलता है।',
-  alternates: alternates('/refund', 'hi'),
+  ...pageMetadata('/refund', 'hi'),
 };
 
 export default function HindiRefundPage() {

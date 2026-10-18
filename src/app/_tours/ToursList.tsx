@@ -119,7 +119,7 @@ export async function ToursList({ locale }: { locale: Locale }) {
           {t.cta.call}
         </Button>
       </StickyCta>
-      <JsonLd data={[breadcrumbJsonLd(crumbs), faqJsonLd(faq)]} />
+      <JsonLd path="/packages" locale={locale} eligible={!catalogState.unavailable && PACKAGES.some((p) => p.isSample === false)} data={[breadcrumbJsonLd(crumbs), faqJsonLd(faq)]} />
     </>
   );
 }

@@ -98,7 +98,7 @@ export async function DestinationsList({ locale }: { locale: Locale }) {
           {t.cta.call}
         </Button>
       </StickyCta>
-      <JsonLd data={[itemListJsonLd(PLACES.map((p) => ({ name: p[locale].name, path: href(p.slug) }))), breadcrumbJsonLd(crumbs)]} />
+      <JsonLd path="/destinations" locale={locale} data={[itemListJsonLd(PLACES.map((p) => ({ name: p[locale].name, path: href(p.slug) }))), breadcrumbJsonLd(crumbs)]} />
     </>
   );
 }

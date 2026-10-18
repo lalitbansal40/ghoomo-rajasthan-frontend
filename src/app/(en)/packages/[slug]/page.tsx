@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { catalogPackage as packageBySlug } from '@/lib/catalog';
-import { alternates, pageRobots } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 import { packageIndexable } from '@/lib/indexing-policy';
 import { TourPage, tourDescription } from '../../../_tours/TourPage';
 
@@ -13,8 +13,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: pkg.seoTitle || `${pkg.name} — ${pkg.days}D/${pkg.nights}N tour`,
     description: tourDescription(pkg, 'en'),
-    alternates: alternates(`/packages/${pkg.slug}`, 'en', packageIndexable(pkg)),
-    robots: pageRobots(packageIndexable(pkg)),
+    ...pageMetadata(`/packages/${pkg.slug}`, 'en', packageIndexable(pkg), pkg.contentRevision),
+
   };
 }
 

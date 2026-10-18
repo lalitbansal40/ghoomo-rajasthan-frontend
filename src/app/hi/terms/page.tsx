@@ -1,7 +1,7 @@
 // Hindi of (en)/terms — owner to read; keep in step with the English.
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { alternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 import { DocPage, DocSection } from '@/components/DocPage';
 import { Owner } from '@/components/Owner';
 import { EXCLUDES_HI, INCLUDES_HI } from '@/content/packages';
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'शर्तें',
   description:
     'घूमो राजस्थान टूर की शर्तें: किराया, उसमें क्या शामिल है, पेमेंट, कैंसल करना, और हम आपसे क्या चाहते हैं।',
-  alternates: alternates('/terms', 'hi'),
+  ...pageMetadata('/terms', 'hi'),
 };
 
 export default function HindiTermsPage() {

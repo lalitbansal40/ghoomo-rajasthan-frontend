@@ -9,11 +9,23 @@ import { PRODUCTION_ORIGIN } from '@/lib/indexing-policy';
 export function ManualTracker({ pathname, allowedPaths }: { pathname: string | null; allowedPaths: string[] }) {
   const lastPage = useRef<string | null>(null);
   useEffect(() => {
-    const send = (name: EventName) => {
-      const body = analyticsPayload({ policy: { origin: PRODUCTION_ORIGIN, stage: 'production', launched: true },
+    let active = true;
+    const send = async (name: EventName) => {
+      const initial = analyticsPayload({ policy: { origin: PRODUCTION_ORIGIN, stage: 'production', launched: true },
         domain: 'ghoomorajasthan.com', href: window.location.href, referrer: document.referrer, name, allowedPaths });
-      if (!body) return;
+      if (!initial) return;
       try {
+        // Root layouts can survive SPA navigation. Recheck current publication before each send,
+        // so an archived/revised package cannot keep using an old browser allowlist.
+        const response = await fetch('/api/release-paths', { cache: 'no-store', credentials: 'omit',
+          referrerPolicy: 'no-referrer', signal: AbortSignal.timeout(5000) });
+        if (!response.ok || !active) return;
+        const fresh = await response.json();
+        if (!Array.isArray(fresh?.paths) || fresh.paths.length > 1024 || !fresh.paths.every((p: unknown) => typeof p === 'string')) return;
+        const body = analyticsPayload({ policy: { origin: PRODUCTION_ORIGIN, stage: 'production', launched: true },
+          domain: 'ghoomorajasthan.com', href: window.location.href, referrer: document.referrer, name,
+          allowedPaths: allowedPaths.filter((p) => fresh.paths.includes(p)) });
+        if (!body || body.url !== initial.url || !active) return;
         // Documented Plausible Events API. Browser supplies its real UA/IP; no cookies/referrer.
         void fetch('https://plausible.io/api/event', { method: 'POST', mode: 'no-cors', credentials: 'omit',
           referrerPolicy: 'no-referrer', keepalive: true, headers: { 'Content-Type': 'text/plain' },
@@ -43,7 +55,7 @@ export function ManualTracker({ pathname, allowedPaths }: { pathname: string | n
     };
     document.addEventListener('click', click, true);
     window.addEventListener('ghoomo:analytics', custom);
-    return () => { document.removeEventListener('click', click, true); window.removeEventListener('ghoomo:analytics', custom); };
+    return () => { active = false; document.removeEventListener('click', click, true); window.removeEventListener('ghoomo:analytics', custom); };
   }, [pathname, allowedPaths]);
   return null;
 }

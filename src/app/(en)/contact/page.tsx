@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import { ContactButtons } from '@/components/ContactButtons';
-import { alternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 import { DocPage, DocSection } from '@/components/DocPage';
 import { brand } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Contact',
   description: 'Call or WhatsApp Ghoomo Rajasthan to plan a tour across Rajasthan.',
-  alternates: alternates('/contact', 'en'),
+  ...pageMetadata('/contact', 'en'),
 };
 
 export default function ContactPage() {

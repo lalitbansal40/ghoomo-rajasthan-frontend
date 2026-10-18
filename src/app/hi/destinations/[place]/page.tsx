@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { PLACES, placeBySlug } from '@/content/places';
-import { alternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 import { PlacePage, placeDescription, placeTitle } from '../../../_destinations/PlacePage';
 
 // Every place is built ahead; any other slug is a 404.
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ place: st
   return {
     title: placeTitle(p, 'hi'),
     description: placeDescription(p, 'hi'),
-    alternates: alternates(`/destinations/${p.slug}`, 'hi'),
+    ...pageMetadata(`/destinations/${p.slug}`, 'hi'),
   };
 }
 

@@ -1,4 +1,5 @@
 import { env } from './env';
+import { releaseAnalyticsEligible } from './release';
 import { brand } from './site';
 import { LANG_TAG, localePath, type Locale } from '@/i18n';
 import { type LocalTour } from '@/content/packages';
@@ -88,7 +89,7 @@ export function itemListJsonLd(items: Array<{ name: string; path: string }>) {
   return {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, url: abs(it.path) })),
+    itemListElement: items.filter((it) => releaseAnalyticsEligible(it.path)).map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, url: abs(it.path) })),
   };
 }
 

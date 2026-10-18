@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { alternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 import { DocPage, DocSection } from '@/components/DocPage';
 import { Owner } from '@/components/Owner';
 import { brand } from '@/lib/site';
@@ -8,7 +8,7 @@ import { brand } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Privacy',
   description: 'What Ghoomo Rajasthan keeps about you, why, who else sees it, and how to have it removed.',
-  alternates: alternates('/privacy', 'en'),
+  ...pageMetadata('/privacy', 'en'),
 };
 
 // TO FILL (owner): legalName, gstin, email in src/lib/site.ts — this page shows them by itself.

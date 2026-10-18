@@ -1,6 +1,6 @@
 // Hindi of (en)/contact — owner to read; keep in step with the English.
 import type { Metadata } from 'next';
-import { alternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 import { ContactButtons } from '@/components/ContactButtons';
 import { DocPage, DocSection } from '@/components/DocPage';
 import { brand } from '@/lib/site';
@@ -8,7 +8,7 @@ import { brand } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'संपर्क',
   description: 'राजस्थान घूमने का प्लान बनाना है? घूमो राजस्थान को फ़ोन या WhatsApp करें।',
-  alternates: alternates('/contact', 'hi'),
+  ...pageMetadata('/contact', 'hi'),
 };
 
 export default function HindiContactPage() {

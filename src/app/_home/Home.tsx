@@ -273,7 +273,7 @@ export async function Home({ locale }: { locale: Locale }) {
           {t.cta.call}
         </Button>
       </StickyCta>
-      <JsonLd data={[travelAgencyJsonLd(), websiteJsonLd(locale), faqJsonLd(HOME_FAQ[locale])]} />
+      <JsonLd path="/" locale={locale} data={[travelAgencyJsonLd(), websiteJsonLd(locale), faqJsonLd(HOME_FAQ[locale])]} />
     </>
   );
 }

@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { BookingForm } from '@/components/BookingForm';
 import { Footer, Header } from '@/components/ui';
-import { alternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = { title: 'Book a Rajasthan cab', robots: { index: false, follow: false }, alternates: alternates('/booking', 'en') };
+export const metadata: Metadata = { title: 'Book a Rajasthan cab', robots: { index: false, follow: false }, ...pageMetadata('/booking', 'en') };
 
 export default async function BookingPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;

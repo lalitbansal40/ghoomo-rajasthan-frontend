@@ -108,7 +108,7 @@ export function AboutPage({ locale }: { locale: Locale }) {
         </div>
       </main>
       <Footer locale={locale} />
-      <JsonLd data={[breadcrumbJsonLd(crumbs)]} />
+      <JsonLd path="/about" locale={locale} data={[breadcrumbJsonLd(crumbs)]} />
     </>
   );
 }

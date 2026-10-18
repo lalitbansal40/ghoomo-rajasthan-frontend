@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { BookingForm } from '@/components/BookingForm';
 import { Footer, Header } from '@/components/ui';
-import { alternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = { title: 'राजस्थान कैब बुक करें', robots: { index: false, follow: false }, alternates: alternates('/booking', 'hi') };
+export const metadata: Metadata = { title: 'राजस्थान कैब बुक करें', robots: { index: false, follow: false }, ...pageMetadata('/booking', 'hi') };
 
 export default async function HindiBookingPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;

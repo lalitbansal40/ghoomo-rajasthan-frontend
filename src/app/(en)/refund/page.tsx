@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { alternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 import { DocPage, DocSection } from '@/components/DocPage';
 import { brand } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Cancellation and refund',
   description: 'What cancelling a Ghoomo Rajasthan booking costs, and what comes back to you.',
-  alternates: alternates('/refund', 'en'),
+  ...pageMetadata('/refund', 'en'),
 };
 
 /**

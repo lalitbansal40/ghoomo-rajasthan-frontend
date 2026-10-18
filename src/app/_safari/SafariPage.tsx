@@ -242,7 +242,7 @@ export async function SafariPage({ locale }: { locale: Locale }) {
         </Button>
       </StickyCta>
       {/* No Offer while the rates are samples — only the page's questions and its place in the site. */}
-      <JsonLd data={[breadcrumbJsonLd(crumbs), faqJsonLd(faq)]} />
+      <JsonLd path="/desert-safari" locale={locale} eligible={!SAFARI_IS_SAMPLE} data={[breadcrumbJsonLd(crumbs), faqJsonLd(faq)]} />
     </>
   );
 }

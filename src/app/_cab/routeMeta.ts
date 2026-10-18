@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { dict, type Locale } from '@/i18n';
 import type { GhoomoRoute } from '@/content/routes/list';
-import { alternates, pageRobots } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 import { routeFares } from '@/lib/route-fares';
 import { routeDescription, routeIndexable, routeNames } from './RoutePage';
 
@@ -24,7 +24,7 @@ export async function routeMetadata(route: GhoomoRoute, locale: Locale): Promise
   return {
     title,
     description: routeDescription(route, oneway, locale),
-    alternates: alternates(`/cab/${route.slug}`, locale, routeIndexable(route)),
-    robots: pageRobots(routeIndexable(route)),
+    ...pageMetadata(`/cab/${route.slug}`, locale, routeIndexable(route)),
+
   };
 }

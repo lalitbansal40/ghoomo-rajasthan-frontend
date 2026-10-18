@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { alternates } from '@/lib/seo';
+import { pageMetadata } from '@/lib/seo';
 import { DocPage, DocSection } from '@/components/DocPage';
 import { Owner } from '@/components/Owner';
 import { EXCLUDES, INCLUDES } from '@/content/packages';
@@ -9,7 +9,7 @@ import { brand } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Terms',
   description: 'The terms of a Ghoomo Rajasthan tour: the price, what it covers, paying, cancelling and what we ask of you.',
-  alternates: alternates('/terms', 'en'),
+  ...pageMetadata('/terms', 'en'),
 };
 
 // TO FILL (owner): legalName, gstin, email in src/lib/site.ts — shown here by themselves.

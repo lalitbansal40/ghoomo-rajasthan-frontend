@@ -285,7 +285,7 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
           {t.cta.call}
         </Button>
       </StickyCta>
-      <JsonLd data={[touristDestinationJsonLd(place, locale), breadcrumbJsonLd(crumbs), faqJsonLd(txt.faq)]} />
+      <JsonLd path={`/destinations/${place.slug}`} locale={locale} data={[touristDestinationJsonLd(place, locale), breadcrumbJsonLd(crumbs), faqJsonLd(txt.faq)]} />
     </>
   );
 }
