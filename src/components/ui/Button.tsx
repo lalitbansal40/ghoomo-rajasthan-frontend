@@ -27,7 +27,7 @@ function Inner({ icon, iconRight, loading, children, size = 'md' }: Common) {
       ) : icon ? (
         <Icon name={icon} size={s} />
       ) : null}
-      <span className="whitespace-nowrap">{children}</span>
+      <span className="min-w-0 text-center [overflow-wrap:anywhere]">{children}</span>
       {iconRight && !loading ? <Icon name={iconRight} size={s} /> : null}
     </>
   );

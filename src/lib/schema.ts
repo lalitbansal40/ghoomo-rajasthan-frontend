@@ -24,8 +24,8 @@ export function travelAgencyJsonLd() {
     ...(brand.email ? { email: brand.email } : {}),
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Plot no 5, Chinab Apartment Rd, Sector 28, Pratap Nagar',
-      addressLocality: 'Jaipur',
+      streetAddress: brand.address,
+      addressLocality: brand.city,
       addressRegion: 'Rajasthan',
       postalCode: '302033',
       addressCountry: 'IN',
@@ -113,7 +113,7 @@ export function taxiServiceJsonLd(o: {
       { '@type': 'City', name: o.to },
     ],
     ...(o.lowestRupees
-      ? { offers: { '@type': 'Offer', price: o.lowestRupees, priceCurrency: 'INR', url: abs(o.path), availability: 'https://schema.org/InStock' } }
+      ? { offers: { '@type': 'Offer', price: o.lowestRupees, priceCurrency: 'INR', url: abs(o.path) } }
       : {}),
   };
 }

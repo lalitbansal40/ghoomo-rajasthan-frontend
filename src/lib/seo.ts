@@ -2,11 +2,13 @@ import type { Metadata } from 'next';
 import { env } from '@/lib/env';
 import { SITE_LAUNCHED } from '@/lib/site';
 import { LANG_TAG, localePath, type Locale } from '@/i18n';
+import { PRIVATE_PATH, UTILITY_PATH, robotsFor, siteOpen } from './indexing-policy';
 
 /** Until launch nothing is indexed (SITE_LAUNCHED in lib/site.ts). */
-export const ROBOTS: Metadata['robots'] = SITE_LAUNCHED
-  ? { index: true, follow: true }
-  : { index: false, follow: false, googleBot: { index: false, follow: false } };
+export const SITE_POLICY = { origin: env.siteUrl, stage: env.stage, launched: SITE_LAUNCHED };
+export const PUBLIC_LAUNCHED = siteOpen(SITE_POLICY);
+export const pageRobots = (eligible: boolean) => robotsFor(SITE_POLICY, eligible);
+export const ROBOTS: Metadata['robots'] = pageRobots(true);
 
 /**
  * canonical + hreflang for a page that exists in BOTH languages: each language's own URL is
@@ -18,7 +20,7 @@ export function alternates(path: string, locale: Locale, both = true): Metadata[
   const hi = localePath(path, 'hi');
   return {
     canonical: locale === 'hi' ? hi : en,
-    ...(both
+    ...(both && PUBLIC_LAUNCHED && !PRIVATE_PATH.test(path) && !UTILITY_PATH.test(path)
       ? {
           languages: {
             [LANG_TAG.en.hreflang]: en,

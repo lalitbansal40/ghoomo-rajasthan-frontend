@@ -1,0 +1,95 @@
+{
+  "base": "http://localhost:3315",
+  "results": [
+    {
+      "path": "/",
+      "performance": 95,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "lcpMs": 2927.5476000000003,
+      "cls": 0.0005456866234872565,
+      "tbtMs": 4,
+      "runs": 3,
+      "method": "median"
+    },
+    {
+      "path": "/hi",
+      "performance": 95,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "lcpMs": 2918.3019999999997,
+      "cls": 0,
+      "tbtMs": 3.5,
+      "runs": 3,
+      "method": "median"
+    },
+    {
+      "path": "/packages/local-fixture-tour",
+      "performance": 96,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "lcpMs": 2842.4462,
+      "cls": 0,
+      "tbtMs": 3,
+      "runs": 3,
+      "method": "median"
+    },
+    {
+      "path": "/hi/packages/local-fixture-tour",
+      "performance": 96,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "lcpMs": 2840.916375,
+      "cls": 0,
+      "tbtMs": 2,
+      "runs": 3,
+      "method": "median"
+    },
+    {
+      "path": "/destinations/jaisalmer",
+      "performance": 97,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "lcpMs": 2625.2689250000003,
+      "cls": 0,
+      "tbtMs": 8.5,
+      "runs": 3,
+      "method": "median"
+    },
+    {
+      "path": "/hi/cab/jaipur-to-udaipur",
+      "performance": 97,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "lcpMs": 2616.42375,
+      "cls": 0,
+      "tbtMs": 5,
+      "runs": 3,
+      "method": "median"
+    },
+    {
+      "path": "/cab",
+      "performance": 97,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "lcpMs": 2616.1766,
+      "cls": 0,
+      "tbtMs": 7.803899999999885,
+      "runs": 3,
+      "method": "median"
+    },
+    {
+      "path": "/desert-safari",
+      "performance": 96,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "lcpMs": 2778.4736500000004,
+      "cls": 0,
+      "tbtMs": 7.5,
+      "runs": 3,
+      "method": "median"
+    }
+  ],
+  "failures": [],
+  "rawReports": "/var/folders/1r/dlhzf3j57nx46ht125p6hl240000gn/T/ghoomo-lh-uYxDrI"
+}

@@ -12,14 +12,12 @@ export const metadata: Metadata = {
 };
 
 // TO FILL (owner): legalName, gstin, email in src/lib/site.ts — this page shows them by itself.
-const updated = '16 October 2026';
+const updated = '18 October 2026';
 
 /**
  * Written for Ghoomo Rajasthan in its own words, on the structure of hellomycabs.com's privacy
- * page. What it says has to stay true of the site: today it collects nothing (no form, no
- * account); bookings — and with them name, number and pickup — come in Phase 4, paid through
- * Razorpay (owner, 16 Oct 2026: Ghoomo on Razorpay, Hello My Cab on Cashfree). Change this page
- * in the same commit as anything that changes those facts — and the Hindi one (hi/privacy).
+ * page. Keep this and its Hindi counterpart in step with actual enquiry, booking and optional
+ * public-only analytics behavior; business/legal owner approval remains a release gate.
  */
 export default function PrivacyPage() {
   return (
@@ -36,15 +34,21 @@ export default function PrivacyPage() {
       </DocSection>
       <DocSection title="What we collect today">
         <p>
-          Nothing through this site. There is no form and no account yet: if you message us on WhatsApp or
-          call us, we see your number and what you tell us, as with any call or message.
+          When you submit an enquiry, we receive your name, mobile number, travel date or flexibility,
+          number of travellers, selected trip or vehicle and any message you add. With your permission,
+          we use these to respond to that travel enquiry. Calls and WhatsApp messages also share the
+          number and information you provide through that channel.
         </p>
         <p>
-          We count visits to the site without cookies and without identifying you (Plausible Analytics):
-          which pages are opened, from which country and which kind of device — never who you are.
+          Analytics is off before launch and in development or previews. When enabled in production,
+          Plausible receives sanitized public-page URLs and limited visit or enquiry-event context,
+          without analytics cookies. The browser also supplies network and device information. We
+          do not send form values, names, phones, booking/payment references, OTPs or access tokens.
+          Private booking, account and preview pages are excluded. A call or WhatsApp click does not
+          prove that a conversation happened.
         </p>
       </DocSection>
-      <DocSection title="When you book a tour">
+      <DocSection title="Where online cab booking is available">
         <ul className="flex list-disc flex-col gap-2 pl-5">
           <li>
             <strong>Your name</strong> — so the driver knows who he is meeting.
@@ -83,6 +87,8 @@ export default function PrivacyPage() {
         <p>We do not sell your details and we do not give them to advertisers.</p>
       </DocSection>
       <DocSection title="How long we keep it">
+        <p>Enquiries are eligible for automatic removal from the enquiry store after 30 days. Booking
+          and accounting records are separate; an enquiry is not a confirmed booking.</p>
         <p>
           A booking is kept as our record of the trip — for our accounts, for tax, and so we can answer a
           question about a tour long after it.

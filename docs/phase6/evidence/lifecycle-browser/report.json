@@ -1,0 +1,293 @@
+{
+  "completed": true,
+  "failureName": null,
+  "evidence": [
+    {
+      "path": "/",
+      "width": 360,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/",
+      "width": 768,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/",
+      "width": 1280,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/hi",
+      "width": 360,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/hi",
+      "width": 390,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/hi",
+      "width": 768,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/hi",
+      "width": 1280,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/hi/packages",
+      "width": 360,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/hi/packages",
+      "width": 390,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/hi/packages",
+      "width": 768,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/hi/packages",
+      "width": 1280,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/packages",
+      "width": 360,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/packages",
+      "width": 390,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/packages",
+      "width": 768,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/packages",
+      "width": 1280,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/packages/local-fixture-tour",
+      "width": 360,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/packages/local-fixture-tour",
+      "width": 390,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/packages/local-fixture-tour",
+      "width": 768,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/packages/local-fixture-tour",
+      "width": 1280,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/hi/packages/local-fixture-tour",
+      "width": 360,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/hi/packages/local-fixture-tour",
+      "width": 390,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/hi/packages/local-fixture-tour",
+      "width": 768,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/hi/packages/local-fixture-tour",
+      "width": 1280,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/destinations/jaipur",
+      "width": 360,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/destinations/jaipur",
+      "width": 390,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/destinations/jaipur",
+      "width": 768,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/destinations/jaipur",
+      "width": 1280,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/cab/jaipur-to-udaipur",
+      "width": 360,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/cab/jaipur-to-udaipur",
+      "width": 390,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/cab/jaipur-to-udaipur",
+      "width": 768,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/cab/jaipur-to-udaipur",
+      "width": 1280,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/desert-safari",
+      "width": 360,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/desert-safari",
+      "width": 390,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/desert-safari",
+      "width": 768,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/desert-safari",
+      "width": 1280,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/photo-credits",
+      "width": 360,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/photo-credits",
+      "width": 390,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/photo-credits",
+      "width": 768,
+      "status": 200,
+      "violations": []
+    },
+    {
+      "path": "/photo-credits",
+      "width": 1280,
+      "status": 200,
+      "violations": []
+    }
+  ],
+  "failures": [],
+  "pricePicker": [
+    {
+      "locale": "en",
+      "amountsPaise": [
+        12345,
+        23456
+      ],
+      "selectedVehicle": "Ertiga",
+      "axeViolations": 0
+    },
+    {
+      "locale": "hi",
+      "amountsPaise": [
+        12345,
+        23456
+      ],
+      "selectedVehicle": "Ertiga",
+      "axeViolations": 0
+    }
+  ],
+  "expiredPreviewVerified": true,
+  "archivedViews": [
+    {
+      "locale": "en",
+      "status": 404,
+      "axeViolations": 0
+    },
+    {
+      "locale": "hi",
+      "status": 404,
+      "axeViolations": 0
+    }
+  ],
+  "outageViews": [
+    {
+      "locale": "en",
+      "status": 503,
+      "axeViolations": 0
+    },
+    {
+      "locale": "hi",
+      "status": 503,
+      "axeViolations": 0
+    }
+  ],
+  "launchedSitemapLifecycle": true
+}

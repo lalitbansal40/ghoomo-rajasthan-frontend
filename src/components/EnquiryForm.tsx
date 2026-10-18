@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { enquiryEvent } from '@/lib/analytics-contract';
 import { postGhoomo } from '@/lib/api';
 import { indianMobile, validEnquiryDate } from '@/lib/enquiry';
 import { dict, type Locale } from '@/i18n';
@@ -23,6 +24,7 @@ export function EnquiryForm({ locale, initialType = 'custom', productSlug = 'cus
   const [vehicleType, setVehicleType] = useState('');
   const [message, setMessage] = useState(productLabel ? `${dict(locale).enquiry.selected}: ${productLabel}` : '');
   const [consent, setConsent] = useState(false);
+  const started = useRef(false);
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -45,8 +47,10 @@ export function EnquiryForm({ locale, initialType = 'custom', productSlug = 'cus
         ...(message.trim() ? { message: message.trim().slice(0, 500) } : {}), language: locale, consent: true,
       }, controller.signal);
       setDone(true);
+      enquiryEvent('enquiry_success');
     } catch {
       setError(t.retry);
+      enquiryEvent('enquiry_error');
     } finally {
       window.clearTimeout(timeout);
       setBusy(false);
@@ -56,7 +60,7 @@ export function EnquiryForm({ locale, initialType = 'custom', productSlug = 'cus
   if (done) return <div role="status" className="rounded-xl border border-forest/30 bg-forest/5 p-5 text-ink">{t.success}</div>;
   const field = 'min-h-12 w-full rounded-lg border border-ink/20 bg-white px-3 py-2 text-base text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-royal';
   const label = 'flex flex-col gap-2 text-sm font-semibold text-ink';
-  return <form onSubmit={submit} className="space-y-5" noValidate>
+  return <form onSubmit={submit} onChangeCapture={() => { if (!started.current) { started.current = true; enquiryEvent('enquiry_start'); } }} className="space-y-5" noValidate>
     <div className="grid gap-4 sm:grid-cols-2">
       <label className={label}>{t.name}<input className={field} autoComplete="name" maxLength={60} required value={name} onChange={e => setName(e.target.value)} /></label>
       <label className={label}>{t.phone}<input className={field} type="tel" inputMode="numeric" autoComplete="tel-national" maxLength={16} aria-describedby="enquiry-phone-help" required value={phone} onChange={e => setPhone(e.target.value)} /><span id="enquiry-phone-help" className="font-normal text-muted">{locale === 'hi' ? '10 अंकों का भारतीय मोबाइल नंबर' : '10-digit Indian mobile number'}</span></label>

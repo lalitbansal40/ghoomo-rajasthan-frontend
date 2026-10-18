@@ -9,7 +9,8 @@
 
 /**
  * The site is hidden from search until launch (Phase 7): robots.txt disallows everything,
- * every page is noindex and the sitemap is empty. Flip this — and only this — on launch day.
+ * every page is noindex and the sitemap is empty. Launch also requires reviewed production
+ * stage/origin configuration and each page's own eligibility; Phase6 does not open this switch.
  */
 export const SITE_LAUNCHED = false;
 

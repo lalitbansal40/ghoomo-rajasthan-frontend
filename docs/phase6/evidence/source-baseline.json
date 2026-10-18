@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-18",
+  "timezone": "Asia/Kolkata",
+  "repos": {
+    "B": {
+      "path": "/Users/lalitbansal/Documents/hellomycab/hello-my-cab-backend",
+      "sha": "0c961a5d0459883cf3e6dd54ee888e837fdd042d",
+      "status": ""
+    },
+    "G": {
+      "path": "/Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend",
+      "sha": "c224686e88bdc1f953b15f1fbcfb5108b28775fc",
+      "status": ""
+    },
+    "A": {
+      "path": "/Users/lalitbansal/Documents/hellomycab/hello-my-cab-app",
+      "sha": "b3cd1fdfce5e74fd8e6c7d1e6d5a87ddf2743156",
+      "status": " M pubspec.yaml\n?? ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/\n?? ios/Runner.xcworkspace/xcshareddata/swiftpm/\n"
+    },
+    "W": {
+      "path": "/Users/lalitbansal/Documents/hellomycab/hello-my-cabs-website",
+      "sha": "5ab2af9f6deb8cce86ff3dc029112cdaedb738cb",
+      "status": "?? docs/seo/CHATGPT_HANDOVER.md\n"
+    }
+  },
+  "planSha256": "a3e4de924d7e3ab680d4f9d788c2a542378a4b9a84b042ff794cf64a49cf284a"
+}

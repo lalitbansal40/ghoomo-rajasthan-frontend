@@ -56,23 +56,23 @@ export const ONE_END_E: Record<string, RouteText> = {
   'AGRA-AJMER': {
     en: {
       intro: [
-        'Agra to Ajmer joins two of India’s great monuments of faith — the Taj behind you, the Dargah ahead — by way of Jaipur, which sits almost exactly halfway.',
+        'Agra to Ajmer takes you from the Taj Mahal towards Ajmer Sharif by way of Jaipur, where you can plan a break in the journey.',
         'Many make it a three-day loop: Agra, a night in Jaipur, then Ajmer and Pushkar.',
       ],
       onTheWay: [
         { name: 'Bharatpur', line: 'Keoladeo, early on the road.' },
-        { name: 'Jaipur', line: 'The halfway city — a meal or a night.' },
+        { name: 'Jaipur', line: 'A place to break the journey for a meal or a night.' },
       ],
       tip: 'In one day it is long; a night in Jaipur turns it into a tour.',
     },
     hi: {
       intro: [
-        'आगरा से अजमेर भारत के दो बड़े आस्था के स्मारकों को जोड़ता है — पीछे ताज, आगे दरगाह — जयपुर होकर, जो लगभग ठीक आधे रास्ते पर है।',
+        'आगरा से अजमेर की यात्रा ताजमहल से अजमेर शरीफ़ की ओर जयपुर होकर जाती है। जयपुर में यात्रा के बीच रुकने की योजना बना सकते हैं।',
         'बहुत लोग इसे तीन दिन का चक्कर बनाते हैं: आगरा, जयपुर में एक रात, फिर अजमेर और पुष्कर।',
       ],
       onTheWay: [
         { name: 'भरतपुर', line: 'केवलादेव, सड़क की शुरुआत में।' },
-        { name: 'जयपुर', line: 'आधे रास्ते का शहर — खाना या एक रात।' },
+        { name: 'जयपुर', line: 'यात्रा के बीच खाने या एक रात के लिए रुकने की जगह।' },
       ],
       tip: 'एक दिन में लंबा है; जयपुर में एक रात इसे टूर बना देती है।',
     },

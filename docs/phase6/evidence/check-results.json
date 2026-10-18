@@ -1,0 +1,596 @@
+{
+  "backendFinal": {
+    "runtime": "Node20.20.2",
+    "command": "NODE_ENV=test /Users/lalitbansal/.npm/_npx/ebaba8b9e55fd0a9/node_modules/node/bin/node node_modules/jest/bin/jest.js --runInBand --json --outputFile=/tmp/ghoomo-phase6-backend-release-candidate.json",
+    "result": {
+      "success": true,
+      "numPassedTestSuites": 121,
+      "numFailedTestSuites": 0,
+      "numPassedTests": 1532,
+      "numFailedTests": 0,
+      "numPendingTests": 0,
+      "startTime": 1792338088069,
+      "snapshot": {
+        "matched": 1,
+        "unmatched": 0,
+        "updated": 0
+      }
+    },
+    "defaultTimeoutMs": 15000,
+    "actualOutboundTransports": "blanked repository jest setup or explicit mocks",
+    "realDatabaseWrites": false
+  },
+  "targetedBackendNode24": {
+    "success": true,
+    "numPassedTestSuites": 4,
+    "numFailedTestSuites": 0,
+    "numPassedTests": 72,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "startTime": 1792338056764,
+    "snapshot": {
+      "matched": 0,
+      "unmatched": 0,
+      "updated": 0
+    }
+  },
+  "frontend": {
+    "runtime": "Node24.19.0",
+    "unitTests": 39,
+    "typecheck": "pass",
+    "lint": "pass",
+    "productionBuild": "pass, CMS loopback fixture; not deployable",
+    "contrast": "pass",
+    "buildId": "I4JcG273kdZbK_hAi0Evw"
+  },
+  "flutter": {
+    "unitWidgetTests": 125,
+    "scopedAnalyze": "3 files, no issues",
+    "debugApk": "build/app/outputs/flutter-apk/app-debug.apk",
+    "debugApkSha256": "dee19a2c9e6afd13b4117d96b71c94bd9efedb34d5bc1a67ac55229c26ef9726",
+    "versionOwnerPreserved": "1.0.0+261",
+    "playUpload": false
+  },
+  "earlierChecks": {
+    "node22_23_3_full_first": {
+      "success": false,
+      "numPassedTestSuites": 119,
+      "numFailedTestSuites": 1,
+      "numPassedTests": 1523,
+      "numFailedTests": 1,
+      "numPendingTests": 0,
+      "startTime": 1792336302866,
+      "snapshot": {
+        "matched": 1,
+        "unmatched": 0,
+        "updated": 0
+      }
+    },
+    "node22_23_3_full_second": {
+      "success": false,
+      "numPassedTestSuites": 120,
+      "numFailedTestSuites": 1,
+      "numPassedTests": 1528,
+      "numFailedTests": 1,
+      "numPendingTests": 0,
+      "startTime": 1792336725481,
+      "snapshot": {
+        "matched": 1,
+        "unmatched": 0,
+        "updated": 0
+      }
+    },
+    "history": "First Node22 full run failed only old process-role job count, corrected for independent new G worker. Next Node22 run failed existing wallet query-count assertion5 versus4; diagnostic runs alternated pass/fail, no production wallet code or final wallet test changed. Both were named node20 in temporary filenames incorrectly; executable version was explicitly verified as22.23.3. Final successful full run uses verified20.20.2, the Phase5 parity runtime. Node24 targeted56 tests passed. Latest Node24 focused run also covers customer messages and final recipient/ambiguous HTTP guards:72 tests pass. Latest strict full Node20 run:1532 tests pass."
+  },
+  "scope": "Local synthetic only; no actual target/account/content approval or launch",
+  "backendBeforeFinalGuards": {
+    "runtime": "Node20.20.2",
+    "numPassedTests": 1529,
+    "numPassedTestSuites": 121,
+    "success": true
+  },
+  "lighthouse": {
+    "base": "http://localhost:3315",
+    "results": [
+      {
+        "path": "/",
+        "performance": 95,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "lcpMs": 2927.5476000000003,
+        "cls": 0.0005456866234872565,
+        "tbtMs": 4,
+        "runs": 3,
+        "method": "median"
+      },
+      {
+        "path": "/hi",
+        "performance": 95,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "lcpMs": 2918.3019999999997,
+        "cls": 0,
+        "tbtMs": 3.5,
+        "runs": 3,
+        "method": "median"
+      },
+      {
+        "path": "/packages/local-fixture-tour",
+        "performance": 96,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "lcpMs": 2842.4462,
+        "cls": 0,
+        "tbtMs": 3,
+        "runs": 3,
+        "method": "median"
+      },
+      {
+        "path": "/hi/packages/local-fixture-tour",
+        "performance": 96,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "lcpMs": 2840.916375,
+        "cls": 0,
+        "tbtMs": 2,
+        "runs": 3,
+        "method": "median"
+      },
+      {
+        "path": "/destinations/jaisalmer",
+        "performance": 97,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "lcpMs": 2625.2689250000003,
+        "cls": 0,
+        "tbtMs": 8.5,
+        "runs": 3,
+        "method": "median"
+      },
+      {
+        "path": "/hi/cab/jaipur-to-udaipur",
+        "performance": 97,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "lcpMs": 2616.42375,
+        "cls": 0,
+        "tbtMs": 5,
+        "runs": 3,
+        "method": "median"
+      },
+      {
+        "path": "/cab",
+        "performance": 97,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "lcpMs": 2616.1766,
+        "cls": 0,
+        "tbtMs": 7.803899999999885,
+        "runs": 3,
+        "method": "median"
+      },
+      {
+        "path": "/desert-safari",
+        "performance": 96,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "lcpMs": 2778.4736500000004,
+        "cls": 0,
+        "tbtMs": 7.5,
+        "runs": 3,
+        "method": "median"
+      }
+    ],
+    "failures": [],
+    "rawReports": "/var/folders/1r/dlhzf3j57nx46ht125p6hl240000gn/T/ghoomo-lh-uYxDrI"
+  },
+  "browserLifecycle": {
+    "completed": true,
+    "failureName": null,
+    "evidence": [
+      {
+        "path": "/",
+        "width": 360,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/",
+        "width": 390,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/",
+        "width": 768,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/",
+        "width": 1280,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/hi",
+        "width": 360,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/hi",
+        "width": 390,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/hi",
+        "width": 768,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/hi",
+        "width": 1280,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/hi/packages",
+        "width": 360,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/hi/packages",
+        "width": 390,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/hi/packages",
+        "width": 768,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/hi/packages",
+        "width": 1280,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/packages",
+        "width": 360,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/packages",
+        "width": 390,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/packages",
+        "width": 768,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/packages",
+        "width": 1280,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/packages/local-fixture-tour",
+        "width": 360,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/packages/local-fixture-tour",
+        "width": 390,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/packages/local-fixture-tour",
+        "width": 768,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/packages/local-fixture-tour",
+        "width": 1280,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/hi/packages/local-fixture-tour",
+        "width": 360,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/hi/packages/local-fixture-tour",
+        "width": 390,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/hi/packages/local-fixture-tour",
+        "width": 768,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/hi/packages/local-fixture-tour",
+        "width": 1280,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/destinations/jaipur",
+        "width": 360,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/destinations/jaipur",
+        "width": 390,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/destinations/jaipur",
+        "width": 768,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/destinations/jaipur",
+        "width": 1280,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/cab/jaipur-to-udaipur",
+        "width": 360,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/cab/jaipur-to-udaipur",
+        "width": 390,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/cab/jaipur-to-udaipur",
+        "width": 768,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/cab/jaipur-to-udaipur",
+        "width": 1280,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/desert-safari",
+        "width": 360,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/desert-safari",
+        "width": 390,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/desert-safari",
+        "width": 768,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/desert-safari",
+        "width": 1280,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/photo-credits",
+        "width": 360,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/photo-credits",
+        "width": 390,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/photo-credits",
+        "width": 768,
+        "status": 200,
+        "violations": []
+      },
+      {
+        "path": "/photo-credits",
+        "width": 1280,
+        "status": 200,
+        "violations": []
+      }
+    ],
+    "failures": [],
+    "pricePicker": [
+      {
+        "locale": "en",
+        "amountsPaise": [
+          12345,
+          23456
+        ],
+        "selectedVehicle": "Ertiga",
+        "axeViolations": 0
+      },
+      {
+        "locale": "hi",
+        "amountsPaise": [
+          12345,
+          23456
+        ],
+        "selectedVehicle": "Ertiga",
+        "axeViolations": 0
+      }
+    ],
+    "expiredPreviewVerified": true,
+    "archivedViews": [
+      {
+        "locale": "en",
+        "status": 404,
+        "axeViolations": 0
+      },
+      {
+        "locale": "hi",
+        "status": 404,
+        "axeViolations": 0
+      }
+    ],
+    "outageViews": [
+      {
+        "locale": "en",
+        "status": 503,
+        "axeViolations": 0
+      },
+      {
+        "locale": "hi",
+        "status": 503,
+        "axeViolations": 0
+      }
+    ],
+    "launchedSitemapLifecycle": true
+  },
+  "interactions": {
+    "scope": "Loopback fixture, no form submitted or external CTA followed",
+    "checks": [
+      {
+        "path": "/",
+        "keyboardHeaderMenu": true,
+        "textScalePercent": 200,
+        "noHorizontalOverflow": true
+      },
+      {
+        "path": "/hi",
+        "keyboardHeaderMenu": true,
+        "textScalePercent": 200,
+        "noHorizontalOverflow": true
+      },
+      {
+        "path": "/enquiry",
+        "keyboardHeaderMenu": true,
+        "textScalePercent": 200,
+        "noHorizontalOverflow": true
+      },
+      {
+        "path": "/hi/enquiry",
+        "keyboardHeaderMenu": true,
+        "textScalePercent": 200,
+        "noHorizontalOverflow": true
+      },
+      {
+        "path": "/cab/jaipur-to-udaipur",
+        "keyboardHeaderMenu": true,
+        "textScalePercent": 200,
+        "noHorizontalOverflow": true
+      },
+      {
+        "path": "/hi/cab/jaipur-to-udaipur",
+        "keyboardHeaderMenu": true,
+        "textScalePercent": 200,
+        "noHorizontalOverflow": true
+      }
+    ]
+  },
+  "finalizedAtUTC": "2026-10-18T15:51:51.622314+00:00",
+  "localServersStopped": true,
+  "readiness": {
+    "R1": "authorized local code, technical verification and draft artifacts complete",
+    "R2": "actual isolated target proof pending D06 / prior Phase5 L2",
+    "R3": "real content/rights/accounts/operations/training/release approvals pending D01-D12"
+  },
+  "contactSmoke": {
+    "scope": "Final compiled loopback fixture, no contact action followed",
+    "checks": [
+      {
+        "path": "/contact",
+        "width": 390,
+        "status": 200,
+        "noUnsupportedSchedule": true,
+        "noOverflow": true
+      },
+      {
+        "path": "/contact",
+        "width": 1280,
+        "status": 200,
+        "noUnsupportedSchedule": true,
+        "noOverflow": true
+      },
+      {
+        "path": "/hi/contact",
+        "width": 390,
+        "status": 200,
+        "noUnsupportedSchedule": true,
+        "noOverflow": true
+      },
+      {
+        "path": "/hi/contact",
+        "width": 1280,
+        "status": 200,
+        "noUnsupportedSchedule": true,
+        "noOverflow": true
+      }
+    ]
+  },
+  "finalOG": {
+    "scope": "Final production build, loopback memory fixture only; English lettering for Hindi OG documented",
+    "grammaticalOneDayLabel": true,
+    "captures": [
+      {
+        "mode": "on-request",
+        "locale": "en",
+        "status": 200,
+        "noStore": true,
+        "bytes": 40741
+      },
+      {
+        "mode": "on-request",
+        "locale": "hi",
+        "status": 200,
+        "noStore": true,
+        "bytes": 40741
+      },
+      {
+        "mode": "priced",
+        "locale": "en",
+        "status": 200,
+        "noStore": true,
+        "bytes": 46891
+      },
+      {
+        "mode": "priced",
+        "locale": "hi",
+        "status": 200,
+        "noStore": true,
+        "bytes": 46891
+      }
+    ],
+    "fixtureArchivedAfterCapture": true
+  }
+}

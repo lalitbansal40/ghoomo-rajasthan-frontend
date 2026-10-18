@@ -22,6 +22,7 @@ export interface FareRow {
 }
 
 export interface OnewayView {
+  distanceMeasured?: boolean;
   kind: 'fixed' | 'perKm';
   km: number | null;
   gstPercent: number;
@@ -54,6 +55,7 @@ export function onewayView(fare: OnewayFare | null | undefined): OnewayView | nu
   if (!rows.length) return null;
   return {
     kind: fare.perKm ? 'perKm' : 'fixed',
+    distanceMeasured: fare.distanceMeasured === true,
     km: fare.distanceKm ?? fare.legs?.reduce((a, l) => a + l.km, 0) ?? null,
     gstPercent: fare.gstPercent ?? 5,
     rows,

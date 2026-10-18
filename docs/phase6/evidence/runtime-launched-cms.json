@@ -1,0 +1,2838 @@
+{
+  "date": "2026-10-18T15:18:46.128Z",
+  "scope": "Loopback fixture only; injected launch policy is not actual target evidence",
+  "mode": "launched",
+  "catalog": "cms",
+  "pages": 347,
+  "sitemapUrls": 316,
+  "expectedEligible": 316,
+  "fragmentReferences": 60,
+  "parity": [
+    {
+      "path": "/",
+      "equivalent": true
+    },
+    {
+      "path": "/hi",
+      "equivalent": true
+    },
+    {
+      "path": "/cab/jaipur-to-udaipur",
+      "equivalent": true
+    },
+    {
+      "path": "/cab/udaipur-to-jaipur",
+      "equivalent": true
+    },
+    {
+      "path": "/destinations/jaipur",
+      "equivalent": true
+    },
+    {
+      "path": "/packages/local-fixture-tour",
+      "equivalent": true
+    },
+    {
+      "path": "/privacy",
+      "equivalent": true
+    }
+  ],
+  "controls": [
+    {
+      "path": "/phase6-unknown-control",
+      "status": 404
+    },
+    {
+      "path": "/packages/phase6-no-product",
+      "status": 404
+    },
+    {
+      "path": "/hi/cab/phase6-no-route",
+      "status": 404
+    },
+    {
+      "path": "/destinations/phase6-no-place",
+      "status": 404
+    }
+  ],
+  "campaigns": 6,
+  "failures": [],
+  "result": [
+    {
+      "path": "/cab",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/contact",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/contact",
+      "alternates": 3,
+      "jsonLd": 0
+    },
+    {
+      "path": "/privacy",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/privacy",
+      "alternates": 3,
+      "jsonLd": 0
+    },
+    {
+      "path": "/hi/contact",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/contact",
+      "alternates": 3,
+      "jsonLd": 0
+    },
+    {
+      "path": "/about",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/about",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/about",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/about",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/privacy",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/privacy",
+      "alternates": 3,
+      "jsonLd": 0
+    },
+    {
+      "path": "/terms",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/terms",
+      "alternates": 3,
+      "jsonLd": 0
+    },
+    {
+      "path": "/refund",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/refund",
+      "alternates": 3,
+      "jsonLd": 0
+    },
+    {
+      "path": "/hi/refund",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/refund",
+      "alternates": 3,
+      "jsonLd": 0
+    },
+    {
+      "path": "/hi/terms",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/terms",
+      "alternates": 3,
+      "jsonLd": 0
+    },
+    {
+      "path": "/destinations/jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/abhaneri",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/abhaneri",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/abhaneri",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/abhaneri",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/sambhar-lake",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/sambhar-lake",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/sambhar-lake",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/sambhar-lake",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/bhangarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/bhangarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/bhangarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/bhangarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/mandawa",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/mandawa",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/mandawa",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/mandawa",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/salasar-balaji",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/salasar-balaji",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/khatu-shyam-ji",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/khatu-shyam-ji",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/khatu-shyam-ji",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/khatu-shyam-ji",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/salasar-balaji",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/salasar-balaji",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/alwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/alwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/mehandipur-balaji",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/mehandipur-balaji",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/bharatpur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/bharatpur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/alwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/alwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/mehandipur-balaji",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/mehandipur-balaji",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/bharatpur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/bharatpur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/karauli",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/karauli",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/neemrana",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/neemrana",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/ajmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/ajmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/neemrana",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/neemrana",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/karauli",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/karauli",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/ajmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/ajmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/pushkar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/pushkar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/kota",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/kota",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/pushkar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/pushkar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/bundi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/bundi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/kota",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/kota",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/bundi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/bundi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/jhalawar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/jhalawar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/ranthambore",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/ranthambore",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/jhalawar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/jhalawar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/ranthambore",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/ranthambore",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/udaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/udaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/udaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/udaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/chittorgarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/chittorgarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/kumbhalgarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/kumbhalgarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/chittorgarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/chittorgarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/ranakpur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/ranakpur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/kumbhalgarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/kumbhalgarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/ranakpur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/ranakpur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/nathdwara",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/nathdwara",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/banswara",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/banswara",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/nathdwara",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/nathdwara",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/banswara",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/banswara",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/jodhpur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/jodhpur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/jodhpur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/jodhpur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/osian",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/osian",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/jaisalmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/jaisalmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/osian",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/osian",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/barmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/barmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/barmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/barmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/jaisalmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/jaisalmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/bikaner",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/bikaner",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/destinations/mount-abu",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/destinations/mount-abu",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/ajmer-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/ajmer-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/bikaner",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/bikaner",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/ajmer-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/ajmer-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/destinations/mount-abu",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/destinations/mount-abu",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/ajmer-to-kota",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/ajmer-to-kota",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/ajmer-to-sikar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/ajmer-to-sikar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-ajmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-ajmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-ajmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-ajmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/ajmer-to-kota",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/ajmer-to-kota",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/ajmer-to-sikar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/ajmer-to-sikar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-jodhpur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-jodhpur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-kota",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-kota",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-kota",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-kota",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-sikar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-sikar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-sikar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-sikar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-jodhpur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-jodhpur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-udaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-udaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jodhpur-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jodhpur-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jodhpur-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jodhpur-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-udaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-udaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/kota-to-ajmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/kota-to-ajmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/kota-to-ajmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/kota-to-ajmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/kota-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/kota-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/kota-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/kota-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/kota-to-sikar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/kota-to-sikar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/sikar-to-ajmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/sikar-to-ajmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/kota-to-sikar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/kota-to-sikar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/sikar-to-ajmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/sikar-to-ajmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/sikar-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/sikar-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/sikar-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/sikar-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/udaipur-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/udaipur-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/sikar-to-kota",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/sikar-to-kota",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/sikar-to-kota",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/sikar-to-kota",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/udaipur-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/udaipur-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/agra-to-ajmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/agra-to-ajmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/agra-to-ajmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/agra-to-ajmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/agra-to-kota",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/agra-to-kota",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/agra-to-kota",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/agra-to-kota",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/agra-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/agra-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/agra-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/agra-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/agra-to-sikar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/agra-to-sikar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/ajmer-to-agra",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/ajmer-to-agra",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/agra-to-sikar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/agra-to-sikar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/ajmer-to-chandigarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/ajmer-to-chandigarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/ajmer-to-chandigarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/ajmer-to-chandigarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/ajmer-to-agra",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/ajmer-to-agra",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/ajmer-to-delhi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/ajmer-to-delhi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/ajmer-to-haridwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/ajmer-to-haridwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/ajmer-to-delhi-airport",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/ajmer-to-delhi-airport",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/ajmer-to-delhi-airport",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/ajmer-to-delhi-airport",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/ajmer-to-delhi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/ajmer-to-delhi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/ajmer-to-haridwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/ajmer-to-haridwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/chandigarh-to-ajmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/chandigarh-to-ajmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/ajmer-to-noida",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/ajmer-to-noida",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/ajmer-to-noida",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/ajmer-to-noida",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/chandigarh-to-ajmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/chandigarh-to-ajmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/chandigarh-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/chandigarh-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/chandigarh-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/chandigarh-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/chandigarh-to-kota",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/chandigarh-to-kota",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/chandigarh-to-kota",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/chandigarh-to-kota",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/chandigarh-to-sikar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/chandigarh-to-sikar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/chandigarh-to-sikar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/chandigarh-to-sikar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/delhi-to-ajmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-to-ajmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/delhi-to-ajmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-to-ajmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/delhi-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/delhi-to-kota",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-to-kota",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/delhi-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/delhi-to-kota",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-to-kota",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/delhi-to-sikar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-to-sikar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/delhi-to-sikar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-to-sikar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/delhi-airport-to-ajmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-airport-to-ajmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/delhi-airport-to-kota",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-airport-to-kota",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/delhi-airport-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-airport-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/delhi-airport-to-ajmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-airport-to-ajmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/delhi-airport-to-kota",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-airport-to-kota",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/delhi-airport-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-airport-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/delhi-airport-to-sikar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-airport-to-sikar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/haridwar-to-ajmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/haridwar-to-ajmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/delhi-airport-to-sikar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-airport-to-sikar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/haridwar-to-ajmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/haridwar-to-ajmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/haridwar-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/haridwar-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/haridwar-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/haridwar-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/haridwar-to-kota",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/haridwar-to-kota",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/haridwar-to-kota",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/haridwar-to-kota",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/haridwar-to-sikar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/haridwar-to-sikar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-agra",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-agra",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/haridwar-to-sikar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/haridwar-to-sikar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-agra",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-agra",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-chandigarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-chandigarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-chandigarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-chandigarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-delhi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-delhi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-delhi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-delhi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-delhi-airport",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-delhi-airport",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-delhi-airport",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-delhi-airport",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-haridwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-haridwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-haridwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-haridwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/kota-to-agra",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/kota-to-agra",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-noida",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-noida",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-noida",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-noida",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/kota-to-agra",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/kota-to-agra",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/kota-to-chandigarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/kota-to-chandigarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/kota-to-delhi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/kota-to-delhi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/kota-to-delhi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/kota-to-delhi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/kota-to-chandigarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/kota-to-chandigarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/kota-to-delhi-airport",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/kota-to-delhi-airport",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/kota-to-delhi-airport",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/kota-to-delhi-airport",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/kota-to-haridwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/kota-to-haridwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/kota-to-haridwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/kota-to-haridwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/kota-to-noida",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/kota-to-noida",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/kota-to-noida",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/kota-to-noida",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/noida-to-ajmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/noida-to-ajmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/noida-to-ajmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/noida-to-ajmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/noida-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/noida-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/noida-to-jaipur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/noida-to-jaipur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/noida-to-kota",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/noida-to-kota",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/noida-to-sikar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/noida-to-sikar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/noida-to-sikar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/noida-to-sikar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/noida-to-kota",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/noida-to-kota",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/sikar-to-agra",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/sikar-to-agra",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/sikar-to-agra",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/sikar-to-agra",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/sikar-to-chandigarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/sikar-to-chandigarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/sikar-to-delhi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/sikar-to-delhi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/sikar-to-delhi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/sikar-to-delhi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/sikar-to-chandigarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/sikar-to-chandigarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/sikar-to-haridwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/sikar-to-haridwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/sikar-to-delhi-airport",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/sikar-to-delhi-airport",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/sikar-to-delhi-airport",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/sikar-to-delhi-airport",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/sikar-to-haridwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/sikar-to-haridwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/sikar-to-noida",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/sikar-to-noida",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/sikar-to-noida",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/sikar-to-noida",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/agra-to-chandigarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/agra-to-chandigarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/agra-to-delhi-airport",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/agra-to-delhi-airport",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/agra-to-delhi-airport",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/agra-to-delhi-airport",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/agra-to-chandigarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/agra-to-chandigarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/agra-to-delhi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/agra-to-delhi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/agra-to-delhi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/agra-to-delhi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/agra-to-haridwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/agra-to-haridwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/chandigarh-to-agra",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/chandigarh-to-agra",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/agra-to-noida",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/agra-to-noida",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/agra-to-noida",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/agra-to-noida",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/agra-to-haridwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/agra-to-haridwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/chandigarh-to-agra",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/chandigarh-to-agra",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/chandigarh-to-delhi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/chandigarh-to-delhi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/chandigarh-to-haridwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/chandigarh-to-haridwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/chandigarh-to-delhi-airport",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/chandigarh-to-delhi-airport",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/chandigarh-to-delhi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/chandigarh-to-delhi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/chandigarh-to-haridwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/chandigarh-to-haridwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/chandigarh-to-delhi-airport",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/chandigarh-to-delhi-airport",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/chandigarh-to-noida",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/chandigarh-to-noida",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/chandigarh-to-noida",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/chandigarh-to-noida",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/dehradun-to-delhi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/dehradun-to-delhi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/delhi-to-agra",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-to-agra",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/dehradun-to-delhi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/dehradun-to-delhi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/delhi-to-agra",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-to-agra",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/delhi-to-chandigarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-to-chandigarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/delhi-to-dehradun",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-to-dehradun",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/delhi-to-chandigarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-to-chandigarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/delhi-to-haridwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-to-haridwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/delhi-to-dehradun",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-to-dehradun",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/delhi-to-haridwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-to-haridwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/delhi-to-ludhiana",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-to-ludhiana",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/delhi-to-mohali",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-to-mohali",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/delhi-airport-to-agra",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-airport-to-agra",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/delhi-to-mohali",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-to-mohali",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/delhi-to-ludhiana",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-to-ludhiana",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/delhi-airport-to-agra",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-airport-to-agra",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/delhi-airport-to-haridwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-airport-to-haridwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/delhi-airport-to-chandigarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-airport-to-chandigarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/delhi-airport-to-haridwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-airport-to-haridwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/delhi-airport-to-chandigarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-airport-to-chandigarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/haridwar-to-agra",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/haridwar-to-agra",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/haridwar-to-agra",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/haridwar-to-agra",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/haridwar-to-chandigarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/haridwar-to-chandigarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/haridwar-to-delhi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/haridwar-to-delhi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/haridwar-to-delhi-airport",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/haridwar-to-delhi-airport",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/haridwar-to-delhi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/haridwar-to-delhi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/haridwar-to-delhi-airport",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/haridwar-to-delhi-airport",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/haridwar-to-chandigarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/haridwar-to-chandigarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/mohali-to-delhi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/mohali-to-delhi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/haridwar-to-noida",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/haridwar-to-noida",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/haridwar-to-noida",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/haridwar-to-noida",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/ludhiana-to-delhi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/ludhiana-to-delhi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/ludhiana-to-delhi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/ludhiana-to-delhi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/mohali-to-delhi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/mohali-to-delhi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/noida-to-agra",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/noida-to-agra",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/noida-to-haridwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/noida-to-haridwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/noida-to-chandigarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/noida-to-chandigarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/noida-to-agra",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/noida-to-agra",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/noida-to-haridwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/noida-to-haridwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/noida-to-chandigarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/noida-to-chandigarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-jaisalmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-jaisalmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-jaisalmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-jaisalmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-pushkar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-pushkar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-pushkar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-pushkar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-ranthambore",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-ranthambore",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-ranthambore",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-ranthambore",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-mount-abu",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-mount-abu",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-mount-abu",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-mount-abu",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-chittorgarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-chittorgarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-chittorgarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-chittorgarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-bikaner",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-bikaner",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-bikaner",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-bikaner",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-bharatpur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-bharatpur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-bharatpur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-bharatpur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-bundi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-bundi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-alwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-alwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-alwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-alwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-bundi",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-bundi",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-mandawa",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-mandawa",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-mandawa",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-mandawa",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/udaipur-to-jodhpur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/udaipur-to-jodhpur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jaipur-to-karauli",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jaipur-to-karauli",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jaipur-to-karauli",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jaipur-to-karauli",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/udaipur-to-jodhpur",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/udaipur-to-jodhpur",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/udaipur-to-mount-abu",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/udaipur-to-mount-abu",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/udaipur-to-chittorgarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/udaipur-to-chittorgarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/udaipur-to-chittorgarh",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/udaipur-to-chittorgarh",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/udaipur-to-banswara",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/udaipur-to-banswara",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/udaipur-to-banswara",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/udaipur-to-banswara",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/udaipur-to-mount-abu",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/udaipur-to-mount-abu",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jodhpur-to-jaisalmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jodhpur-to-jaisalmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jodhpur-to-mount-abu",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jodhpur-to-mount-abu",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jodhpur-to-jaisalmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jodhpur-to-jaisalmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jodhpur-to-bikaner",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jodhpur-to-bikaner",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jodhpur-to-bikaner",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jodhpur-to-bikaner",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jodhpur-to-mount-abu",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jodhpur-to-mount-abu",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/jodhpur-to-barmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/jodhpur-to-barmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/jodhpur-to-barmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/jodhpur-to-barmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/bikaner-to-jaisalmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/bikaner-to-jaisalmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/bikaner-to-jaisalmer",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/bikaner-to-jaisalmer",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/kota-to-ranthambore",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/kota-to-ranthambore",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/kota-to-ranthambore",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/kota-to-ranthambore",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/kota-to-jhalawar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/kota-to-jhalawar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/delhi-to-alwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-to-alwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/delhi-to-neemrana",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-to-neemrana",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/cab/delhi-to-neemrana",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-to-neemrana",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/kota-to-jhalawar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/kota-to-jhalawar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/cab/delhi-to-alwar",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-to-alwar",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/desert-safari",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/desert-safari",
+      "alternates": 0,
+      "jsonLd": 1
+    },
+    {
+      "path": "/packages/local-fixture-tour",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/packages/local-fixture-tour",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/packages",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/packages",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/packages",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/packages",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/packages/local-fixture-tour",
+      "status": 200,
+      "noindex": false,
+      "canonical": "https://ghoomorajasthan.com/hi/packages/local-fixture-tour",
+      "alternates": 3,
+      "jsonLd": 1
+    },
+    {
+      "path": "/hi/desert-safari",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/hi/desert-safari",
+      "alternates": 0,
+      "jsonLd": 1
+    },
+    {
+      "path": "/booking",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/booking",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/enquiry",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/enquiry",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/hi/enquiry",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/hi/enquiry",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/hi/booking",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/hi/booking",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/styleguide",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/styleguide",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/hi/styleguide",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/hi/styleguide",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/my-bookings",
+      "status": 200,
+      "noindex": true,
+      "canonical": "",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/hi/my-bookings",
+      "status": 200,
+      "noindex": true,
+      "canonical": "",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/hi/cab/delhi-to-delhi-airport",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-to-delhi-airport",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/cab/delhi-to-noida",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-to-noida",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/photo-credits",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/photo-credits",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/cab/delhi-to-delhi-airport",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-to-delhi-airport",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/hi/cab/delhi-to-noida",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-to-noida",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/cab/delhi-airport-to-noida",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-airport-to-noida",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/hi/cab/delhi-airport-to-delhi",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-airport-to-delhi",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/cab/delhi-airport-to-delhi",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/cab/delhi-airport-to-delhi",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/cab/noida-to-delhi",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/cab/noida-to-delhi",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/hi/cab/delhi-airport-to-noida",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/delhi-airport-to-noida",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/cab/noida-to-delhi-airport",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/cab/noida-to-delhi-airport",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/hi/cab/noida-to-delhi",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/noida-to-delhi",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/hi/cab/udaipur-to-nathdwara",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/udaipur-to-nathdwara",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/hi/cab/noida-to-delhi-airport",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/noida-to-delhi-airport",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/cab/ajmer-to-pushkar",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/cab/ajmer-to-pushkar",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/cab/udaipur-to-nathdwara",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/cab/udaipur-to-nathdwara",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/cab/kota-to-bundi",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/cab/kota-to-bundi",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/hi/cab/ajmer-to-pushkar",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/ajmer-to-pushkar",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/cab/agra-to-bharatpur",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/cab/agra-to-bharatpur",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/hi/cab/kota-to-bundi",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/kota-to-bundi",
+      "alternates": 0,
+      "jsonLd": 0
+    },
+    {
+      "path": "/hi/cab/agra-to-bharatpur",
+      "status": 200,
+      "noindex": true,
+      "canonical": "https://ghoomorajasthan.com/hi/cab/agra-to-bharatpur",
+      "alternates": 0,
+      "jsonLd": 0
+    }
+  ]
+}

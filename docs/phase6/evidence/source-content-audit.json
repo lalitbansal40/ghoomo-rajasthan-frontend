@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-18",
+  "scope": "offline source/structure/editorial diagnostic; not owner operational fact approval",
+  "urls": 360,
+  "concreteUrls": 357,
+  "contentLocaleRows": 357,
+  "destinations": 30,
+  "routes": 128,
+  "held": [
+    "delhi-to-delhi-airport",
+    "delhi-to-noida",
+    "delhi-airport-to-delhi",
+    "delhi-airport-to-noida",
+    "noida-to-delhi",
+    "noida-to-delhi-airport",
+    "udaipur-to-nathdwara",
+    "ajmer-to-pushkar",
+    "kota-to-bundi",
+    "agra-to-bharatpur"
+  ],
+  "samplePackages": 6,
+  "postlaunchCandidatesBeforeOwnerReview": 312,
+  "actualCurrentIndexable": 0,
+  "missingApprovalRows": 357,
+  "flagged": []
+}

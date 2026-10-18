@@ -9,12 +9,18 @@
  */
 const BASE = (process.env.BASE_URL ?? 'http://localhost:3300').replace(/\/+$/, '');
 const API = (process.env.API_URL ?? process.env.NEXT_PUBLIC_API_BASE_URL ?? 'https://api.hellomycabs.com/api/v1').replace(/\/+$/, '');
+if (['localhost', '127.0.0.1'].includes(new URL(BASE).hostname) &&
+    !process.env.API_URL && !process.env.NEXT_PUBLIC_API_BASE_URL) {
+  throw new Error('Local fare audit requires explicit API_URL matching the build; do not compare a fixture to production fares.');
+}
 const root = new URL('..', import.meta.url).pathname;
 const { ROUTES } = await import(root + 'src/content/routes/list.ts');
 const { PLACES } = await import(root + 'src/content/places/index.ts');
 
 const get = async (p) => {
-  const b = await (await fetch(`${API}/public${p}`)).json();
+  const response = await fetch(`${API}/public${p}`);
+  if (!response.ok) throw new Error(`${p}: HTTP ${response.status}`);
+  const b = await response.json();
   if (!b.ok) throw new Error(`${p}: ${b.error?.message}`);
   return b.data;
 };

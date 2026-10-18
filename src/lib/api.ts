@@ -29,7 +29,7 @@ async function get<T>(path: string, revalidate = DAY): Promise<T> {
     headers: { accept: 'application/json' },
   });
   const body = await res.json().catch(() => null);
-  if (!body?.ok) {
+  if (!res.ok || !body?.ok) {
     throw new ApiError(
       body?.error?.code ?? 'REQUEST_FAILED',
       body?.error?.message ?? `GET ${path} failed`,
@@ -113,6 +113,7 @@ export interface RouteSummary {
 }
 
 export interface OnewayFare {
+  distanceMeasured?: boolean;
   pickup: string;
   drop: string;
   perKm: boolean;

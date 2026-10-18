@@ -4,6 +4,10 @@ import { createRequire } from 'node:module';
 import puppeteer from 'puppeteer-core';
 const BASE = process.env.BASE_URL ?? 'http://localhost:3315';
 const API = process.env.FIXTURE_API ?? 'http://127.0.0.1:4211';
+// Optional Phase6 injected-policy server; never an external target.
+const LAUNCHED = process.env.LAUNCHED_AUDIT_BASE;
+if (LAUNCHED && !['localhost', '127.0.0.1'].includes(new URL(LAUNCHED).hostname))
+  throw new Error('Launched audit must also be a local synthetic server');
 if (
   !['localhost', '127.0.0.1'].includes(new URL(BASE).hostname) ||
   !['localhost', '127.0.0.1'].includes(new URL(API).hostname)
@@ -129,6 +133,14 @@ try {
     '/desert-safari',
   ];
   async function membership(visible) {
+    if (LAUNCHED) {
+      const sitemap = await fetch(`${LAUNCHED}/sitemap.xml`);
+      assert.equal(sitemap.status, 200);
+      const xml = await sitemap.text();
+      for (const prefix of ['', '/hi']) assert.equal(
+        xml.includes(`<loc>https://ghoomorajasthan.com${prefix}/packages/${slug}</loc>`),
+        visible, 'runtime launched sitemap follows publication without rebuild');
+    }
     for (const path of publicSurfaces) {
       const html = await fetch(BASE + path).then((r) => r.text());
       assert.equal(html.includes(`/packages/${slug}`), visible, `${path} membership`);
@@ -164,7 +176,9 @@ try {
     const image = await fetch(og);
     assert.equal(image.status, 200, 'live OG');
     assert.match(image.headers.get('cache-control'), /no-store/);
-    assert.ok((await image.arrayBuffer()).byteLength > 1000);
+    const ogBytes = Buffer.from(await image.arrayBuffer());
+    assert.ok(ogBytes.byteLength > 1000);
+    writeFileSync(`${OUT}/og-on-request-${locale ? 'hi' : 'en'}.png`, ogBytes);
   }
   const publicImage = `${API}/api/v1/public/ghoomo/media/${assetId}/cover`;
   assert.equal((await fetch(publicImage)).status, 200);
@@ -179,6 +193,9 @@ try {
       buttons.find((button) => button.textContent.trim() === 'Ertiga')?.click(),
     );
     await pricePage.waitForFunction(() => document.body.innerText.includes('₹234.56'));
+    // Contrast is assessed once the selected chip's existing colour transition has settled.
+    await pricePage.waitForFunction(() => [...document.querySelectorAll('button[aria-pressed]')]
+      .every((button) => button.getAnimations().every((animation) => animation.playState !== 'running')));
     assert.equal(await pricePage.evaluate(() => document.body.innerText.includes('Sample price')), false);
     assert.equal(
       await pricePage.$eval('button[aria-pressed="true"]', (button) => button.textContent.trim()),
@@ -199,6 +216,10 @@ try {
       'priced selector accessibility',
     );
     await pricePage.screenshot({ path: `${OUT}/priced-${locale ? 'hi' : 'en'}-390.png`, fullPage: true });
+    const pricedOg = await fetch(ogUrls[locale ? 1 : 0]);
+    assert.equal(pricedOg.status, 200);
+    assert.match(pricedOg.headers.get('cache-control'), /no-store/);
+    writeFileSync(`${OUT}/og-priced-${locale ? 'hi' : 'en'}.png`, Buffer.from(await pricedOg.arrayBuffer()));
     assert.ok(
       (
         await pricePage.$$eval('a[href*="enquiry"]', (links) =>
@@ -336,6 +357,13 @@ try {
   assert.equal((await fetch(publicImage)).status, 404);
   assert.equal((await fetch(ogUrls[0])).status, 404);
   await action('outage');
+  if (LAUNCHED) {
+    const sitemap = await fetch(`${LAUNCHED}/sitemap.xml`);
+    assert.equal(sitemap.status, 503);
+    assert.match(sitemap.headers.get('cache-control'), /no-store/);
+    assert.equal(sitemap.headers.get('retry-after'), '60');
+    assert.ok(!(await sitemap.text()).includes('<url>'), 'no partial/sample successful sitemap');
+  }
   for (const path of ['/packages', `/packages/${slug}`, '/hi/packages']) {
     const response = await fetch(BASE + path);
     assert.equal(response.status, 503);
@@ -383,6 +411,7 @@ try {
         expiredPreviewVerified,
         archivedViews,
         outageViews,
+        launchedSitemapLifecycle: Boolean(LAUNCHED) && completed,
       },
       null,
       2,

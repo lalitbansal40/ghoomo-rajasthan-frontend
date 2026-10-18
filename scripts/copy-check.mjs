@@ -1,11 +1,12 @@
 /**
- * Nothing on Ghoomo Rajasthan is copied from hellomycabs.com, and no two of our own route
- * pages read alike (Phase 3, 16 Oct 2026).
+ * Editorial overlap diagnostic retained from Phase3. Its thresholds are project review gates,
+ * not Google's algorithm or proof of a search penalty. Shared facts/policies can be legitimate;
+ * inspect a flagged passage before any content, canonical or indexing decision.
  *   npm run copy:check            (HMC_SITE=../hello-my-cabs-website by default)
  *
  *   · Every route, place, safari and about text is cut into runs of 8 words; any run that also
  *     appears anywhere in hellomycabs.com's source (its src/) FAILS — same
- *     facts are fine, the same sentences are not (two domains, one text = duplicate content).
+ *     inspect shared sentences for independent usefulness, attribution and accuracy.
  *   · Every two route intros (in each language) are compared as sets of 5-word runs; more than
  *     40 % alike FAILS — a road and its reverse must each be written, not flipped.
  * Exits 1 on any FAIL.

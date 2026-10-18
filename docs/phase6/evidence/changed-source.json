@@ -1,0 +1,450 @@
+{
+  "finalizedAtUTC": "2026-10-18T15:51:51.622314+00:00",
+  "files": [
+    {
+      "repo": "B",
+      "path": ".env.example",
+      "state": "present",
+      "sha256": "18ac078e8a0409bd0f9a6e6fc3506100b802280f3d146b1a7a8ea60cdbaba874"
+    },
+    {
+      "repo": "B",
+      "path": "src/__tests__/ghoomoReviewTransport.test.ts",
+      "state": "present",
+      "sha256": "bfb2facb65f97744c337c7e896c4cfe7f05105f0d3328445d0197a904cbf4a13"
+    },
+    {
+      "repo": "B",
+      "path": "src/__tests__/processRole.test.ts",
+      "state": "present",
+      "sha256": "fd3781f95dafc66f6f77911a273c0df5d3cb292b6b6c291a6d0f8bc6472a2050"
+    },
+    {
+      "repo": "B",
+      "path": "src/__tests__/reviews.test.ts",
+      "state": "present",
+      "sha256": "7f06a7e0ce5b3856d9e31fbab280bc97c100af19ad43d037657d60386b4f8c2e"
+    },
+    {
+      "repo": "B",
+      "path": "src/config/env.ts",
+      "state": "present",
+      "sha256": "f7f5d35a912c4dbfc324a39e8347f0ae59954e08af7837c1cff32f30458742da"
+    },
+    {
+      "repo": "B",
+      "path": "src/controllers/rating.controller.ts",
+      "state": "present",
+      "sha256": "ef0d4b41088c785a19a0bd359f86a6e5b5fc9eb1d49dba627558132f89f4e494"
+    },
+    {
+      "repo": "B",
+      "path": "src/models/booking.model.ts",
+      "state": "present",
+      "sha256": "b4e3f8fbf49c31d863778aa9fdb2ac2a3ed8487a8c153f40074753413f121d51"
+    },
+    {
+      "repo": "B",
+      "path": "src/models/rating.model.ts",
+      "state": "present",
+      "sha256": "395c667dd520eaee1dc462e8b01c4c442e7e6a0c37ee987170ebc5c1c7bc29e9"
+    },
+    {
+      "repo": "B",
+      "path": "src/services/ghoomoReviewRequests.ts",
+      "state": "present",
+      "sha256": "1666c8ed259697c496b52c1a7ed2b58fb563f2e07d71cb1a2d6796f32ae81bba"
+    },
+    {
+      "repo": "B",
+      "path": "src/services/jobs.ts",
+      "state": "present",
+      "sha256": "53fe4cb8cdf19c71c88b5ae653f2b9d4c73f60625685e31f3fc65532a68a5aba"
+    },
+    {
+      "repo": "B",
+      "path": "src/services/reviewStats.service.ts",
+      "state": "present",
+      "sha256": "6f1ecbb9575de5da800b61bd8f8c857dab26e7a086b1aec71ac761d3eb794cd9"
+    },
+    {
+      "repo": "B",
+      "path": "src/services/reviewStatsRebuild.ts",
+      "state": "present",
+      "sha256": "3a7a1246fcd6c6332133e3a842a38a0ad44848448e1b5f26901c4538ac3eac48"
+    },
+    {
+      "repo": "B",
+      "path": "src/services/whatsapp.service.ts",
+      "state": "present",
+      "sha256": "bae99613313e267df758bf260bbadea578294831d183ad81475249f4f4eda759"
+    },
+    {
+      "repo": "G",
+      "path": ".env.example",
+      "state": "present",
+      "sha256": "456139e7a08d70abee2591761cc239e4959cec9adf28cbb3decd7628ffd93e30"
+    },
+    {
+      "repo": "G",
+      "path": "README.md",
+      "state": "present",
+      "sha256": "52994269d9deeb97f0819b5a7d48f5d7590d2cd3fcd393a06be571f988f97270"
+    },
+    {
+      "repo": "G",
+      "path": "next.config.ts",
+      "state": "present",
+      "sha256": "37c85093cf82736e96ee838fcf875fbb5abbc72ae196b2952ef8750d18318f45"
+    },
+    {
+      "repo": "G",
+      "path": "scripts/copy-check.mjs",
+      "state": "present",
+      "sha256": "35b2e0599734f73275db1b06065ee75ba28764567ff8b0a8fa7530b5e3af714d"
+    },
+    {
+      "repo": "G",
+      "path": "scripts/fares-check.mjs",
+      "state": "present",
+      "sha256": "04a8b30b289037875e881401047f4ea41572eaf4be2d9af42032cc08abbdcf8c"
+    },
+    {
+      "repo": "G",
+      "path": "scripts/fixtures/analytics-entry.tsx",
+      "state": "present",
+      "sha256": "0ded7d7e3fe6d83164c92d22fab1695d59052ef79498657d1aa839ac86e5e89c"
+    },
+    {
+      "repo": "G",
+      "path": "scripts/ghoomo-flow.mjs",
+      "state": "present",
+      "sha256": "b2c47816093e31881a03923c9a96c69df9b7b9966071873aff6b93394cce67c0"
+    },
+    {
+      "repo": "G",
+      "path": "scripts/phase6-analytics-browser.mjs",
+      "state": "present",
+      "sha256": "c0bbc7c5b6658be3e8bb544429818123857aea925155a8cc949e1f6435cd31a4"
+    },
+    {
+      "repo": "G",
+      "path": "scripts/phase6-api-audit.mjs",
+      "state": "present",
+      "sha256": "20850cc95bd66d2c502152f6089239839a7cce78e258cd83b08ed5b2d471aaa6"
+    },
+    {
+      "repo": "G",
+      "path": "scripts/phase6-interactions.mjs",
+      "state": "present",
+      "sha256": "50ac551597012ecfd325bc4864f75f19be19e4416dd819bb747079babfe05de1"
+    },
+    {
+      "repo": "G",
+      "path": "scripts/phase6-inventory.mjs",
+      "state": "present",
+      "sha256": "c345b6f1d30c4ca1a440177e8cb46103b87733f3df74543a1b5db77fe5135fa9"
+    },
+    {
+      "repo": "G",
+      "path": "scripts/phase6-marketing-kit.mjs",
+      "state": "present",
+      "sha256": "26ba97c15f10b65d87965d8a1c7aff86658c87b20431525fa91abe6802538ff0"
+    },
+    {
+      "repo": "G",
+      "path": "scripts/phase6-runtime-audit.mjs",
+      "state": "present",
+      "sha256": "f5e15bd9ff78f7e2b65e681db6b04e54d000ed0affdcfa987f4ef556602e02b8"
+    },
+    {
+      "repo": "G",
+      "path": "scripts/seo-check.mjs",
+      "state": "present",
+      "sha256": "fab87ae073503b743bbc5a4fb605303b0464a52f60bb3e6212c63a3a4a901806"
+    },
+    {
+      "repo": "G",
+      "path": "src/app/(en)/contact/page.tsx",
+      "state": "present",
+      "sha256": "fc35705b46373fd53e4b24a1720e60174464a6ec51d39ff821972fc84153f754"
+    },
+    {
+      "repo": "G",
+      "path": "src/app/(en)/packages/[slug]/page.tsx",
+      "state": "present",
+      "sha256": "89927b4b9ae9a09249996edbe685a8c277772dd55de6fd5dba68a50303912b1d"
+    },
+    {
+      "repo": "G",
+      "path": "src/app/(en)/packages/page.tsx",
+      "state": "present",
+      "sha256": "0b66afa895d3ea555be5abdd060d61f01506753c6d02cdec8708fc8948a59683"
+    },
+    {
+      "repo": "G",
+      "path": "src/app/(en)/privacy/page.tsx",
+      "state": "present",
+      "sha256": "fcd51346352712830c69cc8621a763b628d94e36973650bef3256a7be6dacf87"
+    },
+    {
+      "repo": "G",
+      "path": "src/app/_cab/RoutePage.tsx",
+      "state": "present",
+      "sha256": "dc5e4b203352654e5f9ba4153c4427c4fcd629c35732621106fa60ca5876fc13"
+    },
+    {
+      "repo": "G",
+      "path": "src/app/_cab/routeMeta.ts",
+      "state": "present",
+      "sha256": "8a8dad528bedb053c2fc2722fa0a263bd9964e6a073ca521c4b99abff25dbb61"
+    },
+    {
+      "repo": "G",
+      "path": "src/app/_og/routeImage.tsx",
+      "state": "present",
+      "sha256": "413d572375378aa449054369c8b1860fcbe68524ad7a68a0fb65bac246d417e7"
+    },
+    {
+      "repo": "G",
+      "path": "src/app/_og/tourImage.tsx",
+      "state": "present",
+      "sha256": "2fbc5e04f863b9008a5a1b66a720192e8581c4b8669023e619fc7175d2f75e55"
+    },
+    {
+      "repo": "G",
+      "path": "src/app/_safari/meta.ts",
+      "state": "present",
+      "sha256": "79de801133c2ce70cf3c66e253e28932198453398ab556f625190f27c1ad2b55"
+    },
+    {
+      "repo": "G",
+      "path": "src/app/_tours/TourPage.tsx",
+      "state": "present",
+      "sha256": "446ec39e47bd75d04f866a604c48ddd6df2e1684bcefc05ffda591b7a88bc813"
+    },
+    {
+      "repo": "G",
+      "path": "src/app/globals.css",
+      "state": "present",
+      "sha256": "5d6f7396d1550e44b3c3c04ad9faa0f2406640aff5e25677dd26f4e27d1cac35"
+    },
+    {
+      "repo": "G",
+      "path": "src/app/hi/contact/page.tsx",
+      "state": "present",
+      "sha256": "748302fb939e2d41bd6b43659bbc1ded97fe8effc5832ba17024af49675b8f6c"
+    },
+    {
+      "repo": "G",
+      "path": "src/app/hi/packages/[slug]/page.tsx",
+      "state": "present",
+      "sha256": "f53fe54b9cabd173f5ca11570b7b7ccee493a2f7691348729e70d209c81a3ebd"
+    },
+    {
+      "repo": "G",
+      "path": "src/app/hi/packages/page.tsx",
+      "state": "present",
+      "sha256": "72b6a7668aee31ead96f8ea7adb2aa61b4aeebbba8f47e1626e9fd433b58cdb4"
+    },
+    {
+      "repo": "G",
+      "path": "src/app/hi/privacy/page.tsx",
+      "state": "present",
+      "sha256": "c1db54a2279090546db1d38acee04a771cd5cfcf3223960efa4f9fecbe101223"
+    },
+    {
+      "repo": "G",
+      "path": "src/app/robots.ts",
+      "state": "present",
+      "sha256": "9518f5aef90464a4d2fd076c9ca0bb4fe6585a1b348e697a37e80090cbb30822"
+    },
+    {
+      "repo": "G",
+      "path": "src/app/sitemap.ts",
+      "state": "deleted",
+      "sha256": null
+    },
+    {
+      "repo": "G",
+      "path": "src/app/sitemap.xml/route.ts",
+      "state": "present",
+      "sha256": "e1a44aaf8a52c097e8dd91cd0085f4c28949b9b33accc228e1607d14c6fdc72e"
+    },
+    {
+      "repo": "G",
+      "path": "src/components/Analytics.tsx",
+      "state": "present",
+      "sha256": "87bfd9f01c054637c1e60462695908770c2ce7108eb3d567f4d74af435a231f2"
+    },
+    {
+      "repo": "G",
+      "path": "src/components/AnalyticsClient.tsx",
+      "state": "present",
+      "sha256": "387433cf42d3f1c0d10ab19f8f9e9dcf7f8c0aaa277f927d08857219a33234f2"
+    },
+    {
+      "repo": "G",
+      "path": "src/components/EnquiryForm.tsx",
+      "state": "present",
+      "sha256": "1ffd23c1dad0f2d6b75ccd6a3777c379833056b5e8aa767ed1005f5e6a5286fc"
+    },
+    {
+      "repo": "G",
+      "path": "src/components/JsonLd.tsx",
+      "state": "present",
+      "sha256": "6b6a2c72fe06abdd358766dce8dcfb253c5c29b1d0ffc86fd578028a80c07bd6"
+    },
+    {
+      "repo": "G",
+      "path": "src/components/ui/Button.tsx",
+      "state": "present",
+      "sha256": "0c5561b097580ab40c4221e8ef57cebaa44a141a825de79444286cd74c30d30e"
+    },
+    {
+      "repo": "G",
+      "path": "src/components/ui/FAQ.tsx",
+      "state": "present",
+      "sha256": "c6035ee10b5efdadbf5ba53f624061013e33ded38e7bfb349a094c7d9f82e5c4"
+    },
+    {
+      "repo": "G",
+      "path": "src/components/ui/Header.tsx",
+      "state": "present",
+      "sha256": "0f63cc371b93a2c1d94e78d567533f2a311599cd3df6671b2117f1d38368bc2b"
+    },
+    {
+      "repo": "G",
+      "path": "src/components/ui/PackageCard.tsx",
+      "state": "present",
+      "sha256": "e697312f8636bbdb4b3c92d5b66863a1f2f95504a5bfef1ab30d70e809e689b7"
+    },
+    {
+      "repo": "G",
+      "path": "src/components/ui/StickyCta.tsx",
+      "state": "present",
+      "sha256": "4128bccc2e460df11ea8ca4ef1f5e5a2cd269f8b01f22711f99edba3d55bb2e5"
+    },
+    {
+      "repo": "G",
+      "path": "src/components/ui/button-style.ts",
+      "state": "present",
+      "sha256": "a03a45dc5423d1b28d8e30686b01c54fff5baada00f6eb5c6843606482247856"
+    },
+    {
+      "repo": "G",
+      "path": "src/content/routes/text/index.ts",
+      "state": "present",
+      "sha256": "0cda5030f50badd96d2faad0e25fde7a11f1c1b5d6ad077ede2bc5644e69021d"
+    },
+    {
+      "repo": "G",
+      "path": "src/content/routes/text/one-end-e.ts",
+      "state": "present",
+      "sha256": "610e988798fccdb583fd44d340c4c5eec7ea51275e3b9e6a5837dc4a0efb2603"
+    },
+    {
+      "repo": "G",
+      "path": "src/lib/analytics-contract.test.ts",
+      "state": "present",
+      "sha256": "f56106719d9baf9d65a3cae10a607fc75215144be1d838d9776623f337ae8195"
+    },
+    {
+      "repo": "G",
+      "path": "src/lib/analytics-contract.ts",
+      "state": "present",
+      "sha256": "d23541242dfa61ebce4cdfa65992dbd0c25e95fec08f947b3f9834e59cf97411"
+    },
+    {
+      "repo": "G",
+      "path": "src/lib/api.ts",
+      "state": "present",
+      "sha256": "290a68a78788dd9c48193dd95ee9104a28a9cb350d9644423577add96d7646bf"
+    },
+    {
+      "repo": "G",
+      "path": "src/lib/distance-copy.test.ts",
+      "state": "present",
+      "sha256": "a69c8d78bdc91be7e25653ea80d48d840a165c804e088c17ed2a896440cb1904"
+    },
+    {
+      "repo": "G",
+      "path": "src/lib/distance-copy.ts",
+      "state": "present",
+      "sha256": "a5f3386b23d31c7b0a2a9df0bb37cb2afa5777f9830f6d289e54d7c59d5e5075"
+    },
+    {
+      "repo": "G",
+      "path": "src/lib/env.ts",
+      "state": "present",
+      "sha256": "3515a3f32234fce53d25610236287302902716589b2c4a360fce3797f1459fd8"
+    },
+    {
+      "repo": "G",
+      "path": "src/lib/fares.ts",
+      "state": "present",
+      "sha256": "09c5630a1a3583c15cba4ab0834f5c10c8da05cce783997638ffefe78c3eab30"
+    },
+    {
+      "repo": "G",
+      "path": "src/lib/indexing-policy.test.ts",
+      "state": "present",
+      "sha256": "134fd8e50632d168674ac5e51b1e22346a3b13264662839536905d6af65625eb"
+    },
+    {
+      "repo": "G",
+      "path": "src/lib/indexing-policy.ts",
+      "state": "present",
+      "sha256": "0509abf7517465c36df6e75448d76cd64cdffa17281d3a6e2d9830fbad5faabe"
+    },
+    {
+      "repo": "G",
+      "path": "src/lib/route-faq.ts",
+      "state": "present",
+      "sha256": "f6275925ece9a975f436efebf83318d46601b05cb87b17cd011d0b0c95b426c9"
+    },
+    {
+      "repo": "G",
+      "path": "src/lib/schema.ts",
+      "state": "present",
+      "sha256": "80808a9daba3931b94d180984c204867eb8ff3cdd40d7bc5b6eda2c2bf18aab9"
+    },
+    {
+      "repo": "G",
+      "path": "src/lib/seo.ts",
+      "state": "present",
+      "sha256": "5db4251c656ef973354ba05b37c95529b3c8a8440cf893f42114c4106b75653c"
+    },
+    {
+      "repo": "G",
+      "path": "src/lib/site.ts",
+      "state": "present",
+      "sha256": "c5b967d9191e6e58ef4ac4c140079f1c8c87533c7ccca80be91750aab825c36e"
+    },
+    {
+      "repo": "G",
+      "path": "src/lib/sitemap-response.ts",
+      "state": "present",
+      "sha256": "14b0265f9f4fe6254be54d596a79c9d373d21e00c8246da09ed9a63c20dd7f44"
+    },
+    {
+      "repo": "A",
+      "path": "lib/features/booking/ride_status_screen.dart",
+      "state": "present",
+      "sha256": "fd3dfd14986ba03f0b01d680ab2a5792a5893df21142b267bbe85eb16a55be10"
+    },
+    {
+      "repo": "A",
+      "path": "lib/services/booking_service.dart",
+      "state": "present",
+      "sha256": "7c8cb9aaaed50a429e24dbc875b55152c6e4568c8161add703d11188ac343503"
+    },
+    {
+      "repo": "A",
+      "path": "test/review_brand_test.dart",
+      "state": "present",
+      "sha256": "075637a885c71dc764dab1f4cd1dbcff1b2cbf9c30dc6773c4eeadb6a1be32b9"
+    }
+  ],
+  "note": "Own source/config/test only; generated reports/assets separately indexed; owner A pubspec/iOS and W handover excluded"
+}

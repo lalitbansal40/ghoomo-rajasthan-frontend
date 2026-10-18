@@ -1,5 +1,6 @@
 import { dict, formatRupees, type Locale } from '@/i18n';
 import { cheapest, type OnewayView, type RoundtripView } from './fares';
+import { distanceCopy } from './distance-copy';
 
 /**
  * A route page's questions, answered from the backend's own numbers — in Ghoomo's words (not
@@ -15,7 +16,7 @@ export function routeFaq(
 ): Array<{ q: string; a: string }> {
   const f = dict(locale).route.faq;
   const out: Array<{ q: string; a: string }> = [];
-  if (oneway?.km) out.push({ q: f.farQ(from, to), a: f.farA(oneway.km) });
+  if (oneway?.km) out.push({ q: f.farQ(from, to), a: distanceCopy(oneway.km, locale, oneway.distanceMeasured) + (locale === 'hi' ? '। रास्ते और पिकअप के अनुसार दूरी बदल सकती है।' : '. Distance can vary with the route and pickup point.') });
   const low = cheapest(oneway);
   if (oneway && low) {
     let a = f.fareA(formatRupees(low.rupees), low.label, oneway.gstPercent);

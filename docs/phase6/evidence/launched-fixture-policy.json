@@ -1,0 +1,9 @@
+{
+  "scope": "TEST ONLY: copied source, injected production policy, loopback memory API; not deployment evidence or releasable artifact",
+  "directory": "/var/folders/1r/dlhzf3j57nx46ht125p6hl240000gn/T/ghoomo-phase6-launched-td8n6nqr",
+  "mutations": [
+    "copied SITE_LAUNCHED=true",
+    "copied SITE_POLICY.stage=production while input env.stage=local permits fixture API"
+  ],
+  "realSourceLaunchFlagUnchanged": true
+}

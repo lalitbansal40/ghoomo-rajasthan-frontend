@@ -28,7 +28,7 @@ export function FAQ({ items }: { items: FaqItem[] }) {
   );
 }
 
-/** FAQPage structured data for the same items — rendered only once the site is live (Phase 7). */
+/** Optional semantic FAQPage for visible answers; Google FAQ rich results retired in2026. */
 export function faqJsonLd(items: FaqItem[]) {
   return {
     '@context': 'https://schema.org',

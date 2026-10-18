@@ -1,0 +1,33 @@
+{
+  "scope": "Final compiled loopback fixture, no contact action followed",
+  "checks": [
+    {
+      "path": "/contact",
+      "width": 390,
+      "status": 200,
+      "noUnsupportedSchedule": true,
+      "noOverflow": true
+    },
+    {
+      "path": "/contact",
+      "width": 1280,
+      "status": 200,
+      "noUnsupportedSchedule": true,
+      "noOverflow": true
+    },
+    {
+      "path": "/hi/contact",
+      "width": 390,
+      "status": 200,
+      "noUnsupportedSchedule": true,
+      "noOverflow": true
+    },
+    {
+      "path": "/hi/contact",
+      "width": 1280,
+      "status": 200,
+      "noUnsupportedSchedule": true,
+      "noOverflow": true
+    }
+  ]
+}

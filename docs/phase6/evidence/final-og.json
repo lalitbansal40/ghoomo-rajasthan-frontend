@@ -1,0 +1,35 @@
+{
+  "scope": "Final production build, loopback memory fixture only; English lettering for Hindi OG documented",
+  "grammaticalOneDayLabel": true,
+  "captures": [
+    {
+      "mode": "on-request",
+      "locale": "en",
+      "status": 200,
+      "noStore": true,
+      "bytes": 40741
+    },
+    {
+      "mode": "on-request",
+      "locale": "hi",
+      "status": 200,
+      "noStore": true,
+      "bytes": 40741
+    },
+    {
+      "mode": "priced",
+      "locale": "en",
+      "status": 200,
+      "noStore": true,
+      "bytes": 46891
+    },
+    {
+      "mode": "priced",
+      "locale": "hi",
+      "status": 200,
+      "noStore": true,
+      "bytes": 46891
+    }
+  ],
+  "fixtureArchivedAfterCapture": true
+}

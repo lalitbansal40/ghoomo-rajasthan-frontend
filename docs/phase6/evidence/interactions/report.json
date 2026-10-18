@@ -1,0 +1,41 @@
+{
+  "scope": "Loopback fixture, no form submitted or external CTA followed",
+  "checks": [
+    {
+      "path": "/",
+      "keyboardHeaderMenu": true,
+      "textScalePercent": 200,
+      "noHorizontalOverflow": true
+    },
+    {
+      "path": "/hi",
+      "keyboardHeaderMenu": true,
+      "textScalePercent": 200,
+      "noHorizontalOverflow": true
+    },
+    {
+      "path": "/enquiry",
+      "keyboardHeaderMenu": true,
+      "textScalePercent": 200,
+      "noHorizontalOverflow": true
+    },
+    {
+      "path": "/hi/enquiry",
+      "keyboardHeaderMenu": true,
+      "textScalePercent": 200,
+      "noHorizontalOverflow": true
+    },
+    {
+      "path": "/cab/jaipur-to-udaipur",
+      "keyboardHeaderMenu": true,
+      "textScalePercent": 200,
+      "noHorizontalOverflow": true
+    },
+    {
+      "path": "/hi/cab/jaipur-to-udaipur",
+      "keyboardHeaderMenu": true,
+      "textScalePercent": 200,
+      "noHorizontalOverflow": true
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+
+> ghoomo-rajasthan-frontend@0.1.0 test
+> node --test 'src/**/*.test.ts'
+
+(node:54947) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/src/content/places/places.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ thirty places, each slug once (0.688916ms)
+✔ every place has a car: its own town, or the nearest one (0.182083ms)
+✔ both languages are whole (0.199875ms)
+✔ a photo named is a photo we have (0.181ms)
+(node:54948) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/src/content/routes/list.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ every Hello My Cab route, and the 28 of our own (0.310584ms)
+✔ slugs are unique, and no route goes nowhere (0.089083ms)
+✔ every city on a route has its Hindi name (0.275417ms)
+✔ Ranthambore is the name in the URL (0.044083ms)
+✔ the held routes are the ten we meant (0.048125ms)
+✔ every route text belongs to a route, and names real tours (21.090917ms)
+✔ no held route has words (they stay out of search) (0.138542ms)
+(node:54949) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/src/lib/analytics-contract.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ analytics has independent environment, launch, origin and known-public-path gates (0.663667ms)
+✔ noindex public enquiry is measurable, but all private/query/referrer/field data is absent (0.319125ms)
+✔ only registered nonpersonal campaign values survive; arbitrary campaign PII is removed (0.103125ms)
+✔ known referrers are origin-only and unknown/private/token referrers are excluded (0.087334ms)
+(node:54950) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/src/lib/book.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ only eligible cab-route links enter the fare and booking flow (0.766917ms)
+✔ sample tour, safari and destination CTAs are enquiry-only (0.217792ms)
+(node:54951) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/src/lib/catalog-contract.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ accepts a no-price package and preserves exact slug, terms, locale and city alias (0.953416ms)
+✔ converts paise once and rejects fake zero/duplicate rates (0.257416ms)
+✔ rejects sample, payable, malformed or partially localized packages (0.138833ms)
+✔ managed images cannot escape exact origin/path or carry query credentials (0.074791ms)
+(node:54952) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/src/lib/city-search.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ city search finds labels and returns prefix matches first (0.822208ms)
+✔ city search can match the backend state and normalized city key (0.107208ms)
+✔ city search does not show thousands of results or accept one-character noise (0.083917ms)
+(node:54953) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/src/lib/distance-copy.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ only explicit measured evidence removes the estimate qualifier, without changing kilometres (0.272542ms)
+(node:54954) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/src/lib/enquiry.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ enquiry product context accepts slugs and falls back for unsafe values (0.356042ms)
+✔ Indian phone normalization accepts only a ten digit mobile (0.251958ms)
+✔ enquiry dates use an explicit India date boundary (0.196583ms)
+(node:54955) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/src/lib/fares.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ a fixed fare with a toll: the fare without it, the toll apart (0.369333ms)
+✔ a fixed fare with no toll says nothing about one (0.0595ms)
+✔ a per-km route is an estimate and never carries a toll line (0.052958ms)
+✔ no fare is null — never a ₹0 row (0.077375ms)
+✔ a darshan estimate bills every day at the minimum, plus the nights (0.293625ms)
+(node:54956) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/src/lib/indexing-policy.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ only approved origin, trusted production stage and explicit launch can open indexing (0.342917ms)
+✔ production config rejects credentials, query, path, wrong origin and loopback API (0.201916ms)
+✔ only explicit non-sample packages qualify; privacy is independent of noindex enquiry (0.1685ms)
+✔ sitemap is empty before launch or in preview and never calls required catalog (8.994792ms)
+✔ catalog outage is503 with retry/no-store, never a partial successful sitemap (0.208041ms)
+✔ sitemap dedupes both locales with reciprocal x-default, XML escapes and no fake dates (0.173875ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 170.639167

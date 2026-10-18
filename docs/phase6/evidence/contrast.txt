@@ -1,0 +1,50 @@
+
+> ghoomo-rajasthan-frontend@0.1.0 contrast
+> node scripts/contrast.mjs
+
+ok   16.07  ink on ivory
+ok    6.80  muted on ivory
+ok   10.10  royal-600 on ivory
+ok    8.46  maroon-600 on ivory
+ok    6.08  success on ivory
+ok   16.22  ink on sand-50
+ok    6.86  muted on sand-50
+ok   10.19  royal-600 on sand-50
+ok    8.54  maroon-600 on sand-50
+ok    6.14  success on sand-50
+ok   14.81  ink on sand-100
+ok    6.26  muted on sand-100
+ok    9.30  royal-600 on sand-100
+ok    7.80  maroon-600 on sand-100
+ok    5.61  success on sand-100
+ok   12.49  ink on sand-200
+ok    5.28  muted on sand-200
+ok    7.85  royal-600 on sand-200
+ok    6.58  maroon-600 on sand-200
+ok    4.73  success on sand-200
+ok   17.17  ink on white
+ok    7.26  muted on white
+ok   10.79  royal-600 on white
+ok    9.04  maroon-600 on white
+ok    6.50  success on white
+ok    4.53  gold-700 on ivory
+ok    4.85  gold-700 on white
+ok   11.67  royal-700 on royal-50
+ok   10.20  maroon-700 on maroon-50
+ok   10.79  white on royal-600
+ok   13.10  white on royal-700
+ok   15.54  white on royal-800
+ok    9.04  white on maroon-600
+ok   11.45  white on maroon-700
+ok    6.50  white on success
+ok    8.47  ink on sun-500
+ok    8.10  ink on gold-500
+ok   15.15  ink on gold-100
+ok    4.53  gold-700 on ivory (3:1) — the focus ring
+ok    3.52  gold-700 on sand-200 (3:1) — the focus ring on a sand section
+
+never used for text:
+      1.98  gold-500 on ivory
+      2.12  white on gold-500
+      2.03  white on sun-500
+      4.38  muted on sand-300

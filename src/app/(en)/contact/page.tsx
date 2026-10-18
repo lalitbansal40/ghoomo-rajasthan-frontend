@@ -24,8 +24,7 @@ export default function ContactPage() {
         <p>
           <a className="font-semibold text-royal underline" href={brand.phoneHref}>
             {brand.phone}
-          </a>{' '}
-          — answered by a person, every day.
+          </a>
         </p>
       </DocSection>
       {brand.email ? (

@@ -12,9 +12,9 @@ export async function tourImage(slug: string) {
   const tour = pkgIn(pkg, 'en');
   return ogCard({
     title: tour.name,
-    meta: `${tour.days} days · ${tour.nights} nights`,
+    meta: `${tour.days} day${tour.days === 1 ? '' : 's'} · ${tour.nights} night${tour.nights === 1 ? '' : 's'}`,
     sub: tour.route.slice(0, 5).join(' → '),
-    price: tour.isSample || !cheapest(tour) ? null : `from ${formatRupees(cheapest(tour).rupees, true)}`,
+    price: tour.isSample || !cheapest(tour) ? null : `from ${formatRupees(cheapest(tour).rupees, true)} / car / tour`,
     photoKey: tour.photo,
     imageUrl: tour.media.find((m) => m.id === tour.coverId)?.variants.og,
   });

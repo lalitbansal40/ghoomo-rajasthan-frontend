@@ -1,14 +1,22 @@
 // Hindi of (en)/packages/page.tsx — the words are in content/packages (hi:) and i18n/hi.ts; owner to read.
 import type { Metadata } from 'next';
-import { alternates } from '@/lib/seo';
+import { alternates, pageRobots } from '@/lib/seo';
+import { catalog } from '@/lib/catalog';
+import { packageIndexable } from '@/lib/indexing-policy';
 import { ToursList } from '../../_tours/ToursList';
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: 'गाड़ी और ड्राइवर के साथ राजस्थान टूर पैकेज',
   description:
-    '2 से 7 दिन के राजस्थान टूर — जयपुर, उदयपुर, जोधपुर, जैसलमेर, पुष्कर, रणथंभौर, माउंट आबू। एक गाड़ी, एक ड्राइवर, हर दिन का प्लान।',
+    'गाड़ी और ड्राइवर के साथ राजस्थान की यात्रा योजनाएँ देखें। हर टूर का रूट, शामिल सेवाएँ और किराए की शर्तें पढ़ें या अपनी यात्रा की जानकारी भेजें।',
   alternates: alternates('/packages', 'hi'),
 };
+
+export async function generateMetadata(): Promise<Metadata> {
+  const state = await catalog();
+  const eligible = !state.unavailable && state.packages.some(packageIndexable);
+  return { ...baseMetadata, alternates: alternates('/packages', 'hi', eligible), robots: pageRobots(eligible) };
+}
 
 export default function HindiToursPage() {
   return <ToursList locale="hi" />;

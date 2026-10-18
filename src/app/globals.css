@@ -26,6 +26,18 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Text enlargement must reflow long words/grid children rather than widening the viewport. */
+:where(main, footer) {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+:where(main, footer) .grid > * {
+  min-width: 0;
+}
+:where(main, footer) svg {
+  max-width: 100%;
+}
+
 /**
  * The ₹ sign, and only it, from the phone's own fonts. In Mukta it sits in the latin-ext files
  * (8–10 kB, one per weight), which every page with a price then downloaded for that one sign —

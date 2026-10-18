@@ -1,0 +1,96 @@
+{
+  "result": "pass",
+  "synthetic": true,
+  "actualExternalRequests": 0,
+  "privateSpaAndDirectDenial": true,
+  "strictModeDedupe": true,
+  "blockedCollectorHarmless": true,
+  "events": [
+    {
+      "name": "pageview",
+      "domain": "ghoomorajasthan.com",
+      "url": "https://ghoomorajasthan.com/?utm_source=instagram",
+      "props": {
+        "locale": "en",
+        "page_type": "home"
+      }
+    },
+    {
+      "name": "pageview",
+      "domain": "ghoomorajasthan.com",
+      "url": "https://ghoomorajasthan.com/?utm_source=instagram",
+      "props": {
+        "locale": "en",
+        "page_type": "home"
+      }
+    },
+    {
+      "name": "pageview",
+      "domain": "ghoomorajasthan.com",
+      "url": "https://ghoomorajasthan.com/enquiry",
+      "props": {
+        "locale": "en",
+        "page_type": "enquiry"
+      }
+    },
+    {
+      "name": "enquiry_start",
+      "domain": "ghoomorajasthan.com",
+      "url": "https://ghoomorajasthan.com/enquiry",
+      "props": {
+        "locale": "en",
+        "page_type": "enquiry"
+      }
+    },
+    {
+      "name": "enquiry_error",
+      "domain": "ghoomorajasthan.com",
+      "url": "https://ghoomorajasthan.com/enquiry",
+      "props": {
+        "locale": "en",
+        "page_type": "enquiry"
+      }
+    },
+    {
+      "name": "enquiry_success",
+      "domain": "ghoomorajasthan.com",
+      "url": "https://ghoomorajasthan.com/enquiry",
+      "props": {
+        "locale": "en",
+        "page_type": "enquiry"
+      }
+    },
+    {
+      "name": "phone_click",
+      "domain": "ghoomorajasthan.com",
+      "url": "https://ghoomorajasthan.com/enquiry",
+      "props": {
+        "locale": "en",
+        "page_type": "enquiry"
+      }
+    },
+    {
+      "name": "whatsapp_click",
+      "domain": "ghoomorajasthan.com",
+      "url": "https://ghoomorajasthan.com/enquiry",
+      "props": {
+        "locale": "en",
+        "page_type": "enquiry"
+      }
+    },
+    {
+      "name": "pageview",
+      "domain": "ghoomorajasthan.com",
+      "url": "https://ghoomorajasthan.com/enquiry",
+      "props": {
+        "locale": "en",
+        "page_type": "enquiry"
+      }
+    }
+  ],
+  "unknownOriginsAborted": [
+    "null",
+    "https://ghoomorajasthan.com"
+  ],
+  "pageErrors": []
+}

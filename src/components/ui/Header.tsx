@@ -30,7 +30,7 @@ export function Header({ locale, path }: { locale: Locale; /** This page's path 
   }));
   return (
     <header className="sticky top-0 z-40 border-b border-gold-300/70 bg-ivory/95 backdrop-blur supports-[backdrop-filter]:bg-ivory/80">
-      <div className="relative mx-auto flex h-16 max-w-[var(--container-site)] items-center gap-3 px-4 sm:px-6">
+      <div className="relative mx-auto flex min-h-16 max-w-[var(--container-site)] flex-wrap items-center gap-3 px-4 sm:px-6">
         <Link href={localePath('/', locale)} aria-label={t.brand.home} className="shrink-0">
           <Image src="/brand/logo-horizontal.svg" alt={t.brand.logoAlt} width={420} height={120} preload className="h-11 w-auto" />
         </Link>

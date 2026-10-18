@@ -1,0 +1,8 @@
+{
+  "scope": "Actual source bundled with mock fetch / injected open policy only for serialization",
+  "actualExternalRequests": 0,
+  "rejectedBadResponses": 4,
+  "validEmptyPreserved": true,
+  "scriptClosingEscaped": true,
+  "ineligibleSuppressed": true
+}

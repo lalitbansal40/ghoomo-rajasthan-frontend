@@ -24,7 +24,7 @@ export function buttonClass({
   className = '',
 }: ButtonStyle) {
   return [
-    'inline-flex items-center justify-center rounded-full font-semibold leading-none',
+    'inline-flex max-w-full items-center justify-center rounded-full font-semibold leading-none',
     'transition-[background-color,color,filter,transform] duration-[var(--dur-fast)] ease-[var(--ease-out)]',
     'active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50',
     VARIANT[variant],

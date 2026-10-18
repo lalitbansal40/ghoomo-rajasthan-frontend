@@ -1,0 +1,75 @@
+
+> ghoomo-rajasthan-frontend@0.1.0 audit
+> node scripts/audit.mjs --out=docs/phase6/evidence/browser --pages=/,/hi,/packages,/hi/packages,/packages/local-fixture-tour,/hi/packages/local-fixture-tour,/destinations/jaipur,/hi/cab/jaipur-to-udaipur,/cab,/desert-safari,/contact,/hi/privacy,/kuch-bhi --lh-pages=/,/hi,/packages/local-fixture-tour,/hi/packages/local-fixture-tour,/destinations/jaisalmer,/hi/cab/jaipur-to-udaipur,/cab,/desert-safari
+
+
+/
+  phone ok · lang en · 2 font preloads · axe clean
+
+/hi
+  phone ok · lang hi · 1 font preloads · axe clean
+
+/packages
+  phone ok · lang en · 2 font preloads · axe clean
+
+/hi/packages
+  phone ok · lang hi · 1 font preloads · axe clean
+
+/packages/local-fixture-tour
+  phone ok · lang en · 2 font preloads · axe clean
+
+/hi/packages/local-fixture-tour
+  phone ok · lang hi · 1 font preloads · axe clean
+
+/destinations/jaipur
+  phone ok · lang en · 2 font preloads · axe clean
+
+/hi/cab/jaipur-to-udaipur
+  phone ok · lang hi · 1 font preloads · axe clean
+
+/cab
+  phone ok · lang en · 4 font preloads · axe clean
+
+/desert-safari
+  phone ok · lang en · 2 font preloads · axe clean
+
+/contact
+  phone ok · lang en · 4 font preloads · axe clean
+
+/hi/privacy
+  phone ok · lang hi · 2 font preloads · axe clean
+
+/kuch-bhi
+  phone ok · lang en · 0 font preloads · axe clean
+
+reduced motion /: nothing animates ✓
+
+reduced motion /desert-safari: nothing animates ✓
+
+Lighthouse raw reports: /var/folders/1r/dlhzf3j57nx46ht125p6hl240000gn/T/ghoomo-lh-uYxDrI
+
+Lighthouse /: performance 95 · accessibility 100 · best practices 100 · LCP 2.93s · CLS 0.001 · TBT 4ms
+  WARN Lighthouse /: simulated LCP 2.93s (target 1.5s)
+
+Lighthouse /hi: performance 95 · accessibility 100 · best practices 100 · LCP 2.92s · CLS 0.000 · TBT 4ms
+  WARN Lighthouse /hi: simulated LCP 2.92s (target 1.5s)
+
+Lighthouse /packages/local-fixture-tour: performance 96 · accessibility 100 · best practices 100 · LCP 2.84s · CLS 0.000 · TBT 3ms
+  WARN Lighthouse /packages/local-fixture-tour: simulated LCP 2.84s (target 1.5s)
+
+Lighthouse /hi/packages/local-fixture-tour: performance 96 · accessibility 100 · best practices 100 · LCP 2.84s · CLS 0.000 · TBT 2ms
+  WARN Lighthouse /hi/packages/local-fixture-tour: simulated LCP 2.84s (target 1.5s)
+
+Lighthouse /destinations/jaisalmer: performance 97 · accessibility 100 · best practices 100 · LCP 2.63s · CLS 0.000 · TBT 9ms
+  WARN Lighthouse /destinations/jaisalmer: simulated LCP 2.63s (target 1.5s)
+
+Lighthouse /hi/cab/jaipur-to-udaipur: performance 97 · accessibility 100 · best practices 100 · LCP 2.62s · CLS 0.000 · TBT 5ms
+  WARN Lighthouse /hi/cab/jaipur-to-udaipur: simulated LCP 2.62s (target 1.5s)
+
+Lighthouse /cab: performance 97 · accessibility 100 · best practices 100 · LCP 2.62s · CLS 0.000 · TBT 8ms
+  WARN Lighthouse /cab: simulated LCP 2.62s (target 1.5s)
+
+Lighthouse /desert-safari: performance 96 · accessibility 100 · best practices 100 · LCP 2.78s · CLS 0.000 · TBT 8ms
+  WARN Lighthouse /desert-safari: simulated LCP 2.78s (target 1.5s)
+
+all checks passed

@@ -5,14 +5,18 @@
  * and every JSON-LD block are built from it, and a wrong one quietly splits the site's
  * ranking across two hosts.
  */
-function required(name: string, value: string | undefined): string {
+import { validatedUrl } from './indexing-policy';
+
+const stage = process.env.NEXT_PUBLIC_DEPLOYMENT_STAGE ?? 'local';
+function required(name: string, value: string | undefined, api = false): string {
   if (!value) throw new Error(`Missing ${name} — see .env.example`);
-  return value.replace(/\/+$/, '');
+  return validatedUrl(value, name, stage === 'production', api);
 }
 
 export const env = {
-  apiBaseUrl: required('NEXT_PUBLIC_API_BASE_URL', process.env.NEXT_PUBLIC_API_BASE_URL),
+  apiBaseUrl: required('NEXT_PUBLIC_API_BASE_URL', process.env.NEXT_PUBLIC_API_BASE_URL, true),
   siteUrl: required('NEXT_PUBLIC_SITE_URL', process.env.NEXT_PUBLIC_SITE_URL),
+  stage,
 
   /**
    * Optional, and deliberately so. Empty means no analytics script is served and no event

@@ -6,6 +6,9 @@
  * pages, a canonical that is not the page itself, an hreflang twin that does not point back.
  */
 const BASE = (process.env.BASE_URL ?? 'http://localhost:3300').replace(/\/+$/, '');
+const EXPECTED_ORIGIN = process.env.EXPECTED_ORIGIN ?? 'https://ghoomorajasthan.com';
+const MODE = process.env.AUDIT_MODE ?? 'prelaunch';
+if (!['prelaunch', 'launched'].includes(MODE)) throw new Error('Invalid AUDIT_MODE');
 const root = new URL('..', import.meta.url).pathname;
 const { catalogPaths } = await import('./catalog-pages.mjs');
 const packagePaths = await catalogPaths(BASE);
@@ -47,6 +50,16 @@ for (const path of PAGES) {
   const own = new URL(path, 'https://x').pathname;
   if (!canon) fails.push(`${path}: no canonical`);
   else if (new URL(canon).pathname.replace(/\/$/, '') !== own.replace(/\/$/, '')) fails.push(`${path}: canonical ${canon}`);
+  if (canon && new URL(canon).origin !== EXPECTED_ORIGIN) fails.push(`${path}: canonical origin ${canon}`);
+  for (const [, href] of alts) if (new URL(href).origin !== EXPECTED_ORIGIN) fails.push(`${path}: alternate origin ${href}`);
+  const noindex = /<meta name="robots" content="[^"]*noindex/.test(html);
+  if (MODE === 'prelaunch' && !noindex) fails.push(`${path}: prelaunch page opened indexing`);
+  for (const block of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    try {
+      const data = JSON.parse(block[1]);
+      if (/"@type"\s*:\s*"AggregateRating"|schema.org\/InStock/.test(JSON.stringify(data))) fails.push(`${path}: unsupported rating/availability`);
+    } catch { fails.push(`${path}: invalid JSON-LD`); }
+  }
   if (!ALL) console.log(`${path}  [${len(title)}] ${title}  · desc ${len(desc)}`);
 }
 // hreflang pairs point both ways.

@@ -1,0 +1,26 @@
+{
+  "repos": {
+    "B": {
+      "head": "0c961a5d0459883cf3e6dd54ee888e837fdd042d",
+      "branch": "main",
+      "status": " M .env.example\n M src/__tests__/processRole.test.ts\n M src/__tests__/reviews.test.ts\n M src/config/env.ts\n M src/controllers/rating.controller.ts\n M src/models/booking.model.ts\n M src/models/rating.model.ts\n M src/services/jobs.ts\n M src/services/reviewStats.service.ts\n M src/services/reviewStatsRebuild.ts\n M src/services/whatsapp.service.ts\n?? src/__tests__/ghoomoReviewTransport.test.ts\n?? src/services/ghoomoReviewRequests.ts\n"
+    },
+    "G": {
+      "head": "c224686e88bdc1f953b15f1fbcfb5108b28775fc",
+      "branch": "main",
+      "status": " M .env.example\n M README.md\n M next.config.ts\n M scripts/copy-check.mjs\n M scripts/fares-check.mjs\n M scripts/ghoomo-flow.mjs\n M scripts/seo-check.mjs\n M src/app/(en)/contact/page.tsx\n M src/app/(en)/packages/[slug]/page.tsx\n M src/app/(en)/packages/page.tsx\n M src/app/(en)/privacy/page.tsx\n M src/app/_cab/RoutePage.tsx\n M src/app/_cab/routeMeta.ts\n M src/app/_og/routeImage.tsx\n M src/app/_og/tourImage.tsx\n M src/app/_safari/meta.ts\n M src/app/_tours/TourPage.tsx\n M src/app/globals.css\n M src/app/hi/contact/page.tsx\n M src/app/hi/packages/[slug]/page.tsx\n M src/app/hi/packages/page.tsx\n M src/app/hi/privacy/page.tsx\n M src/app/robots.ts\n D src/app/sitemap.ts\n M src/components/Analytics.tsx\n M src/components/EnquiryForm.tsx\n M src/components/JsonLd.tsx\n M src/components/ui/Button.tsx\n M src/components/ui/FAQ.tsx\n M src/components/ui/Header.tsx\n M src/components/ui/PackageCard.tsx\n M src/components/ui/StickyCta.tsx\n M src/components/ui/button-style.ts\n M src/content/routes/text/index.ts\n M src/content/routes/text/one-end-e.ts\n M src/lib/api.ts\n M src/lib/env.ts\n M src/lib/fares.ts\n M src/lib/route-faq.ts\n M src/lib/schema.ts\n M src/lib/seo.ts\n M src/lib/site.ts\n?? docs/phase6/\n?? scripts/fixtures/\n?? scripts/phase6-analytics-browser.mjs\n?? scripts/phase6-api-audit.mjs\n?? scripts/phase6-interactions.mjs\n?? scripts/phase6-inventory.mjs\n?? scripts/phase6-marketing-kit.mjs\n?? scripts/phase6-runtime-audit.mjs\n?? src/app/sitemap.xml/\n?? src/components/AnalyticsClient.tsx\n?? src/lib/analytics-contract.test.ts\n?? src/lib/analytics-contract.ts\n?? src/lib/distance-copy.test.ts\n?? src/lib/distance-copy.ts\n?? src/lib/indexing-policy.test.ts\n?? src/lib/indexing-policy.ts\n?? src/lib/sitemap-response.ts\n"
+    },
+    "A": {
+      "head": "b3cd1fdfce5e74fd8e6c7d1e6d5a87ddf2743156",
+      "branch": "vc197",
+      "status": " M lib/features/booking/ride_status_screen.dart\n M lib/services/booking_service.dart\n M pubspec.yaml\n?? ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/\n?? ios/Runner.xcworkspace/xcshareddata/swiftpm/\n?? test/review_brand_test.dart\n"
+    },
+    "W": {
+      "head": "5ab2af9f6deb8cce86ff3dc029112cdaedb738cb",
+      "branch": "main",
+      "status": "?? docs/seo/CHATGPT_HANDOVER.md\n"
+    }
+  },
+  "noCommitPushDeploy": true,
+  "ownerWorkPreserved": "A version261/iOS SwiftPM and W handover; wallet code/test unchanged"
+}

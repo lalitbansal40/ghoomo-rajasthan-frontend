@@ -8,7 +8,7 @@ import type { ReactNode } from 'react';
 export function StickyCta({ children }: { children: ReactNode }) {
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-gold-300 bg-ivory/95 px-4 pt-3 shadow-raised backdrop-blur md:hidden pb-[max(0.75rem,env(safe-area-inset-bottom))]">
-      <div className="flex gap-3 [&>*]:flex-1">{children}</div>
+      <div className="flex flex-wrap gap-3 [&>*]:min-w-0 [&>*]:flex-[1_1_8rem]">{children}</div>
     </div>
   );
 }

@@ -1,0 +1,20 @@
+{
+  "finalizedAtUTC": "2026-10-18T15:51:51.622314+00:00",
+  "coverageIds": 52,
+  "csvRows": {
+    "URL_INVENTORY.csv": 360,
+    "CONTENT_REVIEW.csv": 357,
+    "SEARCH_INTENT_MAP.csv": 357,
+    "CAMPAIGN_REGISTER.csv": 12,
+    "CONTENT_CALENDAR.csv": 12,
+    "MONITORING_REGISTER.csv": 56,
+    "GSC_INSPECTIONS.csv": 8,
+    "ASSET_REGISTER.csv": 12
+  },
+  "assetHashesMatch": true,
+  "realLaunchFlagStillFalse": true,
+  "noInjectedStageInRealSource": true,
+  "ownerApprovalsStillPending": true,
+  "allRequiredArtifactsPresent": true,
+  "localListenersStopped": true
+}

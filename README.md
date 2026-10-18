@@ -22,7 +22,10 @@ AWS Amplify, from `main` (the owner deploys). `amplify.yml` is the build spec â€
 ## Hidden until launch
 
 `SITE_LAUNCHED` in `src/lib/site.ts` is `false`: robots.txt disallows everything, every page is
-`noindex`, the sitemap is empty. Flip it on launch day, and only then.
+`noindex`, the sitemap is empty. Approved launch also requires the exact production origins and
+`NEXT_PUBLIC_DEPLOYMENT_STAGE=production`; previews/staging stay closed independently. Samples,
+held routes and private/utility pages keep their own holds. Follow
+[`docs/phase6/PHASE7_HANDOVER.md`](docs/phase6/PHASE7_HANDOVER.md) before any release.
 
 ## Where things are
 

@@ -1,0 +1,6 @@
+
+> ghoomo-rajasthan-frontend@0.1.0 copy:check
+> node scripts/copy-check.mjs
+
+300 texts checked against 191 hellomycabs.com files and each other (118 routes).
+copy check passed

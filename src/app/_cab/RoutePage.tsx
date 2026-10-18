@@ -12,6 +12,7 @@ import { region } from '@/content/regions';
 import { pkgIn } from '@/content/packages';
 import { cheapest, type OnewayView } from '@/lib/fares';
 import { routeFares } from '@/lib/route-fares';
+import { distanceCopy } from '@/lib/distance-copy';
 import { routeFaq } from '@/lib/route-faq';
 import { bookRouteLink } from '@/lib/book';
 import { brand } from '@/lib/site';
@@ -52,8 +53,8 @@ export function routeDescription(route: GhoomoRoute, oneway: OnewayView | null, 
   const low = cheapest(oneway);
   const facts =
     locale === 'hi'
-      ? [`${from} से ${to} कैब`, oneway?.km ? `${oneway.km} किमी` : null, low ? `${formatRupees(low.rupees)} से` : null]
-      : [`${from} to ${to} cab`, oneway?.km ? `${oneway.km} km` : null, low ? `from ${formatRupees(low.rupees)}` : null];
+      ? [`${from} से ${to} कैब`, oneway?.km ? distanceCopy(oneway.km, locale, oneway.distanceMeasured) : null, low ? `${formatRupees(low.rupees)} से` : null]
+      : [`${from} to ${to} cab`, oneway?.km ? distanceCopy(oneway.km, locale, oneway.distanceMeasured) : null, low ? `from ${formatRupees(low.rupees)}` : null];
   const lead = facts.filter(Boolean).join(', ') + (locale === 'hi' ? '। ' : '. ');
   const tail = text ?? dict(locale).route.dataOnly(from, to);
   const all = lead + tail;
@@ -118,7 +119,7 @@ export async function RoutePage({ route, locale }: { route: GhoomoRoute; locale:
               <span>
                 {from} <span className="text-gold-700">→</span> {to}
               </span>
-              {oneway?.km ? <span>· {rt.km(oneway.km)}</span> : null}
+              {oneway?.km ? <span>· {distanceCopy(oneway.km, locale, oneway.distanceMeasured)}</span> : null}
             </p>
             {low ? (
               <p className="mt-4 text-body-lg">

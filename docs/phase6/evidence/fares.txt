@@ -1,0 +1,28 @@
+
+> ghoomo-rajasthan-frontend@0.1.0 fares:check
+> node scripts/fares-check.mjs
+
+(node:38173) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/src/content/routes/list.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+note: fewer routes of a kind than asked (toll 5, no toll 0, per km 4)
+ok   /cab/ajmer-to-jaipur
+ok   /cab/ajmer-to-kota
+ok   /cab/ajmer-to-sikar
+ok   /cab/jaipur-to-ajmer
+ok   /cab/jaipur-to-kota
+ok   /cab/jaipur-to-jodhpur
+ok   /cab/jaipur-to-udaipur
+ok   /cab/jodhpur-to-jaipur
+ok   /cab/udaipur-to-jaipur
+ok   /cab/jaipur-to-jaisalmer
+ok   /cab/jaipur-to-pushkar
+ok   /cab/jaipur-to-ranthambore
+ok   /destinations/jaipur (local)
+ok   /destinations/sambhar-lake (local)
+ok   /destinations/mandawa (local)
+ok   /destinations/alwar (local)
+ok   /destinations/bharatpur (local)
+
+fare check passed — every figure is the backend’s

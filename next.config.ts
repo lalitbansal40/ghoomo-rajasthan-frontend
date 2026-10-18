@@ -14,9 +14,6 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 2592000,
   },
 
-  // Stamped once, at build time — the sitemap's `lastmod` once the site is live.
-  env: { BUILD_TIME: new Date().toISOString() },
-
   experimental: {
     // Two root layouts (English, Hindi) leave no single layout for a 404 to sit in — so the
     // site-wide 404 is app/global-not-found.tsx (node_modules/next/dist/docs/…/not-found.md).

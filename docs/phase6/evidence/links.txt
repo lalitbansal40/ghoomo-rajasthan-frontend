@@ -1,0 +1,10 @@
+
+> ghoomo-rajasthan-frontend@0.1.0 links:check
+> node scripts/links-check.mjs
+
+(node:49276) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/src/content/routes/list.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/lalitbansal/Documents/hellomycab/ghoomo-rajasthan-frontend/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+325 pages crawled, 318 that must be reachable
+link check passed

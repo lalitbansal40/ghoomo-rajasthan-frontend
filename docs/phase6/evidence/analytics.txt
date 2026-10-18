@@ -1,0 +1,1 @@
+Analytics browser PASS: private direct/SPA/history, sanitized URLs, enquiry triggers, clicks, blocked collector. No external request sent.

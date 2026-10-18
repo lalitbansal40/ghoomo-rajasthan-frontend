@@ -1,0 +1,26 @@
+{
+  "scope": "Loopback only; copied launched fixture policy, not actual target",
+  "checks": [
+    {
+      "port": 3315,
+      "wellFormedXML": true,
+      "urlCount": 0,
+      "namespacedThreeAlternatesPerEntry": true,
+      "noUnsupportedLastmod": true
+    },
+    {
+      "port": 3316,
+      "wellFormedXML": true,
+      "urlCount": 316,
+      "namespacedThreeAlternatesPerEntry": true,
+      "noUnsupportedLastmod": true
+    },
+    {
+      "port": 3317,
+      "wellFormedXML": true,
+      "urlCount": 312,
+      "namespacedThreeAlternatesPerEntry": true,
+      "noUnsupportedLastmod": true
+    }
+  ]
+}

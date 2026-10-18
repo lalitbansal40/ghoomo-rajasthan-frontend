@@ -1,0 +1,16 @@
+{
+  "scope": "Actual handler/catalog reader bundled with injected launch and RSC marker, mocked upstream; one fresh loopback synthetic snapshot GET",
+  "actualExternalRequests": 0,
+  "rejectedWith503": [
+    "http429",
+    "http500_ok_true",
+    "malformed",
+    "oversized",
+    "duplicate_slug",
+    "invalid_contract",
+    "transport_timeout"
+  ],
+  "validEmptyNotOutage": true,
+  "emptyHubExcluded": true,
+  "healthyCurrentCatalog": true
+}

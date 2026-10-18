@@ -1,0 +1,1 @@
+API/JSON-LD/catalog PASS: bad HTTP/JSON/size/duplicates/contract/transport =>503; healthy/empty distinct; safe schema escaping.

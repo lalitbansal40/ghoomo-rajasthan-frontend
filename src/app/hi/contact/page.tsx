@@ -28,7 +28,6 @@ export default function HindiContactPage() {
           <a className="font-semibold text-royal underline" href={brand.phoneHref}>
             {brand.phone}
           </a>
-          : हर दिन, कोई व्यक्ति ही जवाब देता है।
         </p>
       </DocSection>
 
