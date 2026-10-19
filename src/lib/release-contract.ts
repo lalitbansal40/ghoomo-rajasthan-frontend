@@ -17,6 +17,11 @@ export function bareReleasePath(path: string): string {
   return path === '/hi' ? '/' : path.replace(/^\/hi\//, '/');
 }
 
+/** Each live catalogue family has its own immutable editorial content revision. */
+export function dynamicReleasePath(path: string): boolean {
+  return /^\/(?:packages|tours|group-tours|hotels)\/[^/]+$/.test(bareReleasePath(path));
+}
+
 export function localizedReleasePath(path: string, locale: 'en' | 'hi'): string {
   return locale === 'en' ? path : path === '/' ? '/hi' : `/hi${path}`;
 }
@@ -34,7 +39,7 @@ export function reviewedPair(input: {
   if (!releasePath(path) || !Number.isFinite(now)) return false;
   const bare = bareReleasePath(path);
   if (UTILITY_PATH.test(path) && !(analyticsUtility && bare === '/enquiry')) return false;
-  const packagePage = bare.startsWith('/packages/');
+  const packagePage = dynamicReleasePath(bare);
   if (packagePage ? !(typeof revision === 'number' && Number.isSafeInteger(revision) && revision > 0)
     : !(typeof revision === 'string' && /^[a-f0-9]{64}$/.test(revision))) return false;
   return (['en', 'hi'] as const).every((locale) => {

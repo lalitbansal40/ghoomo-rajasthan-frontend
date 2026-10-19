@@ -6,6 +6,7 @@
  * ranking across two hosts.
  */
 import { validatedUrl } from './indexing-policy';
+import { TRAVEL_WEBSITE_ENABLED } from './travel-settings';
 
 const stage = process.env.NEXT_PUBLIC_DEPLOYMENT_STAGE ?? 'local';
 function required(name: string, value: string | undefined, api = false): string {
@@ -14,6 +15,7 @@ function required(name: string, value: string | undefined, api = false): string 
 }
 
 export const env = {
+  travelEnabled: TRAVEL_WEBSITE_ENABLED,
   apiBaseUrl: required('NEXT_PUBLIC_API_BASE_URL', process.env.NEXT_PUBLIC_API_BASE_URL, true),
   siteUrl: required('NEXT_PUBLIC_SITE_URL', process.env.NEXT_PUBLIC_SITE_URL),
   stage,

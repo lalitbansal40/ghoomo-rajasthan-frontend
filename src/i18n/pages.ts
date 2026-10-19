@@ -21,6 +21,12 @@ export const PAGES: Record<string, readonly Locale[]> = {
   '/terms': ['en', 'hi'],
   '/refund': ['en', 'hi'],
   '/photo-credits': ['en'],
+  '/tours': ['en', 'hi'],
+  '/group-tours': ['en', 'hi'],
+  '/hotels': ['en', 'hi'],
+  '/plan-your-trip': ['en', 'hi'],
+  '/trip-requests': ['en', 'hi'],
+  '/travel-bookings': ['en', 'hi'],
 };
 
 /** Families of pages (a page per tour): every path under the prefix exists in these languages. */
@@ -29,6 +35,12 @@ const PREFIXES: Array<[string, readonly Locale[]]> = [
   ['/packages/', ['en', 'hi']],
   ['/destinations/', ['en', 'hi']],
   ['/cab/', ['en', 'hi']],
+  ['/tours/', ['en', 'hi']],
+  ['/group-tours/', ['en', 'hi']],
+  ['/hotels/', ['en', 'hi']],
+  ['/travel-checkout/', ['en', 'hi']],
+  ['/trip-requests/', ['en', 'hi']],
+  ['/travel-bookings/', ['en', 'hi']],
 ];
 
 export const exists = (barePath: string, locale: Locale) =>

@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import { writeFile } from 'node:fs/promises';
+import puppeteer from 'puppeteer-core';
+const base = 'http://localhost:3318', api = 'http://127.0.0.1:4218', out = '/Users/lalitbansal/Documents/hellomycab/hello-my-cab-backend/docs/ghoomo-phase8/evidence';
+const browser = await puppeteer.launch({ executablePath: process.env.CHROME_PATH ?? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true });
+const results = [];
+try {
+ const page = await browser.newPage(); await page.setRequestInterception(true);
+ page.on('request', r => { const u = new URL(r.url()); if (['localhost', '127.0.0.1'].includes(u.hostname) || ['data:', 'blob:'].includes(u.protocol)) { r.continue(); } else { r.abort(); } });
+ await page.setViewport({ width: 390, height: 844 }); await page.goto(`${base}/plan-your-trip`, { waitUntil: 'networkidle0' });
+ await page.evaluate(() => [...document.querySelectorAll('summary')].find(e => e.textContent.includes('Need a different itinerary')).click());
+ for (const [name, value] of [['name', 'Synthetic quote traveler'], ['phone', '9898000012'], ['budget', '2500'], ['interests', 'History']]) await page.type(`[name=${name}]`, value);
+ await page.select('details select:not([name])', 'JAIPUR'); await page.click('[name=consent]');
+ await page.evaluate(() => [...document.querySelectorAll('button')].find(e => e.textContent === 'Send custom requirements').click());
+ await page.waitForFunction(() => document.body.textContent.includes('Custom requirements received'));
+ const login = await page.evaluate(async () => (await fetch('/api/auth/session', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ phone: '9898000012', code: '123456', name: 'Synthetic quote traveler' }) })).json()); assert.equal(login.ok, true);
+ await page.evaluate(() => [...document.querySelectorAll('button')].find(e => e.textContent === 'Verify mobile and view my quote').click());
+ await page.waitForFunction(() => /\/trip-requests\/[a-f0-9]{24}$/.test(location.pathname));
+ const href = new URL(page.url()).pathname, id = href.split('/').at(-1);
+ const issued = await fetch(`${api}/__fixture/quote/${id}`, { method: 'POST' }); assert.equal(issued.status, 200);
+ await page.goto(`${base}${href}`, { waitUntil: 'networkidle0' }); await page.waitForFunction(() => document.body.textContent.includes('Synthetic local travel'));
+ await page.click('main input[type=checkbox]'); await page.evaluate(() => [...document.querySelectorAll('button')].find(e => e.textContent === 'Accept this quote').click());
+ await page.waitForFunction(() => [...document.querySelectorAll('button')].some(e => e.textContent === 'Check availability and continue to payment'));
+ await page.click('main input[type=checkbox]'); await page.evaluate(() => [...document.querySelectorAll('button')].find(e => e.textContent === 'Check availability and continue to payment').click());
+ await page.waitForFunction(() => /\/travel-bookings\/[a-f0-9]{24}$/.test(location.pathname));
+ await page.waitForFunction(() => document.body.textContent.includes('Awaiting payment'));
+ results.push({ check: 'custom structured form receipt -> verified receipt/account binding -> owner-only quote -> exact acceptance -> stock-bound checkout', result: 'pass' });
+ await page.screenshot({ path: `${out}/screenshots/custom-quote-checkout-390.png`, fullPage: true });
+} finally { await writeFile(`${out}/quote-browser-results.json`, `${JSON.stringify({ fixtureOnly: true, results }, null, 2)}\n`); await browser.close(); }
+console.log('Phase8 custom quote browser flow passed.');

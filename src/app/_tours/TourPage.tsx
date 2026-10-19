@@ -3,6 +3,7 @@ import { pkgIn, type TourPackage } from '@/content/packages';
 import { PLACES } from '@/content/places';
 import { TOUR_FAQ } from '@/content/home';
 import { tourPhoto } from '@/lib/tour-photo';
+import { packageTravelCheckout } from '@/lib/travel-catalog';
 import { catalog } from '@/lib/catalog';
 import { ManagedGallery } from '@/components/ManagedGallery';
 import { brand } from '@/lib/site';
@@ -41,6 +42,8 @@ export async function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Loca
   const tour = pkgIn(pkg, locale);
   const p = tourPhoto(tour, locale);
   const { packages: PACKAGES } = await catalog();
+  const checkoutSlug = tour.isSample ? null : await packageTravelCheckout(tour.slug, tour.contentRevision);
+  const checkoutHref = checkoutSlug ? localePath(`/travel-checkout/${checkoutSlug}`, locale) : null;
   const path = localePath(`/packages/${tour.slug}`, locale);
   const crumbs = [
     { label: locale === 'hi' ? 'होम' : 'Home', href: localePath('/', locale) },
@@ -81,6 +84,7 @@ export async function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Loca
               <Icon name="mapPin" size={18} className="text-maroon-600" />
               {tour.route.join(' → ')}
             </p>
+            {checkoutHref ? <div className="mt-5 space-y-2"><Button variant="primary" href={checkoutHref}>{locale === 'hi' ? 'वर्तमान विकल्प चुनें और ऑनलाइन बुक करें' : 'Choose current options and book online'}</Button><p className="text-sm text-muted">{locale === 'hi' ? 'चेकआउट पर उपलब्ध दर, तारीख और शामिल सेवाएँ चुनकर अंतिम कुल देखें।' : 'Select the current rate plan, dates and inclusions at checkout to review your final total.'}</p></div> : null}
             <div className="mt-6 rounded-[var(--radius-lg)] bg-white p-5 shadow-card ring-1 ring-black/5">
               <VehiclePicker
                 tour={tour}
@@ -175,8 +179,8 @@ export async function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Loca
       <ManagedGallery tour={tour} locale={locale} />
       <Footer locale={locale} />
       <StickyCta>
-        <Button variant="primary" href={bookPackageLink(tour, cheapestCar, locale)}>
-          {t.catalog.enquire}
+        <Button variant="primary" href={checkoutHref ?? bookPackageLink(tour, cheapestCar, locale)}>
+          {checkoutHref ? (locale === 'hi' ? 'ऑनलाइन बुक करें' : 'Book online') : t.catalog.enquire}
         </Button>
         <Button variant="call" href={brand.phoneHref}>
           {t.cta.call}

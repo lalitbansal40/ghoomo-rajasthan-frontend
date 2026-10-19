@@ -28,8 +28,8 @@ export function packageIndexable(pkg: { isSample?: boolean }): boolean {
   return pkg.isSample === false;
 }
 
-export const PRIVATE_PATH = /^\/(?:hi(?:\/|$))?(?:booking|my-bookings|preview|api|rate|auth)(?:\/|$)/;
-export const UTILITY_PATH = /^\/(?:hi\/)?(?:styleguide|photo-credits|enquiry)(?:\/|$)/;
+export const PRIVATE_PATH = /^\/(?:hi(?:\/|$))?(?:booking|my-bookings|preview|api|rate|auth|partners|trip-requests|quotes|plan-your-trip|travel-checkout|travel-bookings)(?:\/|$)/;
+export const UTILITY_PATH = /^\/(?:hi\/)?(?:styleguide|photo-credits|enquiry|plan-your-trip)(?:\/|$)/;
 
 export function publicPath(path: string): boolean {
   return path.startsWith('/') && !path.startsWith('//') && !/[?#%\\\s]/.test(path) && !PRIVATE_PATH.test(path);

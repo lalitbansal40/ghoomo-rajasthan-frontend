@@ -5,6 +5,7 @@ import { NAV, exists } from '@/i18n/pages';
 import { REGIONS } from '@/content/regions';
 import { PLACES } from '@/content/places';
 import { brand, whatsappLink } from '@/lib/site';
+import { env } from '@/lib/env';
 import { Icon } from './Icon';
 import { LangSwitch } from './LangSwitch';
 import { MobileMenu, type MenuItem } from './MobileMenu';
@@ -28,6 +29,7 @@ export function Header({ locale, path }: { locale: Locale; /** This page's path 
     soon: t.nav.soon,
     ...(n.key === 'destinations' && exists(n.path, locale) ? { children: regions } : {}),
   }));
+  if (env.travelEnabled) items.push({ label: locale === 'hi' ? 'यात्रा बुक करें' : 'Book travel', href: localePath('/tours', locale) });
   return (
     <header className="sticky top-0 z-40 border-b border-gold-300/70 bg-ivory/95 backdrop-blur supports-[backdrop-filter]:bg-ivory/80">
       <div className="relative mx-auto flex min-h-16 max-w-[var(--container-site)] flex-wrap items-center gap-3 px-4 sm:px-6">

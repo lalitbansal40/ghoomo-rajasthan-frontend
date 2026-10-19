@@ -1,4 +1,6 @@
 import { catalog } from '@/lib/catalog';
+import { travelPublicCatalog } from '@/lib/travel-catalog';
+import { env } from '@/lib/env';
 import { CatalogNotice } from '@/components/CatalogNotice';
 import type { Metadata } from 'next';
 import Image from 'next/image';
@@ -21,6 +23,7 @@ export const metadata: Metadata = {
 export default async function PhotoCreditsPage() {
   const state = await catalog();
   const managed = [...new Map(state.packages.flatMap((p) => p.media ?? []).map((m) => [m.id, m])).values()];
+  const travelMedia = [...new Map((await travelPublicCatalog()).flatMap(p => p.media).map(m => [m.id, m])).values()];
   return (
     <DocPage
       path="/photo-credits"
@@ -29,6 +32,7 @@ export default async function PhotoCreditsPage() {
     >
       <CatalogNotice unavailable={state.unavailable} locale="en" />
       <ul className="grid gap-5 sm:grid-cols-2">
+        {travelMedia.map(m => <li key={m.id}><Image unoptimized src={new URL(m.variants.card, new URL(env.apiBaseUrl).origin).toString()} alt={m.rights.alt.en} width={640} height={480} className="h-auto w-full" /><p>{m.rights.credit} · {m.rights.license}</p><p className="break-words">{m.rights.source}</p><p>{m.rights.changes}</p></li>)}
         {managed.map((m) => <li key={m.id}><Image unoptimized src={m.variants.card} alt={m.alt.en} width={640} height={480} className="h-auto w-full" /><p>{m.credit} · {m.licence}</p><p className="break-words">{m.sourceUrl}</p><p>{m.changes}</p></li>)}
         {PHOTOS.map((p) => {
           const licence = LICENCE_URL[p.licence];

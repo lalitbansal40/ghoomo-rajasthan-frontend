@@ -7,7 +7,7 @@ const policySource = await readFile(new URL('../../src/lib/indexing-policy.ts', 
 const releaseSource = (await readFile(new URL('../../src/lib/release-contract.ts', import.meta.url), 'utf8'))
   .replace(/^import[^\n]+indexing-policy\.ts';\n/m, '');
 // Compile our own trusted pure source for build tools as well as Node20; one decision implementation.
-const { reviewedPair, bareReleasePath } = await import(compile(policySource + '\n' + releaseSource));
+const { reviewedPair, dynamicReleasePath } = await import(compile(policySource + '\n' + releaseSource));
 
 export async function sourceApprovals(source) {
   return (await import(compile(source))).RELEASE_APPROVALS;
@@ -18,7 +18,7 @@ export function launchGate({ launched, approvals, revision, now = Date.now() }) 
   if (!Array.isArray(approvals) || !reviewedPair({ approvals, path: '/', revision, now }))
     throw Error('RELEASE_NOT_REVIEWED: active launch requires current reviewed EN/HI home and exact cohort');
   for (const a of approvals) {
-    const packagePage = typeof a.path === 'string' && bareReleasePath(a.path).startsWith('/packages/');
+    const packagePage = typeof a.path === 'string' && dynamicReleasePath(a.path);
     if (!reviewedPair({ approvals, path: a.path, revision: packagePage ? a.revision : revision, now, analyticsUtility: true }))
       throw Error('INVALID_RELEASE_APPROVAL: duplicate/private/stale/invalid locale pair');
   }

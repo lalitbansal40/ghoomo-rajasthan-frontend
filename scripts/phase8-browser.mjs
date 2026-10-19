@@ -1,0 +1,67 @@
+import assert from 'node:assert/strict';
+import { mkdir, writeFile } from 'node:fs/promises';
+import puppeteer from 'puppeteer-core';
+const base = 'http://localhost:3318', api = 'http://127.0.0.1:4218';
+const out = '/Users/lalitbansal/Documents/hellomycab/hello-my-cab-backend/docs/ghoomo-phase8/evidence';
+await mkdir(`${out}/screenshots`, { recursive: true });
+const browser = await puppeteer.launch({ executablePath: process.env.CHROME_PATH ?? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true });
+const observations = [], blocked = new Set(), errors = [];
+try {
+  const page = await browser.newPage(); await page.setRequestInterception(true);
+  page.on('request', request => { const u = new URL(request.url()); if (['localhost', '127.0.0.1'].includes(u.hostname) || ['data:', 'blob:'].includes(u.protocol)) request.continue(); else { blocked.add(u.origin); request.abort(); } });
+  page.on('pageerror', e => errors.push(e.message));
+  const click = async text => { await page.waitForFunction(t => [...document.querySelectorAll('button')].some(b => b.textContent.trim() === t && !b.disabled), {}, text); await page.evaluate(t => [...document.querySelectorAll('button')].find(b => b.textContent.trim() === t && !b.disabled).click(), text); };
+  const selectProduct = async slug => { await page.select('select', slug); await page.waitForFunction(s => document.querySelector('select')?.value === s && [...document.querySelectorAll('button')].some(b => b.textContent === 'Add to your trip' && !b.disabled), {}, slug); };
+  await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
+  await page.goto(`${base}/plan-your-trip`, { waitUntil: 'networkidle0' });
+  await selectProduct('local-group'); await click('Add to your trip');
+  await selectProduct('local-hotel'); await click('Add to your trip');
+  await page.click('input[type=checkbox]');
+  await click('Continue to booking and payment');
+  await page.waitForSelector('[data-travel-signin] input[autocomplete=name]', { visible: true });
+  await page.type('[data-travel-signin] input[autocomplete=name]', 'Synthetic browser traveler'); await page.type('[data-travel-signin] input[autocomplete=tel]', '9898000012');
+  await click('Send OTP'); await page.waitForSelector('input[autocomplete=one-time-code]'); await page.type('input[autocomplete=one-time-code]', '123456'); await click('Verify');
+  await page.waitForFunction(() => document.body.textContent.includes('Verified. Continue to booking when ready.'));
+  await click('Continue to booking and payment');
+  await page.waitForFunction(() => /\/travel-bookings\/[a-f0-9]{24}$/.test(location.pathname));
+  const bookingId = new URL(page.url()).pathname.split('/').at(-1);
+  await page.waitForFunction(() => document.body.textContent.includes('Awaiting payment'));
+  const held = await page.evaluate(async id => (await fetch(`/api/travel/reservations/${id}`)).json(), bookingId);
+  assert.equal(held.data.reservation.items.length, 2); assert.equal(held.data.reservation.totalPaise, 500000);
+  assert.equal(held.data.reservation.status, 'payment_pending');
+  const pay = await page.evaluate(async id => (await fetch(`/api/travel/reservations/${id}/pay`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' })).json(), bookingId);
+  assert.equal(new URL(pay.data.paymentUrl).hostname, 'rzp.io');
+  assert.equal((await fetch(`${api}/__fixture/capture/${bookingId}`, { method: 'POST' })).status, 200);
+  await click('Refresh status'); await page.waitForFunction(() => document.body.textContent.includes('Booking confirmed'));
+  await page.screenshot({ path: `${out}/screenshots/customer-confirmed-390.png`, fullPage: true });
+  observations.push({ check: 'two-item direct booking, real cookie BFF, mock OTP/link/capture, exact total, confirmed screen', result: 'pass' });
+  await page.evaluate(() => [...document.querySelectorAll('summary')].find(e => e.textContent === 'Cancel this booking').click());
+  await page.type('textarea', 'Synthetic browser cancellation only');
+  await page.click('details input[type=checkbox]'); await click('Confirm cancellation');
+  await page.waitForFunction(() => document.body.textContent.includes('Refund amount determined'));
+  const cancelled = await page.evaluate(async id => (await fetch(`/api/travel/reservations/${id}`)).json(), bookingId);
+  assert.equal(cancelled.data.reservation.status, 'cancelled'); assert.equal(cancelled.data.payment.refundExpectedPaise, 500000); assert.equal(cancelled.data.payment.refundedAmount, 0);
+  observations.push({ check: 'customer cancellation preserves terms, releases stock and shows pending refund without false refunded state', result: 'pass' });
+  for (const width of [360, 390, 768, 1280]) for (const path of ['/plan-your-trip', '/hi/plan-your-trip', '/group-tours/local-group', '/hi/hotels/local-hotel', `/travel-bookings/${bookingId}`, '/hi/trip-requests']) {
+    await page.setViewport({ width, height: 900, deviceScaleFactor: 1 });
+    const r = await page.goto(`${base}${path}`, { waitUntil: 'networkidle0' }); assert.equal(r.status(), 200, path);
+    const scan = await page.evaluate(() => ({ title: document.querySelector('h1')?.textContent, overflow: document.documentElement.scrollWidth > innerWidth + 1, robots: document.querySelector('meta[name=robots]')?.content }));
+    assert.equal(scan.overflow, false, `${path} overflow ${width}`); assert.ok(scan.robots?.includes('noindex'));
+    await page.keyboard.press('Tab'); const focus = await page.evaluate(() => document.activeElement?.tagName); assert.notEqual(focus, 'BODY');
+    observations.push({ check: 'responsive source/keyboard/noindex', width, path, ...scan, result: 'pass' });
+    if (width === 360 && path === '/hi/plan-your-trip') await page.screenshot({ path: `${out}/screenshots/planner-hi-360.png`, fullPage: true });
+  }
+  await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 }); await page.goto(`${base}/plan-your-trip`, { waitUntil: 'networkidle0' });
+  await page.evaluate(() => { document.documentElement.style.fontSize = '200%'; });
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1), false);
+  observations.push({ check: 'planner at 200% base text', result: 'pass' });
+  await page.addScriptTag({ path: 'node_modules/axe-core/axe.min.js' });
+  const axe = await page.evaluate(async () => { const result = await axe.run(document.querySelector('main'), { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa'] } }); return result.violations.map(v => ({ id: v.id, impact: v.impact, nodes: v.nodes.map(n => n.target) })); });
+  observations.push({ check: 'axe planner main', violations: axe });
+  assert.equal(axe.filter(v => ['serious', 'critical'].includes(v.impact)).length, 0);
+  assert.deepEqual(errors, []);
+} finally {
+  await writeFile(`${out}/browser-results.json`, `${JSON.stringify({ fixtureOnly: true, externalRequestsBlocked: [...blocked], observations, pageErrors: errors }, null, 2)}\n`);
+  await browser.close();
+}
+console.log(`${observations.length} Phase8 browser observations recorded; no real customer/provider writes.`);

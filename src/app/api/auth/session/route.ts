@@ -2,8 +2,10 @@ import { NextResponse } from 'next/server';
 import { env } from '@/lib/env';
 import { indianMobile } from '@/lib/enquiry';
 import { setSession } from '@/lib/session';
+import { sameOriginMutation } from '@/lib/mutation-origin';
 
 export async function POST(request: Request) {
+  if (!sameOriginMutation(request)) return NextResponse.json({ ok: false, error: { code: 'ORIGIN_INVALID' } }, { status: 403, headers: { 'Cache-Control': 'no-store' } });
   const input = await request.json().catch(() => null) as { phone?: unknown; code?: unknown; name?: unknown } | null;
   const phone = typeof input?.phone === 'string' ? indianMobile(input.phone) : null;
   const code = typeof input?.code === 'string' && /^\d{4,8}$/.test(input.code) ? input.code : null;
