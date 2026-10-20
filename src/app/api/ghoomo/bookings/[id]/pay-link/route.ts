@@ -1,8 +1,11 @@
 import { NextResponse } from 'next/server';
 import { env } from '@/lib/env';
 import { getSession } from '@/lib/session';
+import { sameOriginMutation } from '@/lib/mutation-origin';
 
-export async function POST(_request: Request, { params }: { params: Promise<{ id: string }> }) {
+export async function POST(request: Request, { params }: { params: Promise<{ id: string }> }) {
+  // Cookie-signed: only this site's own page may ask.
+  if (!sameOriginMutation(request)) return NextResponse.json({ ok: false, error: { code: 'ORIGIN_INVALID' } }, { status: 403, headers: { 'Cache-Control': 'no-store' } });
   const token = await getSession();
   if (!token) return NextResponse.json({ ok: false, error: { code: 'AUTH_REQUIRED' } }, { status: 401, headers: { 'Cache-Control': 'no-store' } });
   const { id } = await params;
