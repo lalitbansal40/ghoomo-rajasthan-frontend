@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import { ContactFab } from '@/components/ContactFab';
 import { Analytics } from '@/components/Analytics';
 import { baseMetadata } from '@/lib/seo';
 import { display } from '../fonts';
@@ -33,6 +34,7 @@ export default function EnglishLayout({ children }: Readonly<{ children: React.R
       </head>
       <body className="min-h-dvh bg-ivory text-ink">
         {children}
+        <ContactFab locale="en" />
         <Analytics />
       </body>
     </html>

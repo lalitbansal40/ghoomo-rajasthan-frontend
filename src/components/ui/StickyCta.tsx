@@ -13,11 +13,17 @@ export function StickyCta({ children }: { children: ReactNode }) {
   useLayoutEffect(() => {
     const element = bar.current;
     if (!element) return;
-    const measure = () => setHeight(element.getBoundingClientRect().height);
+    // The floating WhatsApp / call-back buttons (ContactFab) sit just above this bar.
+    const root = document.documentElement;
+    const measure = () => {
+      const h = element.getBoundingClientRect().height;
+      setHeight(h);
+      root.style.setProperty('--sticky-cta-h', `${Math.ceil(h)}px`);
+    };
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(element);
-    return () => observer.disconnect();
+    return () => { observer.disconnect(); root.style.removeProperty('--sticky-cta-h'); };
   }, []);
   return (
     <>

@@ -245,6 +245,13 @@ export const en = {
     submit: 'Send enquiry', sending: 'Sending…', success: 'Enquiry received. Our team will contact you to discuss the details. Price and availability will be confirmed by the team.',
     retry: 'We could not send this just now. Please try again.', required: 'Please complete the required fields.', phoneError: 'Enter a valid 10-digit Indian mobile number.', dateError: 'Choose today or a later date.', consentError: 'Please agree before sending your enquiry.',
   },
+  contactFab: {
+    whatsapp: 'Chat with us on WhatsApp', callback: 'Get a call back', hint: 'Call me back',
+    title: 'Planning a trip? We will call you', intro: 'Leave your mobile number and our team will call you about your trip and the fare.',
+    phone: 'Mobile number', name: 'Your name (optional)', send: 'Call me back', sending: 'Sending…', callNow: 'Or call us now',
+    phoneError: 'Enter a 10-digit mobile number', thanks: 'Thank you — we will call you', thanksBody: 'Our team will call you shortly. Or book it yourself online in a minute — no OTP needed.',
+    book: 'See fares and book', close: 'Close',
+  },
   booking: {
     title: 'Book a cab', intro: 'Choose your trip. The fare comes from our booking system and is shown before any payment. Quotes use the selected city centres; our team can confirm exact pickup details.', trip: 'Trip type', one: 'One way', round: 'Round trip', from: 'Pickup city', to: 'Drop city', car: 'Car', passengers: 'Travellers', hatchback: 'Hatchback', dzire: 'Dzire', ertiga: 'Ertiga', crysta: 'Innova Crysta', tt12: 'Tempo Traveller (12 seater)', tt14: 'Tempo Traveller (14 seater)', tt16: 'Tempo Traveller (16 seater)', urbania: 'Force Urbania (16 seater)',
     date: 'Pickup date', time: 'Pickup time (India)', returnDate: 'Return date', returnTime: 'Return time (India)', name: 'Your name', phone: 'Mobile number', address: 'Pickup address (optional)',
