@@ -14,6 +14,7 @@
     "audit": "node scripts/audit.mjs",
     "seo:check": "node scripts/seo-check.mjs",
     "fares:check": "node scripts/fares-check.mjs",
+    "prices:check": "node --experimental-strip-types --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/prices-check.mjs",
     "links:check": "node scripts/links-check.mjs",
     "copy:check": "node scripts/copy-check.mjs",
     "test": "node --test 'src/**/*.test.ts' 'scripts/**/*.test.mjs'",
