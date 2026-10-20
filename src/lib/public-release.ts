@@ -10,14 +10,18 @@ import { releaseAnalyticsEligible, releaseEligible } from './release';
 import { travelInventoryCatalog } from './travel-catalog';
 import { travelPath } from './travel-contract';
 import { env } from './env';
+import { availableOrEmpty } from './sitemap-sources';
 
 /** Current publication AND explicit revision-bound review are required by every public collector. */
 export async function publicReleasePaths() {
   const state = await catalog();
-  if (state.unavailable) throw new Error('CATALOG_UNAVAILABLE');
-  const packages = state.packages.filter((p) => packageIndexable(p) &&
+  // A source that cannot be read leaves out only its own pages, never the whole sitemap: the
+  // places and roads do not depend on it, and a 503 sitemap would hide all of them (Phase 1,
+  // 20 Oct 2026). Its pages come back with the next successful read.
+  const packages = availableOrEmpty(state.unavailable ? null : state.packages, 'catalogue').filter((p) => packageIndexable(p) &&
     releaseEligible(`/packages/${p.slug}`, 'en', true, p.contentRevision));
-  const travel = (await travelInventoryCatalog()).filter(p => releaseEligible(`${travelPath(p.kind)}/${p.slug}`, 'en', true, p.contentRevision));
+  const travel = availableOrEmpty(await travelInventoryCatalog().catch(() => null), 'travel inventory')
+    .filter(p => releaseEligible(`${travelPath(p.kind)}/${p.slug}`, 'en', true, p.contentRevision));
   const core = Object.keys(PAGES).filter((p) => publicPath(p) &&
     !['/styleguide', '/photo-credits'].includes(p) &&
     (p !== '/desert-safari' || sampleIndexable(SAFARI_IS_SAMPLE)) && (p !== '/packages' || packages.length > 0) &&
