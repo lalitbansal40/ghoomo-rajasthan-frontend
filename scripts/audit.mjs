@@ -7,8 +7,10 @@
  *   · a full-page screenshot (scrolled first, so lazy photos load) → --out (default ./audit-out)
  *   · FAIL if the page is wider than the screen, logs a console error, or axe finds a serious /
  *     critical accessibility problem
- *   · FAIL if <html lang> is wrong, the page is indexable before launch, or an English page
- *     preloads a devanagari font
+ *   · FAIL if <html lang> is wrong, an English page preloads a devanagari font, or a page's
+ *     robots is not what the release says: before launch every page noindex; once launched
+ *     (robots.txt allows), a page on docs/release/approved-pages.json (EN or HI) index and
+ *     every other page noindex
  * Then, with animation reduced, FAIL if anything on the home page still animates; and Lighthouse
  * (mobile, three runs, the median) on / and /hi and one page of each Phase 3 kind: performance, accessibility and best practices
  * at least 95, CLS under 0.05, TBT under 150 ms (LCP is reported — see below). Exits 1 on any FAIL.
@@ -55,6 +57,14 @@ const fail = (m) => {
   console.log(`  FAIL ${m}`);
 };
 
+// What each page's robots must say: launched (robots.txt allows) → the approved list indexes,
+// everything else stays out; not launched → nothing indexes.
+const LAUNCHED = /^Allow: \//m.test(await (await fetch(`${BASE}/robots.txt`)).text());
+const APPROVED = new Set(
+  JSON.parse(readFileSync(new URL('../docs/release/approved-pages.json', import.meta.url), 'utf8')).paths.flatMap((p) => [p, p === '/' ? '/hi' : `/hi${p}`]),
+);
+console.log(`release: ${LAUNCHED ? `launched — ${APPROVED.size} approved URLs index` : 'held — nothing indexes'}`);
+
 const browser = await puppeteer.launch({ executablePath: CHROME, headless: true, args: ['--hide-scrollbars'] });
 for (const path of PAGES) {
   console.log(`\n${path}`);
@@ -93,7 +103,9 @@ for (const path of PAGES) {
     if (realErrors.length) fail(`${path} ${name}: console — ${realErrors.slice(0, 3).join(' | ')}`);
     if (name === 'phone') {
       if (!MISSING(path) && info.lang !== (hindi ? 'hi' : 'en')) fail(`${path}: <html lang="${info.lang}">`);
-      if (!/noindex/.test(info.robots)) fail(`${path}: indexable before launch (robots "${info.robots}")`);
+      const shouldIndex = LAUNCHED && APPROVED.has(path);
+      if (shouldIndex && !/^index/.test(info.robots)) fail(`${path}: approved and launched, but robots "${info.robots}"`);
+      if (!shouldIndex && !/noindex/.test(info.robots)) fail(`${path}: indexable ${LAUNCHED ? 'without approval' : 'before launch'} (robots "${info.robots}")`);
       // Devanagari faces carry unicode-range U+0900–097F; find which preloaded files are those.
       const deva = await page.evaluate(async (urls) => {
         const css = [...document.styleSheets].flatMap((s) => {

@@ -3,12 +3,20 @@
  *   npx next start -p 3300 & npm run seo:check     (BASE_URL=… to point elsewhere)
  *   npm run seo:check -- --all                      every place and every road too (~330 pages)
  * FAIL: a title over 60 characters, a description over 155 (or missing), the same title on two
- * pages, a canonical that is not the page itself, an hreflang twin that does not point back.
+ * pages, a canonical that is not the page itself, an hreflang twin that does not point back,
+ * and robots against the release: before launch nothing indexes; once launched (robots.txt
+ * allows) the approved list (docs/release/approved-pages.json) indexes and nothing else does.
  */
 const BASE = (process.env.BASE_URL ?? 'http://localhost:3300').replace(/\/+$/, '');
 const EXPECTED_ORIGIN = process.env.EXPECTED_ORIGIN ?? 'https://ghoomorajasthan.com';
-const MODE = process.env.AUDIT_MODE ?? 'prelaunch';
+// The release state, read from the site itself unless AUDIT_MODE says: robots.txt allows → launched.
+const MODE = process.env.AUDIT_MODE ?? (/^Allow: \//m.test(await (await fetch(`${BASE}/robots.txt`)).text()) ? 'launched' : 'prelaunch');
 if (!['prelaunch', 'launched'].includes(MODE)) throw new Error('Invalid AUDIT_MODE');
+// Launched: a page on the owner's approved list indexes, every other page stays out.
+const APPROVED = new Set(
+  JSON.parse((await import('node:fs')).readFileSync(new URL('../docs/release/approved-pages.json', import.meta.url), 'utf8')).paths
+    .flatMap((p) => [p, p === '/' ? '/hi' : `/hi${p}`]),
+);
 const root = new URL('..', import.meta.url).pathname;
 const { catalogPaths } = await import('./catalog-pages.mjs');
 const packagePaths = await catalogPaths(BASE);
@@ -54,6 +62,8 @@ for (const path of PAGES) {
   for (const [, href] of alts) if (new URL(href).origin !== EXPECTED_ORIGIN) fails.push(`${path}: alternate origin ${href}`);
   const noindex = /<meta name="robots" content="[^"]*noindex/.test(html);
   if (MODE === 'prelaunch' && !noindex) fails.push(`${path}: prelaunch page opened indexing`);
+  if (MODE === 'launched' && APPROVED.has(path) && noindex) fails.push(`${path}: approved but noindex`);
+  if (MODE === 'launched' && !APPROVED.has(path) && !noindex) fails.push(`${path}: indexable without approval`);
   for (const block of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
     try {
       const data = JSON.parse(block[1]);

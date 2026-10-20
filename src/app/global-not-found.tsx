@@ -14,7 +14,8 @@ import './globals.css';
  * it in both languages — it cannot know which one the visitor reads. No web font at all: a
  * font imported here is preloaded on EVERY page of the site (measured 16 Oct 2026 — the Hindi
  * pages fetched the latin files twice), so the 404 uses the phone's own fonts, which every
- * phone has for both scripts.
+ * phone has for both scripts. Its two links do not prefetch: prefetching /hi brought the Hindi
+ * layout's devanagari font preload onto this English page (Phase 1 audit, 20 Oct 2026).
  */
 export const metadata: Metadata = {
   metadataBase: new URL(env.siteUrl),
@@ -30,7 +31,7 @@ export default function GlobalNotFound() {
           <Image src="/brand/logo-icon.svg" alt="" width={96} height={96} preload />
           <h1 className="text-h1 mt-6 text-royal-600">{en.common.notFoundTitle}</h1>
           <p className="mt-3 text-muted">{en.common.notFoundBody}</p>
-          <Link href="/" className="mt-4 font-semibold text-maroon-600 underline underline-offset-4">
+          <Link href="/" prefetch={false} className="mt-4 font-semibold text-maroon-600 underline underline-offset-4">
             {en.common.goHome}
           </Link>
           <hr className="my-8 w-24 border-gold-500" />
@@ -40,7 +41,7 @@ export default function GlobalNotFound() {
           <p lang="hi" className="mt-3 text-muted">
             {hi.common.notFoundBody}
           </p>
-          <Link lang="hi" href="/hi" className="mt-4 font-semibold text-maroon-600 underline underline-offset-4">
+          <Link lang="hi" href="/hi" prefetch={false} className="mt-4 font-semibold text-maroon-600 underline underline-offset-4">
             {hi.common.goHome}
           </Link>
         </main>
