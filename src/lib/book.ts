@@ -1,5 +1,4 @@
 import type { Locale } from '@/i18n';
-import { whatsappLink } from './site.ts';
 
 const enquiryUrl = (type: string, product: string, name?: string, locale: Locale = 'en') => {
   const q = new URLSearchParams({ type, product });
@@ -8,10 +7,10 @@ const enquiryUrl = (type: string, product: string, name?: string, locale: Locale
 };
 
 /**
- * Every "Book" on the site goes through here (owner, 16 Oct 2026: booking the Hello My Cab
- * website's way — online, with an advance — comes in Phase 4). Until then a booking is a
- * WhatsApp message with the tour or the route and the car already written; in Phase 4 these
- * return the booking form's URL instead, and no page changes.
+ * Every "Book" on the site goes through here. Since 20 Oct 2026 (Ghoomo v2 Phase 2, owner:
+ * "jo abhi wo enquire dikhata hai wo enquire nahi balki booking wagerha sab yahi se hoga") they
+ * open the online booking — a cab, a tour package or a safari; WhatsApp stays on the floating
+ * button, the header, the footer and the contact page.
  */
 
 /** The package-booking key of a tour's car label (content/packages Car). */
@@ -48,10 +47,15 @@ const vehicleKey = (label?: string) => {
   return 'dzire';
 };
 
+/**
+ * A road's "Book": the booking widget with the road (and car) already filled in — only the date
+ * and time are left. A held road is an enquiry: the backend does not book it one way online.
+ */
 export function bookRouteLink(from: string, to: string, locale: Locale, car?: string, held = false): string {
   if (held) return enquiryUrl('cab', `${from}-to-${to}`, `${from} to ${to}`, locale);
-  const query = new URLSearchParams({ from, to, car: vehicleKey(car) });
-  return `${locale === 'hi' ? '/hi' : ''}/booking?${query.toString()}`;
+  const query = new URLSearchParams({ trip: 'one_way', pickup: from, drop: to });
+  if (car) query.set('vehicle', vehicleKey(car));
+  return `${locale === 'hi' ? '/hi' : ''}/booking?${query.toString()}#book`;
 }
 
 /** A place page's "plan on WhatsApp": the place named, the date and people to fill in. */
@@ -68,10 +72,17 @@ export function bookSafariLink(spot: string, offer: string, locale: Locale): str
   return `${locale === 'hi' ? '/hi' : ''}/booking/safari/${encodeURIComponent(spot)}?${q.toString()}`;
 }
 
-export function enquireLink(locale: Locale): string {
-  return whatsappLink(
-    locale === 'hi'
-      ? 'नमस्ते, घूमो राजस्थान के टूर के बारे में जानना है'
-      : 'Namaste, I would like to plan a Rajasthan tour with Ghoomo Rajasthan',
-  );
+/**
+ * Where "Book" starts when nothing is chosen yet: the booking widget (/booking), optionally on a
+ * trip type and pickup city (owner, 20 Oct 2026: every enquire becomes a booking).
+ */
+export function bookStartLink(locale: Locale, trip?: 'one_way' | 'round_trip' | 'local', pickup?: string): string {
+  const q = new URLSearchParams();
+  if (trip) q.set('trip', trip);
+  if (pickup) q.set('pickup', pickup);
+  return `${locale === 'hi' ? '/hi' : ''}/booking${q.size ? `?${q.toString()}` : ''}`;
 }
+
+/** A trip of our own making (the enquiry form) — for what no booking covers. */
+export const customTripLink = (locale: Locale): string => `${locale === 'hi' ? '/hi' : ''}/enquiry?type=custom&product=custom-trip`;
+

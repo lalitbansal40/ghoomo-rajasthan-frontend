@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { bookPackageLink, bookPlaceLink, bookRouteLink, bookSafariLink } from './book.ts';
 
 test('only eligible cab-route links enter the fare and booking flow', () => {
-  assert.equal(bookRouteLink('JAIPUR', 'JODHPUR', 'en', 'dzire'), '/booking?from=JAIPUR&to=JODHPUR&car=dzire');
+  assert.equal(bookRouteLink('JAIPUR', 'JODHPUR', 'en', 'dzire'), '/booking?trip=one_way&pickup=JAIPUR&drop=JODHPUR&vehicle=dzire#book');
+  assert.equal(bookRouteLink('JAIPUR', 'JODHPUR', 'hi'), '/hi/booking?trip=one_way&pickup=JAIPUR&drop=JODHPUR#book');
   assert.equal(bookRouteLink('AJMER', 'PUSHKAR', 'hi', 'dzire', true), '/hi/enquiry?type=cab&product=AJMER-to-PUSHKAR&name=AJMER+to+PUSHKAR');
 });
 

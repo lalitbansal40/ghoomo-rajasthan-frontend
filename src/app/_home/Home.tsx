@@ -8,7 +8,8 @@ import { popularRoutes } from '@/content/popular-routes';
 import { DAY_BUCKETS, HERO, HOME_FAQ, HOW, SECTIONS, WHY } from '@/content/home';
 import { photo } from '@/content/photos';
 import { brand } from '@/lib/site';
-import { enquireLink } from '@/lib/book';
+import { customTripLink } from '@/lib/book';
+import { BookingWidget } from '@/components/booking/BookingWidget';
 import { routeSlug } from '@/content/routes/list';
 import { faqJsonLd } from '@/components/ui/FAQ';
 import { JsonLd } from '@/components/JsonLd';
@@ -69,8 +70,8 @@ export async function Home({ locale }: { locale: Locale }) {
                 <Button size="lg" href={localePath('/packages', locale)} icon={null} iconRight="arrow">
                   {L(HERO.seeTours)}
                 </Button>
-                <Button size="lg" variant="whatsapp" href={enquireLink(locale)}>
-                  {t.cta.whatsapp}
+                <Button size="lg" variant="secondary" href="#book">
+                  {t.widget.heading}
                 </Button>
               </div>
             </div>
@@ -85,6 +86,11 @@ export async function Home({ locale }: { locale: Locale }) {
             <DuneDivider tone="ivory" />
             <Car moving size={150} className="absolute bottom-[22%] left-[8%] sm:bottom-[26%] sm:left-[14%] sm:w-[190px]" />
           </div>
+        </section>
+
+        {/* ── Book a cab — the trip widget, right under the hero (owner, 20 Oct 2026) ─ */}
+        <section className="mx-auto max-w-3xl px-4 pb-4 sm:px-6">
+          <BookingWidget locale={locale} />
         </section>
 
         {/* ── Tours with the filter ──────────────────────────────────────── */}
@@ -111,8 +117,8 @@ export async function Home({ locale }: { locale: Locale }) {
                   title={L(SECTIONS.noMatch)}
                   body={L(SECTIONS.noMatchBody)}
                   action={
-                    <Button variant="whatsapp" href={enquireLink(locale)}>
-                      {t.cta.whatsapp}
+                    <Button variant="primary" href={customTripLink(locale)}>
+                      {t.cta.planTrip}
                     </Button>
                   }
                 />
@@ -253,8 +259,8 @@ export async function Home({ locale }: { locale: Locale }) {
               <h2 className="text-h1 text-royal-600">{L(SECTIONS.cta)}</h2>
               <p className="text-body-lg mt-3 max-w-xl text-ink/80">{L(SECTIONS.ctaLine)}</p>
               <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row md:justify-start">
-                <Button size="lg" variant="whatsapp" href={enquireLink(locale)}>
-                  {t.cta.whatsapp}
+                <Button size="lg" variant="primary" href="#book">
+                  {t.widget.heading}
                 </Button>
                 <Button size="lg" variant="call" href={brand.phoneHref}>
                   {t.cta.call} · {brand.phone}
@@ -267,8 +273,8 @@ export async function Home({ locale }: { locale: Locale }) {
       </main>
       <Footer locale={locale} />
       <StickyCta>
-        <Button variant="whatsapp" href={enquireLink(locale)}>
-          {t.cta.whatsapp}
+        <Button variant="primary" href="#book">
+          {t.cta.bookNow}
         </Button>
         <Button variant="call" href={brand.phoneHref}>
           {t.cta.call}

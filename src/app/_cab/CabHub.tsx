@@ -6,8 +6,9 @@ import { CAB_FAQ } from '@/content/cab';
 import { safe } from '@/lib/api';
 import { cheapest, darshanEstimate, localView, roundtripView } from '@/lib/fares';
 import { hillRates, roundtripRates, routeFares } from '@/lib/route-fares';
-import { whatsappLink, brand } from '@/lib/site';
-import { enquireLink } from '@/lib/book';
+import { brand } from '@/lib/site';
+import { bookStartLink } from '@/lib/book';
+import { BookingWidget } from '@/components/booking/BookingWidget';
 import { itemListJsonLd } from '@/lib/schema';
 import { JsonLd } from '@/components/JsonLd';
 import { LocalFareTable } from '@/components/LocalFareTable';
@@ -83,6 +84,10 @@ export async function CabHub({ locale }: { locale: Locale }) {
             </a>
           ))}
         </nav>
+        {/* The trip widget first — every road below can be booked from here (owner, 20 Oct 2026). */}
+        <div className="mt-8 max-w-3xl">
+          <BookingWidget locale={locale} />
+        </div>
 
         {/* ── One way ──────────────────────────────────────────────────── */}
         <section id="one-way" className="mt-12 scroll-mt-24">
@@ -122,6 +127,9 @@ export async function CabHub({ locale }: { locale: Locale }) {
               </div>
             ) : null}
             {hillLow?.perKm ? <p className="mt-4 text-small text-muted">{c.hillNote(formatRupees(hillLow.perKm))}</p> : null}
+            <div className="mt-4">
+              <Button variant="primary" href={bookStartLink(locale, 'round_trip')}>{c.darshanBook}</Button>
+            </div>
           </div>
           <div>{rates ? <PerKmTable view={rates} locale={locale} /> : <p className="font-semibold text-royal-700">{t.fare.onWhatsapp}</p>}</div>
         </section>
@@ -141,6 +149,9 @@ export async function CabHub({ locale }: { locale: Locale }) {
                 </li>
               ))}
             </ul>
+            <div className="mt-4">
+              <Button variant="primary" href={bookStartLink(locale, 'local', 'JAIPUR')}>{t.flow.bookLocal}</Button>
+            </div>
           </div>
           <div>{local ? <LocalFareTable view={local} locale={locale} /> : <p className="font-semibold text-royal-700">{t.fare.onWhatsapp}</p>}</div>
         </section>
@@ -156,7 +167,7 @@ export async function CabHub({ locale }: { locale: Locale }) {
               </p>
             ) : null}
             <div className="mt-4">
-              <Button variant="whatsapp" href={whatsappLink(c.groupMessage)}>
+              <Button variant="primary" href={bookStartLink(locale, 'round_trip')}>
                 {c.groupBook}
               </Button>
             </div>
@@ -206,8 +217,8 @@ export async function CabHub({ locale }: { locale: Locale }) {
       <DuneDivider />
       <Footer locale={locale} />
       <StickyCta>
-        <Button variant="whatsapp" href={enquireLink(locale)}>
-          {t.cta.whatsapp}
+        <Button variant="primary" href="#book">
+          {t.cta.bookNow}
         </Button>
         <Button variant="call" href={brand.phoneHref}>
           {t.cta.call}

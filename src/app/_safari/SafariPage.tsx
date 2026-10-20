@@ -12,7 +12,7 @@ import { photo } from '@/content/photos';
 import { safe } from '@/lib/api';
 import { cheapest, localView } from '@/lib/fares';
 import { routeFares } from '@/lib/route-fares';
-import { bookSafariLink, enquireLink } from '@/lib/book';
+import { bookSafariLink } from '@/lib/book';
 import { brand } from '@/lib/site';
 import { JsonLd } from '@/components/JsonLd';
 import { LocalFareTable } from '@/components/LocalFareTable';
@@ -235,8 +235,8 @@ export async function SafariPage({ locale }: { locale: Locale }) {
       <DuneDivider />
       <Footer locale={locale} />
       <StickyCta>
-        <Button variant="whatsapp" href={enquireLink(locale)}>
-          {t.cta.whatsapp}
+        <Button variant="primary" href={`#${SAFARI[0].slug}`}>
+          {t.cta.bookNow}
         </Button>
         <Button variant="call" href={brand.phoneHref}>
           {t.cta.call}

@@ -6,7 +6,7 @@ import { STATIC_TOURS_BOOKABLE, cheapest, pkgIn } from '@/content/packages';
 import { DESTINATIONS } from '@/content/destinations';
 import { DAY_BUCKETS, HOME_FAQ, SECTIONS } from '@/content/home';
 import { brand } from '@/lib/site';
-import { enquireLink } from '@/lib/book';
+import { bookStartLink, customTripLink } from '@/lib/book';
 import { JsonLd } from '@/components/JsonLd';
 import { TourFilter } from '@/components/TourFilter';
 import { breadcrumbJsonLd, faqJsonLd } from '@/components/ui';
@@ -68,8 +68,8 @@ export async function ToursList({ locale }: { locale: Locale }) {
                 title={L(SECTIONS.noMatch)}
                 body={L(SECTIONS.noMatchBody)}
                 action={
-                  <Button variant="whatsapp" href={enquireLink(locale)}>
-                    {t.cta.whatsapp}
+                  <Button variant="primary" href={customTripLink(locale)}>
+                    {t.cta.planTrip}
                   </Button>
                 }
               />
@@ -103,8 +103,8 @@ export async function ToursList({ locale }: { locale: Locale }) {
           <h2 className="text-h2 text-royal-600">{L(SECTIONS.cta)}</h2>
           <p className="mx-auto mt-2 max-w-xl text-ink/80">{L(SECTIONS.ctaLine)}</p>
           <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button variant="whatsapp" size="lg" href={enquireLink(locale)}>
-              {t.cta.whatsapp}
+            <Button variant="primary" size="lg" href={bookStartLink(locale)}>
+              {t.cta.bookNow}
             </Button>
             <Button variant="call" size="lg" href={brand.phoneHref}>
               {t.cta.call} · {brand.phone}
@@ -114,8 +114,8 @@ export async function ToursList({ locale }: { locale: Locale }) {
       </section>
       <Footer locale={locale} />
       <StickyCta>
-        <Button variant="whatsapp" href={enquireLink(locale)}>
-          {t.cta.whatsapp}
+        <Button variant="primary" href={bookStartLink(locale)}>
+          {t.cta.bookNow}
         </Button>
         <Button variant="call" href={brand.phoneHref}>
           {t.cta.call}

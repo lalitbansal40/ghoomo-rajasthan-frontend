@@ -3,7 +3,7 @@ import { CatalogNotice } from '@/components/CatalogNotice';
 import { dict, localePath, type Locale } from '@/i18n';
 import { PLACES } from '@/content/places';
 import { REGIONS } from '@/content/regions';
-import { enquireLink } from '@/lib/book';
+import { bookStartLink, customTripLink } from '@/lib/book';
 import { brand } from '@/lib/site';
 import { itemListJsonLd } from '@/lib/schema';
 import { JsonLd } from '@/components/JsonLd';
@@ -64,8 +64,8 @@ export async function DestinationsList({ locale }: { locale: Locale }) {
               <EmptyState
                 title={pt.none}
                 action={
-                  <Button variant="whatsapp" href={enquireLink(locale)}>
-                    {t.cta.whatsapp}
+                  <Button variant="primary" href={customTripLink(locale)}>
+                    {t.cta.planTrip}
                   </Button>
                 }
               />
@@ -91,8 +91,8 @@ export async function DestinationsList({ locale }: { locale: Locale }) {
       <DuneDivider />
       <Footer locale={locale} />
       <StickyCta>
-        <Button variant="whatsapp" href={enquireLink(locale)}>
-          {t.cta.whatsapp}
+        <Button variant="primary" href={bookStartLink(locale)}>
+          {t.cta.bookNow}
         </Button>
         <Button variant="call" href={brand.phoneHref}>
           {t.cta.call}

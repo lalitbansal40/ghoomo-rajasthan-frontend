@@ -48,8 +48,9 @@ export async function BookingPage({ locale, searchParams }: { locale: Locale; se
   if (!trip) {
     // No trip yet: the widget, opened on the tab and city a link asked for (`?trip=local&pickup=`).
     const tab = isTripType(searchParams.trip) ? searchParams.trip : undefined;
-    const from = typeof searchParams.pickup === 'string' && /^[A-Z][A-Z_]{1,39}$/.test(searchParams.pickup) ? searchParams.pickup : undefined;
-    return shell(<><h1 className="mb-5 text-h1 text-royal-600">{dict(locale).widget.heading}</h1><BookingWidget locale={locale} defaultTrip={tab} defaultPickup={from} /></>);
+    const city = (v: unknown) => (typeof v === 'string' && /^[A-Z][A-Z_]{1,39}$/.test(v) ? v : undefined);
+    const vehicle = typeof searchParams.vehicle === 'string' && /^[a-z0-9_]{2,30}$/.test(searchParams.vehicle) ? searchParams.vehicle : undefined;
+    return shell(<><h1 className="mb-5 text-h1 text-royal-600">{dict(locale).widget.heading}</h1><BookingWidget locale={locale} defaultTrip={tab} defaultPickup={city(searchParams.pickup)} defaultDrop={city(searchParams.drop)} defaultVehicle={vehicle} /></>);
   }
 
   const capabilities = await fresh<{ booking: boolean }>('/ghoomo/booking/capabilities');

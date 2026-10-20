@@ -12,6 +12,7 @@ import { safe } from '@/lib/api';
 import { cheapest, localView } from '@/lib/fares';
 import { routeFares, roundtripRates } from '@/lib/route-fares';
 import { bookPlaceLink } from '@/lib/book';
+import { BookingWidget } from '@/components/booking/BookingWidget';
 import { brand } from '@/lib/site';
 import { touristDestinationJsonLd } from '@/lib/schema';
 import { JsonLd } from '@/components/JsonLd';
@@ -92,6 +93,8 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
   const roadFares = await Promise.all(roads.map((r) => routeFares(r).then((f) => ({ r, f }))));
 
   const tours = packagesFor(place.key).map((x) => pkgIn(x, locale));
+  // The city a car is booked from here — the place's own, or the nearest one with fares.
+  const bookCity = fareCity(place);
   const nearby = PLACES.filter((x) => x.slug !== place.slug && x.region === place.region).slice(0, 3);
   const others = nearby.length ? nearby : PLACES.filter((x) => x.slug !== place.slug && x.featured).slice(0, 3);
   const safari = SAFARI_PLACES.has(place.slug) && exists('/desert-safari', locale);
@@ -134,7 +137,7 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
               ))}
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button variant="primary" href={bookPlaceLink(txt.name, locale)}>
+              <Button variant="primary" href={bookCity ? '#book' : bookPlaceLink(txt.name, locale)}>
                 {pt.plan}
               </Button>
               <Button variant="call" href={brand.phoneHref}>
@@ -143,6 +146,13 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
             </div>
           </div>
         </div>
+
+        {/* ── Book a car here: a day in town, or the road there (owner, 20 Oct 2026) ── */}
+        {bookCity ? (
+          <section className="mx-auto mt-10 max-w-3xl">
+            <BookingWidget locale={locale} {...(place.cityKey ? { defaultTrip: 'local' as const, defaultPickup: place.cityKey } : { defaultTrip: 'one_way' as const, defaultDrop: bookCity })} />
+          </section>
+        ) : null}
 
         {/* ── What to see ──────────────────────────────────────────────── */}
         <section className="mt-12">
@@ -278,8 +288,8 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
       <Footer locale={locale} />
       <StickyCta>
         {/* The short label: two buttons must fit a 360 px phone side by side, in Hindi too. */}
-        <Button variant="primary" href={bookPlaceLink(txt.name, locale)}>
-          {t.cta.whatsapp}
+        <Button variant="primary" href={bookCity ? '#book' : bookPlaceLink(txt.name, locale)}>
+          {t.cta.bookNow}
         </Button>
         <Button variant="call" href={brand.phoneHref}>
           {t.cta.call}

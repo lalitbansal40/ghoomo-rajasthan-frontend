@@ -19,7 +19,7 @@ import { brand } from '@/lib/site';
 import { taxiServiceJsonLd } from '@/lib/schema';
 import { JsonLd } from '@/components/JsonLd';
 import { OnewayFareTable } from '@/components/OnewayFareTable';
-import { RouteBook } from '@/components/RouteBook';
+import { BookingWidget } from '@/components/booking/BookingWidget';
 import { FortSun } from '@/components/motifs';
 import {
   Badge,
@@ -89,8 +89,6 @@ export async function RoutePage({ route, locale }: { route: GhoomoRoute; locale:
     .slice(0, 6);
   const arriving = placeForCity(route.drop);
 
-  const cars = (oneway?.rows ?? []).slice().sort((a, b) => a.rupees - b.rupees);
-  const bookLinks = Object.fromEntries(cars.map((c) => [c.key, bookRouteLink(route.pickup, route.drop, locale, c.key, Boolean(route.held))]));
   const faq = routeFaq(from, to, oneway, roundtrip, locale);
   const roundLow = roundtrip?.rows.filter((r) => !r.van).sort((a, b) => a.rupees - b.rupees)[0];
 
@@ -146,17 +144,14 @@ export async function RoutePage({ route, locale }: { route: GhoomoRoute; locale:
                 </p>
               )}
             </div>
-            <div className="mt-4">
-              {cars.length ? (
-                <RouteBook
-                  cars={cars.map((c) => ({ key: c.key, label: c.label }))}
-                  messages={bookLinks}
-                  labels={{ choose: rt.chooseCar, book: rt.book }}
-                />
-              ) : (
-                <Button variant="primary" size="lg" href={bookRouteLink(route.pickup, route.drop, locale, undefined, Boolean(route.held))}>
+            <div className="mt-6">
+              {route.held ? (
+                <Button variant="primary" size="lg" href={bookRouteLink(route.pickup, route.drop, locale, undefined, true)}>
                   {rt.book}
                 </Button>
+              ) : (
+                // The road filled in; the visitor picks the day and time (owner, 20 Oct 2026).
+                <BookingWidget locale={locale} defaultPickup={route.pickup} defaultDrop={route.drop} />
               )}
             </div>
           </section>
@@ -296,7 +291,7 @@ export async function RoutePage({ route, locale }: { route: GhoomoRoute; locale:
       </main>
       <Footer locale={locale} />
       <StickyCta>
-        <Button variant="primary" href={low ? bookLinks[low.key] : bookRouteLink(route.pickup, route.drop, locale, undefined, Boolean(route.held))}>
+        <Button variant="primary" href={route.held ? bookRouteLink(route.pickup, route.drop, locale, undefined, true) : '#book'}>
           {t.cta.whatsapp}
         </Button>
         <Button variant="call" href={brand.phoneHref}>
