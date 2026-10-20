@@ -41,7 +41,7 @@ export function packageIndexable(pkg: { isSample?: boolean }): boolean {
 /** Whether a page whose figures are samples (the desert safari) may be searched. */
 export const sampleIndexable = (isSample: boolean) => !isSample || INDEX_SAMPLE_CONTENT;
 
-export const PRIVATE_PATH = /^\/(?:hi(?:\/|$))?(?:booking|my-bookings|preview|api|rate|auth|partners|trip-requests|quotes|plan-your-trip|travel-checkout|travel-bookings)(?:\/|$)/;
+export const PRIVATE_PATH = /^\/(?:hi(?:\/|$))?(?:booking|my-bookings|login|account|preview|api|rate|auth|partners|trip-requests|quotes|plan-your-trip|travel-checkout|travel-bookings)(?:\/|$)/;
 export const UTILITY_PATH = /^\/(?:hi\/)?(?:styleguide|photo-credits|enquiry|plan-your-trip)(?:\/|$)/;
 
 export function publicPath(path: string): boolean {

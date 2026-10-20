@@ -4,7 +4,8 @@ import { dict, localePath, type Locale } from '@/i18n';
 import { NAV, exists } from '@/i18n/pages';
 import { REGIONS } from '@/content/regions';
 import { PLACES } from '@/content/places';
-import { brand, whatsappLink } from '@/lib/site';
+import { brand } from '@/lib/site';
+import { AccountButton } from '@/components/account/AccountButton';
 import { env } from '@/lib/env';
 import { Icon } from './Icon';
 import { LangSwitch } from './LangSwitch';
@@ -12,7 +13,7 @@ import { MobileMenu, type MenuItem } from './MobileMenu';
 
 /**
  * The top of every page: the logo home, the menu (owner, 16 Oct 2026: Packages · Destinations ·
- * Cab · Desert Safari · Contact), WhatsApp and call, and EN | हिं. A menu page not built yet in
+ * Cab · Desert Safari · Contact), sign-in, call, and EN | हिं. A menu page not built yet in
  * this language is shown as "Soon", never as a link to a 404 (i18n/pages.ts). Sticky; the
  * phone menu is the only client code.
  */
@@ -67,15 +68,8 @@ export function Header({ locale, path }: { locale: Locale; /** This page's path 
           </ul>
         </nav>
         <div className="ml-auto flex items-center gap-1.5">
-          <a
-            href={whatsappLink(t.cta.whatsappMessage)}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={t.cta.whatsapp}
-            className="grid h-11 w-11 place-items-center rounded-full bg-success text-white hover:brightness-110"
-          >
-            <Icon name="whatsapp" size={22} />
-          </a>
+          {/* WhatsApp lives on the floating button (ContactFab); here, the account. */}
+          <AccountButton locale={locale} travel={env.travelEnabled} />
           <a
             href={brand.phoneHref}
             aria-label={`${t.cta.call} ${brand.phone}`}

@@ -317,6 +317,16 @@ export const en = {
       JEEP_SEATS: 'A jeep takes up to 6 people — add a jeep', ITEM_REPEATED: 'Each ride once — change its number instead', NOT_BOOKABLE: 'This is not available to book online. Please call us.',
     },
   },
+  account: {
+    login: 'Sign in', account: 'My account', myBookings: 'My bookings', tripRequests: 'My trip requests', logout: 'Sign out',
+    title: 'Sign in to Ghoomo Rajasthan', intro: 'Enter your mobile number. We send a one-time code — a new number gets an account at once.',
+    separate: 'This is your Ghoomo Rajasthan account. A hellomycabs.com account is separate.',
+    phone: 'Mobile number', name: 'Your name (optional)', code: 'The code we sent', send: 'Send the code', verify: 'Sign in', sending: 'Please wait…',
+    sent: (phone: string) => `We sent a code to ${phone}.`, change: 'Change number', resend: 'Send again',
+    invalidPhone: 'Enter a 10-digit mobile number', invalidCode: 'Enter the code we sent', wrongCode: 'That code did not work. Check it, or send a new one.',
+    tooMany: 'Too many tries. Please wait a few minutes.', failed: 'We could not sign you in just now. Please try again.',
+    signInToSee: 'Sign in with the mobile number you booked with to see your bookings.', menu: 'Account',
+  },
   booking: {
     title: 'Book a cab', intro: 'Choose your trip. The fare comes from our booking system and is shown before any payment. Quotes use the selected city centres; our team can confirm exact pickup details.', trip: 'Trip type', one: 'One way', round: 'Round trip', from: 'Pickup city', to: 'Drop city', car: 'Car', passengers: 'Travellers', hatchback: 'Hatchback', dzire: 'Dzire', ertiga: 'Ertiga', crysta: 'Innova Crysta', tt12: 'Tempo Traveller (12 seater)', tt14: 'Tempo Traveller (14 seater)', tt16: 'Tempo Traveller (16 seater)', urbania: 'Force Urbania (16 seater)',
     date: 'Pickup date', time: 'Pickup time (India)', returnDate: 'Return date', returnTime: 'Return time (India)', name: 'Your name', phone: 'Mobile number', address: 'Pickup address (optional)',

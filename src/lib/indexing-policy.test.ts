@@ -23,7 +23,7 @@ test('only explicit non-sample packages qualify; privacy is independent of noind
   // Owner, 20 Oct 2026: sample tours are searched (with their badge) — INDEX_SAMPLE_CONTENT.
   assert.equal(packageIndexable({ isSample: true }), true);
   assert.equal(packageIndexable({ isSample: false }), true);
-  for (const path of ['/booking', '/hi/booking/a', '/my-bookings', '/preview/en/packages/x', '/api/auth', '/rate/token', '/hi/rate/token', '//evil', '/enquiry?phone=123']) assert.equal(publicPath(path), false, path);
+  for (const path of ['/booking', '/hi/booking/a', '/my-bookings', '/login', '/hi/login', '/account', '/preview/en/packages/x', '/api/auth', '/rate/token', '/hi/rate/token', '//evil', '/enquiry?phone=123']) assert.equal(publicPath(path), false, path);
   assert.equal(publicPath('/hi/enquiry'), true);
 });
 test('sitemap is empty before launch or in preview and never calls required catalog', async () => {

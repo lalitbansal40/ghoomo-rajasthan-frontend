@@ -1,28 +1,53 @@
 import { NextResponse } from 'next/server';
 import { env } from '@/lib/env';
 import { indianMobile } from '@/lib/enquiry';
-import { setSession } from '@/lib/session';
+import { clearSession, getSession, setSession } from '@/lib/session';
 import { sameOriginMutation } from '@/lib/mutation-origin';
 
+const noStore = { 'Cache-Control': 'private, no-store' };
+type User = { name?: string; phone?: string };
+/** The signed-in person as the page may see them: a name and the ten-digit number, nothing else. */
+const publicUser = (u: User | undefined) => ({ name: u?.name ?? '', phone: indianMobile(u?.phone ?? '') ?? '' });
+
+/** Who is signed in on Ghoomo Rajasthan — 401 when nobody is (or an old Hello My Cab session: cleared). */
+export async function GET() {
+  const token = await getSession();
+  if (!token) return NextResponse.json({ ok: false, error: { code: 'AUTH_REQUIRED' } }, { status: 401, headers: noStore });
+  try {
+    const upstream = await fetch(`${env.apiBaseUrl}/ghoomo/auth/me`, { cache: 'no-store', headers: { accept: 'application/json', authorization: `Bearer ${token}` } });
+    const body = await upstream.json().catch(() => null);
+    if (upstream.status === 401 || upstream.status === 403) {
+      // Signed out, blocked, or a session from before Ghoomo accounts (a Hello My Cab token).
+      await clearSession();
+      return NextResponse.json({ ok: false, error: { code: body?.error?.code ?? 'AUTH_REQUIRED' } }, { status: 401, headers: noStore });
+    }
+    if (!upstream.ok || !body?.ok) return NextResponse.json({ ok: false, error: { code: 'SESSION_UNAVAILABLE' } }, { status: 502, headers: noStore });
+    return NextResponse.json({ ok: true, data: { user: publicUser(body.data?.user) } }, { headers: noStore });
+  } catch {
+    return NextResponse.json({ ok: false, error: { code: 'SESSION_UNAVAILABLE' } }, { status: 502, headers: noStore });
+  }
+}
+
+/** Verify the code and sign in to (or create) the visitor's Ghoomo Rajasthan account. */
 export async function POST(request: Request) {
-  if (!sameOriginMutation(request)) return NextResponse.json({ ok: false, error: { code: 'ORIGIN_INVALID' } }, { status: 403, headers: { 'Cache-Control': 'no-store' } });
+  if (!sameOriginMutation(request)) return NextResponse.json({ ok: false, error: { code: 'ORIGIN_INVALID' } }, { status: 403, headers: noStore });
   const input = await request.json().catch(() => null) as { phone?: unknown; code?: unknown; name?: unknown } | null;
   const phone = typeof input?.phone === 'string' ? indianMobile(input.phone) : null;
   const code = typeof input?.code === 'string' && /^\d{4,8}$/.test(input.code) ? input.code : null;
   const name = typeof input?.name === 'string' ? input.name.trim().slice(0, 60) : '';
-  if (!phone || !code) return NextResponse.json({ ok: false, error: { code: 'INPUT_INVALID' } }, { status: 400, headers: { 'Cache-Control': 'no-store' } });
+  if (!phone || !code) return NextResponse.json({ ok: false, error: { code: 'INPUT_INVALID' } }, { status: 400, headers: noStore });
   try {
-    const upstream = await fetch(`${env.apiBaseUrl}/auth/otp/verify`, {
+    const upstream = await fetch(`${env.apiBaseUrl}/ghoomo/auth/otp/verify`, {
       method: 'POST', cache: 'no-store', headers: { 'content-type': 'application/json', accept: 'application/json' },
-      body: JSON.stringify({ phone: `91${phone}`, code, role: 'CUSTOMER', name: name || undefined, client: 'web' }),
+      body: JSON.stringify({ phone, code, ...(name ? { name } : {}) }),
     });
     const body = await upstream.json().catch(() => null);
     if (!upstream.ok || !body?.ok || typeof body?.data?.accessToken !== 'string') {
-      return NextResponse.json(body, { status: upstream.status || 502, headers: { 'Cache-Control': 'no-store' } });
+      return NextResponse.json(body ?? { ok: false, error: { code: 'OTP_VERIFY_FAILED' } }, { status: upstream.status || 502, headers: noStore });
     }
     await setSession(body.data.accessToken as string);
-    return NextResponse.json({ ok: true, data: { user: body.data.user } }, { headers: { 'Cache-Control': 'no-store' } });
+    return NextResponse.json({ ok: true, data: { user: publicUser(body.data.user) } }, { headers: noStore });
   } catch {
-    return NextResponse.json({ ok: false, error: { code: 'OTP_VERIFY_FAILED' } }, { status: 502, headers: { 'Cache-Control': 'no-store' } });
+    return NextResponse.json({ ok: false, error: { code: 'OTP_VERIFY_FAILED' } }, { status: 502, headers: noStore });
   }
 }
