@@ -1,0 +1,7 @@
+{
+  "approvedBy": "Lalit Bansal (owner)",
+  "approvedAt": "2026-10-20T00:00:00Z",
+  "evidence": "docs/release/PHASE1_APPROVAL.md",
+  "note": "English paths only — Hindi (/hi…) is added by scripts/release-approve.mjs. Change this list to change what may be searched.",
+  "paths": ["/"]
+}

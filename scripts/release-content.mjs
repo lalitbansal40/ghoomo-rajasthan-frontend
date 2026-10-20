@@ -31,6 +31,13 @@ if (process.argv.includes('--check')) {
 } else if (await readFile(resolve(root, output), 'utf8').catch(() => '') !== content) {
   await writeFile(resolve(root, output), content);
 }
+// --hash-only: write the revision and stop. The prebuild runs this first, then
+// scripts/release-approve.mjs binds the owner's page list to the new revision, then --check
+// runs the gate below on the result (owner, 20 Oct 2026 — see release-approve.mjs).
+if (process.argv.includes('--hash-only')) {
+  console.log(JSON.stringify({ revision, files: paths.length, output: relative(root, resolve(root, output)), mode: 'hash-only' }));
+  process.exit(0);
+}
 const flag = (await readFile(resolve(root, 'src/lib/site.ts'), 'utf8')).match(/^export const SITE_LAUNCHED = (true|false);$/m);
 if (!flag) throw Error('Explicit audited SITE_LAUNCHED boolean required');
 const gate = launchGate({ launched: flag[1] === 'true', approvals: await sourceApprovals(await readFile(resolve(root, 'src/lib/release-manifest.ts'), 'utf8')), revision });

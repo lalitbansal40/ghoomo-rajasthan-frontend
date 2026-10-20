@@ -13,6 +13,14 @@
  */
 export const PACKAGES_ARE_SAMPLE = true;
 
+/**
+ * The content revision every sample tour carries (owner, 20 Oct 2026: sample tours are searched
+ * with their "Sample price" badge; "baad m sirf price wagerha hi change hogi"). Fixed, so a
+ * change of price or wording in these files keeps the tour's search approval
+ * (docs/release/approved-pages.json). A CMS tour carries the CMS's own revision instead.
+ */
+export const SAMPLE_CONTENT_REVISION = 1;
+
 export interface ManagedTourMedia { id: string; credit: string; licence: string; sourceUrl: string; changes: string; alt: { en: string; hi: string }; variants: { cover: string; card: string; og: string } }
 
 export type Car = 'Dzire' | 'Ertiga' | 'Innova Crysta';
@@ -111,7 +119,7 @@ export const EXCLUDES_HI = [
   'टोल, पार्किंग और स्टेट टैक्स — जितना लगे',
 ];
 
-export const PACKAGES: TourPackage[] = [
+const SOURCE_PACKAGES: TourPackage[] = [
   {
     slug: 'jaipur-pink-city-weekend',
     name: 'Jaipur Pink City Weekend',
@@ -655,6 +663,13 @@ export const PACKAGES: TourPackage[] = [
     },
   },
 ];
+
+/** The tours in this file, each marked for what it is: a sample, at the fixed sample revision. */
+export const PACKAGES: TourPackage[] = SOURCE_PACKAGES.map((p) => ({
+  ...p,
+  isSample: p.isSample ?? PACKAGES_ARE_SAMPLE,
+  contentRevision: p.contentRevision ?? (PACKAGES_ARE_SAMPLE ? SAMPLE_CONTENT_REVISION : undefined),
+}));
 
 export const packageBySlug = (slug: string) => PACKAGES.find((p) => p.slug === slug) ?? null;
 

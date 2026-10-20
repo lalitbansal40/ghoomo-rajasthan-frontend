@@ -16,9 +16,10 @@
     "fares:check": "node scripts/fares-check.mjs",
     "links:check": "node scripts/links-check.mjs",
     "copy:check": "node scripts/copy-check.mjs",
-    "test": "node --test 'src/**/*.test.ts'",
-    "prebuild": "node scripts/release-content.mjs",
-    "release:check": "node scripts/release-content.mjs --check"
+    "test": "node --test 'src/**/*.test.ts' 'scripts/**/*.test.mjs'",
+    "prebuild": "node scripts/release-content.mjs --hash-only && node --experimental-strip-types --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/release-approve.mjs && node scripts/release-content.mjs --check",
+    "release:check": "node scripts/release-content.mjs --hash-only && node --experimental-strip-types --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/release-approve.mjs && node scripts/release-content.mjs --check",
+    "release:approve": "node scripts/release-content.mjs --hash-only && node --experimental-strip-types --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/release-approve.mjs"
   },
   "dependencies": {
     "next": "16.3.4",
