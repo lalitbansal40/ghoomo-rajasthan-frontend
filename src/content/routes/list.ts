@@ -52,6 +52,9 @@ const HELD: Record<string, string> = {
   'AGRA>BHARATPUR': 'minimum-fare',
 };
 
+/** A pair the backend will not book one way online (booking.controller GHOOMO_HELD_PAIRS — the same list). */
+export const isHeldPair = (pickup: string, drop: string): boolean => Object.prototype.hasOwnProperty.call(HELD, `${pickup}>${drop}`);
+
 /** The 28 roads Ghoomo adds. Every pair answered /public/fare/oneway on 16 Oct 2026. */
 const GHOOMO_PAIRS: Array<[string, string]> = [
   ['JAIPUR', 'JAISALMER'],

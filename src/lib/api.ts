@@ -247,6 +247,8 @@ export const api = {
  */
 const orNull = <T>(p: Promise<T>): Promise<T | null> => p.catch(() => null);
 export const safe = {
+  /** The cities a trip can start or end in — those with a map point (a booking needs one). */
+  cities: cache(() => orNull(api.cities().then((list) => list.filter((c) => c.lat !== null && c.lng !== null)))),
   allFares: cache(() => orNull(api.allFares())),
   vehicles: cache(() => orNull(api.vehicles())),
   oneway: cache((pickup: string, drop: string) => orNull(api.oneway(pickup, drop))),
