@@ -61,7 +61,7 @@ export async function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Loca
       <Header locale={locale} path={path} />
       <main className="mx-auto max-w-[var(--container-site)] px-4 pb-24 pt-6 sm:px-6 md:pb-12">
         <Breadcrumbs items={crumbs} locale={locale} />
-        {tour.isSample ? (
+        {tour.isSample && !tour.bookable ? (
           <div className="mt-4 max-w-2xl">
             <Alert tone="warning">{t.pkg.sampleTour}</Alert>
           </div>
@@ -92,7 +92,7 @@ export async function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Loca
                 prices={tour.fromRupees}
                 locale={locale}
                 priceLabels={{ from: t.pkg.from, samplePrice: t.pkg.samplePrice, onRequest: t.catalog.onRequest, gstExtra: t.pkg.gstExtra }}
-                labels={{ car: t.pkg.car, book: t.catalog.enquire, call: `${t.cta.call} · ${brand.phone}` }}
+                labels={{ car: t.pkg.car, book: tour.bookable ? t.cta.bookNow : t.catalog.enquire, call: `${t.cta.call} · ${brand.phone}` }}
               />
             </div>
           </div>
@@ -181,7 +181,7 @@ export async function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Loca
       <Footer locale={locale} />
       <StickyCta>
         <Button variant="primary" href={checkoutHref ?? bookPackageLink(tour, cheapestCar, locale)}>
-          {checkoutHref ? (locale === 'hi' ? 'ऑनलाइन बुक करें' : 'Book online') : t.catalog.enquire}
+          {checkoutHref ? (locale === 'hi' ? 'ऑनलाइन बुक करें' : 'Book online') : tour.bookable ? t.cta.bookNow : t.catalog.enquire}
         </Button>
         <Button variant="call" href={brand.phoneHref}>
           {t.cta.call}

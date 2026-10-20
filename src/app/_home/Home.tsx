@@ -1,7 +1,7 @@
 import { catalog, toursInCity } from '@/lib/catalog';
 import { CatalogNotice } from '@/components/CatalogNotice';
 import { dict, localePath, type Locale } from '@/i18n';
-import { cheapest, pkgIn } from '@/content/packages';
+import { STATIC_TOURS_BOOKABLE, cheapest, pkgIn } from '@/content/packages';
 import { DESTINATIONS } from '@/content/destinations';
 import { PLACES } from '@/content/places';
 import { popularRoutes } from '@/content/popular-routes';
@@ -38,7 +38,8 @@ import { travelAgencyJsonLd, websiteJsonLd } from '@/lib/schema';
 export async function Home({ locale }: { locale: Locale }) {
   const catalogState = await catalog();
   const PACKAGES = catalogState.packages;
-  const PACKAGES_ARE_SAMPLE = catalogState.sample;
+  // The sample note goes once the static tours are booked at their prices (STATIC_TOURS_BOOKABLE).
+  const PACKAGES_ARE_SAMPLE = catalogState.sample && !STATIC_TOURS_BOOKABLE;
   const packagesFor = (key: string) => toursInCity(PACKAGES, key);
   const t = dict(locale);
   const L = <K extends { en: string; hi: string }>(x: K) => x[locale];

@@ -9,8 +9,8 @@ import { brand } from '@/lib/site';
 import type { Locale } from '@/i18n';
 
 /**
- * Choose a car to compare the package's published rates. The CTA keeps the stable
- * package enquiry context; publication does not enable booking or checkout.
+ * Choose a car to compare the package's rates. A bookable tour's Book opens its booking with
+ * that car (lib/book.ts); any other tour's is an enquiry.
  */
 export function VehiclePicker({
   tour,
@@ -19,7 +19,7 @@ export function VehiclePicker({
   labels,
   priceLabels,
 }: {
-  tour: { slug: string; name: string; days: number; nights: number; isSample?: boolean; taxNote?: string };
+  tour: { slug: string; name: string; days: number; nights: number; isSample?: boolean; bookable?: boolean; taxNote?: string };
   prices: Array<{ vehicle: string; rupees: number }>;
   locale: Locale;
   priceLabels: PriceLabels;
@@ -38,7 +38,7 @@ export function VehiclePicker({
           </Chip>
         ))}
       </div> : null}
-      <PriceTagView rupees={chosen?.rupees} vehicle={chosen?.vehicle} sample={tour.isSample} gst={tour.isSample} labels={priceLabels} />
+      <PriceTagView rupees={chosen?.rupees} vehicle={chosen?.vehicle} sample={tour.isSample && !tour.bookable} gst={tour.isSample || tour.bookable} labels={priceLabels} />
       {tour.taxNote ? <p>{tour.taxNote}</p> : null}
       <div className="flex flex-col gap-3 sm:flex-row">
         <Button variant="primary" size="lg" href={bookPackageLink(tour, chosen?.vehicle ?? '', locale)}>

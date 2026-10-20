@@ -23,6 +23,18 @@ export const PACKAGES_ARE_SAMPLE = true;
  */
 export const SAMPLE_CONTENT_REVISION = 1;
 
+/**
+ * The six tours here are BOOKED online at these prices (owner, 20 Oct 2026, Ghoomo v2 Phase 2
+ * decision 4 — a package is booked as a package — and "ise real price maano baad m m change kar
+ * dunga"). So no "Sample price" badge and no sample note on them: what is shown is what is
+ * charged. They stay `isSample` for search only — no price is offered to a search engine (no
+ * JSON-LD Offer) and their search approval keeps its fixed revision.
+ *
+ * The server charges from its own copy (backend src/config/ghoomoCatalogPrices.ts);
+ * `npm run prices:check` fails the moment the two differ. A price changes in both, together.
+ */
+export const STATIC_TOURS_BOOKABLE = true;
+
 export interface ManagedTourMedia { id: string; credit: string; licence: string; sourceUrl: string; changes: string; alt: { en: string; hi: string }; variants: { cover: string; card: string; og: string } }
 
 export type Car = 'Dzire' | 'Ertiga' | 'Innova Crysta';
@@ -706,6 +718,8 @@ export function pkgIn(pkg: TourPackage, locale: 'en' | 'hi') {
     taxNote: locale === 'hi' ? (pkg.hi.taxNote ?? '') : (pkg.taxNote ?? ''),
     faq: locale === 'hi' ? pkg.hi.faq : pkg.faq,
     isSample: pkg.isSample ?? PACKAGES_ARE_SAMPLE,
+    // One of the six static tours (not a CMS one), which the backend prices and books.
+    bookable: STATIC_TOURS_BOOKABLE && PACKAGES.includes(pkg),
     media: pkg.media ?? [],
     coverId: pkg.coverId,
     contentRevision: pkg.contentRevision,

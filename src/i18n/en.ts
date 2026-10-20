@@ -304,6 +304,19 @@ export const en = {
       generic: 'We could not complete this step. Please try again, or call us.',
     },
   },
+  tourBook: {
+    bookTour: 'Book this tour', bookSafari: 'Book a desert safari', car: 'Car', startDate: 'Tour starts on', pickupTime: 'Pickup time (India)',
+    date: 'Date', time: 'Start time (India)', travellers: 'Travellers', included: 'Included', notIncluded: 'Not included',
+    rides: 'What would you like', people: (n: number) => `${n} ${n === 1 ? 'person' : 'people'}`, jeeps: (n: number) => `${n} ${n === 1 ? 'jeep' : 'jeeps'}`,
+    nights: 'Nights', less: 'One less', more: 'One more', perPerson: 'a person', perJeep: 'a jeep (up to 6)', perPersonNight: 'a person, a night',
+    startsFrom: (city: string) => `Starts and ends in ${city}`, priceFor: 'Price', pickupAddress: 'Pickup address in the city (optional)',
+    quoting: 'Working out the price…', chooseSomething: 'Choose at least one ride',
+    errors: {
+      DATE_TOO_SOON: 'Please choose tomorrow or a later day', DATE_TOO_FAR: 'Please choose a day within the next six months', DATE_INVALID: 'Choose a real date',
+      QTY_OVER_PAX: 'More than the number of people travelling', NIGHTS_REQUIRED: 'Choose how many nights', NIGHTS_NOT_ALLOWED: 'Nights are for a camp only',
+      JEEP_SEATS: 'A jeep takes up to 6 people — add a jeep', ITEM_REPEATED: 'Each ride once — change its number instead', NOT_BOOKABLE: 'This is not available to book online. Please call us.',
+    },
+  },
   booking: {
     title: 'Book a cab', intro: 'Choose your trip. The fare comes from our booking system and is shown before any payment. Quotes use the selected city centres; our team can confirm exact pickup details.', trip: 'Trip type', one: 'One way', round: 'Round trip', from: 'Pickup city', to: 'Drop city', car: 'Car', passengers: 'Travellers', hatchback: 'Hatchback', dzire: 'Dzire', ertiga: 'Ertiga', crysta: 'Innova Crysta', tt12: 'Tempo Traveller (12 seater)', tt14: 'Tempo Traveller (14 seater)', tt16: 'Tempo Traveller (16 seater)', urbania: 'Force Urbania (16 seater)',
     date: 'Pickup date', time: 'Pickup time (India)', returnDate: 'Return date', returnTime: 'Return time (India)', name: 'Your name', phone: 'Mobile number', address: 'Pickup address (optional)',

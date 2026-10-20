@@ -14,12 +14,27 @@ const enquiryUrl = (type: string, product: string, name?: string, locale: Locale
  * return the booking form's URL instead, and no page changes.
  */
 
+/** The package-booking key of a tour's car label (content/packages Car). */
+export const packageVehicleKey = (label?: string) => {
+  const value = label?.toLowerCase() ?? '';
+  if (value.includes('crysta')) return 'crysta';
+  if (value.includes('ertiga')) return 'ertiga';
+  return 'dzire';
+};
+
+/**
+ * A tour's "Book" (owner, 20 Oct 2026 — Phase 2 decision 4): one of the six static tours is
+ * booked as a package, at its price, with the car chosen; any other (a CMS tour the backend
+ * does not price) is an enquiry, as before.
+ */
 export function bookPackageLink(
-  tour: { slug?: string; name: string; days: number; nights: number },
-  _vehicle: string,
+  tour: { slug?: string; name: string; days: number; nights: number; bookable?: boolean },
+  vehicle: string,
   locale: Locale,
 ): string {
-  void _vehicle;
+  if (tour.bookable && tour.slug) {
+    return `${locale === 'hi' ? '/hi' : ''}/booking/package/${encodeURIComponent(tour.slug)}?vehicle=${packageVehicleKey(vehicle)}`;
+  }
   return enquiryUrl('package', tour.slug ?? 'custom-tour', tour.name, locale);
 }
 
@@ -44,10 +59,13 @@ export function bookPlaceLink(name: string, locale: Locale): string {
   return enquiryUrl('custom', 'custom-trip', name, locale);
 }
 
-/** A safari's "Book": the place and the safari named, the date and people to fill in. */
-export function bookSafariLink(place: string, offer: string, locale: Locale): string {
-  const slug = `${place}-${offer}`.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 100) || 'desert-safari';
-  return enquiryUrl('safari', slug, `${offer}, ${place}`, locale);
+/**
+ * A safari's "Book" (owner, 20 Oct 2026 — Phase 2 decision 5): the safari booking for that
+ * place, the ride already chosen; the backend prices it.
+ */
+export function bookSafariLink(spot: string, offer: string, locale: Locale): string {
+  const q = new URLSearchParams({ offer });
+  return `${locale === 'hi' ? '/hi' : ''}/booking/safari/${encodeURIComponent(spot)}?${q.toString()}`;
 }
 
 export function enquireLink(locale: Locale): string {

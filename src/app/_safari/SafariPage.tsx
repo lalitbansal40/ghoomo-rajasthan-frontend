@@ -3,7 +3,7 @@ import { sampleIndexable } from '@/lib/indexing-policy';
 import { CatalogNotice } from '@/components/CatalogNotice';
 import Image from 'next/image';
 import { dict, formatRupees, localePath, type Locale } from '@/i18n';
-import { SAFARI, SAFARI_FAQ, SAFARI_IS_SAMPLE } from '@/content/safari';
+import { SAFARI, SAFARI_BOOKABLE, SAFARI_FAQ, SAFARI_IS_SAMPLE } from '@/content/safari';
 import { routeByPair } from '@/content/routes/list';
 import { routeEndName } from '@/content/cities';
 import { placeBySlug } from '@/content/places';
@@ -88,7 +88,7 @@ export async function SafariPage({ locale }: { locale: Locale }) {
             <div className="mt-5" aria-hidden>
               <Camel walking size={72} />
             </div>
-            {SAFARI_IS_SAMPLE ? (
+            {SAFARI_IS_SAMPLE && !SAFARI_BOOKABLE ? (
               <div className="mt-5 max-w-xl">
                 <Alert tone="warning">{s.sample}</Alert>
               </div>
@@ -144,10 +144,10 @@ export async function SafariPage({ locale }: { locale: Locale }) {
                             {formatRupees(o.rupees)}
                           </span>
                           <span className="text-small text-muted">{s.per[o.per]}</span>
-                          {SAFARI_IS_SAMPLE ? <Badge tone="sample">{t.pkg.samplePrice}</Badge> : null}
+                          {SAFARI_IS_SAMPLE && !SAFARI_BOOKABLE ? <Badge tone="sample">{t.pkg.samplePrice}</Badge> : null}
                         </div>
                         <div className="mt-4">
-                          <Button variant="primary" size="sm" href={bookSafariLink(sp.name, ot.name, locale)}>
+                          <Button variant="primary" size="sm" href={bookSafariLink(spot.slug, o.key, locale)}>
                             {s.book}
                           </Button>
                         </div>

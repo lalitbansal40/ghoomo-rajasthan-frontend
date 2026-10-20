@@ -12,6 +12,15 @@
  */
 export const SAFARI_IS_SAMPLE = true;
 
+/**
+ * Booked online at these rates (owner, 20 Oct 2026, Ghoomo v2 Phase 2 decision 5: "ise real
+ * price maano baad m m change kar dunga"). So no "Sample price" badge or sample note — what is
+ * shown is what is charged. SAFARI_IS_SAMPLE stays for search only: no Offer to a search
+ * engine. The server's copy is backend src/config/ghoomoCatalogPrices.ts; `npm run
+ * prices:check` fails when the two differ.
+ */
+export const SAFARI_BOOKABLE = true;
+
 export type SafariPer = 'person' | 'jeep' | 'personNight';
 
 export interface SafariOffer {

@@ -67,7 +67,7 @@ export function PackageCard({
           ))}
         </ul>
         <div className="mt-auto flex flex-wrap items-end justify-between gap-3 pt-2">
-          <PriceTag rupees={low?.rupees} vehicle={low?.vehicle} sample={tour.isSample} gst={tour.isSample} locale={locale} />
+          <PriceTag rupees={low?.rupees} vehicle={low?.vehicle} sample={tour.isSample && !tour.bookable} gst={tour.isSample || tour.bookable} locale={locale} />
           {tour.taxNote ? <p className="text-small text-muted">{tour.taxNote}</p> : null}
           <span className="inline-flex items-center gap-1 font-semibold text-royal-600 group-hover:underline">
             {t.cta.viewPackage}
