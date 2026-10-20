@@ -8,11 +8,13 @@
  */
 
 /**
- * The site is hidden from search until launch (Phase 7): robots.txt disallows everything,
- * every page is noindex and the sitemap is empty. Launch also requires reviewed production
- * stage/origin configuration and each page's own eligibility; Phase6 does not open this switch.
+ * Open to search — owner, 20 Oct 2026: "launch hi kar do kyuki google pr wo index karne m time
+ * leta hai" (Ghoomo v2 Phase 1). Still gated: the production stage and origin
+ * (NEXT_PUBLIC_DEPLOYMENT_STAGE=production, https://ghoomorajasthan.com) and each page's own
+ * approval (docs/release/approved-pages.json). Set false to take the whole site out of search
+ * again (docs/release/ROLLBACK.md).
  */
-export const SITE_LAUNCHED = false;
+export const SITE_LAUNCHED = true;
 
 export const brand = {
   name: 'Ghoomo Rajasthan',
