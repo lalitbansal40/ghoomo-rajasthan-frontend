@@ -41,6 +41,8 @@ function alternates(path: string, locale: Locale, both = true): Metadata['altern
   };
 }
 
+const DEFAULT_SHARE_IMAGE = { url: '/opengraph-image.png', width: 1200, height: 630, alt: 'Ghoomo Rajasthan — Rajasthan tours, cab with driver' };
+
 /** What every root layout shares; each layout adds its language. */
 export function baseMetadata(locale: Locale, title: string, description: string): Metadata {
   return {
@@ -50,8 +52,12 @@ export function baseMetadata(locale: Locale, title: string, description: string)
     applicationName: 'Ghoomo Rajasthan',
     // icon.svg, apple-icon.png, favicon.ico, opengraph-image.png and the manifest are picked up
     // from app/ by their file names.
-    openGraph: { type: 'website', siteName: 'Ghoomo Rajasthan', locale: LANG_TAG[locale].og, url: localePath('/', locale) },
-    twitter: { card: 'summary_large_image' },
+    // The brand's share card (src/app/opengraph-image.png) as the default: with two root
+    // layouts, the app-root file is served but attached to no page by itself — home, the hubs
+    // and the legal pages shared with no picture (Phase 1 check, 20 Oct 2026). A page with its
+    // own opengraph-image (a place, a road, a tour) still shows its own.
+    openGraph: { type: 'website', siteName: 'Ghoomo Rajasthan', locale: LANG_TAG[locale].og, url: localePath('/', locale), images: [DEFAULT_SHARE_IMAGE] },
+    twitter: { card: 'summary_large_image', images: [DEFAULT_SHARE_IMAGE.url] },
     robots: ROBOTS,
   };
 }
