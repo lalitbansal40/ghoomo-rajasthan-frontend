@@ -23,10 +23,23 @@ export function robotsFor(policy: SitePolicy, eligible = true) {
   return { index, follow: open, googleBot: { index, follow: open } };
 }
 
+/**
+ * Owner, 20 Oct 2026 (Phase 1 decision 2): "nahi ye roue index kar do m baad m real data daal
+ * dunga kyuki baad m sirf price wagerha hi change hogi". The sample tours and the sample safari
+ * rates are searchable, their "Sample price" badge still shown, and a sample price is never
+ * offered to a search engine (no Offer, no price in a title, description or share image).
+ * Turn this off and they leave search again; nothing else changes.
+ */
+export const INDEX_SAMPLE_CONTENT = true;
+
 export function packageIndexable(pkg: { isSample?: boolean }): boolean {
-  // Static samples lack an explicit flag. Only the validated CMS projection supplies false.
-  return pkg.isSample === false;
+  // A CMS tour is always isSample:false (catalog-contract refuses true); the code's own
+  // tours are marked true (content/packages). A tour with no flag at all is never searched.
+  return pkg.isSample === false || (INDEX_SAMPLE_CONTENT && pkg.isSample === true);
 }
+
+/** Whether a page whose figures are samples (the desert safari) may be searched. */
+export const sampleIndexable = (isSample: boolean) => !isSample || INDEX_SAMPLE_CONTENT;
 
 export const PRIVATE_PATH = /^\/(?:hi(?:\/|$))?(?:booking|my-bookings|preview|api|rate|auth|partners|trip-requests|quotes|plan-your-trip|travel-checkout|travel-bookings)(?:\/|$)/;
 export const UTILITY_PATH = /^\/(?:hi\/)?(?:styleguide|photo-credits|enquiry|plan-your-trip)(?:\/|$)/;

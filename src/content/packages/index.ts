@@ -4,8 +4,10 @@
  * SAMPLE — owner's decision (16 Oct 2026): dummy packages now, the real ones from the team
  * later (docs/content-template). The six names, routes and prices are hellomycabs.com's
  * sample set (src/content/rajasthan); the day plans are written here. While this is true every
- * package page is noindex, out of the sitemap, and every price carries a "Sample" badge — a
- * made-up price must never be what a search engine or a customer takes as ours.
+ * price carries a "Sample" badge and no price is offered to a search engine — a made-up price
+ * must never be what a search engine or a customer takes as ours. The pages themselves are
+ * searchable (owner, 20 Oct 2026: "ye roue index kar do … baad m sirf price wagerha hi change
+ * hogi" — INDEX_SAMPLE_CONTENT in lib/indexing-policy.ts).
  * It goes false in the very commit that brings the real packages.
  *
  * ⚠️ Nothing guessed: a place named here is really on that road, a season is the commonly

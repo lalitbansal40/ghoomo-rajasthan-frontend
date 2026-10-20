@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { PRODUCTION_ORIGIN, packageIndexable, publicPath, robotsFor, siteOpen, validatedUrl } from './indexing-policy.ts';
+import { INDEX_SAMPLE_CONTENT, PRODUCTION_ORIGIN, packageIndexable, publicPath, robotsFor, sampleIndexable, siteOpen, validatedUrl } from './indexing-policy.ts';
 import { sitemapResponse, sitemapXml } from './sitemap-response.ts';
 
 const live = { origin: PRODUCTION_ORIGIN, stage: 'production', launched: true };
@@ -20,7 +20,8 @@ test('production config rejects credentials, query, path, wrong origin and loopb
 });
 test('only explicit non-sample packages qualify; privacy is independent of noindex enquiry', () => {
   assert.equal(packageIndexable({}), false);
-  assert.equal(packageIndexable({ isSample: true }), false);
+  // Owner, 20 Oct 2026: sample tours are searched (with their badge) — INDEX_SAMPLE_CONTENT.
+  assert.equal(packageIndexable({ isSample: true }), true);
   assert.equal(packageIndexable({ isSample: false }), true);
   for (const path of ['/booking', '/hi/booking/a', '/my-bookings', '/preview/en/packages/x', '/api/auth', '/rate/token', '/hi/rate/token', '//evil', '/enquiry?phone=123']) assert.equal(publicPath(path), false, path);
   assert.equal(publicPath('/hi/enquiry'), true);
@@ -44,4 +45,12 @@ test('sitemap dedupes both locales with reciprocal x-default, XML escapes and no
   assert.match(body, /https:\/\/ghoomorajasthan.com\/hi<\/loc>/);
   assert.doesNotMatch(body, /lastmod|localhost|BUILD_TIME/);
   assert.match(sitemapXml(PRODUCTION_ORIGIN, ['/x&y']), /&amp;/);
+});
+
+test('owner, 20 Oct 2026: sample tours and the sample safari are searchable while the switch is on', () => {
+  assert.equal(INDEX_SAMPLE_CONTENT, true);
+  assert.equal(sampleIndexable(true), true);
+  assert.equal(sampleIndexable(false), true);
+  // A tour that says nothing about itself is still never searched.
+  assert.equal(packageIndexable({}), false);
 });

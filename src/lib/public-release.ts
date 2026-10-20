@@ -5,7 +5,7 @@ import { PLACES } from '@/content/places';
 import { ROUTES } from '@/content/routes/list';
 import { routeIndexable } from '@/content/routes/indexable';
 import { SAFARI_IS_SAMPLE } from '@/content/safari';
-import { packageIndexable, publicPath, UTILITY_PATH } from './indexing-policy';
+import { packageIndexable, publicPath, sampleIndexable, UTILITY_PATH } from './indexing-policy';
 import { releaseAnalyticsEligible, releaseEligible } from './release';
 import { travelInventoryCatalog } from './travel-catalog';
 import { travelPath } from './travel-contract';
@@ -20,7 +20,7 @@ export async function publicReleasePaths() {
   const travel = (await travelInventoryCatalog()).filter(p => releaseEligible(`${travelPath(p.kind)}/${p.slug}`, 'en', true, p.contentRevision));
   const core = Object.keys(PAGES).filter((p) => publicPath(p) &&
     !['/styleguide', '/photo-credits'].includes(p) &&
-    (p !== '/desert-safari' || !SAFARI_IS_SAMPLE) && (p !== '/packages' || packages.length > 0) &&
+    (p !== '/desert-safari' || sampleIndexable(SAFARI_IS_SAMPLE)) && (p !== '/packages' || packages.length > 0) &&
     (!['/tours', '/group-tours', '/hotels'].includes(p) || env.travelEnabled && travel.some(t => travelPath(t.kind) === p)) &&
     (p !== '/plan-your-trip' || env.travelEnabled && travel.length > 0));
   const candidates = [...core, ...PLACES.map((p) => `/destinations/${p.slug}`),

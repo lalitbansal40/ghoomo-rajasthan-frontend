@@ -4,7 +4,8 @@
  *
  * ⚠️ THE RATES BELOW ARE SAMPLES, NOT OFFERS. Until the owner gives the real ones:
  *   · every rate carries the "Sample price" badge and the page says so at the top;
- *   · /desert-safari is noindex and out of the sitemap;
+ *   · /desert-safari is searchable all the same (owner, 20 Oct 2026 — INDEX_SAMPLE_CONTENT in
+ *     lib/indexing-policy.ts), but never with a price offered to the search engine;
  *   · no structured-data Offer is published.
  * When the real rates arrive: change the numbers and `includes` here, set SAFARI_IS_SAMPLE to
  * false — nothing else. The cancellation terms come with them (and go on /refund).

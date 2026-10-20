@@ -5,6 +5,7 @@ import { env } from './env';
 import { parseCatalogPackage } from './catalog-contract';
 import { releaseEligible } from './release';
 import { PUBLIC_LAUNCHED } from './seo';
+import { packageIndexable } from './indexing-policy';
 
 export const cmsCatalog = () => {
   const source = process.env.GHOOMO_CATALOG_SOURCE ?? 'sample';
@@ -38,7 +39,7 @@ const catalogState = cache(async (): Promise<{ packages: TourPackage[]; unavaila
 export const catalog = cache(async () => {
   const state = await catalogState();
   if (!PUBLIC_LAUNCHED) return state;
-  return { ...state, packages: state.packages.filter((p) => p.isSample === false &&
+  return { ...state, packages: state.packages.filter((p) => packageIndexable(p) &&
     releaseEligible(`/packages/${p.slug}`, 'en', true, p.contentRevision)) };
 });
 /** Shared response snapshot keeps page, metadata, related cards and counts consistent. */

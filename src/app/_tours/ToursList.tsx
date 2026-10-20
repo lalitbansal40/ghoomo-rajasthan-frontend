@@ -1,4 +1,5 @@
 import { catalog, toursInCity } from '@/lib/catalog';
+import { packageIndexable } from '@/lib/indexing-policy';
 import { CatalogNotice } from '@/components/CatalogNotice';
 import { dict, localePath, type Locale } from '@/i18n';
 import { cheapest, pkgIn } from '@/content/packages';
@@ -119,7 +120,7 @@ export async function ToursList({ locale }: { locale: Locale }) {
           {t.cta.call}
         </Button>
       </StickyCta>
-      <JsonLd path="/packages" locale={locale} eligible={!catalogState.unavailable && PACKAGES.some((p) => p.isSample === false)} data={[breadcrumbJsonLd(crumbs), faqJsonLd(faq)]} />
+      <JsonLd path="/packages" locale={locale} eligible={!catalogState.unavailable && catalogState.packages.some(packageIndexable)} data={[breadcrumbJsonLd(crumbs), faqJsonLd(faq)]} />
     </>
   );
 }

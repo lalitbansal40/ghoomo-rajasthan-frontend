@@ -5,6 +5,7 @@ import { TOUR_FAQ } from '@/content/home';
 import { tourPhoto } from '@/lib/tour-photo';
 import { packageTravelCheckout } from '@/lib/travel-catalog';
 import { catalog } from '@/lib/catalog';
+import { packageIndexable } from '@/lib/indexing-policy';
 import { ManagedGallery } from '@/components/ManagedGallery';
 import { brand } from '@/lib/site';
 import { bookPackageLink } from '@/lib/book';
@@ -186,7 +187,7 @@ export async function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Loca
           {t.cta.call}
         </Button>
       </StickyCta>
-      <JsonLd path={`/packages/${pkg.slug}`} locale={locale} revision={pkg.contentRevision} eligible={!tour.isSample} data={[touristTripJsonLd(tour, locale, tourDescription(pkg, locale)), breadcrumbJsonLd(crumbs), faqJsonLd(faq)]} />
+      <JsonLd path={`/packages/${pkg.slug}`} locale={locale} revision={pkg.contentRevision} eligible={packageIndexable(pkg)} data={[touristTripJsonLd(tour, locale, tourDescription(pkg, locale)), breadcrumbJsonLd(crumbs), faqJsonLd(faq)]} />
     </>
   );
 }

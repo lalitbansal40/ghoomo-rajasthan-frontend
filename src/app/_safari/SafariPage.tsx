@@ -1,4 +1,5 @@
 import { catalog } from '@/lib/catalog';
+import { sampleIndexable } from '@/lib/indexing-policy';
 import { CatalogNotice } from '@/components/CatalogNotice';
 import Image from 'next/image';
 import { dict, formatRupees, localePath, type Locale } from '@/i18n';
@@ -242,7 +243,7 @@ export async function SafariPage({ locale }: { locale: Locale }) {
         </Button>
       </StickyCta>
       {/* No Offer while the rates are samples — only the page's questions and its place in the site. */}
-      <JsonLd path="/desert-safari" locale={locale} eligible={!SAFARI_IS_SAMPLE} data={[breadcrumbJsonLd(crumbs), faqJsonLd(faq)]} />
+      <JsonLd path="/desert-safari" locale={locale} eligible={sampleIndexable(SAFARI_IS_SAMPLE)} data={[breadcrumbJsonLd(crumbs), faqJsonLd(faq)]} />
     </>
   );
 }

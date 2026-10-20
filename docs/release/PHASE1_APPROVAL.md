@@ -43,9 +43,29 @@ list to each build's content revision (see "How it works" below).
   its approval (same path; sample tours carry a fixed revision, `SAMPLE_CONTENT_REVISION`).
   A tour that moves to the CMS carries the CMS's revision and is approved again.
 
-## The approved pages
+## The approved pages — 164 pages, 328 URLs (English and Hindi)
 
-*(Filled in Phase 1 step 2 — see below.)*
+The list itself is `docs/release/approved-pages.json` (made from the code's own lists, not by
+hand). In short:
+
+| Group | Pages | Which |
+|---|---|---|
+| Core | 8 | `/`, `/destinations`, `/cab`, `/about`, `/contact`, `/privacy`, `/terms`, `/refund` |
+| Places | 30 | every `/destinations/<place>` |
+| Cab roads | 118 | every `/cab/<road>` with words of our own that is not held |
+| Sample (decision 2) | 8 | `/packages`, the six `/packages/<tour>`, `/desert-safari` |
+
+**Not approved, and why**
+- `/tours`, `/hotels`, `/group-tours` — empty until real items are published; an empty page in
+  search does harm. They join the list when they have items.
+- The 10 held roads (six short NCR hops hellomycabs.com holds; four short roads where the minimum
+  fare is most of the price) — out of search until their fares are decided.
+- Private pages (booking, my bookings, checkout, trip requests, enquiry, plan your trip) and
+  utility pages (photo credits, style guide) — never.
+
+Checked on 20 Oct 2026, before launch: every one of the 328 URLs answers 200 and shows no
+"TO FILL", "TODO", "lorem", "null", "undefined" or "NaN"; `seo:check --all` passes (titles,
+descriptions, canonicals, hreflang pairs).
 
 ## How it works
 
