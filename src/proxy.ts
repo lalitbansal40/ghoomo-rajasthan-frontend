@@ -1,7 +1,12 @@
 import { NextResponse, type NextRequest } from 'next/server';
+import { canonicalRedirect, requestHost } from './lib/canonical-host';
 
 /** Never let a guest token or personal booking page be cached or sent as a referrer. */
 export async function proxy(request: NextRequest) {
+  // www → the bare host, before anything else (lib/canonical-host.ts).
+  const host = requestHost(request.headers.get('x-forwarded-host'), request.headers.get('host'));
+  const canonical = canonicalRedirect(host, request.nextUrl.pathname, request.nextUrl.search);
+  if (canonical) return NextResponse.redirect(canonical, 301);
   const personal = /^\/(?:hi\/)?(?:booking|my-bookings)(?:\/|$)/.test(request.nextUrl.pathname) || request.nextUrl.pathname.startsWith('/preview');
   if (!personal && process.env.GHOOMO_CATALOG_SOURCE !== 'cms') return NextResponse.next();
   // A visibility lookup failure is a temporary failure, never an unknown-slug 404.
