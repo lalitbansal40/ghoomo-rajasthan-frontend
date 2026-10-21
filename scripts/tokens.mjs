@@ -16,8 +16,8 @@ for (const [k, v] of Object.entries(t.color)) L.push(`  --color-${k}: ${v};`);
 for (const [k, v] of Object.entries(t.alias)) if (!k.startsWith('$')) L.push(`  --color-${k}: var(--color-${v});`);
 for (const [k, v] of Object.entries(t.radius)) L.push(`  --radius-${k}: ${v};`);
 for (const [k, v] of Object.entries(t.shadow)) L.push(`  --shadow-${k}: ${v};`);
-L.push(`  --ease-out: ${t.motion['ease-out']};`);
-for (const k of ['dur-fast', 'dur', 'dur-slow']) L.push(`  --${k}: ${t.motion[k]};`);
+// Every motion token: easings and durations, the desert scene's included (Phase 4).
+for (const [k, v] of Object.entries(t.motion)) if (!k.startsWith('$')) L.push(`  --${k}: ${v};`);
 // 'Rupee' first: the ₹ sign from the phone's own font (globals.css), so ₹ alone does not pull
 // Mukta's latin-ext files onto every page.
 L.push("  --font-sans: 'Rupee', var(--font-mukta), ui-sans-serif, system-ui, sans-serif;");

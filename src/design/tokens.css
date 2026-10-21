@@ -24,6 +24,9 @@
   --color-sand-100: #FAEDD2;
   --color-sand-200: #F3D9A4;
   --color-sand-300: #E9C47C;
+  --color-sand-400: #D9A75A;
+  --color-dusk-300: #F6B48A;
+  --color-dusk-500: #D9673F;
   --color-ivory: #FBF7EF;
   --color-ink: #1B1B1F;
   --color-muted: #5B5650;
@@ -47,6 +50,12 @@
   --dur-fast: 150ms;
   --dur: 250ms;
   --dur-slow: 400ms;
+  --ease-drift: cubic-bezier(.45,0,.55,1);
+  --motion-dune: 45s;
+  --motion-caravan: 32s;
+  --motion-kite: 9s;
+  --motion-shine: 0.8s;
+  --motion-settle: 0.9s;
   --font-sans: 'Rupee', var(--font-mukta), ui-sans-serif, system-ui, sans-serif;
   --font-display: 'Rupee', var(--font-display-face), var(--font-mukta), serif;
   --container-site: 72rem;

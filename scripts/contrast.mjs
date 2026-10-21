@@ -34,6 +34,8 @@ const PAIRS = [
   ['ink', 'sun-500', 4.5],
   ['ink', 'gold-500', 4.5],
   ['ink', 'gold-100', 4.5],
+  // The desert scene (Phase 4): text over a dune or the dusk is ink, never anything lighter.
+  ...['sand-300', 'sand-400', 'dusk-300'].map((bg) => ['ink', bg, 4.5]),
   // The focus ring (globals.css :focus-visible) must stand out from what it surrounds: 3:1.
   ['gold-700', 'ivory', 3, 'the focus ring'],
   ['gold-700', 'sand-200', 3, 'the focus ring on a sand section'],
@@ -44,6 +46,7 @@ const NEVER = [
   ['white', 'gold-500'],
   ['white', 'sun-500'],
   ['muted', 'sand-300'],
+  ['white', 'dusk-500'], // the sun's edge — decorative only
 ];
 
 let fail = 0;

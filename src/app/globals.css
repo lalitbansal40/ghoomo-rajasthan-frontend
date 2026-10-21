@@ -141,3 +141,16 @@ h3 {
 .gr-car-moving .gr-wheel {
   animation: gr-spin 0.9s linear infinite;
 }
+
+/* ── The desert scene (Phase 4, src/lib/motion.ts) ─────────────────────────────────────────
+ * A scene's keyframes run only inside `[data-motion="on"]`, and only while it is on screen
+ * (`data-play`, set by SettleOnView where a scene needs it). Reduced motion stops them all
+ * (the rule above); a page that is doing a job never carries `data-motion="on"`. */
+[data-motion="off"] *,
+[data-motion="off"] *::before,
+[data-motion="off"] *::after {
+  animation: none !important;
+}
+[data-play="paused"] * {
+  animation-play-state: paused !important;
+}
