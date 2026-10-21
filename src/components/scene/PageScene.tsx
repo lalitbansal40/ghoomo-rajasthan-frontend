@@ -1,5 +1,5 @@
 import { ARCH_OUTER_D } from '@/components/motifs/paths.generated';
-import { Camel, Car, FortSun } from '@/components/motifs';
+import { Camel, FortSun } from '@/components/motifs';
 
 /**
  * The small desert at the top of every public page (owner, 21 Oct 2026 — Ghoomo v2 Phase 4,
@@ -17,7 +17,9 @@ function Mark({ kind }: { kind: SceneKind }) {
     case 'safari':
       return <Camel size={52} className="sm:w-[68px]" />;
     case 'cab':
-      return <Car size={96} className="sm:w-[124px]" />;
+      // A cached file, not 7.5 kB of inline lettering on every cab page (lib/car-svg.ts).
+      // eslint-disable-next-line @next/next/no-img-element -- an SVG drawing
+      return <img src="/scene/car.svg" alt="" width={96} height={33} decoding="async" className="h-auto w-[96px] sm:w-[124px]" />;
     case 'place':
       return (
         <svg aria-hidden="true" focusable="false" viewBox="26 0 148 218" className="h-10 w-auto sm:h-14">

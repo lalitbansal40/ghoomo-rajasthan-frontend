@@ -3,12 +3,12 @@
 import { useEffect, useRef } from 'react';
 
 /**
- * Plays a scene only while it is on screen (`data-play`, globals.css) — a loop scrolled away is
- * paused, not left running. With `once`, marks it `data-settled` the first time it is seen
- * (the sand settling between sections) and lets go.
+ * Plays a scene only once the page has loaded and the browser is idle, and only while it is on
+ * screen (`data-play`, globals.css) — the first paint is never kept waiting on decoration, and a
+ * loop scrolled away is paused, not left running. With `once`, marks it `data-settled` the first
+ * time it is seen (the sand settling between sections) and lets go.
  *
- * The page works without it: no script, no observer → the scene simply plays (or stays still
- * under reduced motion, which CSS alone decides).
+ * Without it (no script, no observer) a scene is simply drawn, still — it is decoration.
  */
 export function ScenePlay({
   children,
@@ -35,8 +35,18 @@ export function ScenePlay({
       }
       el.dataset.play = entry.isIntersecting ? 'running' : 'paused';
     });
-    seen.observe(el);
-    return () => seen.disconnect();
+    // After the load and an idle moment: nothing moves while the page is still painting.
+    const idle = (fn: () => void) =>
+      typeof window.requestIdleCallback === 'function' ? window.requestIdleCallback(fn, { timeout: 2500 }) : setTimeout(fn, 1200);
+    let cancelled = false;
+    const start = () => idle(() => !cancelled && seen.observe(el));
+    if (document.readyState === 'complete') start();
+    else window.addEventListener('load', start, { once: true });
+    return () => {
+      cancelled = true;
+      window.removeEventListener('load', start);
+      seen.disconnect();
+    };
   }, [once]);
   return (
     <div ref={ref} className={className} {...rest}>

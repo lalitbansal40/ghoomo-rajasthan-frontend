@@ -77,8 +77,9 @@ export async function ToursList({ locale }: { locale: Locale }) {
               />
             }
           >
-            {tours.map((x) => (
-              <PackageCard key={x.slug} tour={x} href={localePath(`/packages/${x.slug}`, locale)} locale={locale} />
+            {/* The first card's photo is the page's largest paint: fetched first, not lazily. */}
+            {tours.map((x, i) => (
+              <PackageCard key={x.slug} tour={x} href={localePath(`/packages/${x.slug}`, locale)} locale={locale} preload={i === 0} />
             ))}
           </TourFilter>
         </div>

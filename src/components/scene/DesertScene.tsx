@@ -1,6 +1,5 @@
 import { CAMEL_D, SADDLE_D } from '@/components/motifs/paths.generated';
-import { Car } from '@/components/motifs';
-import { motionAttr } from '@/lib/motion';
+import { motionAllowed, motionAttr } from '@/lib/motion';
 import { SCENE_W as W, ridge } from '@/lib/scene';
 import { ScenePlay } from './ScenePlay';
 
@@ -25,8 +24,7 @@ function CaravanCamel({ x, scale, delay }: { x: number; scale: number; delay: st
   return (
     <g transform={`translate(${x} 0) scale(${scale})`}>
       <g className="gr-scene-sway" style={{ animationDelay: delay }}>
-        <path fill="#561010" opacity=".88" d={CAMEL_D} />
-        <path fill="#C08A22" d={SADDLE_D} />
+        <use href="#gr-camel" />
       </g>
     </g>
   );
@@ -58,6 +56,11 @@ export function DesertScene({ path, className = '' }: { /** The page's path — 
         className="absolute inset-0 h-full w-full"
       >
         <defs>
+          {/* One camel, drawn once, walked four times. */}
+          <symbol id="gr-camel" overflow="visible">
+            <path fill="#561010" opacity=".88" d={CAMEL_D} />
+            <path fill="#C08A22" d={SADDLE_D} />
+          </symbol>
           <radialGradient id="gr-sun" cx="50%" cy="50%" r="50%">
             <stop offset="0" stopColor="#FFD27A" />
             <stop offset=".7" stopColor="#F5A623" />
@@ -111,8 +114,18 @@ export function DesertScene({ path, className = '' }: { /** The page's path — 
           <path fill="url(#gr-near)" d={NEAR} />
         </g>
       </svg>
-      {/* The Hello My Cab car on the sand in front, as before. */}
-      <Car moving size={150} className="absolute bottom-[8%] left-[6%] w-[110px] sm:bottom-[10%] sm:left-[12%] sm:w-[160px]" />
+      {/* The Hello My Cab car on the sand in front, as before — a small cached file, not inline
+          (lib/car-svg.ts). Its wheels turn only where the page may move. */}
+      {/* eslint-disable-next-line @next/next/no-img-element -- an SVG drawing: nothing for the image optimizer to do */}
+      <img
+        src={motionAllowed(path) ? '/scene/car-moving.svg' : '/scene/car.svg'}
+        alt=""
+        width={124}
+        height={42}
+        decoding="async"
+        loading="lazy"
+        className="absolute bottom-[8%] left-[6%] h-auto w-[110px] sm:bottom-[10%] sm:left-[12%] sm:w-[160px]"
+      />
     </ScenePlay>
   );
 }

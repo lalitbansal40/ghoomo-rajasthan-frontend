@@ -77,7 +77,7 @@ test('the gold shine: a sweep on buttons and cards, never disabled, never where 
   const css = readFileSync(new URL('../app/globals.css', import.meta.url), 'utf8');
   const layer = css.slice(css.indexOf('@layer components {\n  .gr-shine'));
   assert.ok(layer.length > 0, 'shine sits in the components layer');
-  assert.match(layer, /\.gr-shine:disabled::after,\s*\.gr-shine\[aria-disabled='true'\]::after,\s*body:has\(header\[data-motion='off'\]\) \.gr-shine::after \{\s*display: none;/);
+  assert.match(layer, /\.gr-shine:disabled::after,\s*\.gr-shine\[aria-disabled='true'\]::after,\s*header\[data-motion='off'\] ~ \* \.gr-shine::after \{\s*display: none;/);
   assert.match(layer, /@media \(hover: hover\)[\s\S]*\.gr-shine:hover::after/);
   assert.match(layer, /\.gr-shine:focus-visible::after/);
   // Reduced motion (unlayered, !important) still beats the layer.
@@ -89,4 +89,27 @@ test('the gold shine: a sweep on buttons and cards, never disabled, never where 
   const read = (p: string) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
   for (const card of ['components/ui/PackageCard.tsx', 'components/ui/DestinationCard.tsx', 'components/ui/RouteCard.tsx']) assert.match(read(card), /gr-shine/, card);
   assert.match(read('components/ui/Header.tsx'), /<header \{\.\.\.motionAttr\(path\)\}/);
+});
+
+test('the car is a cached file, not inline lettering; its wheels turn only in the moving one', async () => {
+  const { carSvg, SVG_HEADERS } = await import('./car-svg.ts');
+  const still = carSvg(false);
+  const moving = carSvg(true);
+  for (const svg of [still, moving]) {
+    assert.match(svg, /^<svg xmlns="http:\/\/www\.w3\.org\/2000\/svg" viewBox="-2 -2 124 42"/);
+    assert.match(svg, /class="gr-wheel"/);
+    assert.doesNotMatch(svg, /<script|on[a-z]+=|href=/i);
+  }
+  assert.doesNotMatch(still, /animation/);
+  assert.match(moving, /\.gr-wheel\{animation:s [^}]*\}/);
+  // The wheels turn about their own centres (inline transform-origin): nothing may re-base it.
+  assert.doesNotMatch(moving, /transform-box/);
+  assert.equal((moving.match(/class="gr-wheel" style="transform-origin:\d+px \d+px"/g) ?? []).length, 2);
+  assert.match(moving, /@media \(prefers-reduced-motion:reduce\)\{\*\{animation:none!important\}\}/);
+  assert.equal(SVG_HEADERS['Content-Type'], 'image/svg+xml; charset=utf-8');
+  const read = (p: string) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
+  for (const file of ['components/scene/DesertScene.tsx', 'components/scene/PageScene.tsx']) {
+    assert.doesNotMatch(read(file), /<Car\b/, file);
+    assert.match(read(file), /\/scene\/car(-moving)?\.svg/, file);
+  }
 });

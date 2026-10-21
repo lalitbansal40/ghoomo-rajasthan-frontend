@@ -154,6 +154,10 @@ h3 {
 [data-play="paused"] * {
   animation-play-state: paused !important;
 }
+/* A looping scene waits for ScenePlay (after load, on screen) — never during the first paint. */
+[data-motion="on"]:not([data-play="running"]) [class*="gr-scene-"] {
+  animation-play-state: paused;
+}
 
 /* The home hero's desert (components/scene/DesertScene.tsx). Runs only inside
  * [data-motion="on"]; SVG parts turn about their own box. */
@@ -230,7 +234,8 @@ h3 {
 }
 
 /* The gold shine (buttons, cards — Phase 4): one sweep on hover, keyboard focus or a tap. Never
- * on a disabled button, never where the page is doing a job (its header says data-motion="off"),
+ * on a disabled button, never where the page is doing a job (its header, a sibling of the page's
+ * main, says data-motion="off" — a sibling selector, not :has(), which re-styles the whole page),
  * never under reduced motion (the rule at the top). */
 /* In the components layer, so a utility on the element (absolute, fixed…) still wins. */
 @layer components {
@@ -266,7 +271,7 @@ h3 {
   }
   .gr-shine:disabled::after,
   .gr-shine[aria-disabled='true']::after,
-  body:has(header[data-motion='off']) .gr-shine::after {
+  header[data-motion='off'] ~ * .gr-shine::after {
     display: none;
   }
 }
