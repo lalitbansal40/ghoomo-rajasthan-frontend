@@ -1,7 +1,17 @@
 @import "tailwindcss";
+
 @import "./body-fonts.css";
+@import "./display-fonts.css";
 /* Colours, radius, shadow, motion and the type scale — generated from src/design/tokens.json. */
 @import "../design/tokens.css";
+
+/* The measured sticky bar offsets floating contact actions without changing layout.
+ * Updating `bottom` after hydration displaced the buttons and caused CLS on every phone. */
+@media (width < 48rem) {
+  .gr-contact-fab {
+    transform: translateY(calc(-1 * var(--sticky-cta-h, 0px)));
+  }
+}
 
 /**
  * Light only (owner, 16 Oct 2026: no dark mode yet). Without this a phone in dark mode can

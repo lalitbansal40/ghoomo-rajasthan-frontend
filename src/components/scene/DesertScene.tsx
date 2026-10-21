@@ -118,7 +118,8 @@ export function DesertScene({ path, className = '' }: { /** The page's path — 
           (lib/car-svg.ts). Its wheels turn only where the page may move. */}
       {/* eslint-disable-next-line @next/next/no-img-element -- an SVG drawing: nothing for the image optimizer to do */}
       <img
-        src={motionAllowed(path) ? '/scene/car-moving.svg' : '/scene/car.svg'}
+        src="/scene/car.svg"
+        data-moving-src={motionAllowed(path) ? '/scene/car-moving.svg' : undefined}
         alt=""
         width={124}
         height={42}

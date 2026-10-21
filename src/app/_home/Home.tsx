@@ -1,3 +1,4 @@
+import { HOME_HEADING_LATIN_PRELOAD } from '@/app/font-assets';
 import { sitePhotos, photoFor } from '@/lib/site-photos';
 import { catalog, toursInCity } from '@/lib/catalog';
 import { CatalogNotice } from '@/components/CatalogNotice';
@@ -54,6 +55,7 @@ export async function Home({ locale }: { locale: Locale }) {
 
   return (
     <>
+      {locale === 'en' ? <link rel="preload" as="font" type="font/woff2" href={HOME_HEADING_LATIN_PRELOAD} crossOrigin="anonymous" /> : null}
       <Header locale={locale} path={path} />
       <main className="pb-24 md:pb-0">
         <CatalogNotice unavailable={catalogState.unavailable} locale={locale} />

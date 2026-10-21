@@ -25,6 +25,19 @@ export function ScenePlay({
   useEffect(() => {
     const el = ref.current;
     if (!el || typeof IntersectionObserver === 'undefined') return;
+    let visible = false;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const play = () => {
+      if (once) return;
+      const running = visible && !document.hidden && !reduced.matches && el.dataset.motion === 'on';
+      el.dataset.play = running ? 'running' : 'paused';
+      // CSS outside an SVG image cannot pause its wheel keyframes. Switch to the cached
+      // still drawing too, so offscreen/hidden/reduced-motion means no decorative loop.
+      for (const car of el.querySelectorAll<HTMLImageElement>('img[data-moving-src]')) {
+        const src = running ? car.dataset.movingSrc! : '/scene/car.svg';
+        if (car.getAttribute('src') !== src) car.setAttribute('src', src);
+      }
+    };
     const seen = new IntersectionObserver(([entry]) => {
       if (once) {
         if (entry.isIntersecting) {
@@ -33,8 +46,11 @@ export function ScenePlay({
         }
         return;
       }
-      el.dataset.play = entry.isIntersecting ? 'running' : 'paused';
+      visible = entry.isIntersecting;
+      play();
     });
+    document.addEventListener('visibilitychange', play);
+    reduced.addEventListener('change', play);
     // After the load and an idle moment: nothing moves while the page is still painting.
     const idle = (fn: () => void) =>
       typeof window.requestIdleCallback === 'function' ? window.requestIdleCallback(fn, { timeout: 2500 }) : setTimeout(fn, 1200);
@@ -45,6 +61,8 @@ export function ScenePlay({
     return () => {
       cancelled = true;
       window.removeEventListener('load', start);
+      document.removeEventListener('visibilitychange', play);
+      reduced.removeEventListener('change', play);
       seen.disconnect();
     };
   }, [once]);

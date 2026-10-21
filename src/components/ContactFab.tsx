@@ -69,7 +69,7 @@ export function ContactFab({ locale, t }: { locale: Locale; t: ContactFabWords }
   return (
     <>
       <div
-        className={`fixed right-4 z-40 flex flex-col gap-3 bottom-[calc(var(--sticky-cta-h,0px)+1rem)] md:bottom-6 md:right-6 transition-[transform,opacity] duration-[var(--dur-fast)] motion-reduce:transition-none ${away}`}
+        className={`gr-contact-fab fixed bottom-4 right-4 z-40 flex flex-col gap-3 md:bottom-6 md:right-6 transition-[transform,opacity] duration-[var(--dur-fast)] motion-reduce:transition-none ${away}`}
         aria-hidden={typing ? true : undefined}
       >
         <button type="button" onClick={show} aria-label={t.callback} aria-haspopup="dialog" tabIndex={typing ? -1 : undefined} className={`group relative bg-maroon-600 ${round}`}>
