@@ -14,7 +14,8 @@ import { routeSlug } from '@/content/routes/list';
 import { faqJsonLd } from '@/components/ui/FAQ';
 import { JsonLd } from '@/components/JsonLd';
 import { TourFilter } from '@/components/TourFilter';
-import { Camel, Car, DuneDivider, FortSun, Jaali, MehrabFrame, SparkleDivider } from '@/components/motifs';
+import { DesertScene } from '@/components/scene/DesertScene';
+import { Camel, DuneDivider, FortSun, Jaali, MehrabFrame, SparkleDivider } from '@/components/motifs';
 import {
   Alert,
   Button,
@@ -81,11 +82,9 @@ export async function Home({ locale }: { locale: Locale }) {
               </div>
             ) : null}
           </div>
-          {/* The car on the dunes — drives on the spot; still under reduced motion. */}
-          <div className="relative">
-            <DuneDivider tone="ivory" />
-            <Car moving size={150} className="absolute bottom-[22%] left-[8%] sm:bottom-[26%] sm:left-[14%] sm:w-[190px]" />
-          </div>
+          {/* The desert at dusk — dunes, a caravan, kites and the car (Phase 4); still under
+              reduced motion, and never behind the words above. */}
+          <DesertScene path={path} />
         </section>
 
         {/* ── Book a cab — the trip widget, right under the hero (owner, 20 Oct 2026) ─ */}

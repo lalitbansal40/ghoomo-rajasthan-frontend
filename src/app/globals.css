@@ -154,3 +154,58 @@ h3 {
 [data-play="paused"] * {
   animation-play-state: paused !important;
 }
+
+/* The home hero's desert (components/scene/DesertScene.tsx). Runs only inside
+ * [data-motion="on"]; SVG parts turn about their own box. */
+[data-motion="on"] .gr-scene-drift {
+  animation: gr-scene-drift linear infinite;
+}
+[data-motion="on"] .gr-scene-far {
+  animation-duration: calc(var(--motion-dune) * 3);
+}
+[data-motion="on"] .gr-scene-near {
+  animation-duration: var(--motion-dune);
+}
+@keyframes gr-scene-drift {
+  to { transform: translateX(-1440px); }
+}
+[data-motion="on"] .gr-scene-caravan {
+  animation: gr-scene-caravan var(--motion-caravan) linear infinite;
+}
+/* Across the ridge in three quarters of the time, then a pause before the next caravan. */
+@keyframes gr-scene-caravan {
+  0% { transform: translateX(-320px); }
+  75%, 100% { transform: translateX(1520px); }
+}
+.gr-scene-sway,
+.gr-scene-kite,
+.gr-scene-glow {
+  transform-box: fill-box;
+}
+[data-motion="on"] .gr-scene-sway {
+  transform-origin: 50% 100%;
+  animation: gr-sway 1.6s var(--ease-out) infinite;
+}
+[data-motion="on"] .gr-scene-kite {
+  transform-origin: 50% 0;
+  animation: gr-scene-kite var(--motion-kite) var(--ease-drift) infinite;
+}
+@keyframes gr-scene-kite {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  35% { transform: translate(7px, -9px) rotate(4deg); }
+  70% { transform: translate(-4px, -3px) rotate(-3deg); }
+}
+[data-motion="on"] .gr-scene-birds {
+  animation: gr-scene-birds calc(var(--motion-kite) * 2) var(--ease-drift) infinite alternate;
+}
+@keyframes gr-scene-birds {
+  to { transform: translateX(-140px) translateY(6px); }
+}
+[data-motion="on"] .gr-scene-glow {
+  transform-origin: 50% 50%;
+  animation: gr-scene-glow 7s var(--ease-drift) infinite alternate;
+}
+@keyframes gr-scene-glow {
+  from { opacity: 0.75; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.04); }
+}
