@@ -48,6 +48,7 @@ export function BookingFlow({
   const [choice, setChoice] = useState<PayChoice>('min');
   const [custom, setCustom] = useState('');
   const [accepted, setAccepted] = useState(false);
+  const [reviewOk, setReviewOk] = useState(false);
   const [paying, setPaying] = useState(false);
   const [left, setLeft] = useState<number | null>(null);
   const leadSent = useRef('');
@@ -143,7 +144,7 @@ export function BookingFlow({
     try {
       const created = await postGhoomo<Created>('/bookings', {
         client: 'web', paymentMethod: 'online', tripType: trip.tripType, vehicleType: offer.key, passengers: people,
-        quoteId: quote.quoteId, policyAccepted: true, pickupCity: trip.pickup,
+        quoteId: quote.quoteId, policyAccepted: true, ...(reviewOk ? { reviewConsent: true } : {}), pickupCity: trip.pickup,
         ...(trip.tripType !== 'local' ? { dropCity: trip.drop } : {}),
         ...(trip.tripType === 'one_way' && trip.stops.length ? { stops: trip.stops } : {}),
         ...(trip.tripType === 'local' ? { hours: trip.hours } : {}),
@@ -280,6 +281,7 @@ export function BookingFlow({
 
       <p className="text-sm">{t.policyRead} <a className="text-royal-600 underline" href={localePath('/terms', locale)}>{t.terms}</a> · <a className="text-royal-600 underline" href={localePath('/refund', locale)}>{t.refund}</a>.</p>
       <label className="flex items-start gap-3 text-sm leading-6"><input type="checkbox" className="mt-1 size-5 shrink-0 accent-royal" checked={accepted} onChange={(e) => setAccepted(e.target.checked)} /><span>{t.accept}</span></label>
+      <label className="flex items-start gap-3 text-sm leading-6"><input type="checkbox" className="mt-1 size-5 shrink-0 accent-royal" checked={reviewOk} onChange={(e) => setReviewOk(e.target.checked)} /><span>{t.reviewOk}</span></label>
       {error ? <p role="alert" className="rounded-lg bg-maroon-50 p-3 text-sm text-maroon-700">{error} <a className="ml-1 font-semibold underline" href={brand.phoneHref}>{brand.phone}</a></p> : null}
       <button type="submit" disabled={!quote || paying} className="min-h-12 w-full rounded-full bg-maroon-600 px-6 font-semibold text-white shadow-card hover:bg-maroon-700 disabled:opacity-60">
         {paying ? t.paying : t.pay(plan?.ok ? money(plan.payNowRupees, locale) : '')}

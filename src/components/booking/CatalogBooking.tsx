@@ -43,6 +43,7 @@ export function CatalogBooking({ locale, choice, initial }: { locale: Locale; ch
   const [payChoice, setPayChoice] = useState<PayChoice>('min');
   const [custom, setCustom] = useState('');
   const [accepted, setAccepted] = useState(false);
+  const [reviewOk, setReviewOk] = useState(false);
   const [paying, setPaying] = useState(false);
   const [error, setError] = useState('');
   const asked = useRef('');
@@ -120,7 +121,7 @@ export function CatalogBooking({ locale, choice, initial }: { locale: Locale; ch
     try {
       const created = await postGhoomo<Created>(choice.kind === 'package' ? '/bookings/package' : '/bookings/safari', {
         ...selection, phone: mobile, ...(name.trim() ? { name: name.trim() } : {}),
-        ...(address.trim() ? { pickupAddress: address.trim() } : {}), policyAccepted: true, ...plan.body,
+        ...(address.trim() ? { pickupAddress: address.trim() } : {}), policyAccepted: true, ...(reviewOk ? { reviewConsent: true } : {}), ...plan.body,
       });
       const url = created.payment.paymentUrl;
       if (!url || !(/^https:\/\//i.test(url) || url.startsWith('http://localhost:'))) throw new ApiError('generic', 'No payment link');
@@ -232,6 +233,7 @@ export function CatalogBooking({ locale, choice, initial }: { locale: Locale; ch
 
       <p className="text-sm">{f.policyRead} <a className="text-royal-600 underline" href={localePath('/terms', locale)}>{f.terms}</a> · <a className="text-royal-600 underline" href={localePath('/refund', locale)}>{f.refund}</a>.</p>
       <label className="flex items-start gap-3 text-sm leading-6"><input type="checkbox" className="mt-1 size-5 shrink-0 accent-royal" checked={accepted} onChange={(e) => setAccepted(e.target.checked)} /><span>{f.accept}</span></label>
+      <label className="flex items-start gap-3 text-sm leading-6"><input type="checkbox" className="mt-1 size-5 shrink-0 accent-royal" checked={reviewOk} onChange={(e) => setReviewOk(e.target.checked)} /><span>{f.reviewOk}</span></label>
       {error ? <p role="alert" className="rounded-lg bg-maroon-50 p-3 text-sm text-maroon-700">{error} <a className="ml-1 font-semibold underline" href={brand.phoneHref}>{brand.phone}</a></p> : null}
       <button type="submit" disabled={!quote || paying} className="min-h-12 w-full rounded-full bg-maroon-600 px-6 font-semibold text-white shadow-card hover:bg-maroon-700 disabled:opacity-60">
         {paying ? f.paying : f.pay(plan?.ok ? money(plan.payNowRupees, locale) : '')}

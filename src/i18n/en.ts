@@ -289,6 +289,8 @@ export const en = {
     gstNow: 'GST is paid with the first payment.',
     policyRead: 'Before paying, read our', terms: 'terms', refund: 'cancellation and refund policy',
     accept: 'I have read and accept the booking terms and the cancellation and refund policy.',
+    // Unticked unless they tick it — the review message goes only to those who did (21 Oct 2026).
+    reviewOk: 'After the trip, you may send me one WhatsApp message asking for a review (optional).',
     pay: (amount: string) => `Pay ${amount} securely`, paying: 'Opening the secure payment…',
     signedInAs: (phone: string) => `Signed in as ${phone}`,
     errors: {

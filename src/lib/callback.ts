@@ -38,7 +38,7 @@ export function markSeen(storage: Writer | null | undefined, now = Date.now()): 
 }
 
 /** Pages where somebody is already booking, signing in or paying: the button, never the popup. */
-const BUSY_PATH = /^(?:\/hi)?\/(?:booking|login|account|my-bookings|enquiry|travel-checkout|travel-bookings|trip-requests|preview)(?:\/|$)/;
+const BUSY_PATH = /^(?:\/hi)?\/(?:booking|login|account|my-bookings|enquiry|travel-checkout|travel-bookings|trip-requests|preview|c|r)(?:\/|$)/;
 export const autoPopupAllowed = (path: string): boolean => !BUSY_PATH.test(path);
 
 export type CallbackStage = 'callback' | 'callback_typed';

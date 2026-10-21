@@ -27,7 +27,7 @@ test('never pops up where somebody is booking, signing in or paying', () => {
   for (const p of ['/', '/hi', '/cab/jaipur-to-udaipur', '/hi/destinations/jaipur', '/packages/lakes-and-forts', '/desert-safari']) {
     assert.equal(autoPopupAllowed(p), true, p);
   }
-  for (const p of ['/booking', '/hi/booking/details', '/booking/abc/confirm', '/login', '/hi/login', '/account', '/my-bookings', '/enquiry', '/travel-checkout']) {
+  for (const p of ['/booking', '/hi/booking/details', '/booking/abc/confirm', '/login', '/hi/login', '/account', '/my-bookings', '/enquiry', '/travel-checkout', '/c/office-9667111921', '/r/ab12cd34']) {
     assert.equal(autoPopupAllowed(p), false, p);
   }
   assert.equal(autoPopupAllowed('/bookingsomething'), true);
