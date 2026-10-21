@@ -228,3 +228,48 @@ h3 {
   from { transform: translateY(14%) scaleY(0.82); }
   to { transform: none; }
 }
+
+/* The gold shine (buttons, cards — Phase 4): one sweep on hover, keyboard focus or a tap. Never
+ * on a disabled button, never where the page is doing a job (its header says data-motion="off"),
+ * never under reduced motion (the rule at the top). */
+/* In the components layer, so a utility on the element (absolute, fixed…) still wins. */
+@layer components {
+  .gr-shine {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+  .gr-shine::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(105deg, transparent 30%, rgb(255 210 122 / 0.45) 48%, rgb(255 255 255 / 0.35) 52%, transparent 70%);
+    transform: translateX(-130%);
+  }
+  @media (hover: hover) {
+    .gr-shine:hover::after {
+      animation: gr-shine var(--motion-shine) var(--ease-drift) 1;
+    }
+    .gr-lift {
+      transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+    }
+    .gr-lift:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-raised);
+    }
+  }
+  .gr-shine:focus-visible::after,
+  .gr-shine:active::after {
+    animation: gr-shine var(--motion-shine) var(--ease-drift) 1;
+  }
+  .gr-shine:disabled::after,
+  .gr-shine[aria-disabled='true']::after,
+  body:has(header[data-motion='off']) .gr-shine::after {
+    display: none;
+  }
+}
+@keyframes gr-shine {
+  to { transform: translateX(130%); }
+}

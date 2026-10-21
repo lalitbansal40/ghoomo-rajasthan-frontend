@@ -34,7 +34,7 @@ export function PackageCard({
   return (
     <Link
       href={href}
-      className="group flex h-full flex-col overflow-hidden rounded-[var(--radius-md)] bg-white shadow-card ring-1 ring-black/5 transition-[box-shadow,transform] duration-[var(--dur)] ease-[var(--ease-out)] hover:-translate-y-0.5 hover:shadow-raised"
+      className="gr-shine group flex h-full flex-col overflow-hidden rounded-[var(--radius-md)] bg-white shadow-card ring-1 ring-black/5 transition-[box-shadow,transform] duration-[var(--dur)] ease-[var(--ease-out)] hover:-translate-y-0.5 hover:shadow-raised"
     >
       <div className="relative aspect-[4/3] bg-sand-100">
         {p ? (

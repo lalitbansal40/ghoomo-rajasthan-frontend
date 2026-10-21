@@ -10,6 +10,7 @@ import { env } from '@/lib/env';
 import { Icon } from './Icon';
 import { LangSwitch } from './LangSwitch';
 import { MobileMenu, type MenuItem } from './MobileMenu';
+import { motionAttr } from '@/lib/motion';
 
 /**
  * The top of every page: the logo home, the menu (owner, 16 Oct 2026: Packages · Destinations ·
@@ -32,7 +33,9 @@ export function Header({ locale, path }: { locale: Locale; /** This page's path 
   }));
   if (env.travelEnabled) items.push({ label: locale === 'hi' ? 'यात्रा बुक करें' : 'Book travel', href: localePath('/tours', locale) });
   return (
-    <header className="sticky top-0 z-40 border-b border-gold-300/70 bg-ivory/95 backdrop-blur supports-[backdrop-filter]:bg-ivory/80">
+    // `data-motion` tells the page's CSS whether this page may move at all (src/lib/motion.ts):
+    // off where somebody is booking, paying or signing in — the gold shine included.
+    <header {...motionAttr(path)} className="sticky top-0 z-40 border-b border-gold-300/70 bg-ivory/95 backdrop-blur supports-[backdrop-filter]:bg-ivory/80">
       <div className="relative mx-auto flex min-h-16 max-w-[var(--container-site)] flex-wrap items-center gap-3 px-4 sm:px-6">
         <Link href={localePath('/', locale)} aria-label={t.brand.home} className="shrink-0">
           <Image src="/brand/logo-horizontal.svg" alt={t.brand.logoAlt} width={420} height={120} preload className="h-11 w-auto" />

@@ -72,3 +72,21 @@ test('the sand settles only on pages that may move', () => {
   }
   assert.match(read('components/motifs/DuneDivider.tsx'), /motionAttr\(settle\)/);
 });
+
+test('the gold shine: a sweep on buttons and cards, never disabled, never where the page works', async () => {
+  const css = readFileSync(new URL('../app/globals.css', import.meta.url), 'utf8');
+  const layer = css.slice(css.indexOf('@layer components {\n  .gr-shine'));
+  assert.ok(layer.length > 0, 'shine sits in the components layer');
+  assert.match(layer, /\.gr-shine:disabled::after,\s*\.gr-shine\[aria-disabled='true'\]::after,\s*body:has\(header\[data-motion='off'\]\) \.gr-shine::after \{\s*display: none;/);
+  assert.match(layer, /@media \(hover: hover\)[\s\S]*\.gr-shine:hover::after/);
+  assert.match(layer, /\.gr-shine:focus-visible::after/);
+  // Reduced motion (unlayered, !important) still beats the layer.
+  assert.ok(css.indexOf('@media (prefers-reduced-motion: reduce)') < css.indexOf('@layer components {\n  .gr-shine'));
+  const { buttonClass } = await import('../components/ui/button-style.ts');
+  assert.match(buttonClass({ variant: 'primary' }), /\bgr-shine\b/);
+  assert.match(buttonClass({ variant: 'secondary' }), /\bgr-shine\b/);
+  assert.doesNotMatch(buttonClass({ variant: 'ghost' }), /\bgr-shine\b/);
+  const read = (p: string) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
+  for (const card of ['components/ui/PackageCard.tsx', 'components/ui/DestinationCard.tsx', 'components/ui/RouteCard.tsx']) assert.match(read(card), /gr-shine/, card);
+  assert.match(read('components/ui/Header.tsx'), /<header \{\.\.\.motionAttr\(path\)\}/);
+});

@@ -32,7 +32,7 @@ export function DestinationCard({
   return (
     <Link
       href={href}
-      className={`group relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-[var(--radius-lg)] shadow-card ${p ? 'bg-sand-200' : 'bg-royal-700'}`}
+      className={`gr-shine gr-lift group relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-[var(--radius-lg)] shadow-card ${p ? 'bg-sand-200' : 'bg-royal-700'}`}
     >
       {p ? (
         <Image
