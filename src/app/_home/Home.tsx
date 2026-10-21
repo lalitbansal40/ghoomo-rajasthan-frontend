@@ -1,3 +1,4 @@
+import { sitePhotos, photoFor } from '@/lib/site-photos';
 import { catalog, toursInCity } from '@/lib/catalog';
 import { CatalogNotice } from '@/components/CatalogNotice';
 import { dict, localePath, type Locale } from '@/i18n';
@@ -46,7 +47,7 @@ export async function Home({ locale }: { locale: Locale }) {
   const t = dict(locale);
   const L = <K extends { en: string; hi: string }>(x: K) => x[locale];
   // Hawa Mahal: a tall façade that fills the tall jharokha (a wide fort photo showed only wall).
-  const hero = photo('jaipur-hawa-mahal');
+  const hero = photoFor('home-hero', photo('jaipur-hawa-mahal'), await sitePhotos(), locale);
   const routes = await popularRoutes(locale);
   const tours = PACKAGES.map((p) => pkgIn(p, locale));
   const path = localePath('/', locale);
@@ -78,7 +79,7 @@ export async function Home({ locale }: { locale: Locale }) {
             </div>
             {hero ? (
               <div className="order-1 mx-auto w-[58vw] max-w-[300px] md:order-2 md:w-full md:max-w-[340px]">
-                <MehrabFrame src={hero.big} alt={hero.alt} preload sizes="(min-width: 768px) 340px, 58vw" />
+                <MehrabFrame src={hero.hero ?? hero.big} alt={hero.alt} preload sizes="(min-width: 768px) 340px, 58vw" />
               </div>
             ) : null}
           </div>

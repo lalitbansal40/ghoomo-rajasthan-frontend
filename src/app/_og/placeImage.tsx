@@ -6,5 +6,5 @@ import { ogCard } from './card';
 export async function placeImage(slug: string) {
   const p = placeBySlug(slug);
   if (!p) return new Response('Not found', { status: 404 });
-  return ogCard({ title: p.en.name, meta: p.en.line, sub: region(p.region).en.name, photoKey: p.photo });
+  return ogCard({ title: p.en.name, siteSlot: `place:${p.key}`, meta: p.en.line, sub: region(p.region).en.name, photoKey: p.photo });
 }

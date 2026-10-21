@@ -1,3 +1,4 @@
+import { sitePhotos, photoFor } from '@/lib/site-photos';
 import { catalog } from '@/lib/catalog';
 import { sampleIndexable } from '@/lib/indexing-policy';
 import { CatalogNotice } from '@/components/CatalogNotice';
@@ -53,7 +54,8 @@ export async function SafariPage({ locale }: { locale: Locale }) {
   const s = t.safari;
   const path = localePath('/desert-safari', locale);
   const crumbs = [{ label: locale === 'hi' ? 'होम' : 'Home', href: localePath('/', locale) }, { label: t.nav.desertSafari }];
-  const hero = photo('camel-sunset');
+  const photos = await sitePhotos();
+  const hero = photoFor('safari:jaisalmer', photo('camel-sunset'), photos, locale);
 
   const roads = (
     await Promise.all(
@@ -103,7 +105,7 @@ export async function SafariPage({ locale }: { locale: Locale }) {
         <div className="mt-6 flex flex-col gap-10">
           {SAFARI.map((spot) => {
             const sp = spot[locale];
-            const ph = photo(spot.photo);
+            const ph = photoFor(`safari:${spot.slug}`, photo(spot.photo), photos, locale);
             const place = placeBySlug(spot.slug);
             return (
               <section key={spot.slug} id={spot.slug} className="scroll-mt-24 rounded-[var(--radius-lg)] bg-white p-5 shadow-card ring-1 ring-black/5 sm:p-6">

@@ -1,3 +1,4 @@
+import { sitePhotos, photoFor } from '@/lib/site-photos';
 import { catalog, toursInCity } from '@/lib/catalog';
 import { CatalogNotice } from '@/components/CatalogNotice';
 import { dict, localePath, type Locale } from '@/i18n';
@@ -70,7 +71,7 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
   const txt = place[locale];
   const reg = region(place.region);
   const path = localePath(`/destinations/${place.slug}`, locale);
-  const p = place.photo ? photo(place.photo) : null;
+  const p = photoFor(`place:${place.key}`, place.photo ? photo(place.photo) : null, await sitePhotos(), locale);
   const crumbs = [
     { label: locale === 'hi' ? 'होम' : 'Home', href: localePath('/', locale) },
     { label: t.nav.destinations, href: localePath('/destinations', locale) },
@@ -297,7 +298,7 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
           {t.cta.call}
         </Button>
       </StickyCta>
-      <JsonLd path={`/destinations/${place.slug}`} locale={locale} data={[touristDestinationJsonLd(place, locale), breadcrumbJsonLd(crumbs), faqJsonLd(txt.faq)]} />
+      <JsonLd path={`/destinations/${place.slug}`} locale={locale} data={[touristDestinationJsonLd(place, locale, p?.big), breadcrumbJsonLd(crumbs), faqJsonLd(txt.faq)]} />
     </>
   );
 }

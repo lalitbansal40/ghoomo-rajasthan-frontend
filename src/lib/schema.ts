@@ -67,7 +67,7 @@ export function touristTripJsonLd(tour: LocalTour, locale: Locale, description: 
 }
 
 /** A place page: the destination, where it is, and the sights it lists as attractions. */
-export function touristDestinationJsonLd(place: Place, locale: Locale) {
+export function touristDestinationJsonLd(place: Place, locale: Locale, image?: string) {
   const t = place[locale];
   const p = place.photo ? photo(place.photo) : null;
   return {
@@ -77,7 +77,7 @@ export function touristDestinationJsonLd(place: Place, locale: Locale) {
     description: t.line,
     url: abs(localePath(`/destinations/${place.slug}`, locale)),
     inLanguage: LANG_TAG[locale].hreflang,
-    ...(p ? { image: abs(p.big) } : {}),
+    ...(image || p ? { image: abs(image ?? p!.big) } : {}),
     geo: { '@type': 'GeoCoordinates', latitude: place.lat, longitude: place.lng },
     containedInPlace: { '@type': 'State', name: 'Rajasthan' },
     includesAttraction: t.see.map((s) => ({ '@type': 'TouristAttraction', name: s.name, description: s.line })),

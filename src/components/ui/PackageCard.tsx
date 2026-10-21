@@ -1,3 +1,4 @@
+import { sitePhotos, photoFor } from '@/lib/site-photos';
 import Image from 'next/image';
 import Link from 'next/link';
 import { dict, type Locale } from '@/i18n';
@@ -14,7 +15,7 @@ import { PriceTag } from './PriceTag';
  *
  * The tour comes already in the page's language (pkgIn).
  */
-export function PackageCard({
+export async function PackageCard({
   tour,
   href,
   locale,
@@ -28,7 +29,7 @@ export function PackageCard({
   preload?: boolean;
 }) {
   const t = dict(locale);
-  const p = tourPhoto(tour, locale);
+  const p = photoFor(`tour:${tour.slug}`, tourPhoto(tour, locale), await sitePhotos(), locale);
   const low = cheapest(tour);
   const road = tour.route.length > 4 ? [...tour.route.slice(0, 3), t.pkg.more(tour.route.length - 3)] : tour.route;
   return (
@@ -40,7 +41,7 @@ export function PackageCard({
         {p ? (
           <Image
             src={p.card}
-            unoptimized={tour.media.length > 0}
+            unoptimized={!p.siteManaged && tour.media.length > 0}
             alt={p.alt}
             fill
             sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"

@@ -1,3 +1,5 @@
+import { placeBySlug } from '@/content/places';
+import { sitePhotos, photoFor } from '@/lib/site-photos';
 import Image from 'next/image';
 import Link from 'next/link';
 import { dict, type Locale } from '@/i18n';
@@ -10,7 +12,7 @@ import { Jaali } from '@/components/motifs/Jaali';
  * short fact, `meta`). One link. A place without a licensed photo gets the fort and the sun
  * on royal blue — never a broken image.
  */
-export function DestinationCard({
+export async function DestinationCard({
   name,
   line,
   photoKey,
@@ -28,7 +30,9 @@ export function DestinationCard({
   locale: Locale;
 }) {
   const t = dict(locale);
-  const p = photoKey ? photo(photoKey) : null;
+  const slug = href.replace(/^\/hi(?=\/)/, '').match(/^\/destinations\/([^/?#]+)/)?.[1];
+  const place = slug ? placeBySlug(slug) : null;
+  const p = photoFor(place ? `place:${place.key}` : '', photoKey ? photo(photoKey) : null, await sitePhotos(), locale);
   return (
     <Link
       href={href}

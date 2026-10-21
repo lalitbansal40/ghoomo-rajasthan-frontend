@@ -3,10 +3,9 @@ import { FONT_ASSETS } from './src/app/font-assets';
 
 const nextConfig: NextConfig = {
   images: {
-    // No remote patterns on purpose: every photograph is a file in `public/img` — a second
-    // host in front of the hero is a second DNS lookup, a second handshake, and somebody
-    // else's outage. 40 for faint background textures, 75 for everything actually looked at;
-    // Next only serves the qualities listed here.
+    // Admin-owned photos stay private in S3. Only this API's closed photo namespace
+    // is allowed; browsers still load optimized images from the website origin.
+    remotePatterns: [{ protocol: 'https', hostname: 'api.hellomycabs.com', port: '', pathname: '/api/v1/public/ghoomo/site-photos/**', search: '' }],
     qualities: [40, 75],
     // AVIF first — about half the bytes of WebP for photographs; WebP for browsers that cannot.
     formats: ['image/avif', 'image/webp'],

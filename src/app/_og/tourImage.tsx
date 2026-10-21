@@ -12,6 +12,7 @@ export async function tourImage(slug: string) {
   const tour = pkgIn(pkg, 'en');
   return ogCard({
     title: tour.name,
+    siteSlot: `tour:${tour.slug}`,
     meta: `${tour.days} day${tour.days === 1 ? '' : 's'} · ${tour.nights} night${tour.nights === 1 ? '' : 's'}`,
     sub: tour.route.slice(0, 5).join(' → '),
     price: tour.isSample || !cheapest(tour) ? null : `from ${formatRupees(cheapest(tour).rupees, true)} / car / tour`,

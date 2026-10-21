@@ -13,12 +13,14 @@ export async function routeImage(slug: string) {
   if (!route) return new Response('Not found', { status: 404 });
   const { oneway } = await routeFares(route);
   const low = cheapest(oneway);
-  const photoKey = placeForCity(route.drop)?.photo ?? placeForCity(route.pickup)?.photo;
+  const place = placeForCity(route.drop) ?? placeForCity(route.pickup);
+  const photoKey = place?.photo;
   return ogCard({
     title: `${routeEndName(route.pickup, 'en')} → ${routeEndName(route.drop, 'en')}`,
     meta: 'Cab with a driver',
     sub: oneway?.km ? distanceCopy(oneway.km, 'en', oneway.distanceMeasured) : undefined,
     price: low && !route.held ? `from ${formatRupees(low.rupees)}` : null,
     photoKey,
+    siteSlot: place ? `place:${place.key}` : undefined,
   });
 }

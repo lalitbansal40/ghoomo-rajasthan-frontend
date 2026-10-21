@@ -1,3 +1,4 @@
+import { sitePhotos, photoFor } from '@/lib/site-photos';
 import { dict, localePath, type Locale } from '@/i18n';
 import { pkgIn, type TourPackage } from '@/content/packages';
 import { PLACES } from '@/content/places';
@@ -42,7 +43,7 @@ export function tourDescription(pkg: TourPackage, locale: Locale): string {
 export async function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Locale }) {
   const t = dict(locale);
   const tour = pkgIn(pkg, locale);
-  const p = tourPhoto(tour, locale);
+  const p = photoFor(`tour:${tour.slug}`, tourPhoto(tour, locale), await sitePhotos(), locale);
   const { packages: PACKAGES } = await catalog();
   const checkoutSlug = tour.isSample ? null : await packageTravelCheckout(tour.slug, tour.contentRevision);
   const checkoutHref = checkoutSlug ? localePath(`/travel-checkout/${checkoutSlug}`, locale) : null;
@@ -73,7 +74,7 @@ export async function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Loca
         <div className="mt-6 grid items-start gap-8 lg:grid-cols-[minmax(0,340px)_1fr] lg:gap-12">
           {p ? (
             <div className="relative mx-auto w-[64vw] max-w-[320px] md:w-full">
-              <MehrabFrame unoptimized={Boolean(tour.media.length)} srcSet={tour.media.length ? `${p.card} 640w, ${p.big} 1280w` : undefined} src={p.big} alt={p.alt} preload sizes="(min-width: 768px) 340px, 64vw" />
+              <MehrabFrame unoptimized={!p.siteManaged && Boolean(tour.media.length)} srcSet={!p.siteManaged && tour.media.length ? `${p.card} 640w, ${p.big} 1280w` : undefined} src={p.big} alt={p.alt} preload sizes="(min-width: 768px) 340px, 64vw" />
               <PhotoCredit photo={p} label={t.common.photoBy} />
             </div>
           ) : null}

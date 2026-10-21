@@ -1,0 +1,248 @@
+[
+  {
+    "slot": "home-hero",
+    "en": "Home hero",
+    "hi": "होम की मुख्य तस्वीर",
+    "shape": "hero"
+  },
+  {
+    "slot": "place:JAIPUR",
+    "en": "Jaipur",
+    "hi": "जयपुर",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:ABHANERI",
+    "en": "Abhaneri",
+    "hi": "आभानेरी",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:BHANGARH",
+    "en": "Bhangarh",
+    "hi": "भानगढ़",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:SAMBHAR",
+    "en": "Sambhar Lake",
+    "hi": "सांभर झील",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:MANDAWA",
+    "en": "Mandawa and Nawalgarh",
+    "hi": "मंडावा और नवलगढ़",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:KHATU_SHYAM_JI",
+    "en": "Khatu Shyam ji",
+    "hi": "खाटू श्याम जी",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:SALASAR_BALAJI",
+    "en": "Salasar Balaji",
+    "hi": "सालासर बालाजी",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:ALWAR",
+    "en": "Alwar and Sariska",
+    "hi": "अलवर और सरिस्का",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:BHARATPUR",
+    "en": "Bharatpur",
+    "hi": "भरतपुर",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:MEHANDIPUR_BALAJI",
+    "en": "Mehandipur Balaji",
+    "hi": "मेहंदीपुर बालाजी",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:KARAULI",
+    "en": "Karauli",
+    "hi": "करौली",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:NEEMRANA",
+    "en": "Neemrana",
+    "hi": "नीमराना",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:AJMER",
+    "en": "Ajmer",
+    "hi": "अजमेर",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:PUSHKAR",
+    "en": "Pushkar",
+    "hi": "पुष्कर",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:KOTA",
+    "en": "Kota",
+    "hi": "कोटा",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:BUNDI",
+    "en": "Bundi",
+    "hi": "बूंदी",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:JHALAWAR",
+    "en": "Jhalawar",
+    "hi": "झालावाड़",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:RANTHAMBORE",
+    "en": "Ranthambore",
+    "hi": "रणथंभौर",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:UDAIPUR",
+    "en": "Udaipur",
+    "hi": "उदयपुर",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:CHITTORGARH",
+    "en": "Chittorgarh",
+    "hi": "चित्तौड़गढ़",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:KUMBHALGARH",
+    "en": "Kumbhalgarh",
+    "hi": "कुंभलगढ़",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:RANAKPUR",
+    "en": "Ranakpur",
+    "hi": "रणकपुर",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:NATHDWARA",
+    "en": "Nathdwara",
+    "hi": "नाथद्वारा",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:BANSWARA",
+    "en": "Banswara",
+    "hi": "बांसवाड़ा",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:JODHPUR",
+    "en": "Jodhpur",
+    "hi": "जोधपुर",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:JAISALMER",
+    "en": "Jaisalmer",
+    "hi": "जैसलमेर",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:OSIAN",
+    "en": "Osian",
+    "hi": "ओसियां",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:BARMER",
+    "en": "Barmer",
+    "hi": "बाड़मेर",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:BIKANER",
+    "en": "Bikaner",
+    "hi": "बीकानेर",
+    "shape": "landscape"
+  },
+  {
+    "slot": "place:MOUNT_ABU",
+    "en": "Mount Abu",
+    "hi": "माउंट आबू",
+    "shape": "landscape"
+  },
+  {
+    "slot": "tour:jaipur-pink-city-weekend",
+    "en": "Jaipur Pink City Weekend",
+    "hi": "जयपुर पिंक सिटी वीकेंड",
+    "shape": "landscape"
+  },
+  {
+    "slot": "tour:ajmer-pushkar-darshan",
+    "en": "Ajmer–Pushkar Darshan",
+    "hi": "अजमेर–पुष्कर दर्शन",
+    "shape": "landscape"
+  },
+  {
+    "slot": "tour:lakes-and-forts",
+    "en": "Lakes & Forts",
+    "hi": "झीलें और क़िले",
+    "shape": "landscape"
+  },
+  {
+    "slot": "tour:royal-rajasthan-circuit",
+    "en": "Royal Rajasthan Circuit",
+    "hi": "रॉयल राजस्थान सर्किट",
+    "shape": "landscape"
+  },
+  {
+    "slot": "tour:ranthambore-wildlife",
+    "en": "Ranthambore Wildlife",
+    "hi": "रणथंभौर वाइल्डलाइफ़",
+    "shape": "landscape"
+  },
+  {
+    "slot": "tour:udaipur-mount-abu",
+    "en": "Udaipur–Mount Abu",
+    "hi": "उदयपुर–माउंट आबू",
+    "shape": "landscape"
+  },
+  {
+    "slot": "safari:jaisalmer",
+    "en": "Jaisalmer — Sam and Khuri",
+    "hi": "जैसलमेर — सम और खुड़ी",
+    "shape": "landscape"
+  },
+  {
+    "slot": "safari:bikaner",
+    "en": "Bikaner",
+    "hi": "बीकानेर",
+    "shape": "landscape"
+  },
+  {
+    "slot": "safari:pushkar",
+    "en": "Pushkar",
+    "hi": "पुष्कर",
+    "shape": "landscape"
+  },
+  {
+    "slot": "safari:osian",
+    "en": "Osian",
+    "hi": "ओसियां",
+    "shape": "landscape"
+  }
+]
