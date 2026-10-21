@@ -12,6 +12,7 @@ import { TourFilter } from '@/components/TourFilter';
 import { breadcrumbJsonLd, faqJsonLd } from '@/components/ui';
 import { Alert, Breadcrumbs, Button, EmptyState, FAQ, Footer, Header, PackageCard, SectionHeader, StickyCta } from '@/components/ui';
 import { DuneDivider } from '@/components/motifs';
+import { PageScene } from '@/components/scene/PageScene';
 
 /** The tours list, in either language: filter by city and days, sort, every tour as a card. */
 export async function ToursList({ locale }: { locale: Locale }) {
@@ -34,6 +35,7 @@ export async function ToursList({ locale }: { locale: Locale }) {
   return (
     <>
       <Header locale={locale} path={path} />
+      <PageScene kind="tours" />
       <main className="mx-auto max-w-[var(--container-site)] px-4 pb-24 pt-6 sm:px-6 md:pb-12">
         <CatalogNotice unavailable={catalogState.unavailable} locale={locale} />
         <Breadcrumbs items={crumbs} locale={locale} />
@@ -98,7 +100,7 @@ export async function ToursList({ locale }: { locale: Locale }) {
         </section>
       </main>
       <section className="bg-sand-200">
-        <DuneDivider tone="ivory" flip />
+        <DuneDivider tone="ivory" flip settle={path} />
         <div className="mx-auto max-w-[var(--container-site)] px-4 pb-12 text-center sm:px-6">
           <h2 className="text-h2 text-royal-600">{L(SECTIONS.cta)}</h2>
           <p className="mx-auto mt-2 max-w-xl text-ink/80">{L(SECTIONS.ctaLine)}</p>

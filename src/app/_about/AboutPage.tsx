@@ -9,6 +9,7 @@ import { ContactButtons } from '@/components/ContactButtons';
 import { FortSun, Jaali, SparkleDivider } from '@/components/motifs';
 import { Breadcrumbs, Footer, Header, Icon, breadcrumbJsonLd } from '@/components/ui';
 import { JsonLd } from '@/components/JsonLd';
+import { PageScene } from '@/components/scene/PageScene';
 
 /** /about and /hi/about — who runs Ghoomo Rajasthan, the true numbers, how a trip works, the drivers. */
 export function AboutPage({ locale }: { locale: Locale }) {
@@ -27,6 +28,7 @@ export function AboutPage({ locale }: { locale: Locale }) {
   return (
     <>
       <Header locale={locale} path={path} />
+      <PageScene kind="dunes" />
       <main>
         <div className="mx-auto max-w-[var(--container-site)] px-4 pt-6 sm:px-6">
           <Breadcrumbs items={crumbs} locale={locale} />

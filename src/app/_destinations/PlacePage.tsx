@@ -36,6 +36,7 @@ import {
   breadcrumbJsonLd,
   faqJsonLd,
 } from '@/components/ui';
+import { PageScene } from '@/components/scene/PageScene';
 
 /** The places whose desert safari is sold on /desert-safari (anchors there by the same slug). */
 export const SAFARI_PLACES = new Set(['jaisalmer', 'bikaner', 'pushkar', 'osian']);
@@ -102,6 +103,7 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
   return (
     <>
       <Header locale={locale} path={path} />
+      <PageScene kind="place" />
       <main className="mx-auto max-w-[var(--container-site)] px-4 pb-24 pt-6 sm:px-6 md:pb-12">
         <CatalogNotice unavailable={catalogState.unavailable} locale={locale} />
         <Breadcrumbs items={crumbs} locale={locale} />

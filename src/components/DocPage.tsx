@@ -1,6 +1,7 @@
 import { localePath, type Locale } from '@/i18n';
 import { Footer } from './ui/Footer';
 import { Header } from './ui/Header';
+import { PageScene, type SceneKind } from './scene/PageScene';
 
 /**
  * The plain page for reading — legal pages, credits. The site header and footer, a Rozha One
@@ -12,6 +13,7 @@ export function DocPage({
   updated,
   path,
   locale = 'en',
+  scene,
   children,
 }: {
   title: string;
@@ -21,11 +23,14 @@ export function DocPage({
   /** This page's path, with or without /hi — for the header's language switch. */
   path: string;
   locale?: Locale;
+  /** The small desert under the header (contact) — the legal pages and credits stay plain. */
+  scene?: SceneKind;
   children: React.ReactNode;
 }) {
   return (
     <div className="flex min-h-dvh flex-col">
       <Header locale={locale} path={localePath(path, locale)} />
+      {scene ? <PageScene kind={scene} /> : null}
       <main className="mx-auto w-full max-w-[68ch] flex-1 px-4 py-10">
         <h1 className="text-h1 text-royal-600">{title}</h1>
         {updated ? (

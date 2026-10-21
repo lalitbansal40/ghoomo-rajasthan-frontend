@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <DocPage
+      scene="dunes"
       path="/contact"
       title="Contact"
       intro="Planning a trip across Rajasthan? Tell us where, when and how many of you — we will suggest the route and the car."

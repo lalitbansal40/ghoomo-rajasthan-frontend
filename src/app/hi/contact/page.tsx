@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 export default function HindiContactPage() {
   return (
     <DocPage
+      scene="dunes"
       locale="hi"
       path="/contact"
       title="संपर्क"

@@ -38,6 +38,7 @@ import {
   breadcrumbJsonLd,
   faqJsonLd,
 } from '@/components/ui';
+import { PageScene } from '@/components/scene/PageScene';
 
 /** The two ends of a route in this language. */
 export function routeNames(route: GhoomoRoute, locale: Locale) {
@@ -103,6 +104,7 @@ export async function RoutePage({ route, locale }: { route: GhoomoRoute; locale:
   return (
     <>
       <Header locale={locale} path={path} />
+      <PageScene kind="cab" />
       <main className="mx-auto max-w-[var(--container-site)] px-4 pb-24 pt-6 sm:px-6 md:pb-12">
         <CatalogNotice unavailable={catalogState.unavailable} locale={locale} />
         <Breadcrumbs items={crumbs} locale={locale} />

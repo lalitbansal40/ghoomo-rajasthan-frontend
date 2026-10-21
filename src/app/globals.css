@@ -209,3 +209,22 @@ h3 {
   from { opacity: 0.75; transform: scale(1); }
   to { opacity: 1; transform: scale(1.04); }
 }
+
+/* The sand settling once between sections (DuneDivider `settle`, ScenePlay `once`). Before it
+ * is seen the strip is simply drawn; the settle plays as it comes into view. */
+.gr-settle-front,
+.gr-settle-back {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+[data-motion="on"][data-settled] .gr-settle-front {
+  animation: gr-settle var(--motion-settle) var(--ease-out) both;
+}
+[data-motion="on"][data-settled] .gr-settle-back {
+  animation: gr-settle calc(var(--motion-settle) * 1.3) var(--ease-out) both;
+}
+/* Transform only: the far ridge keeps its own faintness (its opacity attribute). */
+@keyframes gr-settle {
+  from { transform: translateY(14%) scaleY(0.82); }
+  to { transform: none; }
+}

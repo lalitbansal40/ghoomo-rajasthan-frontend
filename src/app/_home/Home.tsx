@@ -252,7 +252,7 @@ export async function Home({ locale }: { locale: Locale }) {
 
         {/* ── Plan your trip ──────────────────────────────────────────────── */}
         <section className="relative overflow-hidden bg-sand-200">
-          <DuneDivider tone="ivory" flip />
+          <DuneDivider tone="ivory" flip settle={path} />
           <div className="mx-auto grid max-w-[var(--container-site)] items-center gap-6 px-4 pb-14 sm:px-6 md:grid-cols-[1fr_auto]">
             <div className="text-center md:text-left">
               <h2 className="text-h1 text-royal-600">{L(SECTIONS.cta)}</h2>

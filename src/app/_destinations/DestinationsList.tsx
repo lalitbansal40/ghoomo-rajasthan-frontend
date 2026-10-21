@@ -11,6 +11,7 @@ import { PlaceFilter } from '@/components/PlaceFilter';
 import { RajasthanMap } from '@/components/RajasthanMap';
 import { DuneDivider } from '@/components/motifs';
 import { Breadcrumbs, Button, DestinationCard, EmptyState, Footer, Header, SectionHeader, StickyCta, breadcrumbJsonLd } from '@/components/ui';
+import { PageScene } from '@/components/scene/PageScene';
 
 /** Map labels for places close enough that their names would collide (checked on the map). */
 const LABEL_SIDE: Record<string, 'left' | 'right' | 'above' | 'below'> = {
@@ -42,6 +43,7 @@ export async function DestinationsList({ locale }: { locale: Locale }) {
   return (
     <>
       <Header locale={locale} path={path} />
+      <PageScene kind="place" />
       <main className="mx-auto max-w-[var(--container-site)] px-4 pb-24 pt-6 sm:px-6 md:pb-12">
         <CatalogNotice unavailable={catalogState.unavailable} locale={locale} />
         <Breadcrumbs items={crumbs} locale={locale} />
@@ -88,7 +90,7 @@ export async function DestinationsList({ locale }: { locale: Locale }) {
           </PlaceFilter>
         </div>
       </main>
-      <DuneDivider />
+      <DuneDivider settle={path} />
       <Footer locale={locale} />
       <StickyCta>
         <Button variant="primary" href={bookStartLink(locale)}>

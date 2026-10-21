@@ -34,6 +34,7 @@ import {
   breadcrumbJsonLd,
   faqJsonLd,
 } from '@/components/ui';
+import { PageScene } from '@/components/scene/PageScene';
 
 /** The roads to the dunes the page shows, with their fares. */
 const ROADS_TO_DUNES: Array<[string, string]> = [
@@ -70,6 +71,7 @@ export async function SafariPage({ locale }: { locale: Locale }) {
   return (
     <>
       <Header locale={locale} path={path} />
+      <PageScene kind="safari" />
       <main className="mx-auto max-w-[var(--container-site)] px-4 pb-24 pt-6 sm:px-6 md:pb-12">
         <CatalogNotice unavailable={catalogState.unavailable} locale={locale} />
         <Breadcrumbs items={crumbs} locale={locale} />
@@ -232,7 +234,7 @@ export async function SafariPage({ locale }: { locale: Locale }) {
           </div>
         </section>
       </main>
-      <DuneDivider />
+      <DuneDivider settle={path} />
       <Footer locale={locale} />
       <StickyCta>
         <Button variant="primary" href={`#${SAFARI[0].slug}`}>

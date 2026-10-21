@@ -29,6 +29,7 @@ import {
   breadcrumbJsonLd,
   faqJsonLd,
 } from '@/components/ui';
+import { PageScene } from '@/components/scene/PageScene';
 
 /** The order the cab page lists the cities roads start from — Rajasthan first, then the cities that lead in. */
 const GROUP_ORDER = ['JAIPUR', 'UDAIPUR', 'JODHPUR', 'AJMER', 'KOTA', 'SIKAR', 'BIKANER', 'DELHI', 'DELHI_AIRPORT', 'NOIDA', 'AGRA', 'HARIDWAR', 'CHANDIGARH'];
@@ -74,6 +75,7 @@ export async function CabHub({ locale }: { locale: Locale }) {
   return (
     <>
       <Header locale={locale} path={path} />
+      <PageScene kind="cab" />
       <main className="mx-auto max-w-[var(--container-site)] px-4 pb-24 pt-6 sm:px-6 md:pb-12">
         <Breadcrumbs items={crumbs} locale={locale} />
         <SectionHeader as="h1" align="left" className="mt-6 !max-w-3xl" title={c.title} intro={c.intro} />
@@ -214,7 +216,7 @@ export async function CabHub({ locale }: { locale: Locale }) {
           </div>
         </section>
       </main>
-      <DuneDivider />
+      <DuneDivider settle={path} />
       <Footer locale={locale} />
       <StickyCta>
         <Button variant="primary" href="#book">
