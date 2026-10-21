@@ -4,7 +4,8 @@ import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Icon } from '@/components/ui/Icon';
-import { dict, type Locale } from '@/i18n';
+import type { Dictionary } from '@/i18n/en';
+import type { Locale } from '@/i18n/path';
 import { AUTO_OPEN_AFTER_MS, autoPopupAllowed, markSeen, seenRecently } from '@/lib/callback';
 import { whatsappLink } from '@/lib/site';
 
@@ -25,8 +26,10 @@ const storage = () => {
  * hellomycabs.com's popup rules (lib/callback.ts). On a phone they sit above the sticky Book bar
  * (StickyCta sets --sticky-cta-h) and step aside while somebody types in a form.
  */
-export function ContactFab({ locale }: { locale: Locale }) {
-  const t = dict(locale).contactFab;
+export type ContactFabWords = Dictionary['contactFab'] & { whatsappMessage: string };
+
+/** Words come from the layout (server): the dictionaries never travel to the browser. */
+export function ContactFab({ locale, t }: { locale: Locale; t: ContactFabWords }) {
   const path = usePathname() ?? '/';
   const [open, setOpen] = useState(false);
   const [typing, setTyping] = useState(false);
@@ -73,11 +76,11 @@ export function ContactFab({ locale }: { locale: Locale }) {
           <Icon name="phone" size={22} />
           <span aria-hidden className="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-full bg-ink px-3 py-1.5 text-sm font-semibold text-white opacity-0 shadow-card transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100 md:block">{t.hint}</span>
         </button>
-        <a href={whatsappLink(dict(locale).cta.whatsappMessage)} target="_blank" rel="noopener" aria-label={t.whatsapp} tabIndex={typing ? -1 : undefined} className={`bg-success ${round}`}>
+        <a href={whatsappLink(t.whatsappMessage)} target="_blank" rel="noopener" aria-label={t.whatsapp} tabIndex={typing ? -1 : undefined} className={`bg-success ${round}`}>
           <Icon name="whatsapp" size={26} />
         </a>
       </div>
-      {open ? <CallbackDialog locale={locale} path={path} onClose={close} /> : null}
+      {open ? <CallbackDialog locale={locale} t={t} path={path} onClose={close} /> : null}
     </>
   );
 }

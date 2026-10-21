@@ -1,12 +1,14 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useState, useTransition } from 'react';
+import { useCallback, useRef, useState, useTransition } from 'react';
 import type { City } from '@/lib/api';
 import { CityPicker } from '@/components/CityPicker';
 import { Icon } from '@/components/ui/Icon';
 import { cityName } from '@/content/cities';
-import { dict, localePath, type Locale } from '@/i18n';
+import type { Dictionary } from '@/i18n/en';
+import { localePath, type Locale } from '@/i18n/path';
+import { cityFromRow, pickerCities, type CityRow } from '@/lib/booking/cities';
 import { LOCAL_HOURS, MAX_STOPS, indiaNow, tripProblem, tripToQuery, type Trip, type TripType } from '@/lib/booking/trip';
 
 export type LocalPackage = { hours: number; km: number } | null;
@@ -18,7 +20,9 @@ export type LocalPackage = { hours: number; km: number } | null;
  */
 export function TripCard({
   locale,
-  cities,
+  t,
+  localLine,
+  chosen,
   localPackage,
   defaultTrip = 'one_way',
   defaultPickup = '',
@@ -26,14 +30,20 @@ export function TripCard({
   defaultVehicle,
 }: {
   locale: Locale;
-  cities: City[];
+  /**
+   * The widget's words, from the server — the dictionaries never travel to the browser (and a
+   * function cannot cross to it: the local-package line comes already written, `localLine`).
+   */
+  t: Omit<Dictionary['widget'], 'localPackage'>;
+  localLine: string;
+  /** The cities already filled in (a road's two ends) — the rest load when the card is used. */
+  chosen: City[];
   localPackage: LocalPackage;
   defaultTrip?: TripType;
   defaultPickup?: string;
   defaultDrop?: string;
   defaultVehicle?: string;
 }) {
-  const t = dict(locale).widget;
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [tripType, setTripType] = useState<TripType>(defaultTrip);
@@ -49,6 +59,18 @@ export function TripCard({
   const [error, setError] = useState('');
   const [today] = useState(() => indiaNow().date);
   const label = (c: City) => cityName(c.name, locale);
+  // 6,000+ cities: fetched once somebody starts on the card, never carried in the page's HTML.
+  const [loaded, setLoaded] = useState<City[] | null>(null);
+  const asked = useRef(false);
+  const loadCities = useCallback(() => {
+    if (asked.current) return;
+    asked.current = true;
+    fetch('/api/cities').then((r) => r.json()).then((b) => {
+      if (b?.ok && Array.isArray(b.data)) setLoaded((b.data as CityRow[]).map(cityFromRow));
+      else asked.current = false;
+    }).catch(() => { asked.current = false; });
+  }, []);
+  const cities = pickerCities(loaded, chosen);
 
   const tabs: [TripType, string, string][] = [
     ['one_way', t.oneWay, t.oneWayHint],
@@ -77,7 +99,7 @@ export function TripCard({
   const field = 'min-h-12 w-full rounded-lg border border-ink/20 bg-white px-3 py-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-royal';
   const fieldLabel = 'flex flex-col gap-1.5 text-sm font-semibold';
   return (
-    <form onSubmit={submit} noValidate aria-labelledby="book-heading" className="rounded-2xl border border-gold-300 bg-white/95 p-5 text-left shadow-raised sm:p-6">
+    <form onSubmit={submit} onFocusCapture={loadCities} onPointerDownCapture={loadCities} noValidate aria-labelledby="book-heading" className="rounded-2xl border border-gold-300 bg-white/95 p-5 text-left shadow-raised sm:p-6">
       <h2 id="book-heading" className="sr-only">{t.heading}</h2>
       <p className="text-xs font-bold uppercase tracking-[0.14em] text-gold-700">{t.yourTrip}</p>
       <div role="group" aria-label={t.tripType} className="mt-3 grid grid-cols-3 gap-1 rounded-xl border border-sand-200 bg-sand-50 p-1">
@@ -129,7 +151,7 @@ export function TripCard({
 
       {tripType === 'local' ? (
         <p className="mt-3 rounded-lg bg-sand-50 px-3 py-2 text-sm text-ink/80">
-          {localPackage ? t.localPackage(localPackage.hours, localPackage.km) : t.localPackageDefault}
+          {localLine}
         </p>
       ) : null}
 

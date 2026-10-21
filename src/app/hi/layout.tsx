@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { ContactFab } from '@/components/ContactFab';
+import { dict } from '@/i18n';
 import { Analytics } from '@/components/Analytics';
 import { baseMetadata } from '@/lib/seo';
 import { display } from '../fonts';
@@ -29,7 +30,7 @@ export default function HindiLayout({ children }: Readonly<{ children: React.Rea
       <head><link rel="preload" as="font" type="font/woff2" href={HINDI_HEADING_FONT} crossOrigin="anonymous" /></head>
       <body className="min-h-dvh bg-ivory text-ink">
         {children}
-        <ContactFab locale="hi" />
+        <ContactFab locale="hi" t={{ ...dict('hi').contactFab, whatsappMessage: dict('hi').cta.whatsappMessage }} />
         <Analytics />
       </body>
     </html>

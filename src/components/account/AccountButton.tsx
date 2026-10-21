@@ -3,15 +3,15 @@
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { Icon } from '@/components/ui/Icon';
-import { dict, localePath, type Locale } from '@/i18n';
+import type { Dictionary } from '@/i18n/en';
+import { localePath, type Locale } from '@/i18n/path';
 import { loginHref } from '@/lib/account';
 
 /**
  * Sign in / the account menu, in the header. Read in the browser (GET /api/auth/session) so
  * every page stays static; nobody signed in costs no request to the backend (no cookie, no call).
  */
-export function AccountButton({ locale, travel }: { locale: Locale; travel: boolean }) {
-  const t = dict(locale).account;
+export function AccountButton({ locale, travel, t }: { locale: Locale; travel: boolean; /** From the header (server). */ t: Pick<Dictionary['account'], 'login' | 'menu' | 'myBookings' | 'tripRequests' | 'logout'> }) {
   const path = usePathname() ?? '/';
   const [user, setUser] = useState<{ name: string; phone: string } | null>(null);
   const [open, setOpen] = useState(false);

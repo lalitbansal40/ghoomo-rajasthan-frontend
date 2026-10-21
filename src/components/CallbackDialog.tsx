@@ -2,7 +2,8 @@
 
 import { useEffect, useId, useRef, useState } from 'react';
 import { Icon } from '@/components/ui/Icon';
-import { dict, localePath, type Locale } from '@/i18n';
+import type { Dictionary } from '@/i18n/en';
+import { localePath, type Locale } from '@/i18n/path';
 import { postGhoomo } from '@/lib/api';
 import { callbackLead, markSeen, type CallbackStage } from '@/lib/callback';
 import { brand } from '@/lib/site';
@@ -26,8 +27,7 @@ function send(phone: string, stage: CallbackStage, path: string, name?: string) 
  * mobile number; a name if they like); always closable — Escape, the backdrop or Close; Tab
  * stays inside; focus goes back to what opened it (ContactFab).
  */
-export function CallbackDialog({ locale, path, onClose }: { locale: Locale; path: string; onClose: () => void }) {
-  const t = dict(locale).contactFab;
+export function CallbackDialog({ locale, t, path, onClose }: { locale: Locale; t: Dictionary['contactFab']; path: string; onClose: () => void }) {
   const titleId = useId();
   const [phone, setPhone] = useState('');
   const [name, setName] = useState('');

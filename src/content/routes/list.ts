@@ -1,5 +1,8 @@
 import { CITY_REGION, type RegionKey } from '../regions.ts';
 import { HMC_ROUTES } from './hmc.generated.ts';
+import { HELD, isHeldPair } from './held.ts';
+
+export { isHeldPair };
 
 /**
  * Every cab route Ghoomo Rajasthan has a page for — /cab/<slug> and /hi/cab/<slug>.
@@ -27,33 +30,7 @@ export interface GhoomoRoute {
   held?: string;
 }
 
-/**
- * Held routes. A page still opens (a shared link works, the trip can be booked), but no
- * search engine is shown it and no page links to it.
- *
- *   · The six short NCR hops hellomycabs.com holds (its src/lib/held-routes.ts): priced as if
- *     intercity — Delhi to Delhi Airport, 17 km, ₹3,000 — until the fares are decided.
- *   · Four of our own short roads where the backend's minimum one-way fare (₹2,300 in a
- *     hatchback on 16 Oct 2026) is most of the price: Ajmer to Pushkar is 13 km. A page that
- *     ranks for "Ajmer to Pushkar taxi" with that on it teaches the searcher we are expensive;
- *     a day in town (the local fare) is the better answer, and the place pages give it.
- *     Owner to decide (Phase 3 report).
- */
-const HELD: Record<string, string> = {
-  'DELHI>DELHI_AIRPORT': 'hmc-held',
-  'DELHI_AIRPORT>DELHI': 'hmc-held',
-  'DELHI>NOIDA': 'hmc-held',
-  'NOIDA>DELHI': 'hmc-held',
-  'NOIDA>DELHI_AIRPORT': 'hmc-held',
-  'DELHI_AIRPORT>NOIDA': 'hmc-held',
-  'AJMER>PUSHKAR': 'minimum-fare',
-  'KOTA>BUNDI': 'minimum-fare',
-  'UDAIPUR>NATHDWARA': 'minimum-fare',
-  'AGRA>BHARATPUR': 'minimum-fare',
-};
-
-/** A pair the backend will not book one way online (booking.controller GHOOMO_HELD_PAIRS — the same list). */
-export const isHeldPair = (pickup: string, drop: string): boolean => Object.prototype.hasOwnProperty.call(HELD, `${pickup}>${drop}`);
+/** Held routes: content/routes/held.ts (HELD, and why each one is held). */
 
 /** The 28 roads Ghoomo adds. Every pair answered /public/fare/oneway on 16 Oct 2026. */
 const GHOOMO_PAIRS: Array<[string, string]> = [

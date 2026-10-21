@@ -11,15 +11,7 @@ export const LOCALES: readonly Locale[] = ['en', 'hi'];
 export const dict = (locale: Locale): Dictionary => (locale === 'hi' ? hi : en);
 export const otherLocale = (locale: Locale): Locale => (locale === 'hi' ? 'en' : 'hi');
 
-/** '/privacy' ↔ '/hi/privacy'. Takes a path in either language. */
-export function localePath(path: string, locale: Locale): string {
-  const bare = path.replace(/^\/hi(?=\/|$)/, '') || '/';
-  if (locale === 'en') return bare;
-  return bare === '/' ? '/hi' : `/hi${bare}`;
-}
-
-/** The language a path is in. */
-export const localeOf = (path: string): Locale => (/^\/hi(\/|$)/.test(path) ? 'hi' : 'en');
+export { localePath, localeOf } from './path';
 
 export { formatRupees } from './money';
 

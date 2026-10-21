@@ -9,17 +9,22 @@ type User = { name?: string; phone?: string };
 /** The signed-in person as the page may see them: a name and the ten-digit number, nothing else. */
 const publicUser = (u: User | undefined) => ({ name: u?.name ?? '', phone: indianMobile(u?.phone ?? '') ?? '' });
 
-/** Who is signed in on Ghoomo Rajasthan — 401 when nobody is (or an old Hello My Cab session: cleared). */
+/**
+ * Who is signed in on Ghoomo Rajasthan — `user: null` when nobody is (an old Hello My Cab session
+ * is cleared too). Never a 401: the header asks on every page, and nobody signed in is the usual
+ * answer, not an error in the visitor's console.
+ */
 export async function GET() {
+  const nobody = () => NextResponse.json({ ok: true, data: { user: null } }, { headers: noStore });
   const token = await getSession();
-  if (!token) return NextResponse.json({ ok: false, error: { code: 'AUTH_REQUIRED' } }, { status: 401, headers: noStore });
+  if (!token) return nobody();
   try {
     const upstream = await fetch(`${env.apiBaseUrl}/ghoomo/auth/me`, { cache: 'no-store', headers: { accept: 'application/json', authorization: `Bearer ${token}` } });
     const body = await upstream.json().catch(() => null);
     if (upstream.status === 401 || upstream.status === 403) {
       // Signed out, blocked, or a session from before Ghoomo accounts (a Hello My Cab token).
       await clearSession();
-      return NextResponse.json({ ok: false, error: { code: body?.error?.code ?? 'AUTH_REQUIRED' } }, { status: 401, headers: noStore });
+      return nobody();
     }
     if (!upstream.ok || !body?.ok) return NextResponse.json({ ok: false, error: { code: 'SESSION_UNAVAILABLE' } }, { status: 502, headers: noStore });
     return NextResponse.json({ ok: true, data: { user: publicUser(body.data?.user) } }, { headers: noStore });

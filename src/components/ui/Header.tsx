@@ -69,7 +69,7 @@ export function Header({ locale, path }: { locale: Locale; /** This page's path 
         </nav>
         <div className="ml-auto flex items-center gap-1.5">
           {/* WhatsApp lives on the floating button (ContactFab); here, the account. */}
-          <AccountButton locale={locale} travel={env.travelEnabled} />
+          <AccountButton locale={locale} travel={env.travelEnabled} t={{ login: t.account.login, menu: t.account.menu, myBookings: t.account.myBookings, tripRequests: t.account.tripRequests, logout: t.account.logout }} />
           <a
             href={brand.phoneHref}
             aria-label={`${t.cta.call} ${brand.phone}`}
