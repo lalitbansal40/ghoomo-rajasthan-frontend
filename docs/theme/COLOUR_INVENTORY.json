@@ -1,0 +1,802 @@
+[
+  {
+    "file": "src/app/(en)/c/[target]/page.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/(en)/contact/page.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/(en)/layout.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [
+      25
+    ],
+    "intentionalException": "Fixed browser chrome fallback/brand plaque/print colour"
+  },
+  {
+    "file": "src/app/(en)/photo-credits/page.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/(en)/privacy/page.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/(en)/refund/page.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/(en)/terms/page.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/_about/AboutPage.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/_account/LoginPage.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/_booking/BookingPage.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/_booking/CatalogBookingPage.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/_cab/CabHub.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/_cab/RoutePage.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/_destinations/PlacePage.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/_home/ErrorView.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/_home/Home.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/_home/NotFoundView.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/_og/card.tsx",
+    "migration": "role-neutral, fixed artwork or unchanged geometry",
+    "literalColourLines": [
+      103,
+      132,
+      133,
+      142,
+      153,
+      163,
+      175,
+      187,
+      212
+    ],
+    "intentionalException": "Fixed OG/social card, independent of visitor appearance"
+  },
+  {
+    "file": "src/app/_safari/SafariPage.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/_styleguide/StyleguideView.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [
+      137,
+      230
+    ],
+    "intentionalException": "Raw palette swatch/contrast illustration"
+  },
+  {
+    "file": "src/app/_tours/TourPage.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/_tours/ToursList.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/_travel/TravelPages.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/global-not-found.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/globals.css",
+    "migration": "semantic roles",
+    "literalColourLines": [
+      89,
+      95
+    ],
+    "intentionalException": "Fixed browser chrome fallback/brand plaque/print colour"
+  },
+  {
+    "file": "src/app/hi/contact/page.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/hi/layout.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [
+      23
+    ],
+    "intentionalException": "Fixed browser chrome fallback/brand plaque/print colour"
+  },
+  {
+    "file": "src/app/hi/privacy/page.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/hi/refund/page.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/hi/terms/page.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/app/manifest.ts",
+    "migration": "role-neutral, fixed artwork or unchanged geometry",
+    "literalColourLines": [
+      11,
+      12
+    ],
+    "intentionalException": "Fixed browser chrome fallback/brand plaque/print colour"
+  },
+  {
+    "file": "src/app/preview/[locale]/packages/[slug]/page.tsx",
+    "migration": "role-neutral, fixed artwork or unchanged geometry",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/BookingReturn.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/CallbackDialog.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/CatalogNotice.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/CityPicker.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ContactFab.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/DocPage.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/EnquiryForm.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/LocalFareTable.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ManagedGallery.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/MyBookings.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/OnewayFareTable.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/PerKmTable.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/PlaceFilter.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/RajasthanMap.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/RouteFilter.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/TourFilter.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/VehiclePicker.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/account/AccountButton.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/account/SignInForm.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/booking/BookingFlow.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/booking/BookingWidget.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/booking/CatalogBooking.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/booking/TripCard.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/motifs/Camel.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/motifs/DuneDivider.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/motifs/FortSun.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/motifs/Jaali.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/motifs/MehrabFrame.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/motifs/SparkleDivider.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/motifs/paths.generated.ts",
+    "migration": "role-neutral, fixed artwork or unchanged geometry",
+    "literalColourLines": [
+      4,
+      5,
+      8
+    ],
+    "intentionalException": "Generated geometry/brand artwork; wrappers use currentColor or scoped paint"
+  },
+  {
+    "file": "src/components/scene/DesertScene.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/scene/PageScene.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/travel/TravelBookingBuilder.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/travel/TravelBookings.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/travel/TravelCustomRequest.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/travel/TravelLogin.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/travel/TravelQuotes.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/Alert.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/Badge.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/Breadcrumbs.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/Button.tsx",
+    "migration": "role-neutral, fixed artwork or unchanged geometry",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/Chip.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/DestinationCard.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/EmptyState.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/FAQ.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/Footer.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/Header.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/IncludesList.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/ItineraryTimeline.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/LangSwitch.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/Loader.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/MobileMenu.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/PackageCard.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/PhotoCredit.tsx",
+    "migration": "role-neutral, fixed artwork or unchanged geometry",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/PriceTagView.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/RouteCard.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/SectionHeader.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/Stars.tsx",
+    "migration": "role-neutral, fixed artwork or unchanged geometry",
+    "literalColourLines": [
+      15,
+      16,
+      21
+    ],
+    "intentionalException": "Fixed decorative rating stars; text separately readable"
+  },
+  {
+    "file": "src/components/ui/StickyCta.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/Toast.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/button-style.ts",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/form/Field.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/form/Stepper.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/components/ui/form/inputs.tsx",
+    "migration": "semantic roles",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/content/places/chittorgarh.ts",
+    "migration": "role-neutral, fixed artwork or unchanged geometry",
+    "literalColourLines": [],
+    "intentionalException": null
+  },
+  {
+    "file": "src/design/tokens.css",
+    "migration": "semantic roles",
+    "literalColourLines": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154,
+      155,
+      156,
+      157,
+      158,
+      159,
+      165,
+      166,
+      167,
+      168,
+      169,
+      170,
+      171,
+      172,
+      173,
+      174,
+      175,
+      176,
+      177,
+      178,
+      179,
+      180,
+      181,
+      182,
+      183,
+      184,
+      185,
+      186,
+      187,
+      188,
+      189,
+      190,
+      191,
+      192,
+      193,
+      194,
+      195,
+      196,
+      197,
+      198,
+      199,
+      200,
+      201,
+      202,
+      203,
+      204,
+      205,
+      206,
+      207,
+      208,
+      209,
+      210,
+      215,
+      216,
+      217,
+      218,
+      219,
+      220,
+      221,
+      222,
+      223,
+      224,
+      225,
+      226,
+      227,
+      228,
+      229,
+      230,
+      231,
+      232,
+      233,
+      234,
+      235,
+      236,
+      237,
+      238,
+      239,
+      240,
+      241,
+      242,
+      243,
+      244,
+      245,
+      246,
+      247,
+      248,
+      249,
+      250,
+      251,
+      252,
+      253,
+      254,
+      255,
+      256,
+      257,
+      258,
+      259,
+      260
+    ],
+    "intentionalException": "Generated semantic light/dark roles plus fixed brand primitives; source of truth is tokens.json"
+  },
+  {
+    "file": "src/proxy.ts",
+    "migration": "role-neutral, fixed artwork or unchanged geometry",
+    "literalColourLines": [
+      20
+    ],
+    "intentionalException": "Fixed browser chrome fallback/brand plaque/print colour"
+  }
+]

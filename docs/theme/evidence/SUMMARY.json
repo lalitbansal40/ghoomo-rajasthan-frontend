@@ -1,0 +1,636 @@
+{
+  "date": "2026-10-22",
+  "baselineCommit": "1b78554",
+  "sourceRevision": "503af616f98c7e209f25b6845b5fb4c1a0079c82a58f8d33a8968e6118d174d5",
+  "localOnly": true,
+  "deploymentVerified": false,
+  "tests": {
+    "pass": 125,
+    "fail": 0,
+    "themeTests": 6,
+    "bootstrapCombinations": 336
+  },
+  "browser": {
+    "pass": true,
+    "routeViews": 120,
+    "paths": [
+      "/",
+      "/about",
+      "/booking",
+      "/cab/jaipur-to-udaipur",
+      "/contact",
+      "/desert-safari",
+      "/destinations/jaipur",
+      "/hi",
+      "/hi/about",
+      "/hi/booking",
+      "/hi/cab/jaipur-to-udaipur",
+      "/hi/contact",
+      "/hi/desert-safari",
+      "/hi/destinations/jaipur",
+      "/hi/login",
+      "/hi/packages",
+      "/hi/packages/lakes-and-forts",
+      "/hi/styleguide",
+      "/login",
+      "/missing-theme-page",
+      "/my-bookings",
+      "/packages",
+      "/packages/lakes-and-forts",
+      "/packages/missing-theme-page",
+      "/photo-credits",
+      "/preview/en/packages/missing-theme-page",
+      "/privacy",
+      "/styleguide",
+      "/tours",
+      "/travel-bookings"
+    ],
+    "widths": [
+      360,
+      1280
+    ],
+    "seriousOrCritical": 0,
+    "lowerSeverity": [
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "viewOccurrences": 8
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "viewOccurrences": 111
+      }
+    ]
+  },
+  "photos": {
+    "own": {
+      "pass": true,
+      "views": 16
+    },
+    "fallback": {
+      "pass": true,
+      "views": 16
+    }
+  },
+  "release": {
+    "approvedPaths": 164,
+    "approvedEntries": 328,
+    "sourceFiles": 451
+  },
+  "seo": {
+    "sourcePages": 349,
+    "navigationPages": 367,
+    "reachableRequired": 328
+  },
+  "pricing": {
+    "tours": 6,
+    "safariLocations": 4,
+    "readOnlyFareComparison": "pass"
+  },
+  "rawEvidenceRoot": "/private/tmp/ghoomo-theme",
+  "remainingExternalAcceptance": [
+    "Fresh production build/deployment and live CSP/source checks",
+    "Owner visual acceptance and real Safari/iOS/Android/native autofill",
+    "Authenticated positive inventory/preview/provider checkout with appropriate test access"
+  ],
+  "extendedBrowser": {
+    "passed": true,
+    "cases": [
+      [
+        "throttledPaint",
+        "cpu",
+        "frames"
+      ],
+      [
+        "throttledPaint",
+        "cpu",
+        "frames"
+      ],
+      [
+        "simulatedHiddenResumeAndClockJump",
+        "actualLocaleReload",
+        "storageSentinel",
+        "meta",
+        "reducedMotion"
+      ],
+      [
+        "themeSwitchScrollAndHeightStable",
+        "unrelatedStorageIgnored",
+        "simulatedPersistedPageShow"
+      ],
+      [
+        "forcedColoursEmulated",
+        "mode",
+        "equivalent400PercentReflowCssWidth",
+        "nativeFocus",
+        "keyboardSpaceEscape"
+      ],
+      [
+        "forcedColoursEmulated",
+        "mode",
+        "equivalent400PercentReflowCssWidth",
+        "nativeFocus",
+        "keyboardSpaceEscape"
+      ]
+    ],
+    "devStrictMode": {
+      "passed": true,
+      "devStrictModeReplay": {
+        "scheduled": 4,
+        "cancelled": 3,
+        "pending": 1
+      },
+      "afterAuto": {
+        "scheduled": 5,
+        "cancelled": 4,
+        "pending": 1
+      },
+      "typedInputRetained": true,
+      "errors": []
+    }
+  },
+  "sizes": {
+    "bootstrapBytes": 419,
+    "bootstrapGzipBytes": 288,
+    "generatedTokenGzipDelta": 1283
+  },
+  "performance": {
+    "passed": true,
+    "baselineReports": 21,
+    "acceptedReports": 42,
+    "lighthouseVersion": "12.8.2",
+    "results": [
+      {
+        "theme": "light",
+        "path": "/",
+        "runs": 3,
+        "method": "median",
+        "performance": 95,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "lcpMs": 2988.224,
+        "cls": 0,
+        "tbtMs": 3,
+        "scriptBytes": 171188,
+        "lcpDeltaMs": 71.23940000000039,
+        "scriptDeltaBytes": 3198,
+        "cssDeltaBytes": 1038,
+        "rawPerformanceRange": [
+          94,
+          95
+        ],
+        "rawLcpRangeMs": [
+          2986.8442,
+          3023.576225
+        ],
+        "evidenceDirectory": "/private/tmp/ghoomo-theme/performance-final"
+      },
+      {
+        "theme": "light",
+        "path": "/packages",
+        "runs": 3,
+        "method": "median",
+        "performance": 95,
+        "accessibility": 98,
+        "bestPractices": 100,
+        "lcpMs": 2994.8569500000003,
+        "cls": 0,
+        "tbtMs": 4,
+        "scriptBytes": 171188,
+        "lcpDeltaMs": 3.88287500000024,
+        "scriptDeltaBytes": 3198,
+        "cssDeltaBytes": 1038,
+        "rawPerformanceRange": [
+          95,
+          95
+        ],
+        "rawLcpRangeMs": [
+          2987.2437250000003,
+          2996.3945000000003
+        ],
+        "evidenceDirectory": "/private/tmp/ghoomo-theme/performance-final"
+      },
+      {
+        "theme": "light",
+        "path": "/packages/lakes-and-forts",
+        "runs": 3,
+        "method": "median",
+        "performance": 96,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "lcpMs": 2768.172275,
+        "cls": 0,
+        "tbtMs": 4,
+        "scriptBytes": 174474,
+        "lcpDeltaMs": 83.1074749999998,
+        "scriptDeltaBytes": 3215,
+        "cssDeltaBytes": 1038,
+        "rawPerformanceRange": [
+          95,
+          96
+        ],
+        "rawLcpRangeMs": [
+          2766.4717499999997,
+          2933.275025
+        ],
+        "evidenceDirectory": "/private/tmp/ghoomo-theme/performance-final"
+      },
+      {
+        "theme": "light",
+        "path": "/desert-safari",
+        "runs": 3,
+        "method": "median",
+        "performance": 95,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "lcpMs": 2909.3770499999996,
+        "cls": 0,
+        "tbtMs": 1.5,
+        "scriptBytes": 170273,
+        "lcpDeltaMs": 71.06099999999924,
+        "scriptDeltaBytes": 3200,
+        "cssDeltaBytes": 1038,
+        "rawPerformanceRange": [
+          94,
+          95
+        ],
+        "rawLcpRangeMs": [
+          2908.9254499999997,
+          3158.885
+        ],
+        "evidenceDirectory": "/private/tmp/ghoomo-theme/performance-final"
+      },
+      {
+        "theme": "light",
+        "path": "/destinations/jaipur",
+        "runs": 3,
+        "method": "median",
+        "performance": 95,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "lcpMs": 2844.27185,
+        "cls": 0,
+        "tbtMs": 6,
+        "scriptBytes": 177080,
+        "lcpDeltaMs": 6.201100000000224,
+        "scriptDeltaBytes": 3214,
+        "cssDeltaBytes": 1038,
+        "rawPerformanceRange": [
+          95,
+          95
+        ],
+        "rawLcpRangeMs": [
+          2835.36445,
+          2936.7464
+        ],
+        "evidenceDirectory": "/private/tmp/ghoomo-theme/performance-final"
+      },
+      {
+        "theme": "light",
+        "path": "/cab/jaipur-to-udaipur",
+        "runs": 3,
+        "method": "median",
+        "performance": 96,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "lcpMs": 2838.082,
+        "cls": 0,
+        "tbtMs": 3,
+        "scriptBytes": 180896,
+        "lcpDeltaMs": 1.4405499999998028,
+        "scriptDeltaBytes": 3219,
+        "cssDeltaBytes": 1038,
+        "rawPerformanceRange": [
+          96,
+          96
+        ],
+        "rawLcpRangeMs": [
+          2835.70955,
+          2841.04225
+        ],
+        "evidenceDirectory": "/private/tmp/ghoomo-theme/performance-final"
+      },
+      {
+        "theme": "light",
+        "path": "/hi",
+        "runs": 3,
+        "method": "median",
+        "performance": 95,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "lcpMs": 2998.7101499999994,
+        "cls": 0,
+        "tbtMs": 8,
+        "scriptBytes": 171188,
+        "lcpDeltaMs": 8.695250000000215,
+        "scriptDeltaBytes": 3202,
+        "cssDeltaBytes": 1038,
+        "rawPerformanceRange": [
+          94,
+          95
+        ],
+        "rawLcpRangeMs": [
+          2995.6526,
+          3127.867
+        ],
+        "evidenceDirectory": "/private/tmp/ghoomo-theme/performance-final"
+      },
+      {
+        "theme": "dark",
+        "path": "/",
+        "runs": 3,
+        "method": "median",
+        "performance": 94,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "lcpMs": 3024.389,
+        "cls": 0,
+        "tbtMs": 7.5,
+        "scriptBytes": 171188,
+        "lcpDeltaMs": 107.40440000000035,
+        "scriptDeltaBytes": 3198,
+        "cssDeltaBytes": 1038,
+        "rawPerformanceRange": [
+          93,
+          94
+        ],
+        "rawLcpRangeMs": [
+          3014.4484250000005,
+          3179.7879249999996
+        ],
+        "evidenceDirectory": "/private/tmp/ghoomo-theme/performance-final"
+      },
+      {
+        "theme": "dark",
+        "path": "/packages",
+        "runs": 3,
+        "method": "median",
+        "performance": 95,
+        "accessibility": 98,
+        "bestPractices": 100,
+        "lcpMs": 2991.073925,
+        "cls": 0,
+        "tbtMs": 3,
+        "scriptBytes": 171188,
+        "lcpDeltaMs": 0.09985000000006039,
+        "scriptDeltaBytes": 3198,
+        "cssDeltaBytes": 1038,
+        "rawPerformanceRange": [
+          95,
+          95
+        ],
+        "rawLcpRangeMs": [
+          2989.329025,
+          2994.850375
+        ],
+        "evidenceDirectory": "/private/tmp/ghoomo-theme/performance-final"
+      },
+      {
+        "theme": "dark",
+        "path": "/packages/lakes-and-forts",
+        "runs": 3,
+        "method": "median",
+        "performance": 96,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "lcpMs": 2768.380425,
+        "cls": 0,
+        "tbtMs": 3.5,
+        "scriptBytes": 174474,
+        "lcpDeltaMs": 83.31562499999973,
+        "scriptDeltaBytes": 3215,
+        "cssDeltaBytes": 1038,
+        "rawPerformanceRange": [
+          95,
+          96
+        ],
+        "rawLcpRangeMs": [
+          2763.5305999999996,
+          2862.66885
+        ],
+        "evidenceDirectory": "/private/tmp/ghoomo-theme/performance-final"
+      },
+      {
+        "theme": "dark",
+        "path": "/desert-safari",
+        "runs": 3,
+        "method": "median",
+        "performance": 95,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "lcpMs": 2912.31035,
+        "cls": 0,
+        "tbtMs": 5,
+        "scriptBytes": 170273,
+        "lcpDeltaMs": 73.99429999999984,
+        "scriptDeltaBytes": 3200,
+        "cssDeltaBytes": 1038,
+        "rawPerformanceRange": [
+          95,
+          96
+        ],
+        "rawLcpRangeMs": [
+          2843.5255500000003,
+          2923.0722
+        ],
+        "evidenceDirectory": "/private/tmp/ghoomo-theme/performance-final"
+      },
+      {
+        "theme": "dark",
+        "path": "/destinations/jaipur",
+        "runs": 3,
+        "method": "median",
+        "performance": 95,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "lcpMs": 2847.5851999999995,
+        "cls": 0,
+        "tbtMs": 6,
+        "scriptBytes": 177080,
+        "lcpDeltaMs": 9.51444999999967,
+        "scriptDeltaBytes": 3214,
+        "cssDeltaBytes": 1038,
+        "rawPerformanceRange": [
+          95,
+          96
+        ],
+        "rawLcpRangeMs": [
+          2784.429,
+          2891.46075
+        ],
+        "evidenceDirectory": "/private/tmp/ghoomo-theme/performance-final"
+      },
+      {
+        "theme": "dark",
+        "path": "/cab/jaipur-to-udaipur",
+        "runs": 3,
+        "method": "median",
+        "performance": 95,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "lcpMs": 2864.22015,
+        "cls": 0,
+        "tbtMs": 13,
+        "scriptBytes": 180896,
+        "lcpDeltaMs": 27.578700000000026,
+        "scriptDeltaBytes": 3219,
+        "cssDeltaBytes": 1038,
+        "rawPerformanceRange": [
+          95,
+          95
+        ],
+        "rawLcpRangeMs": [
+          2861.2522000000004,
+          2867.89735
+        ],
+        "evidenceDirectory": "/private/tmp/ghoomo-theme/performance-final"
+      },
+      {
+        "theme": "dark",
+        "path": "/hi",
+        "runs": 3,
+        "method": "median",
+        "performance": 95,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "lcpMs": 2999.5127,
+        "cls": 0,
+        "tbtMs": 5,
+        "scriptBytes": 171188,
+        "lcpDeltaMs": 9.497800000001007,
+        "scriptDeltaBytes": 3202,
+        "cssDeltaBytes": 1038,
+        "rawPerformanceRange": [
+          94,
+          95
+        ],
+        "rawLcpRangeMs": [
+          2993.68325,
+          3084.9014000000006
+        ],
+        "evidenceDirectory": "/private/tmp/ghoomo-theme/performance-recheck-dark-hi"
+      }
+    ],
+    "originalFullRun": {
+      "passed": false,
+      "failure": [
+        {
+          "theme": "dark",
+          "path": "/hi",
+          "runs": 3,
+          "method": "median",
+          "performance": 94,
+          "accessibility": 100,
+          "bestPractices": 100,
+          "lcpMs": 3119.6556499999997,
+          "cls": 0,
+          "tbtMs": 21,
+          "scriptBytes": 171188,
+          "lcpDeltaMs": 129.64075000000048,
+          "scriptDeltaBytes": 3202
+        }
+      ],
+      "evidenceDirectory": "/private/tmp/ghoomo-theme/performance-final"
+    },
+    "replacement": {
+      "case": "dark /hi",
+      "reason": "Machine contention observed; original raw scores92/94/94 with TBT20.5\u201393ms. Replaced whole three-run case on same unchanged artifact after task dev probes stopped. Original data retained; no individual best metric selection.",
+      "evidenceDirectory": "/private/tmp/ghoomo-theme/performance-recheck-dark-hi"
+    },
+    "finalAndRecheckReportsRetained": 45,
+    "earlierHarnessTrials": "Retained separately under performance/; excluded from accepted measurements",
+    "javascriptSoftTargetMet": false,
+    "javascriptHardLimitMet": true,
+    "cssTargetMet": true
+  },
+  "cleanup": {
+    "passed": true,
+    "stoppedOwnedProcessIds": [
+      9909,
+      16902,
+      95592,
+      95593
+    ],
+    "closedPorts": [
+      3320,
+      3321,
+      4219,
+      4220
+    ],
+    "fixtureMongoStopped": true,
+    "temporaryPhotoDistRemoved": true,
+    "productionConfigDiff": false,
+    "nextGeneratedTypeReferences": "./.next/types/",
+    "commitPushDeploy": false
+  },
+  "finalArtifactSmoke": {
+    "passed": true,
+    "results": [
+      {
+        "mode": "light",
+        "scopes": [
+          {
+            "theme": "light",
+            "bg": "rgb(251, 247, 239)",
+            "colour": "rgb(27, 27, 31)"
+          },
+          {
+            "theme": "dark",
+            "bg": "rgb(17, 21, 31)",
+            "colour": "rgb(233, 226, 214)"
+          }
+        ],
+        "savedModeUnaffected": true
+      },
+      {
+        "mode": "dark",
+        "scopes": [
+          {
+            "theme": "light",
+            "bg": "rgb(251, 247, 239)",
+            "colour": "rgb(27, 27, 31)"
+          },
+          {
+            "theme": "dark",
+            "bg": "rgb(17, 21, 31)",
+            "colour": "rgb(233, 226, 214)"
+          }
+        ],
+        "savedModeUnaffected": true
+      }
+    ]
+  },
+  "verificationRepositorySnapshot": {
+    "website": {
+      "branch": "main",
+      "head": "1b78554",
+      "themeChanges": "uncommitted"
+    },
+    "backend": {
+      "branch": "main",
+      "head": "61bf164",
+      "featureCode": "unchanged"
+    },
+    "app": {
+      "branch": "main",
+      "head": "a21fae8",
+      "taskChange": "generated token file only",
+      "ownerChanges": "pubspec version and iOS SwiftPM preserved"
+    },
+    "helloMyCabsWebsite": {
+      "branch": "main",
+      "head": "b424cbf",
+      "taskChanges": false,
+      "ownerFile": "untracked docs/seo/CHATGPT_HANDOVER.md preserved"
+    }
+  },
+  "localCommitWorkflow": {
+    "authorization": "Owner explicitly requested local commits after verification",
+    "websiteImplementation": "f73177c",
+    "appTokenSync": "0bfd69f",
+    "websiteAuditAndGeneratedRelease": "Separate subsequent commits; see git log",
+    "pushed": false,
+    "deployed": false
+  }
+}
