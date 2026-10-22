@@ -9,9 +9,9 @@ import { motionAttr } from '@/lib/motion';
  * readers.
  */
 const TONES = {
-  sand: ['#E8A93A', '#F3D9A4'],
-  gold: ['#C08A22', '#E0A93B'],
-  ivory: ['#F3D9A4', '#FBF7EF'],
+  sand: ['var(--gr-dune-back)', 'var(--gr-alternate)'],
+  gold: ['var(--gr-ornament)', 'var(--gr-ornament)'],
+  ivory: ['var(--gr-dune-far)', 'var(--gr-page)'],
 } as const;
 
 export function DuneDivider({

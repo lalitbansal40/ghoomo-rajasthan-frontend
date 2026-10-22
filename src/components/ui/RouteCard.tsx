@@ -28,16 +28,16 @@ export function RouteCard({
   return (
     <Link
       href={href}
-      className="gr-shine gr-lift group flex min-w-0 items-center gap-4 rounded-[var(--radius-md)] bg-white p-4 shadow-card ring-1 ring-black/5 hover:ring-royal-200"
+      className="gr-shine gr-lift group flex min-w-0 items-center gap-4 rounded-[var(--radius-md)] bg-surface p-4 shadow-card ring-1 ring-line/5 hover:ring-edge-strong"
     >
-      <span aria-hidden className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-royal-50 text-royal-600">
+      <span aria-hidden className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-tint text-link">
         <Icon name="car" size={22} />
       </span>
       <div className="min-w-0 flex-1">
-        <p className="text-h3 truncate text-royal-700">
-          {from} <span className="text-gold-700">→</span> {to}
+        <p className="text-h3 truncate text-heading">
+          {from} <span className="text-gold-text">→</span> {to}
         </p>
-        <p className="text-small text-muted">
+        <p className="text-small text-subtle">
           {[km ? t.pkg.km(km) : null, fromRupees ? t.fare.fromAmount(formatRupees(fromRupees)) : null].filter(Boolean).join(' · ')}
           {sample ? (
             <Badge tone="sample" className="ml-2 align-middle">
@@ -46,7 +46,7 @@ export function RouteCard({
           ) : null}
         </p>
       </div>
-      <Icon name="arrow" className="text-royal-600 transition-transform group-hover:translate-x-0.5" />
+      <Icon name="arrow" className="text-link transition-transform group-hover:translate-x-0.5" />
     </Link>
   );
 }

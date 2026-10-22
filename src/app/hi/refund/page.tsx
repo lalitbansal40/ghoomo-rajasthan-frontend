@@ -66,11 +66,11 @@ export default function HindiRefundPage() {
 
       <DocSection title="सवाल">
         <p>
-          <a className="font-semibold text-royal underline" href={brand.phoneHref}>
+          <a className="font-semibold text-link underline" href={brand.phoneHref}>
             {brand.phone}
           </a>{' '}
           पर फ़ोन या WhatsApp करें, और{' '}
-          <Link className="text-royal underline" href="/hi/terms">
+          <Link className="text-link underline" href="/hi/terms">
             शर्तें
           </Link>{' '}
           देखें।

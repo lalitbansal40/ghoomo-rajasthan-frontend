@@ -21,7 +21,7 @@ export function TravelBookingBuilder({ locale, products, initial }: {
   const command = useRef<{ body: string; key: string } | null>(null); const selection = useRef(0);
   const money = (paise: number) => new Intl.NumberFormat(hi ? 'hi-IN' : 'en-IN', { style: 'currency', currency: 'INR' }).format(paise / 100);
   const total = cart.reduce((n, i) => n + (travelItemTotal(i.product.kind, i.offer, i.input) ?? 0), 0);
-  const field = 'mt-1 min-h-12 w-full rounded-lg border border-royal/20 bg-white px-3';
+  const field = 'mt-1 min-h-12 w-full rounded-lg border border-control bg-surface px-3';
   async function choose(slug: string) {
     const requestId = ++selection.current; setError(''); setBusy(true); setProduct(null); setAccepted(false);
     try {
@@ -60,7 +60,7 @@ export function TravelBookingBuilder({ locale, products, initial }: {
     finally { setBusy(false); }
   }
   return <div className="space-y-8">
-    <section className="space-y-4 rounded-xl border border-gold-300 bg-sand/20 p-5" aria-label={hi ? 'यात्रा के विकल्प' : 'Trip options'}>
+    <section className="space-y-4 rounded-xl border border-edge bg-alternate/20 p-5" aria-label={hi ? 'यात्रा के विकल्प' : 'Trip options'}>
       <label className="block font-semibold">{hi ? 'टूर, ग्रुप या होटल चुनें' : 'Choose a tour, group departure or hotel'}
         <select className={field} value={product?.slug ?? ''} disabled={busy} onChange={e => void choose(e.target.value)}>
           <option value="" disabled>{hi ? 'विकल्प चुनें' : 'Select an option'}</option>
@@ -80,7 +80,7 @@ export function TravelBookingBuilder({ locale, products, initial }: {
           {(['adults', 'children', 'infants'] as const).map(k => <label key={k}>{({ adults: hi ? 'वयस्क' : 'Adults', children: hi ? 'बच्चे' : 'Children', infants: hi ? 'शिशु' : 'Infants' })[k]}<input className={field} type="number" min={k === 'adults' ? 1 : 0} max={offer.maxParty} value={input[k]} onChange={e => setInput({ ...input, [k]: Number(e.target.value) })} /></label>)}
         </div>
         {product.kind === 'hotel' ? <fieldset className="space-y-4"><legend className="font-semibold">{hi ? 'हर कमरे में यात्रियों की जानकारी' : 'Occupants in each room'}</legend>
-          {input.rooms.map((room, i) => <div key={i} className="rounded-lg border bg-white p-3">
+          {input.rooms.map((room, i) => <div key={i} className="rounded-lg border bg-surface p-3">
             <label>{hi ? `कमरा ${i + 1}: वयस्क` : `Room ${i + 1}: adults`}<input type="number" min={1} max={offer.roomAdults} className={field} value={room.adults} onChange={e => setInput({ ...input, rooms: input.rooms.map((r, j) => j === i ? { ...r, adults: Number(e.target.value) } : r) })} /></label>
             <label className="mt-3 block">{hi ? 'बच्चों/शिशुओं की उम्र (कॉमा से अलग)' : 'Child/infant ages (comma separated)'}<input className={field} key={`${product.id}:${offer.id}:${i}`} defaultValue={room.childAges.join(',')} inputMode="numeric" placeholder={hi ? 'कोई बच्चा नहीं तो खाली छोड़ें' : 'Leave blank if none'} onBlur={e => setInput({ ...input, rooms: input.rooms.map((r, j) => j === i ? { ...r, childAges: e.target.value.trim() === '' ? [] : e.target.value.split(',').map(s => s.trim() === '' ? NaN : Number(s.trim())) } : r) })} /></label>
             {input.rooms.length > 1 ? <button type="button" className="mt-3 underline" onClick={() => setInput({ ...input, rooms: input.rooms.filter((_, j) => i !== j) })}>{hi ? 'कमरा हटाएँ' : 'Remove room'}</button> : null}
@@ -89,19 +89,19 @@ export function TravelBookingBuilder({ locale, products, initial }: {
           <p className="text-sm">{hi ? 'कमरों के यात्री ऊपर दिए कुल से मिलने चाहिए।' : 'Room occupants must match the total party entered above.'}</p>
         </fieldset> : null}
         <details><summary className="cursor-pointer font-semibold">{hi ? 'भुगतान और रद्द करने की शर्तें' : 'Payment and cancellation terms'}</summary><p className="mt-3 whitespace-pre-wrap">{offer.terms[locale]}</p><p className="mt-3 whitespace-pre-wrap">{offer.cancellation[locale]}</p></details>
-        <button type="button" className="min-h-12 rounded-lg bg-royal px-5 py-3 font-semibold text-white disabled:opacity-50" disabled={!checkout || busy} onClick={add}>{hi ? 'अपनी यात्रा में जोड़ें' : 'Add to your trip'}</button>
+        <button type="button" className="min-h-12 rounded-lg bg-primary px-5 py-3 font-semibold text-white disabled:opacity-50" disabled={!checkout || busy} onClick={add}>{hi ? 'अपनी यात्रा में जोड़ें' : 'Add to your trip'}</button>
         {!checkout ? <p role="status">{hi ? 'ऑनलाइन चेकआउट अभी उपलब्ध नहीं है।' : 'Online checkout is not available yet.'}</p> : null}
       </> : null}
     </section>
-    {cart.length ? <section className="space-y-4 rounded-xl border border-royal/20 bg-white p-5" aria-label={hi ? 'आपकी यात्रा' : 'Your trip'}>
-      <h2 className="text-h3 text-royal">{hi ? 'आपकी यात्रा' : 'Your trip'}</h2>
+    {cart.length ? <section className="space-y-4 rounded-xl border border-link/20 bg-surface p-5" aria-label={hi ? 'आपकी यात्रा' : 'Your trip'}>
+      <h2 className="text-h3 text-link">{hi ? 'आपकी यात्रा' : 'Your trip'}</h2>
       <ol className="space-y-4">{cart.map((i, n) => <li className="border-b pb-3" key={n}><strong>{i.product.content[locale].title}</strong><p>{i.input.startDate} → {i.input.endDate}</p><p>{money(travelItemTotal(i.product.kind, i.offer, i.input) ?? 0)}</p><details><summary className="cursor-pointer underline">{hi ? 'इस विकल्प की शर्तें' : 'Terms for this item'}</summary><p className="whitespace-pre-wrap">{i.offer.terms[locale]}</p><p className="mt-3 whitespace-pre-wrap">{i.offer.cancellation[locale]}</p></details><button type="button" className="min-h-11 underline" disabled={busy} onClick={() => { setCart(cart.filter((_, j) => j !== n)); setAccepted(false); }}>{hi ? 'हटाएँ' : 'Remove'}</button></li>)}</ol>
       <p className="text-lg font-bold">{hi ? 'कुल ऑनलाइन भुगतान' : 'Total online payment'}: {money(total)}</p>
       <p>{hi ? 'अगले चरण में उपलब्धता दोबारा जाँची जाएगी। भुगतान से पहले बुकिंग की पुष्टि नहीं होगी।' : 'Availability is rechecked in the next step. Your booking is confirmed after verified payment against available inventory.'}</p>
       <label className="flex items-start gap-3"><input type="checkbox" className="mt-1 size-5" checked={accepted} onChange={e => setAccepted(e.target.checked)} /><span>{hi ? 'मैंने चुने गए हर विकल्प की भुगतान और रद्द करने की शर्तें पढ़कर स्वीकार की हैं।' : 'I have read and accept the payment and cancellation terms of every selected item.'}</span></label>
-      <button type="button" disabled={busy || !accepted} onClick={() => void reserve()} className="min-h-12 rounded-lg bg-maroon-600 px-5 py-3 font-semibold text-white disabled:opacity-50">{busy ? (hi ? 'कृपया प्रतीक्षा करें…' : 'Please wait…') : (hi ? 'बुकिंग और भुगतान के लिए आगे बढ़ें' : 'Continue to booking and payment')}</button>
+      <button type="button" disabled={busy || !accepted} onClick={() => void reserve()} className="min-h-12 rounded-lg bg-action px-5 py-3 font-semibold text-white disabled:opacity-50">{busy ? (hi ? 'कृपया प्रतीक्षा करें…' : 'Please wait…') : (hi ? 'बुकिंग और भुगतान के लिए आगे बढ़ें' : 'Continue to booking and payment')}</button>
     </section> : null}
     {login ? <TravelLogin locale={locale} onVerified={() => { setLogin(false); setError(hi ? 'सत्यापन हो गया। अब बुकिंग के लिए आगे बढ़ें।' : 'Verified. Continue to booking when ready.'); }} /> : null}
-    {error ? <p role="alert" className="rounded-lg border border-maroon bg-white p-4">{error}</p> : null}
+    {error ? <p role="alert" className="rounded-lg border border-accent bg-surface p-4">{error}</p> : null}
   </div>;
 }

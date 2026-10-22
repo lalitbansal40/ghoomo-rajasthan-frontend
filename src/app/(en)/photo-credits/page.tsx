@@ -37,29 +37,29 @@ export default async function PhotoCreditsPage() {
       <ul className="grid gap-5 sm:grid-cols-2">
         {travelMedia.map(m => <li key={m.id}><Image unoptimized src={new URL(m.variants.card, new URL(env.apiBaseUrl).origin).toString()} alt={m.rights.alt.en} width={640} height={480} className="h-auto w-full" /><p>{m.rights.credit} · {m.rights.license}</p><p className="break-words">{m.rights.source}</p><p>{m.rights.changes}</p></li>)}
         {managed.map((m) => <li key={m.id}><Image unoptimized src={m.variants.card} alt={m.alt.en} width={640} height={480} className="h-auto w-full" /><p>{m.credit} · {m.licence}</p><p className="break-words">{m.sourceUrl}</p><p>{m.changes}</p></li>)}
-        {Object.entries(photos).map(([slot, p]) => <li key={slot} className="overflow-hidden rounded-2xl border border-black/10 bg-white"><Image src={p.variants.card} alt={p.alt.en} width={640} height={480} className="h-auto w-full" /><div className="p-4 text-sm"><p className="font-semibold">{p.alt.en}</p><p>© {p.credit}</p><p>Rights confirmed by the uploader. Cropped and resized; metadata removed.</p></div></li>)}
+        {Object.entries(photos).map(([slot, p]) => <li key={slot} className="overflow-hidden rounded-2xl border border-line/10 bg-surface"><Image src={p.variants.card} alt={p.alt.en} width={640} height={480} className="h-auto w-full" /><div className="p-4 text-sm"><p className="font-semibold">{p.alt.en}</p><p>© {p.credit}</p><p>Rights confirmed by the uploader. Cropped and resized; metadata removed.</p></div></li>)}
         {stockPhotoCredits(photos).map((p) => {
           const licence = LICENCE_URL[p.licence];
           return (
-            <li key={p.key} className="overflow-hidden rounded-2xl border border-black/10 bg-white">
+            <li key={p.key} className="overflow-hidden rounded-2xl border border-line/10 bg-surface">
               <Image src={p.card} alt={p.alt} width={640} height={480} className="h-auto w-full" />
               <div className="p-4 text-sm leading-relaxed">
-                <p className="font-semibold text-ink">{p.alt}</p>
+                <p className="font-semibold text-content">{p.alt}</p>
                 <p className="mt-1">
                   Photo by {p.credit} ·{' '}
                   {licence ? (
-                    <a href={licence} className="text-royal underline" rel="license noopener" target="_blank">
+                    <a href={licence} className="text-link underline" rel="license noopener" target="_blank">
                       {p.licence}
                     </a>
                   ) : (
                     p.licence
                   )}{' '}
                   ·{' '}
-                  <a href={p.sourceUrl} className="text-royal underline" rel="noopener" target="_blank">
+                  <a href={p.sourceUrl} className="text-link underline" rel="noopener" target="_blank">
                     Source
                   </a>
                 </p>
-                <p className="mt-1 text-muted">{p.changes}.</p>
+                <p className="mt-1 text-subtle">{p.changes}.</p>
               </div>
             </li>
           );

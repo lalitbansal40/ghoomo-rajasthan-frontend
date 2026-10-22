@@ -1,3 +1,4 @@
+import { THEME_TEXT } from './theme';
 import { ERROR_COPY } from './error-copy';
 /**
  * Every short piece of interface text, in English. hi.ts must have every key (its type is
@@ -5,6 +6,7 @@ import { ERROR_COPY } from './error-copy';
  * text of its own — it reads it from here.
  */
 export const en = {
+  theme: THEME_TEXT.en,
   catalog: { enquire: 'Enquire about this tour', exitPreview: 'Exit preview', unavailable: 'Tour details are temporarily unavailable. Please contact us to plan your trip.', onRequest: 'Contact us for the price', preview: 'Private preview' },
   brand: {
     name: 'Ghoomo Rajasthan',

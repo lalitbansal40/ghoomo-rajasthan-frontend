@@ -1,3 +1,5 @@
+import { ThemeBootstrap } from '@/components/theme/ThemeBootstrap';
+import { ThemeController } from '@/components/theme/ThemeController';
 import type { Metadata, Viewport } from 'next';
 import { ContactFab } from '@/components/ContactFab';
 import { dict } from '@/i18n';
@@ -8,7 +10,7 @@ import { HINDI_HEADING_FONT } from '../font-assets';
 import '../globals.css';
 
 /**
- * The Hindi root layout — /hi and everything under it. <html lang="hi">, and the devanagari
+ * The Hindi root layout — /hi and everything under it. <html lang="hi" data-theme="light" data-theme-mode="auto" suppressHydrationWarning>, and the devanagari
  * fonts, which no English page loads.
  */
 export const metadata: Metadata = baseMetadata(
@@ -19,20 +21,20 @@ export const metadata: Metadata = baseMetadata(
 
 export const viewport: Viewport = {
   themeColor: '#1E3A7B',
-  colorScheme: 'light',
+  colorScheme: 'light dark',
   width: 'device-width',
   initialScale: 1,
 };
 
 export default function HindiLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="hi" className={display.variable}>
-      <head><link rel="preload" as="font" type="font/woff2" href={HINDI_HEADING_FONT} crossOrigin="anonymous" /></head>
-      <body className="min-h-dvh bg-ivory text-ink">
+    <html lang="hi" className={display.variable} data-theme="light" data-theme-mode="auto" suppressHydrationWarning>
+      <head><ThemeBootstrap /><link rel="preload" as="font" type="font/woff2" href={HINDI_HEADING_FONT} crossOrigin="anonymous" /></head>
+      <body className="min-h-dvh bg-page text-content">
         {children}
         <ContactFab locale="hi" t={{ ...dict('hi').contactFab, whatsappMessage: dict('hi').cta.whatsappMessage }} />
         <Analytics />
-      </body>
+      <ThemeController /></body>
     </html>
   );
 }

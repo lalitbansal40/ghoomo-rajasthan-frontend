@@ -55,13 +55,13 @@ export function TravelBookings({ locale, id }: { locale: Locale; id?: string }) 
     } catch { setError(hi ? 'कार्य का परिणाम नहीं मिला। वर्तमान स्थिति जाँचें या सहायता से संपर्क करें।' : 'The result is uncertain. Check the current status or contact support.'); }
     finally { setBusy(false); }
   }
-  const button = 'min-h-12 rounded-lg bg-royal px-5 py-3 font-semibold text-white disabled:opacity-50';
+  const button = 'min-h-12 rounded-lg bg-primary px-5 py-3 font-semibold text-white disabled:opacity-50';
   if (login) return <TravelLogin locale={locale} onVerified={() => { void load().catch(() => setError(hi ? 'लोड नहीं हुआ।' : 'Could not load.')); }} />;
   const r = detail?.reservation;
   return <div className="space-y-6">
-    <nav className="flex flex-wrap gap-5 text-royal underline"><Link href={localePath('/trip-requests', locale)}>{hi ? 'रिक्वेस्ट और कोटेशन' : 'Requests and quotes'}</Link><Link href={localePath('/plan-your-trip', locale)}>{hi ? 'नई यात्रा बुक करें' : 'Book a new trip'}</Link><Link href={localePath('/travel-bookings', locale)}>{hi ? 'यात्रा बुकिंग' : 'Travel bookings'}</Link><Link href={localePath('/my-bookings', locale)}>{hi ? 'कैब बुकिंग' : 'Cab bookings'}</Link></nav>
-    {r ? <section className="space-y-4 rounded-xl border border-gold-300 bg-white p-5">
-      <h2 className="text-h3 text-royal">{r.reference}</h2>
+    <nav className="flex flex-wrap gap-5 text-link underline"><Link href={localePath('/trip-requests', locale)}>{hi ? 'रिक्वेस्ट और कोटेशन' : 'Requests and quotes'}</Link><Link href={localePath('/plan-your-trip', locale)}>{hi ? 'नई यात्रा बुक करें' : 'Book a new trip'}</Link><Link href={localePath('/travel-bookings', locale)}>{hi ? 'यात्रा बुकिंग' : 'Travel bookings'}</Link><Link href={localePath('/my-bookings', locale)}>{hi ? 'कैब बुकिंग' : 'Cab bookings'}</Link></nav>
+    {r ? <section className="space-y-4 rounded-xl border border-edge bg-surface p-5">
+      <h2 className="text-h3 text-link">{r.reference}</h2>
       <p role="status" className="font-semibold">{statusText[r.status]?.[locale] ?? r.status}</p>
       {r.status === 'payment_pending' ? <p>{hi ? 'भुगतान से पहले आपकी बुकिंग की पुष्टि नहीं हुई है। होल्ड की अंतिम समय सीमा: ' : 'Your booking is not yet confirmed. Checkout hold ends: '}{new Intl.DateTimeFormat(hi ? 'hi-IN' : 'en-IN', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Asia/Kolkata' }).format(new Date(r.holdExpiresAt))} IST</p> : null}
       <ol className="space-y-4">{r.items.map((i, n) => <li key={n}><h3 className="font-semibold">{i.title[locale]}</h3><p>{i.input.startDate} → {i.input.endDate} · {money(i.amountPaise)}</p><details><summary className="cursor-pointer underline">{hi ? 'स्वीकृत शर्तें' : 'Accepted terms'}</summary><p className="whitespace-pre-wrap">{i.terms[locale]}</p><p className="mt-3 whitespace-pre-wrap">{i.cancellation[locale]}</p></details></li>)}</ol>
@@ -79,9 +79,9 @@ export function TravelBookings({ locale, id }: { locale: Locale; id?: string }) 
         <label className="flex gap-3"><input type="checkbox" checked={cancelAccepted} onChange={e => setCancelAccepted(e.target.checked)} /><span>{hi ? 'मैं लागू रद्द करने की शर्तें स्वीकार करता/करती हूँ।' : 'I accept the applicable cancellation terms.'}</span></label>
         <button className={button} disabled={busy || reason.trim().length < 5 || !cancelAccepted} onClick={() => void action('cancel')}>{hi ? 'रद्द करने की पुष्टि' : 'Confirm cancellation'}</button>
       </div></details> : null}
-      <Link href={localePath('/contact', locale)} className="inline-block min-h-11 text-royal underline">{hi ? 'सहायता से संपर्क करें' : 'Contact support'}</Link>
-    </section> : rows.length ? <ol className="space-y-4">{rows.map(row => <li key={row.id}><Link className="block rounded-xl border border-gold-300 bg-white p-5" href={localePath(`/travel-bookings/${row.id}`, locale)}><strong>{row.reference}</strong><p>{statusText[row.status]?.[locale] ?? row.status} · {money(row.totalPaise)}</p><p>{row.items.map(i => i.title[locale]).join(' · ')}</p></Link></li>)}</ol> : <p role="status">{hi ? 'अभी कोई यात्रा बुकिंग नहीं है।' : 'There are no travel bookings to show yet.'}</p>}
+      <Link href={localePath('/contact', locale)} className="inline-block min-h-11 text-link underline">{hi ? 'सहायता से संपर्क करें' : 'Contact support'}</Link>
+    </section> : rows.length ? <ol className="space-y-4">{rows.map(row => <li key={row.id}><Link className="block rounded-xl border border-edge bg-surface p-5" href={localePath(`/travel-bookings/${row.id}`, locale)}><strong>{row.reference}</strong><p>{statusText[row.status]?.[locale] ?? row.status} · {money(row.totalPaise)}</p><p>{row.items.map(i => i.title[locale]).join(' · ')}</p></Link></li>)}</ol> : <p role="status">{hi ? 'अभी कोई यात्रा बुकिंग नहीं है।' : 'There are no travel bookings to show yet.'}</p>}
     {!id && cursor ? <button className={button} onClick={() => void load(cursor).catch(() => setError(hi ? 'और बुकिंग लोड नहीं हुई।' : 'Could not load more bookings.'))}>{hi ? 'और दिखाएँ' : 'Load more'}</button> : null}
-    {error ? <p role="alert" className="rounded-lg bg-white p-4 text-maroon-600">{error}</p> : null}
+    {error ? <p role="alert" className="rounded-lg bg-surface p-4 text-accent">{error}</p> : null}
   </div>;
 }

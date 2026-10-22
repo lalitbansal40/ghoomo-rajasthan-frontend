@@ -135,13 +135,13 @@ export function CatalogBooking({ locale, choice, initial }: { locale: Locale; ch
     }
   }
 
-  const field = 'min-h-12 w-full rounded-lg border border-ink/20 bg-white px-3 py-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-royal';
+  const field = 'min-h-12 w-full rounded-lg border border-control bg-surface px-3 py-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-link';
   const fieldLabel = 'flex flex-col gap-1.5 text-sm font-semibold';
   const stepper = (value: number, set: (n: number) => void, min: number, max: number, label: string) => (
     <div className="flex items-center gap-2" role="group" aria-label={label}>
-      <button type="button" onClick={() => set(Math.max(min, value - 1))} disabled={value <= min} aria-label={`${t.less} — ${label}`} className="grid size-11 place-items-center rounded-full border border-ink/20 text-lg font-bold disabled:opacity-40">−</button>
+      <button type="button" onClick={() => set(Math.max(min, value - 1))} disabled={value <= min} aria-label={`${t.less} — ${label}`} className="grid size-11 place-items-center rounded-full border border-line/20 text-lg font-bold disabled:opacity-40">−</button>
       <span className="min-w-8 text-center font-semibold" aria-live="polite">{value}</span>
-      <button type="button" onClick={() => set(Math.min(max, value + 1))} disabled={value >= max} aria-label={`${t.more} — ${label}`} className="grid size-11 place-items-center rounded-full border border-ink/20 text-lg font-bold disabled:opacity-40">+</button>
+      <button type="button" onClick={() => set(Math.min(max, value + 1))} disabled={value >= max} aria-label={`${t.more} — ${label}`} className="grid size-11 place-items-center rounded-full border border-line/20 text-lg font-bold disabled:opacity-40">+</button>
     </div>
   );
   const perWords: Record<Per, string> = { person: t.perPerson, jeep: t.perJeep, personNight: t.perPersonNight };
@@ -152,10 +152,10 @@ export function CatalogBooking({ locale, choice, initial }: { locale: Locale; ch
         <fieldset className="space-y-2">
           <legend className="mb-2 font-semibold">{t.car}</legend>
           {choice.cars.map((c) => (
-            <label key={c.key} className={`flex min-h-12 items-center gap-3 rounded-xl border p-3 ${vehicle === c.key ? 'border-royal-600 bg-royal-50' : 'border-ink/15 bg-white'}`}>
-              <input type="radio" name="car" className="size-5 accent-royal" checked={vehicle === c.key} onChange={() => setVehicle(c.key)} />
-              <span className="flex-1 font-semibold">{c.label} <span className="font-normal text-muted">· {f.seatsUpTo(c.seats)}</span></span>
-              <span className="font-bold text-royal-700">{money(c.rupees, locale)}</span>
+            <label key={c.key} className={`flex min-h-12 items-center gap-3 rounded-xl border p-3 ${vehicle === c.key ? 'border-link bg-tint' : 'border-line/15 bg-surface'}`}>
+              <input type="radio" name="car" className="size-5 accent-link" checked={vehicle === c.key} onChange={() => setVehicle(c.key)} />
+              <span className="flex-1 font-semibold">{c.label} <span className="font-normal text-subtle">· {f.seatsUpTo(c.seats)}</span></span>
+              <span className="font-bold text-heading">{money(c.rupees, locale)}</span>
             </label>
           ))}
         </fieldset>
@@ -163,10 +163,10 @@ export function CatalogBooking({ locale, choice, initial }: { locale: Locale; ch
         <fieldset className="space-y-3">
           <legend className="mb-2 font-semibold">{t.rides}</legend>
           {choice.offers.map((o) => (
-            <div key={o.key} className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-ink/15 bg-white p-3">
+            <div key={o.key} className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line/15 bg-surface p-3">
               <div className="min-w-0">
                 <p className="font-semibold">{o.name}</p>
-                <p className="text-sm text-muted">{money(o.rupees, locale)} · {perWords[o.per]}</p>
+                <p className="text-sm text-subtle">{money(o.rupees, locale)} · {perWords[o.per]}</p>
               </div>
               <div className="flex flex-wrap items-center gap-4">
                 {stepper(qty[o.key] ?? 0, (n) => setQty((q) => ({ ...q, [o.key]: n })), 0, Math.max(1, pax), o.name)}
@@ -185,32 +185,32 @@ export function CatalogBooking({ locale, choice, initial }: { locale: Locale; ch
         <div className={fieldLabel}>{t.travellers}{stepper(pax, setPax, 1, seats, t.travellers)}</div>
       </div>
 
-      <section aria-live="polite" className="rounded-xl border border-ink/10 bg-white p-4 shadow-card">
+      <section aria-live="polite" className="rounded-xl border border-line/10 bg-surface p-4 shadow-card">
         <h2 className="font-semibold">{t.priceFor}</h2>
         {quote ? (
           <dl className="mt-2 space-y-1.5 text-sm">
             {quote.lines.map((l, i) => <div key={l.label} className="flex justify-between gap-4"><dt>{lineWords(i)}</dt><dd>{money(l.rupees, locale)}</dd></div>)}
             <div className="flex justify-between gap-4"><dt>{f.gst(quote.gstPercent)}</dt><dd>{money(quote.gstRupees, locale)}</dd></div>
-            <div className="flex justify-between gap-4 border-t border-ink/10 pt-1.5 font-bold"><dt>{f.total}</dt><dd>{money(quote.totalRupees, locale)}</dd></div>
+            <div className="flex justify-between gap-4 border-t border-line/10 pt-1.5 font-bold"><dt>{f.total}</dt><dd>{money(quote.totalRupees, locale)}</dd></div>
           </dl>
-        ) : <p className="mt-2 text-sm text-muted">{quoting ? t.quoting : choice.kind === 'safari' && !selection ? t.chooseSomething : ''}</p>}
+        ) : <p className="mt-2 text-sm text-subtle">{quoting ? t.quoting : choice.kind === 'safari' && !selection ? t.chooseSomething : ''}</p>}
       </section>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <label className={fieldLabel}>{f.phone}
           <input className={field} type="tel" inputMode="numeric" autoComplete="tel-national" maxLength={14} required value={phone} readOnly={phoneLocked} onChange={(e) => setPhone(e.target.value)} />
-          <span className="font-normal text-muted">{phoneLocked ? f.signedInAs(phone) : f.phoneHint}</span>
+          <span className="font-normal text-subtle">{phoneLocked ? f.signedInAs(phone) : f.phoneHint}</span>
         </label>
         <label className={fieldLabel}>{f.name}<input className={field} autoComplete="name" maxLength={60} value={name} onChange={(e) => setName(e.target.value)} /></label>
         <label className={`${fieldLabel} sm:col-span-2`}>{t.pickupAddress}<input className={field} autoComplete="street-address" maxLength={200} placeholder={f.addressHint} value={address} onChange={(e) => setAddress(e.target.value)} /></label>
       </div>
 
       {quote ? (
-        <fieldset className="space-y-3 rounded-xl border border-ink/10 bg-white p-4">
+        <fieldset className="space-y-3 rounded-xl border border-line/10 bg-surface p-4">
           <legend className="px-1 font-semibold">{f.payTitle}</legend>
           {([['min', f.payMin, quote.minAdvanceRupees], ['full', f.payFull, quote.fareRupees], ['custom', f.payCustom, null]] as const).map(([key, label, amount]) => (
             <label key={key} className="flex min-h-11 items-center gap-3">
-              <input type="radio" name="pay" className="size-5 accent-royal" checked={payChoice === key} onChange={() => setPayChoice(key)} />
+              <input type="radio" name="pay" className="size-5 accent-link" checked={payChoice === key} onChange={() => setPayChoice(key)} />
               <span className="flex-1">{label}</span>
               {amount !== null ? <span className="font-semibold">{money(amount, locale)}</span> : null}
             </label>
@@ -218,24 +218,24 @@ export function CatalogBooking({ locale, choice, initial }: { locale: Locale; ch
           {payChoice === 'custom' ? (
             <label className={fieldLabel}>{f.amount}
               <input className={field} type="number" inputMode="numeric" min={quote.minAdvanceRupees} max={quote.fareRupees} value={custom} onChange={(e) => setCustom(e.target.value)} />
-              <span className="font-normal text-muted">{f.amountRange(money(quote.minAdvanceRupees, locale), money(quote.fareRupees, locale))}</span>
+              <span className="font-normal text-subtle">{f.amountRange(money(quote.minAdvanceRupees, locale), money(quote.fareRupees, locale))}</span>
             </label>
           ) : null}
           {plan?.ok ? (
-            <dl className="space-y-1 border-t border-ink/10 pt-3 text-sm">
+            <dl className="space-y-1 border-t border-line/10 pt-3 text-sm">
               <div className="flex justify-between gap-4 font-bold"><dt>{f.payNow}</dt><dd>{money(plan.payNowRupees, locale)}</dd></div>
               <div className="flex justify-between gap-4"><dt>{f.payLater}</dt><dd>{money(plan.laterRupees, locale)}</dd></div>
-              <dd className="text-muted">{f.gstNow}</dd>
+              <dd className="text-subtle">{f.gstNow}</dd>
             </dl>
           ) : null}
         </fieldset>
       ) : null}
 
-      <p className="text-sm">{f.policyRead} <a className="text-royal-600 underline" href={localePath('/terms', locale)}>{f.terms}</a> · <a className="text-royal-600 underline" href={localePath('/refund', locale)}>{f.refund}</a>.</p>
-      <label className="flex items-start gap-3 text-sm leading-6"><input type="checkbox" className="mt-1 size-5 shrink-0 accent-royal" checked={accepted} onChange={(e) => setAccepted(e.target.checked)} /><span>{f.accept}</span></label>
-      <label className="flex items-start gap-3 text-sm leading-6"><input type="checkbox" className="mt-1 size-5 shrink-0 accent-royal" checked={reviewOk} onChange={(e) => setReviewOk(e.target.checked)} /><span>{f.reviewOk}</span></label>
-      {error ? <p role="alert" className="rounded-lg bg-maroon-50 p-3 text-sm text-maroon-700">{error} <a className="ml-1 font-semibold underline" href={brand.phoneHref}>{brand.phone}</a></p> : null}
-      <button type="submit" disabled={!quote || paying} className="min-h-12 w-full rounded-full bg-maroon-600 px-6 font-semibold text-white shadow-card hover:bg-maroon-700 disabled:opacity-60">
+      <p className="text-sm">{f.policyRead} <a className="text-link underline" href={localePath('/terms', locale)}>{f.terms}</a> · <a className="text-link underline" href={localePath('/refund', locale)}>{f.refund}</a>.</p>
+      <label className="flex items-start gap-3 text-sm leading-6"><input type="checkbox" className="mt-1 size-5 shrink-0 accent-link" checked={accepted} onChange={(e) => setAccepted(e.target.checked)} /><span>{f.accept}</span></label>
+      <label className="flex items-start gap-3 text-sm leading-6"><input type="checkbox" className="mt-1 size-5 shrink-0 accent-link" checked={reviewOk} onChange={(e) => setReviewOk(e.target.checked)} /><span>{f.reviewOk}</span></label>
+      {error ? <p role="alert" className="rounded-lg bg-error-surface p-3 text-sm text-accent-strong">{error} <a className="ml-1 font-semibold underline" href={brand.phoneHref}>{brand.phone}</a></p> : null}
+      <button type="submit" disabled={!quote || paying} className="min-h-12 w-full rounded-full bg-action px-6 font-semibold text-white shadow-card hover:bg-action-hover disabled:opacity-60">
         {paying ? f.paying : f.pay(plan?.ok ? money(plan.payNowRupees, locale) : '')}
       </button>
     </form>

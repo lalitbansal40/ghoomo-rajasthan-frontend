@@ -49,30 +49,30 @@ export function MyBookings({ locale }: { locale: Locale }) {
 
   return (
     <div className="mx-auto w-full max-w-3xl space-y-6">
-      <h1 className="text-h1 text-royal-600">{t.title}</h1>
-      {state === 'loading' ? <p className="text-muted" aria-live="polite">{t.checking}</p> : null}
+      <h1 className="text-h1 text-link">{t.title}</h1>
+      {state === 'loading' ? <p className="text-subtle" aria-live="polite">{t.checking}</p> : null}
       {state === 'signedOut' ? (
-        <section className="rounded-xl border border-gold-300 bg-white p-5 shadow-card sm:p-7">
+        <section className="rounded-xl border border-edge bg-surface p-5 shadow-card sm:p-7">
           <p>{a.signInToSee}</p>
-          <a href={loginHref(locale, localePath('/my-bookings', locale))} className="mt-4 inline-flex min-h-12 items-center rounded-full bg-royal-600 px-6 font-semibold text-white hover:bg-royal-700">{a.login}</a>
+          <a href={loginHref(locale, localePath('/my-bookings', locale))} className="mt-4 inline-flex min-h-12 items-center rounded-full bg-primary px-6 font-semibold text-white hover:bg-primary-hover">{a.login}</a>
         </section>
       ) : null}
       {state === 'error' ? <p role="alert" className="rounded-lg bg-red-50 p-4 text-sm text-red-800">{t.loadError}</p> : null}
       {state === 'ready' ? (
         <>
-          <div className="flex justify-end"><button type="button" className="min-h-11 rounded-full border-2 border-royal-600 px-4 font-semibold text-royal-600" onClick={signOut}>{t.signOut}</button></div>
+          <div className="flex justify-end"><button type="button" className="min-h-11 rounded-full border-2 border-link px-4 font-semibold text-link" onClick={signOut}>{t.signOut}</button></div>
           {rows.length ? (
             <ol className="space-y-3">
               {rows.map((r) => (
                 <li key={r._id}>
-                  <a href={localePath(`/booking/${r._id}`, locale)} className="block rounded-xl border border-royal/20 bg-white p-5 shadow-card hover:border-royal/50">
-                    <span className="flex flex-wrap items-center justify-between gap-2 font-semibold"><span>{title(r)}</span><span className="text-sm text-royal">{status(r.status)}</span></span>
-                    <span className="mt-2 block text-sm text-muted">{r.bookingNo ? `#${r.bookingNo} · ` : ''}{date(r.scheduledAt)} · {money(r.totalPayable ?? r.fareEstimate + (r.gstAmount ?? 0))}</span>
+                  <a href={localePath(`/booking/${r._id}`, locale)} className="block rounded-xl border border-link/20 bg-surface p-5 shadow-card hover:border-link/50">
+                    <span className="flex flex-wrap items-center justify-between gap-2 font-semibold"><span>{title(r)}</span><span className="text-sm text-link">{status(r.status)}</span></span>
+                    <span className="mt-2 block text-sm text-subtle">{r.bookingNo ? `#${r.bookingNo} · ` : ''}{date(r.scheduledAt)} · {money(r.totalPayable ?? r.fareEstimate + (r.gstAmount ?? 0))}</span>
                   </a>
                 </li>
               ))}
             </ol>
-          ) : <p className="rounded-xl border border-royal/20 bg-white p-5">{t.empty}</p>}
+          ) : <p className="rounded-xl border border-link/20 bg-surface p-5">{t.empty}</p>}
         </>
       ) : null}
     </div>

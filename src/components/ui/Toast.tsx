@@ -30,12 +30,12 @@ export function Toast({
       {open ? (
         <div
           className={`pointer-events-auto flex items-center gap-3 rounded-full px-5 py-3 text-white shadow-raised ${
-            tone === 'success' ? 'bg-success' : 'bg-maroon-600'
+            tone === 'success' ? 'bg-success-fill' : 'bg-action'
           }`}
         >
           <Icon name={tone === 'success' ? 'check' : 'alert'} />
           <span className="font-semibold">{message}</span>
-          <button type="button" onClick={onClose} aria-label={closeLabel} className="grid h-8 w-8 place-items-center rounded-full hover:bg-white/15">
+          <button type="button" onClick={onClose} aria-label={closeLabel} className="grid h-8 w-8 place-items-center rounded-full hover:bg-surface/15">
             <Icon name="close" size={18} />
           </button>
         </div>

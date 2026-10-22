@@ -64,12 +64,12 @@ export async function Home({ locale }: { locale: Locale }) {
           <Jaali opacity={0.07} />
           <div className="relative mx-auto grid max-w-[var(--container-site)] items-center gap-8 px-4 pb-4 pt-8 sm:px-6 md:grid-cols-[1.15fr_1fr] md:pt-14">
             <div className="order-2 text-center md:order-1 md:text-left">
-              <p className="text-small font-semibold uppercase tracking-[0.12em] text-gold-700 [:lang(hi)_&]:normal-case [:lang(hi)_&]:tracking-normal">
+              <p className="text-small font-semibold uppercase tracking-[0.12em] text-gold-text [:lang(hi)_&]:normal-case [:lang(hi)_&]:tracking-normal">
                 {L(HERO.eyebrow)}
               </p>
-              <h1 className="text-display mt-3 text-royal-600">{L(HERO.title)}</h1>
+              <h1 className="text-display mt-3 text-link">{L(HERO.title)}</h1>
               <SparkleDivider className="mx-auto mt-4 md:mx-0" />
-              <p className="text-body-lg mx-auto mt-4 max-w-xl text-ink/80 md:mx-0">{L(HERO.line)}</p>
+              <p className="text-body-lg mx-auto mt-4 max-w-xl text-content/80 md:mx-0">{L(HERO.line)}</p>
               <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row md:justify-start">
                 <Button size="lg" href={localePath('/packages', locale)} icon={null} iconRight="arrow">
                   {L(HERO.seeTours)}
@@ -140,7 +140,7 @@ export async function Home({ locale }: { locale: Locale }) {
 
         {/* ── Cab between cities (Hello My Cab fares) ─────────────────────── */}
         {routes.length ? (
-          <section className="bg-sand-50 py-12 sm:py-16">
+          <section className="bg-soft py-12 sm:py-16">
             <div className="mx-auto max-w-[var(--container-site)] px-4 sm:px-6">
               <SectionHeader eyebrow={L(SECTIONS.routesEyebrow)} title={L(SECTIONS.routes)} intro={L(SECTIONS.routesIntro)} />
               <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -156,7 +156,7 @@ export async function Home({ locale }: { locale: Locale }) {
                   />
                 ))}
               </div>
-              <p className="mt-4 text-center text-small text-muted">{L(SECTIONS.routesNote)}</p>
+              <p className="mt-4 text-center text-small text-subtle">{L(SECTIONS.routesNote)}</p>
               <div className="mt-6 text-center">
                 <Button variant="secondary" href={localePath('/cab', locale)} icon={null} iconRight="arrow">
                   {L(SECTIONS.allRoutes)}
@@ -194,29 +194,29 @@ export async function Home({ locale }: { locale: Locale }) {
         <section className="mx-auto max-w-[var(--container-site)] px-4 pb-12 sm:px-6">
           <a
             href={localePath('/desert-safari', locale)}
-            className="flex flex-col items-center gap-4 rounded-[var(--radius-lg)] bg-sand-200 p-6 text-center ring-1 ring-gold-300 hover:ring-gold-500 sm:flex-row sm:text-left"
+            className="flex flex-col items-center gap-4 rounded-[var(--radius-lg)] bg-alternate p-6 text-center ring-1 ring-edge hover:ring-gold-500 sm:flex-row sm:text-left"
           >
             <Camel walking size={80} />
             <span className="flex-1">
-              <span className="text-h2 block text-royal-700">{L(SECTIONS.safariTitle)}</span>
-              <span className="mt-1 block text-ink/80">{L(SECTIONS.safariLine)}</span>
+              <span className="text-h2 block text-heading">{L(SECTIONS.safariTitle)}</span>
+              <span className="mt-1 block text-content/80">{L(SECTIONS.safariLine)}</span>
             </span>
-            <span className="inline-flex items-center gap-1 font-semibold text-royal-600">
+            <span className="inline-flex items-center gap-1 font-semibold text-link">
               {L(SECTIONS.safariCta)} <Icon name="arrow" />
             </span>
           </a>
         </section>
 
         {/* ── Why us ──────────────────────────────────────────────────────── */}
-        <section className="relative overflow-hidden bg-royal-600 py-12 text-white sm:py-16">
+        <section className="relative overflow-hidden bg-primary py-12 text-white sm:py-16">
           <Jaali opacity={0.06} className="invert" />
           <div className="relative mx-auto max-w-[var(--container-site)] px-4 sm:px-6">
             <h2 className="text-h2 text-center text-white">{L(SECTIONS.why)}</h2>
             <SparkleDivider className="mx-auto mt-3" />
             <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
               {WHY.map((w) => (
-                <li key={w.title.en} className="rounded-[var(--radius-md)] bg-white/8 p-5 ring-1 ring-white/15">
-                  <span className="grid h-11 w-11 place-items-center rounded-full bg-gold-500 text-ink">
+                <li key={w.title.en} className="rounded-[var(--radius-md)] bg-surface/8 p-5 ring-1 ring-white/15">
+                  <span className="grid h-11 w-11 place-items-center rounded-full bg-gold-500 text-content">
                     <Icon name={w.icon} />
                   </span>
                   <h3 className="text-h3 mt-3 text-white">{L(w.title)}</h3>
@@ -233,12 +233,12 @@ export async function Home({ locale }: { locale: Locale }) {
           <ol className="mt-8 grid gap-6 md:grid-cols-3">
             {HOW.map((h, i) => (
               <li key={h.title.en} className="flex gap-4 md:flex-col md:items-center md:text-center">
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-gold-500 text-lg font-bold text-ink ring-4 ring-sand-100">
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-gold-500 text-lg font-bold text-content ring-4 ring-sand-100">
                   {i + 1}
                 </span>
                 <div>
-                  <h3 className="text-h3 text-royal-700">{L(h.title)}</h3>
-                  <p className="mt-1 text-muted">{L(h.line)}</p>
+                  <h3 className="text-h3 text-heading">{L(h.title)}</h3>
+                  <p className="mt-1 text-subtle">{L(h.line)}</p>
                 </div>
               </li>
             ))}
@@ -254,12 +254,12 @@ export async function Home({ locale }: { locale: Locale }) {
         </section>
 
         {/* ── Plan your trip ──────────────────────────────────────────────── */}
-        <section className="relative overflow-hidden bg-sand-200">
+        <section className="relative overflow-hidden bg-alternate">
           <DuneDivider tone="ivory" flip settle={path} />
           <div className="mx-auto grid max-w-[var(--container-site)] items-center gap-6 px-4 pb-14 sm:px-6 md:grid-cols-[1fr_auto]">
             <div className="text-center md:text-left">
-              <h2 className="text-h1 text-royal-600">{L(SECTIONS.cta)}</h2>
-              <p className="text-body-lg mt-3 max-w-xl text-ink/80">{L(SECTIONS.ctaLine)}</p>
+              <h2 className="text-h1 text-link">{L(SECTIONS.cta)}</h2>
+              <p className="text-body-lg mt-3 max-w-xl text-content/80">{L(SECTIONS.ctaLine)}</p>
               <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row md:justify-start">
                 <Button size="lg" variant="primary" href="#book">
                   {t.widget.heading}

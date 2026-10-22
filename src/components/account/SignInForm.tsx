@@ -51,11 +51,11 @@ export function SignInForm({ locale, next }: { locale: Locale; next: string }) {
     }
   }
 
-  const field = 'min-h-12 w-full rounded-lg border border-ink/20 bg-white px-3 py-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-royal';
+  const field = 'min-h-12 w-full rounded-lg border border-control bg-surface px-3 py-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-link';
   const label = 'flex flex-col gap-1.5 text-sm font-semibold';
-  const button = 'min-h-12 w-full rounded-full bg-royal-600 px-6 font-semibold text-white hover:bg-royal-700 disabled:opacity-60';
+  const button = 'min-h-12 w-full rounded-full bg-primary px-6 font-semibold text-white hover:bg-primary-hover disabled:opacity-60';
   return (
-    <div className="rounded-2xl border border-gold-300 bg-white p-5 shadow-card sm:p-7">
+    <div className="rounded-2xl border border-edge bg-surface p-5 shadow-card sm:p-7">
       {!sentTo ? (
         <form onSubmit={send} noValidate className="space-y-4">
           <label className={label}>{t.phone}<input className={field} type="tel" inputMode="numeric" autoComplete="tel-national" maxLength={14} value={phone} onChange={(e) => setPhone(e.target.value)} autoFocus /></label>
@@ -63,15 +63,15 @@ export function SignInForm({ locale, next }: { locale: Locale; next: string }) {
         </form>
       ) : (
         <form onSubmit={verify} noValidate className="space-y-4">
-          <p role="status" className="text-sm">{t.sent(sentTo)} <button type="button" className="ml-1 font-semibold text-royal-600 underline" onClick={() => { setSentTo(''); setError(''); }}>{t.change}</button></p>
+          <p role="status" className="text-sm">{t.sent(sentTo)} <button type="button" className="ml-1 font-semibold text-link underline" onClick={() => { setSentTo(''); setError(''); }}>{t.change}</button></p>
           <label className={label}>{t.code}<input className={field} type="text" inputMode="numeric" autoComplete="one-time-code" maxLength={8} value={code} onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))} autoFocus /></label>
           {isNew ? <label className={label}>{t.name}<input className={field} autoComplete="name" maxLength={60} value={name} onChange={(e) => setName(e.target.value)} /></label> : null}
           <button className={button} disabled={busy}>{busy ? t.sending : t.verify}</button>
-          <button type="button" className="min-h-11 w-full font-semibold text-royal-600" disabled={busy} onClick={() => void send()}>{t.resend}</button>
+          <button type="button" className="min-h-11 w-full font-semibold text-link" disabled={busy} onClick={() => void send()}>{t.resend}</button>
         </form>
       )}
-      {error ? <p role="alert" className="mt-4 rounded-lg bg-maroon-50 p-3 text-sm text-maroon-700">{error}</p> : null}
-      <p className="mt-5 text-sm text-muted">{t.separate}</p>
+      {error ? <p role="alert" className="mt-4 rounded-lg bg-error-surface p-3 text-sm text-accent-strong">{error}</p> : null}
+      <p className="mt-5 text-sm text-subtle">{t.separate}</p>
     </div>
   );
 }

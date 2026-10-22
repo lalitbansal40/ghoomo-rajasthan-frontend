@@ -62,3 +62,24 @@ if (fail) {
   console.error(`\n${fail} pair(s) below the line`);
   process.exit(1);
 }
+
+// Semantic web roles are independent of the fixed brand palette above.
+const { webTheme } = JSON.parse(readFileSync(join(root, 'src/design/tokens.json'), 'utf8'));
+for (const [theme, roles] of Object.entries(webTheme)) {
+  Object.assign(c, roles);
+  const pairs = [
+    ...['page', 'surface', 'raised', 'soft', 'sand-soft', 'alternate'].flatMap(bg =>
+      ['content', 'subtle', 'link', 'heading', 'accent'].map(fg => [fg, bg, 4.5])),
+    ['white', 'primary', 4.5], ['white', 'primary-hover', 4.5], ['white', 'primary-active', 4.5],
+    ['white', 'action', 4.5], ['white', 'success-fill', 4.5], ['positive', 'success-surface', 4.5],
+    ['error-text', 'error-surface', 4.5], ['content', 'warning-surface', 4.5], ['heading', 'tint', 4.5],
+    ...['page', 'surface', 'raised', 'alternate'].map(bg => ['focus', bg, 3]),
+    ['control', 'surface', 3], ['control', 'soft', 3],
+  ];
+  for (const [fg, bg, min] of pairs) {
+    const value = ratio(fg, bg);
+    if (value < min) { console.error(`FAIL ${theme}: ${fg}/${bg} ${value.toFixed(2)} < ${min}`); fail++; }
+  }
+  console.log(`${theme}: ${pairs.length} semantic text/control/focus pairs checked`);
+}
+if (fail) process.exitCode = 1;

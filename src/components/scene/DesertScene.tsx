@@ -35,7 +35,7 @@ function Kite({ x, y, fill, delay }: { x: number; y: number; fill: string; delay
     <g transform={`translate(${x} ${y})`}>
       <g className="gr-scene-kite" style={{ animationDelay: delay }}>
         <path d="M0 -11 L8 0 L0 13 L-8 0 Z" fill={fill} />
-        <path d="M0 -11 V13 M-8 0 H8" stroke="#FBF7EF" strokeWidth=".8" opacity=".7" />
+        <path d="M0 -11 V13 M-8 0 H8" stroke="var(--gr-page)" strokeWidth=".8" opacity=".7" />
         <path d="M0 13 C -4 20 4 25 -1 32 C -5 38 2 42 -2 48" fill="none" stroke={fill} strokeWidth="1" opacity=".7" />
       </g>
     </g>
@@ -58,21 +58,21 @@ export function DesertScene({ path, className = '' }: { /** The page's path — 
         <defs>
           {/* One camel, drawn once, walked four times. */}
           <symbol id="gr-camel" overflow="visible">
-            <path fill="#561010" opacity=".88" d={CAMEL_D} />
-            <path fill="#C08A22" d={SADDLE_D} />
+            <path fill="var(--gr-scene-ink)" opacity=".88" d={CAMEL_D} />
+            <path fill="var(--gr-ornament)" d={SADDLE_D} />
           </symbol>
           <radialGradient id="gr-sun" cx="50%" cy="50%" r="50%">
-            <stop offset="0" stopColor="#FFD27A" />
-            <stop offset=".7" stopColor="#F5A623" />
-            <stop offset="1" stopColor="#D9673F" />
+            <stop offset="0" stopColor="var(--gr-orb-start)" />
+            <stop offset=".7" stopColor="var(--gr-orb-mid)" />
+            <stop offset="1" stopColor="var(--gr-orb-end)" />
           </radialGradient>
           <radialGradient id="gr-dusk" cx="50%" cy="50%" r="50%">
-            <stop offset="0" stopColor="#F6B48A" stopOpacity=".75" />
-            <stop offset="1" stopColor="#F6B48A" stopOpacity="0" />
+            <stop offset="0" stopColor="var(--gr-sky-glow)" stopOpacity=".75" />
+            <stop offset="1" stopColor="var(--gr-sky-glow)" stopOpacity="0" />
           </radialGradient>
           <linearGradient id="gr-near" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#E9C47C" />
-            <stop offset="1" stopColor="#D9A75A" />
+            <stop offset="0" stopColor="var(--gr-dune-mid)" />
+            <stop offset="1" stopColor="var(--gr-dune-near)" />
           </linearGradient>
         </defs>
 
@@ -80,24 +80,28 @@ export function DesertScene({ path, className = '' }: { /** The page's path — 
         <circle className="gr-scene-glow" cx="1130" cy="128" r="150" fill="url(#gr-dusk)" />
         <circle cx="1130" cy="132" r="54" fill="url(#gr-sun)" />
 
+        <g className="gr-night-only" fill="var(--gr-orb-start)">
+          <circle cx="1000" cy="28" r="2" /><circle cx="1200" cy="16" r="1.6" />
+          <circle cx="1350" cy="54" r="2" /><circle cx="700" cy="30" r="1.8" />
+        </g>
         {/* Birds heading home, and two kites. */}
         {/* Anchored to the right edge (xMaxYMax): a phone sees the sun, the birds, one kite and
             the caravan as it passes; a wide screen sees the whole sky. */}
-        <g className="gr-scene-birds" fill="none" stroke="#1B1B1F" strokeOpacity=".45" strokeWidth="1.6" strokeLinecap="round">
+        <g className="gr-scene-birds" fill="none" stroke="var(--gr-scene-bird)" strokeOpacity=".45" strokeWidth="1.6" strokeLinecap="round">
           <path d="M1210 40 q6 -6 12 0 q6 -6 12 0" />
           <path d="M1248 26 q5 -5 10 0 q5 -5 10 0" />
           <path d="M1278 48 q4 -4 8 0 q4 -4 8 0" />
         </g>
-        <Kite x={960} y={44} fill="#8E1B1B" delay="0s" />
-        <Kite x={460} y={30} fill="#1E3A7B" delay="-3s" />
+        <Kite x={960} y={44} fill="var(--gr-accent)" delay="0s" />
+        <Kite x={460} y={30} fill="var(--gr-frame)" delay="-3s" />
 
         {/* Far ridge — the slowest drift. */}
         <g className="gr-scene-drift gr-scene-far">
-          <path fill="#F3D9A4" opacity=".85" d={FAR} />
+          <path fill="var(--gr-dune-far)" opacity=".85" d={FAR} />
         </g>
 
         {/* Middle ridge, still, and the caravan walking its crest. */}
-        <path fill="#E9C47C" d="M0 168 C 240 160 480 158 720 163 C 960 168 1200 161 1440 166 V220 H0 Z" />
+        <path fill="var(--gr-dune-mid)" d="M0 168 C 240 160 480 158 720 163 C 960 168 1200 161 1440 166 V220 H0 Z" />
         <g transform="translate(0 164)">
           <g className="gr-scene-caravan">
             <CaravanCamel x={0} scale={0.95} delay="0s" />

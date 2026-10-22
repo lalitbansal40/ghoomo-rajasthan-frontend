@@ -42,21 +42,21 @@ export default async function CallPage({ params }: { params: Promise<{ target: s
       <main className="mx-auto w-full max-w-xl flex-1 px-4 py-10 sm:py-14">
         {/* Fires on arrival; the link below carries the page when it does not. */}
         <DialNow href={href} />
-        <h1 className="text-h1 text-royal-600">{words.heading}</h1>
-        <p className="mt-3 text-ink/80">Your phone should be opening the dialer. If it does not, tap the number.</p>
-        <a href={href} className="mt-8 inline-flex min-h-14 items-center justify-center rounded-full bg-royal-600 px-7 text-lg font-semibold text-white">
+        <h1 className="text-h1 text-link">{words.heading}</h1>
+        <p className="mt-3 text-content/80">Your phone should be opening the dialer. If it does not, tap the number.</p>
+        <a href={href} className="mt-8 inline-flex min-h-14 items-center justify-center rounded-full bg-primary px-7 text-lg font-semibold text-white">
           Call +91 {pretty}
         </a>
         {/* Spelt out too, to read back or copy on a device that will not dial. */}
-        <p className="mt-6 text-sm text-ink/70">{words.label}: +91 {pretty}</p>
+        <p className="mt-6 text-sm text-content/70">{words.label}: +91 {pretty}</p>
         <div className="mt-10 flex flex-wrap gap-3">
           {/* A customer whose driver does not answer rings the office. */}
           {target.who === 'yourdriver' ? (
-            <a href={brand.phoneHref} className="inline-flex min-h-11 items-center rounded-full border border-gold-300 px-6 text-sm font-semibold">
+            <a href={brand.phoneHref} className="inline-flex min-h-11 items-center rounded-full border border-edge px-6 text-sm font-semibold">
               Call the office
             </a>
           ) : null}
-          <Link href="/" className="inline-flex min-h-11 items-center rounded-full border border-gold-300 px-6 text-sm font-semibold">
+          <Link href="/" className="inline-flex min-h-11 items-center rounded-full border border-edge px-6 text-sm font-semibold">
             Home
           </Link>
         </div>

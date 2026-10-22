@@ -29,7 +29,7 @@ export function RajasthanMap({ points, label, className = '' }: { points: MapPoi
       aria-label={label}
       className={`h-auto w-full ${className}`}
     >
-      <path d={RAJASTHAN_PATH} fill="var(--color-sand-200)" stroke="var(--color-gold-500)" strokeWidth="2" strokeLinejoin="round" />
+      <path d={RAJASTHAN_PATH} fill="var(--gr-alternate)" stroke="var(--gr-ornament)" strokeWidth="2" strokeLinejoin="round" />
       {points.map((p) => {
         const cx = x(p.lng);
         const cy = y(p.lat);
@@ -47,18 +47,18 @@ export function RajasthanMap({ points, label, className = '' }: { points: MapPoi
               cx={cx}
               cy={cy}
               r={p.labelled ? 6 : 4.5}
-              fill="var(--color-maroon-600)"
+              fill="var(--gr-accent)"
               stroke="white"
               strokeWidth="2"
-              className="transition-[r] group-hover:[r:8] group-focus-visible:[r:8] group-focus-visible:stroke-[var(--color-gold-700)]"
+              className="transition-[r] group-hover:[r:8] group-focus-visible:[r:8] group-focus-visible:stroke-[var(--gr-focus)]"
             />
             {p.labelled ? (
               <text
                 x={lx}
                 y={ly}
                 textAnchor={anchor}
-                className="fill-[var(--color-royal-700)] text-[13px] font-semibold"
-                style={{ paintOrder: 'stroke', stroke: 'var(--color-sand-200)', strokeWidth: 3 }}
+                className="fill-[var(--gr-heading)] text-[13px] font-semibold"
+                style={{ paintOrder: 'stroke', stroke: 'var(--gr-alternate)', strokeWidth: 3 }}
               >
                 {p.name}
               </text>

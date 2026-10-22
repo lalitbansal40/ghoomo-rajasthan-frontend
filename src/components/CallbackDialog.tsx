@@ -80,37 +80,37 @@ export function CallbackDialog({ locale, t, path, onClose }: { locale: Locale; t
     remember();
   }
 
-  const field = 'min-h-12 w-full rounded-lg border border-ink/20 bg-white px-3 py-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-royal';
+  const field = 'min-h-12 w-full rounded-lg border border-control bg-surface px-3 py-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-link';
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center p-4 sm:items-center">
-      <button type="button" aria-hidden tabIndex={-1} onClick={onClose} className="absolute inset-0 bg-ink/50" />
-      <div ref={dialog} role="dialog" aria-modal="true" aria-labelledby={titleId} className="relative w-full max-w-sm rounded-2xl border border-gold-300 bg-ivory p-6 shadow-raised">
-        <button type="button" onClick={onClose} aria-label={t.close} className="absolute right-3 top-3 grid size-11 place-items-center rounded-full text-muted hover:bg-sand-100 hover:text-ink">
+      <button type="button" aria-hidden tabIndex={-1} onClick={onClose} className="absolute inset-0 bg-tooltip/50" />
+      <div ref={dialog} role="dialog" aria-modal="true" aria-labelledby={titleId} className="relative w-full max-w-sm rounded-2xl border border-edge bg-page p-6 shadow-raised">
+        <button type="button" onClick={onClose} aria-label={t.close} className="absolute right-3 top-3 grid size-11 place-items-center rounded-full text-subtle hover:bg-sand-soft hover:text-content">
           <Icon name="close" size={20} />
         </button>
-        <span className="grid size-12 place-items-center rounded-full bg-maroon-50 text-maroon-600"><Icon name="phone" size={24} /></span>
+        <span className="grid size-12 place-items-center rounded-full bg-error-surface text-accent"><Icon name="phone" size={24} /></span>
         {sent ? (
           <div role="status">
-            <h2 id={titleId} className="mt-4 text-h3 text-royal-700">{t.thanks}</h2>
-            <p className="mt-2 text-ink/80">{t.thanksBody}</p>
+            <h2 id={titleId} className="mt-4 text-h3 text-heading">{t.thanks}</h2>
+            <p className="mt-2 text-content/80">{t.thanksBody}</p>
             <div className="mt-5 flex flex-col gap-2">
-              <a ref={thanks} href={`${localePath('/', locale)}#book`} onClick={onClose} className="inline-flex min-h-12 items-center justify-center rounded-full bg-royal-600 px-5 font-semibold text-white hover:bg-royal-700">{t.book}</a>
-              <button type="button" onClick={onClose} className="min-h-12 rounded-full font-semibold text-royal-600 hover:bg-royal-50">{t.close}</button>
+              <a ref={thanks} href={`${localePath('/', locale)}#book`} onClick={onClose} className="inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-5 font-semibold text-white hover:bg-primary-hover">{t.book}</a>
+              <button type="button" onClick={onClose} className="min-h-12 rounded-full font-semibold text-link hover:bg-tint">{t.close}</button>
             </div>
           </div>
         ) : (
           <form onSubmit={submit} noValidate>
-            <h2 id={titleId} className="mt-4 text-h3 text-royal-700">{t.title}</h2>
-            <p className="mt-2 text-ink/80">{t.intro}</p>
+            <h2 id={titleId} className="mt-4 text-h3 text-heading">{t.title}</h2>
+            <p className="mt-2 text-content/80">{t.intro}</p>
             <label className="mt-5 flex flex-col gap-1.5 text-sm font-semibold">{t.phone}
               <input ref={input} className={field} type="tel" inputMode="numeric" autoComplete="tel-national" maxLength={14} value={phone} onChange={(e) => setPhone(e.target.value.replace(/[^\d+ ]/g, ''))} aria-invalid={error ? true : undefined} aria-describedby={error ? `${titleId}-error` : undefined} />
             </label>
-            {error ? <p id={`${titleId}-error`} className="mt-1.5 text-sm text-danger">{error}</p> : null}
+            {error ? <p id={`${titleId}-error`} className="mt-1.5 text-sm text-accent">{error}</p> : null}
             <label className="mt-3 flex flex-col gap-1.5 text-sm font-semibold">{t.name}
               <input className={field} autoComplete="name" maxLength={60} value={name} onChange={(e) => setName(e.target.value)} />
             </label>
-            <button type="submit" disabled={busy} className="mt-4 min-h-12 w-full rounded-full bg-maroon-600 px-5 font-semibold text-white hover:bg-maroon-700 disabled:opacity-60">{busy ? t.sending : t.send}</button>
-            <a href={brand.phoneHref} className="mt-2 inline-flex min-h-11 w-full items-center justify-center gap-2 text-sm font-semibold text-royal-600 hover:text-royal-700">
+            <button type="submit" disabled={busy} className="mt-4 min-h-12 w-full rounded-full bg-action px-5 font-semibold text-white hover:bg-action-hover disabled:opacity-60">{busy ? t.sending : t.send}</button>
+            <a href={brand.phoneHref} className="mt-2 inline-flex min-h-11 w-full items-center justify-center gap-2 text-sm font-semibold text-link hover:text-heading">
               <Icon name="phone" size={16} />{t.callNow} · {brand.phone}
             </a>
           </form>

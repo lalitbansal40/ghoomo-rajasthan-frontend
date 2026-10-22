@@ -113,18 +113,18 @@ export async function RoutePage({ route, locale }: { route: GhoomoRoute; locale:
         <div className="mt-6 grid items-start gap-8 lg:grid-cols-[1fr_minmax(0,440px)] lg:gap-12">
           <div>
             <Badge tone="days">{reg[locale].name}</Badge>
-            <h1 className="text-h1 mt-3 text-royal-600">{rt.title(from, to)}</h1>
-            <p className="mt-3 flex flex-wrap items-center gap-x-2 text-muted">
-              <Icon name="mapPin" size={18} className="text-maroon-600" />
+            <h1 className="text-h1 mt-3 text-link">{rt.title(from, to)}</h1>
+            <p className="mt-3 flex flex-wrap items-center gap-x-2 text-subtle">
+              <Icon name="mapPin" size={18} className="text-accent" />
               <span>
-                {from} <span className="text-gold-700">→</span> {to}
+                {from} <span className="text-gold-text">→</span> {to}
               </span>
               {oneway?.km ? <span>· {distanceCopy(oneway.km, locale, oneway.distanceMeasured)}</span> : null}
             </p>
             {low ? (
               <p className="mt-4 text-body-lg">
-                <span className="text-h2 text-maroon-600">{t.fare.fromAmount(formatRupees(low.rupees))}</span>
-                <span className="text-muted"> · {low.label}</span>
+                <span className="text-h2 text-accent">{t.fare.fromAmount(formatRupees(low.rupees))}</span>
+                <span className="text-subtle"> · {low.label}</span>
               </p>
             ) : null}
             <div className="mt-6 space-y-4">
@@ -133,15 +133,15 @@ export async function RoutePage({ route, locale }: { route: GhoomoRoute; locale:
               ))}
             </div>
           </div>
-          <section aria-labelledby="fares" className="rounded-[var(--radius-lg)] bg-sand-50 p-4 ring-1 ring-gold-300/60 sm:p-5">
-            <h2 id="fares" className="text-h3 text-royal-700">
+          <section aria-labelledby="fares" className="rounded-[var(--radius-lg)] bg-soft p-4 ring-1 ring-edge/60 sm:p-5">
+            <h2 id="fares" className="text-h3 text-heading">
               {rt.faresTitle}
             </h2>
             <div className="mt-3">
               {oneway ? (
                 <OnewayFareTable view={oneway} locale={locale} />
               ) : (
-                <p className="font-semibold text-royal-700" data-fare="none">
+                <p className="font-semibold text-heading" data-fare="none">
                   {t.fare.onWhatsapp}
                 </p>
               )}
@@ -161,43 +161,43 @@ export async function RoutePage({ route, locale }: { route: GhoomoRoute; locale:
 
         {/* ── Coming back ──────────────────────────────────────────────── */}
         {roundtrip && roundLow ? (
-          <section className="mt-12 max-w-2xl rounded-[var(--radius-lg)] bg-royal-50 p-5">
-            <h2 className="text-h3 text-royal-700">{rt.roundTitle}</h2>
+          <section className="mt-12 max-w-2xl rounded-[var(--radius-lg)] bg-tint p-5">
+            <h2 className="text-h3 text-heading">{rt.roundTitle}</h2>
             <p className="mt-2">
               {rt.roundLine(roundtrip.includedKm)}{' '}
-              <strong className="text-maroon-600" data-fare="roundtrip" data-rupees={roundLow.rupees}>
+              <strong className="text-accent" data-fare="roundtrip" data-rupees={roundLow.rupees}>
                 {t.fare.fromAmount(formatRupees(roundLow.rupees))}
               </strong>{' '}
-              <span className="text-muted">
+              <span className="text-subtle">
                 ({roundLow.label}, {t.fare.gst(roundtrip.gstPercent)})
               </span>
             </p>
-            <p className="mt-2 text-small text-muted">{rt.roundMore(roundtrip.minKmPerDay)}</p>
+            <p className="mt-2 text-small text-subtle">{rt.roundMore(roundtrip.minKmPerDay)}</p>
           </section>
         ) : null}
 
         {/* ── On the way, and a tip ────────────────────────────────────── */}
         {text?.onTheWay?.length ? (
           <section className="mt-12">
-            <h2 className="text-h2 text-royal-600">{rt.onTheWay}</h2>
+            <h2 className="text-h2 text-link">{rt.onTheWay}</h2>
             <ol className="mt-5 grid gap-3 sm:grid-cols-2">
               {text.onTheWay.map((s) => (
-                <li key={s.name} className="rounded-[var(--radius-md)] bg-sand-50 p-4 ring-1 ring-gold-300/60">
-                  <h3 className="text-h3 flex items-start gap-2 text-royal-700">
-                    <span aria-hidden className="mt-0.5 text-gold-700">✦</span>
+                <li key={s.name} className="rounded-[var(--radius-md)] bg-soft p-4 ring-1 ring-edge/60">
+                  <h3 className="text-h3 flex items-start gap-2 text-heading">
+                    <span aria-hidden className="mt-0.5 text-gold-text">✦</span>
                     {s.name}
                   </h3>
-                  <p className="mt-1 text-ink/80">{s.line}</p>
+                  <p className="mt-1 text-content/80">{s.line}</p>
                 </li>
               ))}
             </ol>
           </section>
         ) : null}
         {text?.tip ? (
-          <aside className="mt-8 flex max-w-2xl gap-3 rounded-[var(--radius-md)] border-l-4 border-gold-500 bg-white p-4 shadow-card">
-            <Icon name="info" className="mt-0.5 shrink-0 text-gold-700" />
+          <aside className="mt-8 flex max-w-2xl gap-3 rounded-[var(--radius-md)] border-l-4 border-gold-500 bg-surface p-4 shadow-card">
+            <Icon name="info" className="mt-0.5 shrink-0 text-gold-text" />
             <p>
-              <strong className="text-royal-700">{rt.tip}: </strong>
+              <strong className="text-heading">{rt.tip}: </strong>
               {text.tip}
             </p>
           </aside>
@@ -206,7 +206,7 @@ export async function RoutePage({ route, locale }: { route: GhoomoRoute; locale:
         {/* ── Tours on this road ───────────────────────────────────────── */}
         {packages.length ? (
           <section className="mt-12">
-            <h2 className="text-h2 text-royal-600">{rt.toursOnRoad}</h2>
+            <h2 className="text-h2 text-link">{rt.toursOnRoad}</h2>
             <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {packages.map((x) => (
                 <PackageCard key={x.slug} tour={x} href={localePath(`/packages/${x.slug}`, locale)} locale={locale} />
@@ -216,7 +216,7 @@ export async function RoutePage({ route, locale }: { route: GhoomoRoute; locale:
         ) : null}
 
         {/* ── What the fare covers ─────────────────────────────────────── */}
-        <section className="mt-12 rounded-[var(--radius-lg)] bg-white p-5 shadow-card ring-1 ring-black/5">
+        <section className="mt-12 rounded-[var(--radius-lg)] bg-surface p-5 shadow-card ring-1 ring-line/5">
           <IncludesList includes={rt.inFare} excludes={extras} locale={locale} />
         </section>
 
@@ -224,7 +224,7 @@ export async function RoutePage({ route, locale }: { route: GhoomoRoute; locale:
         <div className={`mt-12 grid gap-10 ${arriving ? 'lg:grid-cols-[minmax(0,280px)_1fr]' : ''}`}>
           {arriving ? (
             <section>
-              <h2 className="text-h3 text-royal-700">{rt.arriving(arriving[locale].name)}</h2>
+              <h2 className="text-h3 text-heading">{rt.arriving(arriving[locale].name)}</h2>
               <div className="mt-4 max-w-[280px]">
                 <DestinationCard
                   name={arriving[locale].name}
@@ -239,7 +239,7 @@ export async function RoutePage({ route, locale }: { route: GhoomoRoute; locale:
           <div className="flex flex-col gap-8">
             {reverseLink ? (
               <section>
-                <h2 className="text-h3 text-royal-700">{rt.otherWay}</h2>
+                <h2 className="text-h3 text-heading">{rt.otherWay}</h2>
                 <div className="mt-4 max-w-md">
                   <RouteCard from={to} to={from} href={localePath(`/cab/${reverseLink.slug}`, locale)} locale={locale} />
                 </div>
@@ -247,7 +247,7 @@ export async function RoutePage({ route, locale }: { route: GhoomoRoute; locale:
             ) : null}
             {more.length ? (
               <section>
-                <h2 className="text-h3 text-royal-700">{rt.moreFrom(cityName(route.pickup, locale))}</h2>
+                <h2 className="text-h3 text-heading">{rt.moreFrom(cityName(route.pickup, locale))}</h2>
                 <div className={`mt-4 grid gap-3 sm:grid-cols-2 ${arriving ? '' : 'lg:grid-cols-3'}`}>
                   {more.map((r) => (
                     <RouteCard
@@ -269,14 +269,14 @@ export async function RoutePage({ route, locale }: { route: GhoomoRoute; locale:
           <section className="mt-12">
             <a
               href={localePath('/destinations', locale)}
-              className="flex items-center gap-4 rounded-[var(--radius-lg)] bg-sand-200 p-5 ring-1 ring-gold-300 hover:ring-gold-500"
+              className="flex items-center gap-4 rounded-[var(--radius-lg)] bg-alternate p-5 ring-1 ring-edge hover:ring-gold-500"
             >
               <FortSun className="w-16 shrink-0" />
               <span>
-                <span className="text-h3 block text-royal-700">{rt.beyondTitle}</span>
-                <span className="text-muted">{rt.beyondLine(PLACES.length)}</span>
+                <span className="text-h3 block text-heading">{rt.beyondTitle}</span>
+                <span className="text-subtle">{rt.beyondLine(PLACES.length)}</span>
               </span>
-              <Icon name="arrow" className="ml-auto text-royal-600" />
+              <Icon name="arrow" className="ml-auto text-link" />
             </a>
           </section>
         ) : null}

@@ -36,10 +36,10 @@ export function PackageBookingPage({ locale, slug, searchParams }: { locale: Loc
   const path = `/booking/package/${slug}`;
   return (
     <Shell locale={locale} path={path} crumbs={[{ label: t.nav.packages, href: localePath('/packages', locale) }, { label: tour.name, href: localePath(`/packages/${slug}`, locale) }, { label: t.tourBook.bookTour }]}>
-      <h1 className="mt-5 text-h1 text-royal-600">{tour.name}</h1>
-      <p className="mt-2 text-muted">{t.pkg.daysNightsShort(tour.days, tour.nights)} · {t.tourBook.startsFrom(tour.startsFrom)}</p>
-      <p className="mt-1 text-sm text-muted">{tour.route.join(' → ')}</p>
-      <div className="mt-5 rounded-xl border border-gold-300 bg-sand-50 p-4">
+      <h1 className="mt-5 text-h1 text-link">{tour.name}</h1>
+      <p className="mt-2 text-subtle">{t.pkg.daysNightsShort(tour.days, tour.nights)} · {t.tourBook.startsFrom(tour.startsFrom)}</p>
+      <p className="mt-1 text-sm text-subtle">{tour.route.join(' → ')}</p>
+      <div className="mt-5 rounded-xl border border-edge bg-soft p-4">
         <IncludesList includes={tour.includes} excludes={tour.excludes} locale={locale} />
       </div>
       <div className="mt-6">
@@ -58,9 +58,9 @@ export function SafariBookingPage({ locale, spot: slug, searchParams }: { locale
   const offers = spot.offers.map((o) => ({ key: o.key, name: o[locale].name, rupees: o.rupees, per: o.per }));
   return (
     <Shell locale={locale} path={`/booking/safari/${slug}`} crumbs={[{ label: t.nav.desertSafari, href: `${localePath('/desert-safari', locale)}#${slug}` }, { label: t.tourBook.bookSafari }]}>
-      <h1 className="mt-5 text-h1 text-royal-600">{t.tourBook.bookSafari}</h1>
-      <p className="mt-2 font-semibold text-royal-700">{words.name}</p>
-      <p className="mt-1 text-muted">{words.line}</p>
+      <h1 className="mt-5 text-h1 text-link">{t.tourBook.bookSafari}</h1>
+      <p className="mt-2 font-semibold text-heading">{words.name}</p>
+      <p className="mt-1 text-subtle">{words.line}</p>
       <div className="mt-6">
         <CatalogBooking locale={locale} choice={{ kind: 'safari', spot: slug, offers }} initial={one(searchParams.offer)} />
       </div>

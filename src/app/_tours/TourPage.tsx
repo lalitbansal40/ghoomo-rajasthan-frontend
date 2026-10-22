@@ -82,14 +82,14 @@ export async function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Loca
             <div className="flex flex-wrap items-center gap-2">
               <Badge tone="days">{t.pkg.daysNightsShort(tour.days, tour.nights)}</Badge>
             </div>
-            <h1 className="text-h1 mt-3 text-royal-600">{tour.name}</h1>
-            {tour.summary ? <p className="mt-3 text-muted">{tour.summary}</p> : null}
-            <p className="mt-3 flex flex-wrap items-center gap-x-1.5 text-muted">
-              <Icon name="mapPin" size={18} className="text-maroon-600" />
+            <h1 className="text-h1 mt-3 text-link">{tour.name}</h1>
+            {tour.summary ? <p className="mt-3 text-subtle">{tour.summary}</p> : null}
+            <p className="mt-3 flex flex-wrap items-center gap-x-1.5 text-subtle">
+              <Icon name="mapPin" size={18} className="text-accent" />
               {tour.route.join(' → ')}
             </p>
-            {checkoutHref ? <div className="mt-5 space-y-2"><Button variant="primary" href={checkoutHref}>{locale === 'hi' ? 'वर्तमान विकल्प चुनें और ऑनलाइन बुक करें' : 'Choose current options and book online'}</Button><p className="text-sm text-muted">{locale === 'hi' ? 'चेकआउट पर उपलब्ध दर, तारीख और शामिल सेवाएँ चुनकर अंतिम कुल देखें।' : 'Select the current rate plan, dates and inclusions at checkout to review your final total.'}</p></div> : null}
-            <div className="mt-6 rounded-[var(--radius-lg)] bg-white p-5 shadow-card ring-1 ring-black/5">
+            {checkoutHref ? <div className="mt-5 space-y-2"><Button variant="primary" href={checkoutHref}>{locale === 'hi' ? 'वर्तमान विकल्प चुनें और ऑनलाइन बुक करें' : 'Choose current options and book online'}</Button><p className="text-sm text-subtle">{locale === 'hi' ? 'चेकआउट पर उपलब्ध दर, तारीख और शामिल सेवाएँ चुनकर अंतिम कुल देखें।' : 'Select the current rate plan, dates and inclusions at checkout to review your final total.'}</p></div> : null}
+            <div className="mt-6 rounded-[var(--radius-lg)] bg-surface p-5 shadow-card ring-1 ring-line/5">
               <VehiclePicker
                 tour={tour}
                 prices={tour.fromRupees}
@@ -103,11 +103,11 @@ export async function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Loca
 
         {/* ── Highlights ───────────────────────────────────────────────── */}
         <section className="mt-12">
-          <h2 className="text-h2 text-royal-600">{t.pkg.highlights}</h2>
+          <h2 className="text-h2 text-link">{t.pkg.highlights}</h2>
           <ul className="mt-4 grid gap-3 sm:grid-cols-2">
             {tour.highlights.map((h) => (
-              <li key={h} className="flex gap-2 rounded-[var(--radius-md)] bg-sand-50 p-3 ring-1 ring-gold-300/60">
-                <Icon name="check" className="mt-0.5 text-success" />
+              <li key={h} className="flex gap-2 rounded-[var(--radius-md)] bg-soft p-3 ring-1 ring-edge/60">
+                <Icon name="check" className="mt-0.5 text-positive" />
                 <span>{h}</span>
               </li>
             ))}
@@ -117,24 +117,24 @@ export async function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Loca
         {/* ── Day by day, and what the price covers ──────────────────────── */}
         <div className="mt-12 grid gap-10 lg:grid-cols-[1.4fr_1fr]">
           <section>
-            <h2 className="text-h2 text-royal-600">{t.pkg.itinerary}</h2>
+            <h2 className="text-h2 text-link">{t.pkg.itinerary}</h2>
             <div className="mt-6">
               <ItineraryTimeline days={tour.itinerary} locale={locale} />
             </div>
           </section>
           <div className="flex flex-col gap-8">
-            <section className="rounded-[var(--radius-lg)] bg-white p-5 shadow-card ring-1 ring-black/5">
+            <section className="rounded-[var(--radius-lg)] bg-surface p-5 shadow-card ring-1 ring-line/5">
               <IncludesList includes={tour.includes} excludes={tour.excludes} locale={locale} />
             </section>
             <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-              <div className="rounded-[var(--radius-md)] bg-royal-50 p-4">
-                <h3 className="text-h3 flex items-center gap-2 text-royal-700">
+              <div className="rounded-[var(--radius-md)] bg-tint p-4">
+                <h3 className="text-h3 flex items-center gap-2 text-heading">
                   <Icon name="sun" /> {t.pkg.bestTime}
                 </h3>
                 <p className="mt-1">{tour.bestMonths}</p>
               </div>
-              <div className="rounded-[var(--radius-md)] bg-royal-50 p-4">
-                <h3 className="text-h3 flex items-center gap-2 text-royal-700">
+              <div className="rounded-[var(--radius-md)] bg-tint p-4">
+                <h3 className="text-h3 flex items-center gap-2 text-heading">
                   <Icon name="users" /> {t.pkg.goodFor}
                 </h3>
                 <p className="mt-1">{tour.goodFor.join(' · ')}</p>
@@ -146,7 +146,7 @@ export async function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Loca
         {/* ── Cities on this tour ──────────────────────────────────────── */}
         {cities.length ? (
           <section className="mt-12">
-            <h2 className="text-h2 text-royal-600">{t.pkg.citiesOnTour}</h2>
+            <h2 className="text-h2 text-link">{t.pkg.citiesOnTour}</h2>
             <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
               {cities.map((d) => (
                 <DestinationCard
@@ -172,7 +172,7 @@ export async function TourPage({ pkg, locale }: { pkg: TourPackage; locale: Loca
 
         {/* ── More tours ───────────────────────────────────────────────── */}
         {others.length ? <section className="mt-12">
-          <h2 className="text-h2 text-royal-600">{t.pkg.moreTours}</h2>
+          <h2 className="text-h2 text-link">{t.pkg.moreTours}</h2>
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {others.map((x) => (
               <PackageCard key={x.slug} tour={x} href={localePath(`/packages/${x.slug}`, locale)} locale={locale} />

@@ -87,7 +87,7 @@ export async function SafariPage({ locale }: { locale: Locale }) {
             </div>
           ) : null}
           <div>
-            <h1 className="text-h1 text-royal-600">{s.title}</h1>
+            <h1 className="text-h1 text-link">{s.title}</h1>
             <p className="text-body-lg mt-3">{s.line}</p>
             <div className="mt-5" aria-hidden>
               <Camel walking size={72} />
@@ -101,28 +101,28 @@ export async function SafariPage({ locale }: { locale: Locale }) {
         </div>
 
         {/* ── Where, and what each place sells ──────────────────────────── */}
-        <h2 className="text-h2 mt-14 text-royal-600">{s.where}</h2>
+        <h2 className="text-h2 mt-14 text-link">{s.where}</h2>
         <div className="mt-6 flex flex-col gap-10">
           {SAFARI.map((spot) => {
             const sp = spot[locale];
             const ph = photoFor(`safari:${spot.slug}`, photo(spot.photo), photos, locale);
             const place = placeBySlug(spot.slug);
             return (
-              <section key={spot.slug} id={spot.slug} className="scroll-mt-24 rounded-[var(--radius-lg)] bg-white p-5 shadow-card ring-1 ring-black/5 sm:p-6">
+              <section key={spot.slug} id={spot.slug} className="scroll-mt-24 rounded-[var(--radius-lg)] bg-surface p-5 shadow-card ring-1 ring-line/5 sm:p-6">
                 <div className="grid gap-6 md:grid-cols-[220px_1fr]">
                   {ph ? (
-                    <div className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-md)] bg-sand-200">
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-md)] bg-alternate">
                       <Image src={ph.card} alt={ph.alt} fill sizes="(min-width: 768px) 220px, 90vw" className="object-cover" />
                     </div>
                   ) : null}
                   <div>
-                    <h3 className="text-h2 text-royal-700">{sp.name}</h3>
+                    <h3 className="text-h2 text-heading">{sp.name}</h3>
                     <p className="mt-1">{sp.line}</p>
-                    <p className="mt-2 text-small text-muted">
+                    <p className="mt-2 text-small text-subtle">
                       <strong>{s.goodFor}:</strong> {sp.goodFor}
                     </p>
                     {place ? (
-                      <a href={localePath(`/destinations/${place.slug}`, locale)} className="mt-2 inline-flex items-center gap-1 text-small font-semibold text-royal-600 underline">
+                      <a href={localePath(`/destinations/${place.slug}`, locale)} className="mt-2 inline-flex items-center gap-1 text-small font-semibold text-link underline">
                         {place[locale].name} <Icon name="arrow" size={16} />
                       </a>
                     ) : null}
@@ -132,22 +132,22 @@ export async function SafariPage({ locale }: { locale: Locale }) {
                   {spot.offers.map((o) => {
                     const ot = o[locale];
                     return (
-                      <li key={o.key} className="flex flex-col rounded-[var(--radius-md)] bg-sand-50 p-4 ring-1 ring-gold-300/60">
-                        <h4 className="text-h3 text-royal-700">{ot.name}</h4>
+                      <li key={o.key} className="flex flex-col rounded-[var(--radius-md)] bg-soft p-4 ring-1 ring-edge/60">
+                        <h4 className="text-h3 text-heading">{ot.name}</h4>
                         <p className="mt-1 text-small">{ot.detail}</p>
                         <ul className="mt-3 flex flex-col gap-1 text-small">
                           {ot.includes.map((i) => (
                             <li key={i} className="flex gap-2">
-                              <Icon name="check" size={16} className="mt-0.5 text-success" />
+                              <Icon name="check" size={16} className="mt-0.5 text-positive" />
                               {i}
                             </li>
                           ))}
                         </ul>
                         <div className="mt-4 flex flex-wrap items-baseline gap-x-2">
-                          <span className="text-h3 text-maroon-600" data-safari={`${spot.slug}-${o.key}`} data-rupees={o.rupees}>
+                          <span className="text-h3 text-accent" data-safari={`${spot.slug}-${o.key}`} data-rupees={o.rupees}>
                             {formatRupees(o.rupees)}
                           </span>
-                          <span className="text-small text-muted">{s.per[o.per]}</span>
+                          <span className="text-small text-subtle">{s.per[o.per]}</span>
                           {SAFARI_IS_SAMPLE && !SAFARI_BOOKABLE ? <Badge tone="sample">{t.pkg.samplePrice}</Badge> : null}
                         </div>
                         <div className="mt-4">
@@ -166,14 +166,14 @@ export async function SafariPage({ locale }: { locale: Locale }) {
 
         {/* ── When, and what to carry ───────────────────────────────────── */}
         <section className="mt-14 grid gap-4 md:grid-cols-2">
-          <div className="rounded-[var(--radius-md)] bg-royal-50 p-5">
-            <h2 className="text-h3 flex items-center gap-2 text-royal-700">
+          <div className="rounded-[var(--radius-md)] bg-tint p-5">
+            <h2 className="text-h3 flex items-center gap-2 text-heading">
               <Icon name="sun" /> {s.when}
             </h2>
             <p className="mt-2">{s.whenBody}</p>
           </div>
-          <div className="rounded-[var(--radius-md)] bg-royal-50 p-5">
-            <h2 className="text-h3 flex items-center gap-2 text-royal-700">
+          <div className="rounded-[var(--radius-md)] bg-tint p-5">
+            <h2 className="text-h3 flex items-center gap-2 text-heading">
               <Icon name="check" /> {s.carry}
             </h2>
             <ul className="mt-2 flex list-disc flex-col gap-1 pl-5">
@@ -186,8 +186,8 @@ export async function SafariPage({ locale }: { locale: Locale }) {
 
         {/* ── The car to the dunes ─────────────────────────────────────── */}
         <section className="mt-14">
-          <h2 className="text-h2 text-royal-600">{s.getThere}</h2>
-          <p className="mt-2 text-muted">{s.getThereLine}</p>
+          <h2 className="text-h2 text-link">{s.getThere}</h2>
+          <p className="mt-2 text-subtle">{s.getThereLine}</p>
           <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {roads.map(({ r, low }) => (
               <RouteCard
@@ -202,7 +202,7 @@ export async function SafariPage({ locale }: { locale: Locale }) {
           </div>
           {jaisalmerLocal ? (
             <div className="mt-8 max-w-xl">
-              <h3 className="text-h3 text-royal-700">{t.place.carThere(routeEndName('JAISALMER', locale))}</h3>
+              <h3 className="text-h3 text-heading">{t.place.carThere(routeEndName('JAISALMER', locale))}</h3>
               <div className="mt-3">
                 <LocalFareTable view={jaisalmerLocal} locale={locale} />
               </div>
@@ -213,7 +213,7 @@ export async function SafariPage({ locale }: { locale: Locale }) {
         {/* ── Tours with a desert night ─────────────────────────────────── */}
         {desertTours.length ? (
           <section className="mt-14">
-            <h2 className="text-h2 text-royal-600">{s.tours}</h2>
+            <h2 className="text-h2 text-link">{s.tours}</h2>
             <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {desertTours.map((x) => (
                 <PackageCard key={x.slug} tour={x} href={localePath(`/packages/${x.slug}`, locale)} locale={locale} />
@@ -224,7 +224,7 @@ export async function SafariPage({ locale }: { locale: Locale }) {
 
         {/* ── Cancelling ───────────────────────────────────────────────── */}
         <section className="mt-14 max-w-2xl">
-          <h2 className="text-h3 text-royal-700">{s.cancel}</h2>
+          <h2 className="text-h3 text-heading">{s.cancel}</h2>
           <p className="mt-2">{s.cancelBody}</p>
         </section>
 

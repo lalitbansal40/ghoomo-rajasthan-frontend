@@ -25,12 +25,12 @@ export function LangSwitch({ path, className = '' }: { path: string; className?:
       prefetch={false}
       hrefLang={LANG_TAG[there].hreflang}
       lang={LANG_TAG[there].html}
-      className={`inline-flex min-h-10 items-center gap-1 rounded-full border border-royal-200 px-3 text-[0.9375rem] font-semibold text-royal-700 hover:bg-royal-50 ${className}`}
+      className={`inline-flex min-h-10 items-center gap-1 rounded-full border border-edge-strong px-3 text-[0.9375rem] font-semibold text-heading hover:bg-tint ${className}`}
     >
       {/* The visible letters are part of the name a screen reader says (WCAG "label in name"),
           followed by what the link does. */}
-      <span className="text-muted">{t.lang.current}</span>
-      <span aria-hidden className="text-gold-700">|</span>
+      <span className="text-subtle">{t.lang.current}</span>
+      <span aria-hidden className="text-gold-text">|</span>
       <span style={own}>{t.lang.short}</span>
       <span className="sr-only" style={own}>
         {' '}

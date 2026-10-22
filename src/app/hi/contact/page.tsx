@@ -26,7 +26,7 @@ export default function HindiContactPage() {
 
       <DocSection title="फ़ोन या WhatsApp">
         <p>
-          <a className="font-semibold text-royal underline" href={brand.phoneHref}>
+          <a className="font-semibold text-link underline" href={brand.phoneHref}>
             {brand.phone}
           </a>
         </p>
@@ -35,7 +35,7 @@ export default function HindiContactPage() {
       {brand.email ? (
         <DocSection title="ईमेल">
           <p>
-            <a className="font-semibold text-royal underline" href={`mailto:${brand.email}`}>
+            <a className="font-semibold text-link underline" href={`mailto:${brand.email}`}>
               {brand.email}
             </a>
           </p>
@@ -44,7 +44,7 @@ export default function HindiContactPage() {
 
       <DocSection title="ऑफ़िस">
         <p>{brand.address}</p>
-        <p className="text-sm text-muted">
+        <p className="text-sm text-subtle">
           घूमो राजस्थान {brand.legalName ?? 'हैलो माय कैब'} का एक ब्रांड है।
         </p>
       </DocSection>

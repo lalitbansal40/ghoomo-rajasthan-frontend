@@ -68,7 +68,7 @@ export default function HindiTermsPage() {
       <DocSection title="कैंसल करना">
         <p>
           यात्रा शुरू होने से पहले आप कभी भी कैंसल कर सकते हैं। इसमें कितना लगता है और कितना वापस आता है, यह{' '}
-          <Link className="text-royal underline" href="/hi/refund">
+          <Link className="text-link underline" href="/hi/refund">
             कैंसल और रिफ़ंड
           </Link>{' '}
           पेज पर लिखा है।
@@ -92,21 +92,21 @@ export default function HindiTermsPage() {
 
       <DocSection title="हमसे बात करें">
         <p>
-          <a className="font-semibold text-royal underline" href={brand.phoneHref}>
+          <a className="font-semibold text-link underline" href={brand.phoneHref}>
             {brand.phone}
           </a>{' '}
           पर फ़ोन या WhatsApp करें
           {brand.email ? (
             <>
               , या{' '}
-              <a className="font-semibold text-royal underline" href={`mailto:${brand.email}`}>
+              <a className="font-semibold text-link underline" href={`mailto:${brand.email}`}>
                 {brand.email}
               </a>{' '}
               पर लिखें
             </>
           ) : null}
           । हमारा{' '}
-          <Link className="text-royal underline" href="/hi/privacy">
+          <Link className="text-link underline" href="/hi/privacy">
             प्राइवेसी
           </Link>{' '}
           पेज भी देखें।

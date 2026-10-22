@@ -81,7 +81,7 @@ export async function CabHub({ locale }: { locale: Locale }) {
         <SectionHeader as="h1" align="left" className="mt-6 !max-w-3xl" title={c.title} intro={c.intro} />
         <nav aria-label={c.title} className="mt-6 flex flex-wrap gap-2">
           {(['oneWay', 'darshan', 'local', 'group', 'airport'] as const).map((k) => (
-            <a key={k} href={`#${k === 'oneWay' ? 'one-way' : k}`} className="rounded-full bg-royal-50 px-4 py-2 text-[0.9375rem] font-semibold text-royal-700 hover:bg-royal-100">
+            <a key={k} href={`#${k === 'oneWay' ? 'one-way' : k}`} className="rounded-full bg-tint px-4 py-2 text-[0.9375rem] font-semibold text-heading hover:bg-tint-hover">
               {c.jump[k]}
             </a>
           ))}
@@ -93,8 +93,8 @@ export async function CabHub({ locale }: { locale: Locale }) {
 
         {/* ── One way ──────────────────────────────────────────────────── */}
         <section id="one-way" className="mt-12 scroll-mt-24">
-          <h2 className="text-h2 text-royal-600">{c.oneWayTitle}</h2>
-          <p className="mt-2 text-muted">{c.oneWayLine(LINKABLE_ROUTES.length)}</p>
+          <h2 className="text-h2 text-link">{c.oneWayTitle}</h2>
+          <p className="mt-2 text-subtle">{c.oneWayLine(LINKABLE_ROUTES.length)}</p>
           <div className="mt-6">
             <RouteFilter groups={groups.map((g) => ({ key: g.key, name: g.name, count: g.items.length }))} label={c.from} all={t.place.any}>
               {groups.flatMap((g) =>
@@ -116,36 +116,36 @@ export async function CabHub({ locale }: { locale: Locale }) {
         {/* ── Rajasthan darshan ────────────────────────────────────────── */}
         <section id="darshan" className="mt-16 grid scroll-mt-24 gap-8 lg:grid-cols-2">
           <div>
-            <h2 className="text-h2 text-royal-600">{c.darshanTitle}</h2>
+            <h2 className="text-h2 text-link">{c.darshanTitle}</h2>
             <p className="mt-2">{c.darshanLine}</p>
             {example && dzire ? (
-              <div className="mt-6 rounded-[var(--radius-lg)] bg-royal-50 p-5" data-fare="example">
+              <div className="mt-6 rounded-[var(--radius-lg)] bg-tint p-5" data-fare="example">
                 <div className="flex items-center gap-2">
-                  <h3 className="text-h3 text-royal-700">{c.exampleTitle}</h3>
+                  <h3 className="text-h3 text-heading">{c.exampleTitle}</h3>
                   <Badge tone="sample">{c.estimate}</Badge>
                 </div>
                 <p className="mt-2">{c.example(EXAMPLE_DAYS, example.km, dzire.label, formatRupees(example.rupees))}</p>
-                <p className="mt-2 text-small text-muted">{c.exactOnWhatsapp}</p>
+                <p className="mt-2 text-small text-subtle">{c.exactOnWhatsapp}</p>
               </div>
             ) : null}
-            {hillLow?.perKm ? <p className="mt-4 text-small text-muted">{c.hillNote(formatRupees(hillLow.perKm))}</p> : null}
+            {hillLow?.perKm ? <p className="mt-4 text-small text-subtle">{c.hillNote(formatRupees(hillLow.perKm))}</p> : null}
             <div className="mt-4">
               <Button variant="primary" href={bookStartLink(locale, 'round_trip')}>{c.darshanBook}</Button>
             </div>
           </div>
-          <div>{rates ? <PerKmTable view={rates} locale={locale} /> : <p className="font-semibold text-royal-700">{t.fare.onWhatsapp}</p>}</div>
+          <div>{rates ? <PerKmTable view={rates} locale={locale} /> : <p className="font-semibold text-heading">{t.fare.onWhatsapp}</p>}</div>
         </section>
 
         {/* ── A car for the day ────────────────────────────────────────── */}
         <section id="local" className="mt-16 grid scroll-mt-24 gap-8 lg:grid-cols-2">
           <div>
-            <h2 className="text-h2 text-royal-600">{c.localTitle}</h2>
+            <h2 className="text-h2 text-link">{c.localTitle}</h2>
             <p className="mt-2">{c.localLine(cityName('JAIPUR', locale))}</p>
-            <p className="mt-4 text-small text-muted">{c.localOthers}</p>
+            <p className="mt-4 text-small text-subtle">{c.localOthers}</p>
             <ul className="mt-2 flex flex-wrap gap-2">
               {placesForLocal.map((p) => (
                 <li key={p.slug}>
-                  <a href={localePath(`/destinations/${p.slug}`, locale)} className="text-royal-600 underline">
+                  <a href={localePath(`/destinations/${p.slug}`, locale)} className="text-link underline">
                     {p[locale].name}
                   </a>
                 </li>
@@ -155,16 +155,16 @@ export async function CabHub({ locale }: { locale: Locale }) {
               <Button variant="primary" href={bookStartLink(locale, 'local', 'JAIPUR')}>{t.flow.bookLocal}</Button>
             </div>
           </div>
-          <div>{local ? <LocalFareTable view={local} locale={locale} /> : <p className="font-semibold text-royal-700">{t.fare.onWhatsapp}</p>}</div>
+          <div>{local ? <LocalFareTable view={local} locale={locale} /> : <p className="font-semibold text-heading">{t.fare.onWhatsapp}</p>}</div>
         </section>
 
         {/* ── Groups ───────────────────────────────────────────────────── */}
         <section id="group" className="mt-16 grid scroll-mt-24 gap-8 lg:grid-cols-2">
           <div>
-            <h2 className="text-h2 text-royal-600">{c.groupTitle}</h2>
+            <h2 className="text-h2 text-link">{c.groupTitle}</h2>
             <p className="mt-2">{c.groupLine}</p>
             {van?.seats ? (
-              <p className="mt-4 rounded-[var(--radius-md)] bg-sand-50 p-4 ring-1 ring-gold-300/60" data-fare="group" data-rupees={van.rupees}>
+              <p className="mt-4 rounded-[var(--radius-md)] bg-soft p-4 ring-1 ring-edge/60" data-fare="group" data-rupees={van.rupees}>
                 {c.groupExample(van.seats, formatRupees(van.rupees))}
               </p>
             ) : null}
@@ -174,16 +174,16 @@ export async function CabHub({ locale }: { locale: Locale }) {
               </Button>
             </div>
           </div>
-          <div>{rates ? <PerKmTable view={rates} locale={locale} vans /> : <p className="font-semibold text-royal-700">{t.fare.onWhatsapp}</p>}</div>
+          <div>{rates ? <PerKmTable view={rates} locale={locale} vans /> : <p className="font-semibold text-heading">{t.fare.onWhatsapp}</p>}</div>
         </section>
 
         {/* ── Airports ─────────────────────────────────────────────────── */}
         <section id="airport" className="mt-16 scroll-mt-24">
-          <h2 className="text-h2 text-royal-600">{c.airportTitle}</h2>
+          <h2 className="text-h2 text-link">{c.airportTitle}</h2>
           <p className="mt-2 max-w-3xl">{c.jaipurAirport}</p>
           {airportRoutes.length ? (
             <>
-              <p className="mt-4 font-semibold text-royal-700">{c.delhiAirport}</p>
+              <p className="mt-4 font-semibold text-heading">{c.delhiAirport}</p>
               <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {airportRoutes.map((r) => (
                   <RouteCard
@@ -200,7 +200,7 @@ export async function CabHub({ locale }: { locale: Locale }) {
         </section>
 
         {/* ── What is included ─────────────────────────────────────────── */}
-        <section className="mt-16 rounded-[var(--radius-lg)] bg-white p-5 shadow-card ring-1 ring-black/5">
+        <section className="mt-16 rounded-[var(--radius-lg)] bg-surface p-5 shadow-card ring-1 ring-line/5">
           <IncludesList
             includes={t.route.inFare}
             excludes={[t.route.extra.gst(rates?.gstPercent ?? 5), t.route.extra.tollRoad, t.route.extra.parking, t.route.extra.stateTax]}

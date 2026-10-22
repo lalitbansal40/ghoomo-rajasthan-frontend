@@ -172,22 +172,22 @@ export function BookingFlow({
     ? `${cityLabel[trip.pickup]} · ${t.local}`
     : `${cityLabel[trip.pickup]} → ${[...trip.stops.map((s) => cityLabel[s]), cityLabel[trip.drop!]].join(' → ')}${trip.tripType === 'round_trip' ? ` → ${cityLabel[trip.pickup]}` : ''}`;
   const whenWords = (when: string) => new Intl.DateTimeFormat(locale === 'hi' ? 'hi-IN' : 'en-IN', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Asia/Kolkata' }).format(new Date(indiaIso(when)));
-  const field = 'min-h-12 w-full rounded-lg border border-ink/20 bg-white px-3 py-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-royal';
+  const field = 'min-h-12 w-full rounded-lg border border-control bg-surface px-3 py-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-link';
   const fieldLabel = 'flex flex-col gap-1.5 text-sm font-semibold';
   const summary = (
-    <div className="rounded-xl border border-gold-300 bg-sand-50 p-4 text-sm">
-      <p className="font-semibold text-royal-700">{routeWords}</p>
-      <p className="mt-1 text-ink/80">{t.when}: {whenWords(trip.when)} IST{trip.returnWhen ? ` · ${t.returnBy}: ${whenWords(trip.returnWhen)} IST` : ''}</p>
-      <a href={`${localePath('/', locale)}#book`} className="mt-2 inline-flex min-h-11 items-center font-semibold text-royal-600 underline">{t.change}</a>
+    <div className="rounded-xl border border-edge bg-soft p-4 text-sm">
+      <p className="font-semibold text-heading">{routeWords}</p>
+      <p className="mt-1 text-content/80">{t.when}: {whenWords(trip.when)} IST{trip.returnWhen ? ` · ${t.returnBy}: ${whenWords(trip.returnWhen)} IST` : ''}</p>
+      <a href={`${localePath('/', locale)}#book`} className="mt-2 inline-flex min-h-11 items-center font-semibold text-link underline">{t.change}</a>
     </div>
   );
 
   if (!car || !offer) {
     return (
       <div className="space-y-5">
-        <h1 className="text-h1 text-royal-600">{t.title}</h1>
+        <h1 className="text-h1 text-link">{t.title}</h1>
         {summary}
-        {error ? <p role="alert" className="rounded-lg bg-maroon-50 p-3 text-sm text-maroon-700">{error}</p> : null}
+        {error ? <p role="alert" className="rounded-lg bg-error-surface p-3 text-sm text-accent-strong">{error}</p> : null}
         <ul className="space-y-3">
           {offers.map((o) => {
             const terms = [
@@ -200,14 +200,14 @@ export function BookingFlow({
               o.terms.tollIncluded ? t.tollIncluded : null,
             ].filter(Boolean);
             return (
-              <li key={o.key} className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-ink/10 bg-white p-4 shadow-card">
+              <li key={o.key} className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line/10 bg-surface p-4 shadow-card">
                 <div className="min-w-0">
-                  <p className="font-semibold text-ink">{o.label}{o.key === cheapest ? <span className="ml-2 rounded-full bg-gold-100 px-2 py-0.5 text-xs font-bold text-gold-700">{t.cheapest}</span> : null}</p>
-                  <p className="mt-1 text-sm text-muted">{terms.join(' · ')}</p>
+                  <p className="font-semibold text-content">{o.label}{o.key === cheapest ? <span className="ml-2 rounded-full bg-warning-surface px-2 py-0.5 text-xs font-bold text-gold-text">{t.cheapest}</span> : null}</p>
+                  <p className="mt-1 text-sm text-subtle">{terms.join(' · ')}</p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <p className="text-right"><span className="block text-lg font-bold text-royal-700">{money(o.rupees, locale)}</span><span className="text-xs text-muted">{t.plusGst(gstPercent)}</span></p>
-                  <button type="button" onClick={() => choose(o.key)} disabled={quoting !== null} className="min-h-12 rounded-full bg-maroon-600 px-5 font-semibold text-white hover:bg-maroon-700 disabled:opacity-60">{quoting === o.key ? t.choosing : t.choose}</button>
+                  <p className="text-right"><span className="block text-lg font-bold text-heading">{money(o.rupees, locale)}</span><span className="text-xs text-subtle">{t.plusGst(gstPercent)}</span></p>
+                  <button type="button" onClick={() => choose(o.key)} disabled={quoting !== null} className="min-h-12 rounded-full bg-action px-5 font-semibold text-white hover:bg-action-hover disabled:opacity-60">{quoting === o.key ? t.choosing : t.choose}</button>
                 </div>
               </li>
             );
@@ -221,9 +221,9 @@ export function BookingFlow({
   const mmss = left === null ? '' : `${Math.floor(left / 60000)}:${String(Math.floor((left % 60000) / 1000)).padStart(2, '0')}`;
   return (
     <form onSubmit={pay} noValidate className="space-y-6">
-      <h1 className="text-h1 text-royal-600">{t.details}</h1>
+      <h1 className="text-h1 text-link">{t.details}</h1>
       {summary}
-      <section aria-labelledby="price" className="rounded-xl border border-ink/10 bg-white p-4 shadow-card">
+      <section aria-labelledby="price" className="rounded-xl border border-line/10 bg-surface p-4 shadow-card">
         <h2 id="price" className="sr-only">{t.total}</h2>
         <p className="font-semibold">{t.car}: {offer.label}</p>
         {quote ? (
@@ -232,33 +232,33 @@ export function BookingFlow({
               <div className="flex justify-between gap-4"><dt>{t.fare}</dt><dd>{money(quote.fareRupees, locale)}</dd></div>
               {quote.extras.map((x) => <div key={x.label} className="flex justify-between gap-4"><dt>{x.label}</dt><dd>{money(x.rupees, locale)}</dd></div>)}
               <div className="flex justify-between gap-4"><dt>{t.gst(quote.gstPercent)}</dt><dd>{money(quote.gstRupees, locale)}</dd></div>
-              <div className="flex justify-between gap-4 border-t border-ink/10 pt-1.5 font-bold"><dt>{t.total}</dt><dd>{money(quote.totalWithGstRupees, locale)}</dd></div>
+              <div className="flex justify-between gap-4 border-t border-line/10 pt-1.5 font-bold"><dt>{t.total}</dt><dd>{money(quote.totalWithGstRupees, locale)}</dd></div>
             </dl>
-            <p className={`mt-3 text-sm ${left === 0 ? 'font-semibold text-maroon-700' : 'text-muted'}`} aria-live="polite">
+            <p className={`mt-3 text-sm ${left === 0 ? 'font-semibold text-accent-strong' : 'text-subtle'}`} aria-live="polite">
               {left === 0 ? t.expired : t.validFor(mmss)}
-              {left === 0 ? <button type="button" onClick={() => void ask(offer.key)} className="ml-2 font-semibold text-royal-600 underline">{t.refresh}</button> : null}
+              {left === 0 ? <button type="button" onClick={() => void ask(offer.key)} className="ml-2 font-semibold text-link underline">{t.refresh}</button> : null}
             </p>
           </>
-        ) : <p className="mt-3 text-sm text-muted" aria-live="polite">{quoting ? t.choosing : null}</p>}
+        ) : <p className="mt-3 text-sm text-subtle" aria-live="polite">{quoting ? t.choosing : null}</p>}
       </section>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <label className={fieldLabel}>{t.phone}
           <input className={field} type="tel" inputMode="numeric" autoComplete="tel-national" maxLength={14} required value={phone} readOnly={phoneLocked} onChange={(e) => setPhone(e.target.value)} />
-          <span className="font-normal text-muted">{phoneLocked ? t.signedInAs(phone) : t.phoneHint}</span>
+          <span className="font-normal text-subtle">{phoneLocked ? t.signedInAs(phone) : t.phoneHint}</span>
         </label>
         <label className={fieldLabel}>{t.name}<input className={field} autoComplete="name" maxLength={60} value={name} onChange={(e) => setName(e.target.value)} /></label>
-        <label className={fieldLabel}>{t.travellers}<input className={field} type="number" inputMode="numeric" min={1} max={offer.seats ?? 50} required value={pax} onChange={(e) => setPax(e.target.value)} />{offer.seats ? <span className="font-normal text-muted">{t.seatsUpTo(offer.seats)}</span> : null}</label>
+        <label className={fieldLabel}>{t.travellers}<input className={field} type="number" inputMode="numeric" min={1} max={offer.seats ?? 50} required value={pax} onChange={(e) => setPax(e.target.value)} />{offer.seats ? <span className="font-normal text-subtle">{t.seatsUpTo(offer.seats)}</span> : null}</label>
         <label className={fieldLabel}>{t.pickupAddress}<input className={field} autoComplete="street-address" maxLength={200} placeholder={t.addressHint} value={pickupAddress} onChange={(e) => setPickupAddress(e.target.value)} /></label>
         {trip.tripType !== 'local' ? <label className={fieldLabel}>{t.dropAddress}<input className={field} maxLength={200} placeholder={t.addressHint} value={dropAddress} onChange={(e) => setDropAddress(e.target.value)} /></label> : null}
       </div>
 
       {quote ? (
-        <fieldset className="space-y-3 rounded-xl border border-ink/10 bg-white p-4">
+        <fieldset className="space-y-3 rounded-xl border border-line/10 bg-surface p-4">
           <legend className="px-1 font-semibold">{t.payTitle}</legend>
           {([['min', t.payMin, quote.minAdvanceRupees], ['full', t.payFull, quote.totalRupees], ['custom', t.payCustom, null]] as const).map(([key, words, amount]) => (
             <label key={key} className="flex min-h-11 items-center gap-3">
-              <input type="radio" name="pay" className="size-5 accent-royal" checked={choice === key} onChange={() => setChoice(key)} />
+              <input type="radio" name="pay" className="size-5 accent-link" checked={choice === key} onChange={() => setChoice(key)} />
               <span className="flex-1">{words}</span>
               {amount !== null ? <span className="font-semibold">{money(amount, locale)}</span> : null}
             </label>
@@ -266,24 +266,24 @@ export function BookingFlow({
           {choice === 'custom' ? (
             <label className={fieldLabel}>{t.amount}
               <input className={field} type="number" inputMode="numeric" min={quote.minAdvanceRupees} max={quote.totalRupees} value={custom} onChange={(e) => setCustom(e.target.value)} />
-              <span className="font-normal text-muted">{t.amountRange(money(quote.minAdvanceRupees, locale), money(quote.totalRupees, locale))}</span>
+              <span className="font-normal text-subtle">{t.amountRange(money(quote.minAdvanceRupees, locale), money(quote.totalRupees, locale))}</span>
             </label>
           ) : null}
           {plan?.ok ? (
-            <dl className="space-y-1 border-t border-ink/10 pt-3 text-sm">
+            <dl className="space-y-1 border-t border-line/10 pt-3 text-sm">
               <div className="flex justify-between gap-4 font-bold"><dt>{t.payNow}</dt><dd>{money(plan.payNowRupees, locale)}</dd></div>
               <div className="flex justify-between gap-4"><dt>{t.payLater}</dt><dd>{money(plan.laterRupees, locale)}</dd></div>
-              <dd className="text-muted">{t.gstNow}</dd>
+              <dd className="text-subtle">{t.gstNow}</dd>
             </dl>
           ) : null}
         </fieldset>
       ) : null}
 
-      <p className="text-sm">{t.policyRead} <a className="text-royal-600 underline" href={localePath('/terms', locale)}>{t.terms}</a> · <a className="text-royal-600 underline" href={localePath('/refund', locale)}>{t.refund}</a>.</p>
-      <label className="flex items-start gap-3 text-sm leading-6"><input type="checkbox" className="mt-1 size-5 shrink-0 accent-royal" checked={accepted} onChange={(e) => setAccepted(e.target.checked)} /><span>{t.accept}</span></label>
-      <label className="flex items-start gap-3 text-sm leading-6"><input type="checkbox" className="mt-1 size-5 shrink-0 accent-royal" checked={reviewOk} onChange={(e) => setReviewOk(e.target.checked)} /><span>{t.reviewOk}</span></label>
-      {error ? <p role="alert" className="rounded-lg bg-maroon-50 p-3 text-sm text-maroon-700">{error} <a className="ml-1 font-semibold underline" href={brand.phoneHref}>{brand.phone}</a></p> : null}
-      <button type="submit" disabled={!quote || paying} className="min-h-12 w-full rounded-full bg-maroon-600 px-6 font-semibold text-white shadow-card hover:bg-maroon-700 disabled:opacity-60">
+      <p className="text-sm">{t.policyRead} <a className="text-link underline" href={localePath('/terms', locale)}>{t.terms}</a> · <a className="text-link underline" href={localePath('/refund', locale)}>{t.refund}</a>.</p>
+      <label className="flex items-start gap-3 text-sm leading-6"><input type="checkbox" className="mt-1 size-5 shrink-0 accent-link" checked={accepted} onChange={(e) => setAccepted(e.target.checked)} /><span>{t.accept}</span></label>
+      <label className="flex items-start gap-3 text-sm leading-6"><input type="checkbox" className="mt-1 size-5 shrink-0 accent-link" checked={reviewOk} onChange={(e) => setReviewOk(e.target.checked)} /><span>{t.reviewOk}</span></label>
+      {error ? <p role="alert" className="rounded-lg bg-error-surface p-3 text-sm text-accent-strong">{error} <a className="ml-1 font-semibold underline" href={brand.phoneHref}>{brand.phone}</a></p> : null}
+      <button type="submit" disabled={!quote || paying} className="min-h-12 w-full rounded-full bg-action px-6 font-semibold text-white shadow-card hover:bg-action-hover disabled:opacity-60">
         {paying ? t.paying : t.pay(plan?.ok ? money(plan.payNowRupees, locale) : '')}
       </button>
     </form>

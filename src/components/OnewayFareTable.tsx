@@ -10,19 +10,19 @@ export function OnewayFareTable({ view, locale }: { view: OnewayView; locale: Lo
   const t = dict(locale);
   return (
     <div data-fare="oneway" data-kind={view.kind}>
-      <ul className="divide-y divide-black/5 overflow-hidden rounded-[var(--radius-lg)] bg-white shadow-card ring-1 ring-black/5">
+      <ul className="divide-y divide-line/5 overflow-hidden rounded-[var(--radius-lg)] bg-surface shadow-card ring-1 ring-line/5">
         {view.rows.map((r) => (
           <li key={r.key} className="flex items-center justify-between gap-4 px-4 py-3">
             <span>
-              <span className="block font-semibold text-royal-700">{r.label}</span>
-              {r.seats ? <span className="block text-small text-muted">{t.fare.seats(r.seats)}</span> : null}
+              <span className="block font-semibold text-heading">{r.label}</span>
+              {r.seats ? <span className="block text-small text-subtle">{t.fare.seats(r.seats)}</span> : null}
             </span>
             <span className="text-right">
-              <span className="text-h3 block text-maroon-600" data-vehicle={r.key} data-rupees={r.rupees}>
+              <span className="text-h3 block text-accent" data-vehicle={r.key} data-rupees={r.rupees}>
                 {formatRupees(r.rupees)}
               </span>
               {r.tollRupees > 0 ? (
-                <span className="block text-small text-muted" data-toll={r.tollRupees}>
+                <span className="block text-small text-subtle" data-toll={r.tollRupees}>
                   {t.fare.tollOnBill(formatRupees(r.tollRupees))}
                 </span>
               ) : null}
@@ -30,7 +30,7 @@ export function OnewayFareTable({ view, locale }: { view: OnewayView; locale: Lo
           </li>
         ))}
       </ul>
-      <p className="mt-2 text-small text-muted">
+      <p className="mt-2 text-small text-subtle">
         {t.fare.gst(view.gstPercent)} · {view.kind === 'perKm' ? t.route.perKmNote : t.route.fixedNote}
       </p>
     </div>

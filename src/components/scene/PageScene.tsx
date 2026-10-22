@@ -23,7 +23,7 @@ function Mark({ kind }: { kind: SceneKind }) {
     case 'place':
       return (
         <svg aria-hidden="true" focusable="false" viewBox="26 0 148 218" className="h-10 w-auto sm:h-14">
-          <path fill="none" stroke="#C08A22" strokeWidth="7" d={ARCH_OUTER_D} />
+          <path fill="none" stroke="var(--gr-ornament)" strokeWidth="7" d={ARCH_OUTER_D} />
         </svg>
       );
     default:
@@ -36,7 +36,7 @@ export function PageScene({ kind }: { kind: SceneKind }) {
     <div
       aria-hidden="true"
       data-scene={kind}
-      className="pointer-events-none relative h-12 overflow-hidden bg-gradient-to-b from-ivory to-sand-100 sm:h-16"
+      className="pointer-events-none relative h-12 overflow-hidden bg-gradient-to-b from-page to-sand-soft sm:h-16"
     >
       <svg
         aria-hidden="true"
@@ -46,9 +46,9 @@ export function PageScene({ kind }: { kind: SceneKind }) {
         className="absolute inset-0 h-full w-full"
       >
         {/* The fort carries its own sun — one sun in a sky. */}
-        {kind === 'tours' ? null : <circle cx="1180" cy="44" r="20" fill="#F5A623" opacity=".55" />}
-        <path fill="#F3D9A4" d="M0 40 C 240 26 480 26 720 36 C 960 46 1200 32 1440 30 V64 H0 Z" />
-        <path fill="#E9C47C" d="M0 54 C 300 46 600 46 900 51 C 1140 56 1300 50 1440 48 V64 H0 Z" />
+        {kind === 'tours' ? null : <circle cx="1180" cy="44" r="20" fill="var(--gr-orb-mid)" opacity=".55" />}
+        <path fill="var(--gr-dune-far)" d="M0 40 C 240 26 480 26 720 36 C 960 46 1200 32 1440 30 V64 H0 Z" />
+        <path fill="var(--gr-dune-mid)" d="M0 54 C 300 46 600 46 900 51 C 1140 56 1300 50 1440 48 V64 H0 Z" />
       </svg>
       <div className="absolute bottom-0.5 right-4 sm:right-10">
         <Mark kind={kind} />

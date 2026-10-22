@@ -23,7 +23,7 @@ export default function ContactPage() {
       </div>
       <DocSection title="Call or WhatsApp">
         <p>
-          <a className="font-semibold text-royal underline" href={brand.phoneHref}>
+          <a className="font-semibold text-link underline" href={brand.phoneHref}>
             {brand.phone}
           </a>
         </p>
@@ -31,7 +31,7 @@ export default function ContactPage() {
       {brand.email ? (
         <DocSection title="Email">
           <p>
-            <a className="font-semibold text-royal underline" href={`mailto:${brand.email}`}>
+            <a className="font-semibold text-link underline" href={`mailto:${brand.email}`}>
               {brand.email}
             </a>
           </p>
@@ -39,7 +39,7 @@ export default function ContactPage() {
       ) : null}
       <DocSection title="Office">
         <p>{brand.address}</p>
-        <p className="text-sm text-muted">
+        <p className="text-sm text-subtle">
           {brand.name} is a brand of {brand.legalName ?? brand.parent}.
         </p>
       </DocSection>

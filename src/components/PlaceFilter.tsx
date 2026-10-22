@@ -68,7 +68,7 @@ export function PlaceFilter({
     set: (v: string | null) => void,
   ) => (
     <div role="group" aria-label={label} className="flex flex-wrap items-center gap-2">
-      <span className="mr-1 text-small font-semibold text-muted">{label}</span>
+      <span className="mr-1 text-small font-semibold text-subtle">{label}</span>
       <Chip pressed={!value} onChange={() => set(null)}>
         {labels.all}
       </Chip>
@@ -98,8 +98,8 @@ export function PlaceFilter({
           const any = mine.some(({ it }) => visible.has(it.slug));
           return (
             <section key={r.key} id={r.key} hidden={!any} className="mt-10 scroll-mt-24">
-              <h2 className="text-h2 text-royal-600">{r.name}</h2>
-              <p className="mt-1 text-muted">{r.line}</p>
+              <h2 className="text-h2 text-link">{r.name}</h2>
+              <p className="mt-1 text-subtle">{r.line}</p>
               <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
                 {mine.map(({ it, i }) => (
                   <div key={it.slug} hidden={!visible.has(it.slug)}>

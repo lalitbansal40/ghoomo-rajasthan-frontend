@@ -15,7 +15,7 @@ export function TextInput({ id, error, help, className = '', ...rest }: Base & O
 export function PhoneInput({ id, error, help, className = '', ...rest }: Base & Omit<ComponentProps<'input'>, 'id' | 'type'>) {
   return (
     <div className={`flex items-stretch ${className}`}>
-      <span className="grid min-h-12 place-items-center rounded-l-[var(--radius-sm)] border border-r-0 border-royal-200 bg-sand-50 px-3 font-semibold text-muted">
+      <span className="grid min-h-12 place-items-center rounded-l-[var(--radius-sm)] border border-r-0 border-edge-strong bg-soft px-3 font-semibold text-subtle">
         +91
       </span>
       <input

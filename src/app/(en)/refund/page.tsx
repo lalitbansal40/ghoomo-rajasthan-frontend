@@ -76,11 +76,11 @@ export default function RefundPage() {
       <DocSection title="Questions">
         <p>
           Call or WhatsApp{' '}
-          <a className="font-semibold text-royal underline" href={brand.phoneHref}>
+          <a className="font-semibold text-link underline" href={brand.phoneHref}>
             {brand.phone}
           </a>
           , and see the{' '}
-          <Link className="text-royal underline" href="/terms">
+          <Link className="text-link underline" href="/terms">
             terms
           </Link>
           .

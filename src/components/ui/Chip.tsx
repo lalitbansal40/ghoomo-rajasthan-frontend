@@ -24,8 +24,8 @@ export function Chip({
       onClick={() => onChange(!pressed)}
       className={`inline-flex min-h-11 items-center gap-1.5 rounded-full border px-4 text-[0.9375rem] font-semibold transition-colors duration-[var(--dur-fast)] ${
         pressed
-          ? 'border-royal-600 bg-royal-600 text-white'
-          : 'border-royal-200 bg-white text-royal-700 hover:border-royal-500 hover:bg-royal-50'
+          ? 'border-link bg-primary text-white'
+          : 'border-edge-strong bg-surface text-heading hover:border-link hover:bg-tint'
       } ${className}`}
     >
       {children}

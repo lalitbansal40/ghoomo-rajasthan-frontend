@@ -14,12 +14,12 @@ export function FortSun({
 }) {
   const colour = tone === 'colour';
   return (
-    <svg aria-hidden viewBox="40 74 130 112" className={`block ${colour ? 'text-maroon-600' : ''} ${className}`}>
+    <svg aria-hidden viewBox="40 74 130 112" className={`block ${colour ? 'text-accent' : ''} ${className}`}>
       {colour ? (
         <defs>
           <linearGradient id="gr-fortsun" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#FFD27A" />
-            <stop offset="1" stopColor="#F5A623" />
+            <stop offset="0" stopColor="var(--gr-orb-start)" />
+            <stop offset="1" stopColor="var(--gr-orb-mid)" />
           </linearGradient>
         </defs>
       ) : null}

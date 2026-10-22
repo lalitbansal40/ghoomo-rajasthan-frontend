@@ -25,6 +25,26 @@ L.push("  --font-display: 'Rupee', var(--font-display-face), var(--font-mukta), 
 L.push(`  --container-site: ${t.layout.container};`);
 L.push('}');
 L.push('');
+// Web roles are scoped independently of fixed brand primitives consumed by Flutter/artwork.
+L.push('@theme inline {');
+for (const key of Object.keys(t.webTheme.light)) L.push(`  --color-${key}: var(--gr-${key});`);
+L.push('}');
+for (const [theme, roles] of Object.entries(t.webTheme)) {
+  L.push(theme === 'light' ? ':root, [data-theme="light"] {' : '[data-theme="dark"] {');
+  L.push(`  color-scheme: ${theme};`);
+  for (const [key, value] of Object.entries(roles)) L.push(`  --gr-${key}: ${value};`);
+  if (theme === 'dark') {
+    L.push('  --shadow-card: 0 1px 2px rgb(0 0 0 / .2), 0 4px 14px rgb(0 0 0 / .25);');
+    L.push('  --shadow-raised: 0 2px 4px rgb(0 0 0 / .25), 0 12px 32px rgb(0 0 0 / .4);');
+  } else {
+    for (const [key, value] of Object.entries(t.shadow)) L.push(`  --shadow-${key}: ${value};`);
+  }
+  L.push('}');
+}
+L.push('@media print { :root {');
+for (const [key, value] of Object.entries(t.webTheme.light)) L.push(`  --gr-${key}: ${value} !important;`);
+L.push('  color-scheme: light; } }');
+L.push('');
 L.push('/* The type scale — one class per step; Hindi gets a little more line-height for its matras. */');
 L.push('@layer components {');
 for (const [k, v] of Object.entries(t.type)) {

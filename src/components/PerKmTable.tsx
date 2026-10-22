@@ -12,22 +12,22 @@ export function PerKmTable({ view, locale, vans = false }: { view: RoundtripView
   if (!rows.length) return null;
   return (
     <div data-fare="perkm">
-      <ul className="divide-y divide-black/5 overflow-hidden rounded-[var(--radius-lg)] bg-white shadow-card ring-1 ring-black/5">
+      <ul className="divide-y divide-line/5 overflow-hidden rounded-[var(--radius-lg)] bg-surface shadow-card ring-1 ring-line/5">
         {rows.map((r) => (
           <li key={r.key} className="flex items-center justify-between gap-4 px-4 py-3">
             <span>
-              <span className="block font-semibold text-royal-700">{r.label}</span>
-              <span className="block text-small text-muted">
+              <span className="block font-semibold text-heading">{r.label}</span>
+              <span className="block text-small text-subtle">
                 {[r.seats ? t.seats(r.seats) : null, t.perNight(formatRupees(r.nightCharge))].filter(Boolean).join(' · ')}
               </span>
             </span>
-            <span className="text-h3 text-right text-maroon-600" data-vehicle={r.key} data-perkm={r.perKm}>
+            <span className="text-h3 text-right text-accent" data-vehicle={r.key} data-perkm={r.perKm}>
               {t.perKm(formatRupees(r.perKm!))}
             </span>
           </li>
         ))}
       </ul>
-      <p className="mt-2 text-small text-muted">
+      <p className="mt-2 text-small text-subtle">
         {t.minKmPerDay(view.minKmPerDay)} · {t.gst(view.gstPercent)}
       </p>
     </div>

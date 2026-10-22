@@ -28,11 +28,11 @@ export function PriceTagView({
   return (
     <div className={`flex flex-col ${className}`}>
       <div className="flex flex-wrap items-center gap-2">
-        <span className="text-small text-muted">{rupees == null ? null : labels.from}</span>
+        <span className="text-small text-subtle">{rupees == null ? null : labels.from}</span>
         {sample ? <Badge tone="sample">{labels.samplePrice}</Badge> : null}
       </div>
-      <span className="text-price text-maroon-600">{amount}</span>
-      <span className="text-small text-muted">
+      <span className="text-price text-accent">{amount}</span>
+      <span className="text-small text-subtle">
         {[vehicle, gst ? labels.gstExtra : null].filter(Boolean).join(' · ')}
       </span>
     </div>

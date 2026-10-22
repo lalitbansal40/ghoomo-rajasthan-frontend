@@ -35,9 +35,9 @@ export async function PackageCard({
   return (
     <Link
       href={href}
-      className="gr-shine group flex h-full flex-col overflow-hidden rounded-[var(--radius-md)] bg-white shadow-card ring-1 ring-black/5 transition-[box-shadow,transform] duration-[var(--dur)] ease-[var(--ease-out)] hover:-translate-y-0.5 hover:shadow-raised"
+      className="gr-shine group flex h-full flex-col overflow-hidden rounded-[var(--radius-md)] bg-surface shadow-card ring-1 ring-line/5 transition-[box-shadow,transform] duration-[var(--dur)] ease-[var(--ease-out)] hover:-translate-y-0.5 hover:shadow-raised"
     >
-      <div className="relative aspect-[4/3] bg-sand-100">
+      <div className="relative aspect-[4/3] bg-sand-soft">
         {p ? (
           <Image
             src={p.card}
@@ -54,23 +54,23 @@ export async function PackageCard({
         </Badge>
       </div>
       <div className="flex flex-1 flex-col gap-3 p-4">
-        <h3 className="text-h3 text-royal-700">{tour.name}</h3>
-        <p className="text-small flex flex-wrap items-center gap-x-1 text-muted">
-          <Icon name="mapPin" size={16} className="text-maroon-600" />
+        <h3 className="text-h3 text-heading">{tour.name}</h3>
+        <p className="text-small flex flex-wrap items-center gap-x-1 text-subtle">
+          <Icon name="mapPin" size={16} className="text-accent" />
           {road.join(' → ')}
         </p>
         <ul className="text-small flex flex-col gap-1">
           {tour.highlights.slice(0, 3).map((h) => (
             <li key={h} className="flex gap-2">
-              <Icon name="check" size={16} className="mt-0.5 text-success" />
+              <Icon name="check" size={16} className="mt-0.5 text-positive" />
               <span>{h}</span>
             </li>
           ))}
         </ul>
         <div className="mt-auto flex flex-wrap items-end justify-between gap-3 pt-2">
           <PriceTag rupees={low?.rupees} vehicle={low?.vehicle} sample={tour.isSample && !tour.bookable} gst={tour.isSample || tour.bookable} locale={locale} />
-          {tour.taxNote ? <p className="text-small text-muted">{tour.taxNote}</p> : null}
-          <span className="inline-flex items-center gap-1 font-semibold text-royal-600 group-hover:underline">
+          {tour.taxNote ? <p className="text-small text-subtle">{tour.taxNote}</p> : null}
+          <span className="inline-flex items-center gap-1 font-semibold text-link group-hover:underline">
             {t.cta.viewPackage}
             <Icon name="arrow" size={18} />
           </span>

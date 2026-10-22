@@ -5,7 +5,7 @@ export function Loader({ label, className = '' }: { label: string; className?: s
   return (
     <div role="status" className={`flex flex-col items-center gap-3 py-8 text-center ${className}`}>
       <Camel walking size={88} />
-      <p className="font-semibold text-royal-700">{label}</p>
+      <p className="font-semibold text-heading">{label}</p>
     </div>
   );
 }

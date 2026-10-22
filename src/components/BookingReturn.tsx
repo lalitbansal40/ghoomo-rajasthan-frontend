@@ -113,8 +113,8 @@ export function BookingReturn({ id, locale }: { id: string; locale: Locale }) {
   const dateWords = (d: string) => new Intl.DateTimeFormat(locale === 'hi' ? 'hi-IN' : 'en-IN', { dateStyle: 'medium', timeZone: 'Asia/Kolkata' }).format(new Date(`${d}T12:00:00+05:30`));
   const loginHref = `${locale === 'hi' ? '/hi' : ''}/login?next=${encodeURIComponent(`/booking/${id}`)}`;
   const vehicles: Record<string, string> = { hatchback: t.hatchback, dzire: t.dzire, ertiga: t.ertiga, crysta: t.crysta, tt_12: t.tt12, tt_14: t.tt14, tt_16: t.tt16, urbania: t.urbania };
-  return <section className="mx-auto w-full max-w-2xl rounded-2xl border border-royal/20 bg-white p-5 shadow-card sm:p-8">
-    <h1 className="text-h1 text-royal-600">{title}</h1>
+  return <section className="mx-auto w-full max-w-2xl rounded-2xl border border-link/20 bg-surface p-5 shadow-card sm:p-8">
+    <h1 className="text-h1 text-link">{title}</h1>
     {error && !view ? <p role="alert" className="mt-4 rounded-lg bg-red-50 p-4 text-red-800">{t.returnError}</p> : null}
     {view ? <>
       <dl className="mt-6 space-y-3 text-sm">
@@ -139,17 +139,17 @@ export function BookingReturn({ id, locale }: { id: string; locale: Locale }) {
         <div className="flex justify-between gap-4"><dt>{t.taxPaid}</dt><dd>{money(view.gstPaid)}</dd></div>
         <div className="flex justify-between gap-4"><dt>{t.balance}</dt><dd>{money(Math.max(0, view.booking.totalPayable - view.amountPaid))}</dd></div>
       </dl>
-      {view.billUrl ? <p className="mt-5"><a className="font-semibold text-royal underline" href={view.billUrl} target="_blank" rel="noreferrer" referrerPolicy="no-referrer">{t.bill}</a></p> : null}
-      {!view.paid ? <><p className="mt-5 text-sm text-muted">{t.paymentSupport}</p>{canRetry ? <button className="mt-5 min-h-12 rounded-lg bg-maroon-600 px-5 py-3 font-semibold text-white disabled:opacity-60" disabled={busy || token === null} onClick={retry}>{busy ? t.paymentLoading : t.retry}</button> : null}</> : null}
+      {view.billUrl ? <p className="mt-5"><a className="font-semibold text-link underline" href={view.billUrl} target="_blank" rel="noreferrer" referrerPolicy="no-referrer">{t.bill}</a></p> : null}
+      {!view.paid ? <><p className="mt-5 text-sm text-subtle">{t.paymentSupport}</p>{canRetry ? <button className="mt-5 min-h-12 rounded-lg bg-action px-5 py-3 font-semibold text-white disabled:opacity-60" disabled={busy || token === null} onClick={retry}>{busy ? t.paymentLoading : t.retry}</button> : null}</> : null}
     </> : null}
     {view ? <div className="mt-6 flex flex-wrap gap-3">
-      <button type="button" onClick={share} className="min-h-12 rounded-full border-2 border-royal-600 px-5 font-semibold text-royal-600 hover:bg-royal-50">{copied ? t.copied : t.share}</button>
-      {canCancel && signedIn ? <button type="button" onClick={cancel} disabled={cancelState === 'busy'} className="min-h-12 rounded-full border-2 border-maroon-600 px-5 font-semibold text-maroon-600 hover:bg-maroon-50 disabled:opacity-60">{cancelState === 'busy' ? t.cancelling : t.cancel}</button> : null}
-      {canCancel && !signedIn ? <a href={loginHref} className="inline-flex min-h-12 items-center font-semibold text-royal underline">{t.signInToCancel}</a> : null}
+      <button type="button" onClick={share} className="min-h-12 rounded-full border-2 border-link px-5 font-semibold text-link hover:bg-tint">{copied ? t.copied : t.share}</button>
+      {canCancel && signedIn ? <button type="button" onClick={cancel} disabled={cancelState === 'busy'} className="min-h-12 rounded-full border-2 border-accent px-5 font-semibold text-accent hover:bg-error-surface disabled:opacity-60">{cancelState === 'busy' ? t.cancelling : t.cancel}</button> : null}
+      {canCancel && !signedIn ? <a href={loginHref} className="inline-flex min-h-12 items-center font-semibold text-link underline">{t.signInToCancel}</a> : null}
     </div> : null}
-    {cancelState === 'done' ? <p role="status" className="mt-3 rounded-lg bg-sand-50 p-3 text-sm">{t.cancelDone}</p> : null}
+    {cancelState === 'done' ? <p role="status" className="mt-3 rounded-lg bg-soft p-3 text-sm">{t.cancelDone}</p> : null}
     {cancelState === 'error' ? <p role="alert" className="mt-3 rounded-lg bg-red-50 p-3 text-sm text-red-800">{t.cancelError}</p> : null}
-    <p className="mt-6"><a className="font-semibold text-royal underline" href={locale === 'hi' ? '/hi/contact' : '/contact'}>{t.help}</a></p>
-    <p className="mt-3"><a className="font-semibold text-royal underline" href={locale === 'hi' ? '/hi/my-bookings' : '/my-bookings'}>{t.myBookingsLink}</a></p>
+    <p className="mt-6"><a className="font-semibold text-link underline" href={locale === 'hi' ? '/hi/contact' : '/contact'}>{t.help}</a></p>
+    <p className="mt-3"><a className="font-semibold text-link underline" href={locale === 'hi' ? '/hi/my-bookings' : '/my-bookings'}>{t.myBookingsLink}</a></p>
   </section>;
 }

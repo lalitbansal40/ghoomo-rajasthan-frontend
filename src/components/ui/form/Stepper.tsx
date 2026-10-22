@@ -26,7 +26,7 @@ export function Stepper({
   increaseLabel: string;
 }) {
   const btn =
-    'grid h-12 w-12 place-items-center rounded-full border border-royal-200 bg-white text-royal-700 hover:bg-royal-50 disabled:opacity-40';
+    'grid h-12 w-12 place-items-center rounded-full border border-edge-strong bg-surface text-heading hover:bg-tint disabled:opacity-40';
   return (
     <div className="flex items-center gap-3" role="group" aria-labelledby={`${id}-label`}>
       <button type="button" className={btn} aria-label={decreaseLabel} disabled={value <= min} onClick={() => onChange(Math.max(min, value - 1))}>

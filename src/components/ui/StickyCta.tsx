@@ -28,7 +28,7 @@ export function StickyCta({ children }: { children: ReactNode }) {
   return (
     <>
     <div aria-hidden="true" className="h-24 md:hidden" style={height === undefined ? undefined : { height }} />
-    <div ref={bar} className="fixed inset-x-0 bottom-0 z-40 border-t border-gold-300 bg-ivory/95 px-4 pt-3 shadow-raised backdrop-blur md:hidden pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+    <div ref={bar} className="fixed inset-x-0 bottom-0 z-40 border-t border-edge bg-page/95 px-4 pt-3 shadow-raised backdrop-blur md:hidden pb-[max(0.75rem,env(safe-area-inset-bottom))]">
       <div className="flex flex-wrap gap-3 [&>*]:min-w-0 [&>*]:flex-[1_1_8rem]">{children}</div>
     </div>
     </>

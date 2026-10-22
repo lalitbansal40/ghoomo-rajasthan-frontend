@@ -40,7 +40,7 @@ export function RouteFilter({
   return (
     <div>
       <div role="group" aria-label={label} className="flex flex-wrap items-center gap-2">
-        <span className="mr-1 text-small font-semibold text-muted">{label}</span>
+        <span className="mr-1 text-small font-semibold text-subtle">{label}</span>
         <Chip pressed={!group} onChange={() => set(null)}>
           {all}
         </Chip>
@@ -53,7 +53,7 @@ export function RouteFilter({
       <div aria-live="polite">
         {groups.map((g, i) => (
           <section key={g.key} hidden={Boolean(group) && group !== g.key} className="mt-8">
-            <h3 className="text-h3 text-royal-700">{g.name}</h3>
+            <h3 className="text-h3 text-heading">{g.name}</h3>
             <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{cards.slice(starts[i], starts[i] + g.count)}</div>
           </section>
         ))}

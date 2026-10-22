@@ -10,8 +10,8 @@ export function LoginPage({ locale, next }: { locale: Locale; next: unknown }) {
     <div className="flex min-h-dvh flex-col">
       <Header locale={locale} path="/login" />
       <main className="mx-auto w-full max-w-md flex-1 px-4 py-10">
-        <h1 className="text-h1 text-royal-600">{t.title}</h1>
-        <p className="mb-6 mt-3 text-ink/80">{t.intro}</p>
+        <h1 className="text-h1 text-link">{t.title}</h1>
+        <p className="mb-6 mt-3 text-content/80">{t.intro}</p>
         <SignInForm locale={locale} next={safeNext(next, localePath('/my-bookings', locale))} />
       </main>
       <Footer locale={locale} />

@@ -97,14 +97,14 @@ export default function HindiPrivacyPage() {
         <p>
           आप पूछ सकते हैं कि हमारे पास आपकी क्या जानकारी है, उसे ठीक करवा सकते हैं, या जो क़ानूनन रखना ज़रूरी
           नहीं, उसे मिटवा सकते हैं।{' '}
-          <a className="font-semibold text-royal underline" href={brand.phoneHref}>
+          <a className="font-semibold text-link underline" href={brand.phoneHref}>
             {brand.phone}
           </a>{' '}
           पर फ़ोन या WhatsApp करें
           {brand.email ? (
             <>
               , या{' '}
-              <a className="font-semibold text-royal underline" href={`mailto:${brand.email}`}>
+              <a className="font-semibold text-link underline" href={`mailto:${brand.email}`}>
                 {brand.email}
               </a>{' '}
               पर लिखें
@@ -116,15 +116,15 @@ export default function HindiPrivacyPage() {
 
       <DocSection title="इनसे जुड़े पेज">
         <p>
-          <Link className="text-royal underline" href="/hi/terms">
+          <Link className="text-link underline" href="/hi/terms">
             शर्तें
           </Link>{' '}
           ·{' '}
-          <Link className="text-royal underline" href="/hi/refund">
+          <Link className="text-link underline" href="/hi/refund">
             कैंसल और रिफ़ंड
           </Link>{' '}
           ·{' '}
-          <Link className="text-royal underline" href="/hi/contact">
+          <Link className="text-link underline" href="/hi/contact">
             संपर्क
           </Link>
         </p>

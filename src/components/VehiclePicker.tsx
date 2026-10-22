@@ -31,7 +31,7 @@ export function VehiclePicker({
   return (
     <div className="flex flex-col gap-4">
       {sorted.length ? <div role="group" aria-label={labels.car} className="flex flex-wrap items-center gap-2">
-        <span className="mr-1 text-small font-semibold text-muted">{labels.car}</span>
+        <span className="mr-1 text-small font-semibold text-subtle">{labels.car}</span>
         {sorted.map((p) => (
           <Chip key={p.vehicle} pressed={car === p.vehicle} onChange={() => setCar(p.vehicle)}>
             {p.vehicle}

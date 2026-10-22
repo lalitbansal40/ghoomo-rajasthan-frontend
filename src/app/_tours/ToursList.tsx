@@ -85,9 +85,9 @@ export async function ToursList({ locale }: { locale: Locale }) {
         </div>
         {/* Each tour city's own page — what to see there, when, and a car in town. */}
         <p className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-1 text-small">
-          <span className="font-semibold text-muted">{L(SECTIONS.aboutPlaces)}</span>
+          <span className="font-semibold text-subtle">{L(SECTIONS.aboutPlaces)}</span>
           {DESTINATIONS.filter((d) => packagesFor(d.key).length).map((d) => (
-            <a key={d.key} href={localePath(`/destinations/${d.slug}`, locale)} className="text-royal-600 underline">
+            <a key={d.key} href={localePath(`/destinations/${d.slug}`, locale)} className="text-link underline">
               {d[locale].name}
             </a>
           ))}
@@ -100,11 +100,11 @@ export async function ToursList({ locale }: { locale: Locale }) {
           </div>
         </section>
       </main>
-      <section className="bg-sand-200">
+      <section className="bg-alternate">
         <DuneDivider tone="ivory" flip settle={path} />
         <div className="mx-auto max-w-[var(--container-site)] px-4 pb-12 text-center sm:px-6">
-          <h2 className="text-h2 text-royal-600">{L(SECTIONS.cta)}</h2>
-          <p className="mx-auto mt-2 max-w-xl text-ink/80">{L(SECTIONS.ctaLine)}</p>
+          <h2 className="text-h2 text-link">{L(SECTIONS.cta)}</h2>
+          <p className="mx-auto mt-2 max-w-xl text-content/80">{L(SECTIONS.ctaLine)}</p>
           <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
             <Button variant="primary" size="lg" href={bookStartLink(locale)}>
               {t.cta.bookNow}

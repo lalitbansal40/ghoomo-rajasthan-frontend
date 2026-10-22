@@ -34,7 +34,7 @@ export function AboutPage({ locale }: { locale: Locale }) {
           <Breadcrumbs items={crumbs} locale={locale} />
           <div className="mt-6 grid items-center gap-8 md:grid-cols-[1fr_minmax(0,260px)]">
             <div className="max-w-3xl">
-              <h1 className="text-h1 text-royal-600">{a.title}</h1>
+              <h1 className="text-h1 text-link">{a.title}</h1>
               <div className="mt-4 space-y-4">
                 {a.intro.map((p) => (
                   <p key={p.slice(0, 24)} className="text-body-lg">
@@ -48,7 +48,7 @@ export function AboutPage({ locale }: { locale: Locale }) {
         </div>
 
         {/* ── The numbers ──────────────────────────────────────────────── */}
-        <section className="relative mt-12 overflow-hidden bg-royal-600 py-10 text-white">
+        <section className="relative mt-12 overflow-hidden bg-primary py-10 text-white">
           <Jaali opacity={0.06} className="invert" />
           <ul className="relative mx-auto grid max-w-[var(--container-site)] grid-cols-2 gap-6 px-4 sm:px-6 lg:grid-cols-4">
             {numbers.map((n) => (
@@ -63,14 +63,14 @@ export function AboutPage({ locale }: { locale: Locale }) {
         <div className="mx-auto max-w-[var(--container-site)] px-4 pb-16 sm:px-6">
           {/* ── How a trip works ─────────────────────────────────────────── */}
           <section className="mt-12">
-            <h2 className="text-h2 text-center text-royal-600">{a.howTitle}</h2>
+            <h2 className="text-h2 text-center text-link">{a.howTitle}</h2>
             <SparkleDivider className="mx-auto mt-3" />
             <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {a.how.map((s, i) => (
-                <li key={s.title} className="rounded-[var(--radius-lg)] bg-white p-5 shadow-card ring-1 ring-black/5">
-                  <span className="grid h-10 w-10 place-items-center rounded-full bg-gold-500 font-semibold text-ink">{i + 1}</span>
-                  <h3 className="text-h3 mt-3 text-royal-700">{s.title}</h3>
-                  <p className="mt-1 text-ink/80">{s.body}</p>
+                <li key={s.title} className="rounded-[var(--radius-lg)] bg-surface p-5 shadow-card ring-1 ring-line/5">
+                  <span className="grid h-10 w-10 place-items-center rounded-full bg-gold-500 font-semibold text-on-gold">{i + 1}</span>
+                  <h3 className="text-h3 mt-3 text-heading">{s.title}</h3>
+                  <p className="mt-1 text-content/80">{s.body}</p>
                 </li>
               ))}
             </ol>
@@ -78,21 +78,21 @@ export function AboutPage({ locale }: { locale: Locale }) {
 
           {/* ── Drivers, and who we are ──────────────────────────────────── */}
           <div className="mt-12 grid gap-6 md:grid-cols-2">
-            <section className="rounded-[var(--radius-lg)] bg-sand-50 p-6 ring-1 ring-gold-300/60">
-              <h2 className="text-h3 flex items-center gap-2 text-royal-700">
-                <Icon name="check" className="text-success" /> {a.driversTitle}
+            <section className="rounded-[var(--radius-lg)] bg-soft p-6 ring-1 ring-edge/60">
+              <h2 className="text-h3 flex items-center gap-2 text-heading">
+                <Icon name="check" className="text-positive" /> {a.driversTitle}
               </h2>
               <p className="mt-2">{a.drivers}</p>
             </section>
-            <section className="rounded-[var(--radius-lg)] bg-sand-50 p-6 ring-1 ring-gold-300/60">
-              <h2 className="text-h3 flex items-center gap-2 text-royal-700">
-                <Icon name="mapPin" className="text-maroon-600" /> {a.whoTitle}
+            <section className="rounded-[var(--radius-lg)] bg-soft p-6 ring-1 ring-edge/60">
+              <h2 className="text-h3 flex items-center gap-2 text-heading">
+                <Icon name="mapPin" className="text-accent" /> {a.whoTitle}
               </h2>
               <p className="mt-2">
                 <Owner locale={locale} />
               </p>
               <p className="mt-2">
-                <a className="font-semibold text-royal underline" href={brand.phoneHref}>
+                <a className="font-semibold text-link underline" href={brand.phoneHref}>
                   {brand.phone}
                 </a>
               </p>
@@ -102,7 +102,7 @@ export function AboutPage({ locale }: { locale: Locale }) {
           <div className="mt-12">
             <ContactButtons locale={locale} />
           </div>
-          <p className="mt-6 text-center text-small text-muted">
+          <p className="mt-6 text-center text-small text-subtle">
             <a className="underline" href={localePath('/contact', locale)}>
               {t.nav.contact}
             </a>

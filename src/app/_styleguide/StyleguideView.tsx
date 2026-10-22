@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { PageScene } from '@/components/scene/PageScene';
 import tokens from '@/design/tokens.json';
 import { dict, formatRupees, type Locale } from '@/i18n';
 import { EXCLUDES, INCLUDES, PACKAGES, PACKAGES_ARE_SAMPLE, pkgIn } from '@/content/packages';
@@ -142,8 +143,8 @@ const TYPE_SAMPLE = {
 
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
-    <section id={id} className="scroll-mt-32 border-t border-gold-300 py-12">
-      <h2 className="text-h2 text-royal-600">{title}</h2>
+    <section id={id} className="scroll-mt-32 border-t border-edge py-12">
+      <h2 className="text-h2 text-link">{title}</h2>
       <div className="mt-6">{children}</div>
     </section>
   );
@@ -161,12 +162,12 @@ export function StyleguideView({ locale, now }: { locale: Locale; now: number })
       <Header locale={locale} path={locale === 'hi' ? '/hi/styleguide' : '/styleguide'} />
       <nav
         aria-label="Style guide"
-        className="sticky top-16 z-30 -mb-px overflow-x-auto border-b border-gold-300 bg-sand-50/95 backdrop-blur max-sm:top-[6.5rem]"
+        className="sticky top-16 z-30 -mb-px overflow-x-auto border-b border-edge bg-soft/95 backdrop-blur max-sm:top-[6.5rem]"
       >
         <ul className="mx-auto flex max-w-[var(--container-site)] gap-1 px-4 py-2 sm:px-6">
           {s.nav.map((n, i) => (
             <li key={n}>
-              <a href={`#${ids[i]}`} className="block whitespace-nowrap rounded-full px-3 py-1.5 text-small font-semibold text-royal-700 hover:bg-royal-50">
+              <a href={`#${ids[i]}`} className="block whitespace-nowrap rounded-full px-3 py-1.5 text-small font-semibold text-heading hover:bg-tint">
                 {n}
               </a>
             </li>
@@ -175,31 +176,31 @@ export function StyleguideView({ locale, now }: { locale: Locale; now: number })
       </nav>
       <main className="mx-auto max-w-[var(--container-site)] px-4 pb-24 sm:px-6">
         <div className="py-10">
-          <h1 className="text-h1 text-royal-600">{s.title}</h1>
-          <p className="text-body-lg mt-3 max-w-2xl text-ink/80">{s.intro}</p>
+          <h1 className="text-h1 text-link">{s.title}</h1>
+          <p className="text-body-lg mt-3 max-w-2xl text-content/80">{s.intro}</p>
         </div>
 
         <Section id="logo" title={s.nav[0]}>
-          <p className="text-muted">{s.logoNote}</p>
+          <p className="text-subtle">{s.logoNote}</p>
           <div className="mt-6 grid gap-6 md:grid-cols-[2fr_1fr]">
-            <div className="rounded-[var(--radius-lg)] bg-white p-6 shadow-card">
-              <Image src="/brand/logo-full.svg" alt={t.brand.logoAlt} width={533} height={519} className="mx-auto h-auto w-full max-w-sm" />
+            <div className="rounded-[var(--radius-lg)] bg-surface p-6 shadow-card">
+              <Image src="/brand/logo-full.svg" alt={t.brand.logoAlt} width={533} height={519} className="gr-brand mx-auto h-auto w-full max-w-sm" />
             </div>
             <div className="flex flex-col gap-4">
-              <div className="rounded-[var(--radius-md)] bg-white p-4 shadow-card">
-                <Image src="/brand/logo-horizontal.svg" alt="" width={420} height={120} className="h-14 w-auto" />
+              <div className="rounded-[var(--radius-md)] bg-surface p-4 shadow-card">
+                <Image src="/brand/logo-horizontal.svg" alt="" width={420} height={120} className="gr-brand h-14 w-auto" />
               </div>
-              <div className="flex flex-wrap items-end gap-4 rounded-[var(--radius-md)] bg-white p-4 shadow-card">
+              <div className="flex flex-wrap items-end gap-4 rounded-[var(--radius-md)] bg-surface p-4 shadow-card">
                 {[16, 32, 64, 96].map((z) => (
                   <Image key={z} src="/brand/logo-icon.svg" alt="" width={z} height={z} unoptimized />
                 ))}
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <div className="rounded-[var(--radius-md)] bg-royal-600 p-4">
+                <div className="rounded-[var(--radius-md)] bg-primary p-4">
                   <Image src="/brand/logo-white.svg" alt="" width={200} height={190} className="h-auto w-full" unoptimized />
                 </div>
-                <div className="rounded-[var(--radius-md)] bg-white p-4 shadow-card">
-                  <Image src="/brand/logo-mono.svg" alt="" width={200} height={190} className="h-auto w-full" unoptimized />
+                <div className="rounded-[var(--radius-md)] bg-surface p-4 shadow-card">
+                  <Image src="/brand/logo-mono.svg" alt="" width={200} height={190} className="gr-brand h-auto w-full" unoptimized />
                 </div>
               </div>
             </div>
@@ -207,13 +208,23 @@ export function StyleguideView({ locale, now }: { locale: Locale; now: number })
         </Section>
 
         <Section id="colours" title={s.colours}>
+          <div className="mb-6 grid gap-4 sm:grid-cols-2">
+            {(['light', 'dark'] as const).map(mode => <section key={mode} data-theme={mode} className="overflow-hidden rounded-xl border border-edge bg-page text-content">
+              <PageScene kind="dunes" />
+              <div className="space-y-3 p-4">
+                <h3 className="text-h3 text-heading">{t.theme[mode]}</h3>
+                <p className="text-subtle">{t.theme.helper}</p>
+                <Button href={locale === 'hi' ? '/hi/packages' : '/packages'}>{t.nav.packages}</Button>
+              </div>
+            </section>)}
+          </div>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-6">
             {Object.entries(tokens.color).map(([name, hex]) => (
-              <div key={name} className="overflow-hidden rounded-[var(--radius-sm)] bg-white ring-1 ring-black/10">
+              <div key={name} className="overflow-hidden rounded-[var(--radius-sm)] bg-surface ring-1 ring-line/10">
                 <div className="flex h-16 items-end p-2 text-small font-semibold" style={{ background: hex, color: labelOn(hex) }}>
                   {name}
                 </div>
-                <p className="p-2 text-[0.75rem] leading-5 text-muted">
+                <p className="p-2 text-[0.75rem] leading-5 text-subtle">
                   <code>{hex}</code>
                   <br />
                   ivory {ratio(hex, '#FBF7EF')} · white {ratio(hex, '#FFFFFF')}
@@ -224,18 +235,18 @@ export function StyleguideView({ locale, now }: { locale: Locale; now: number })
         </Section>
 
         <Section id="type" title={s.type}>
-          <div className="flex flex-col divide-y divide-sand-200">
+          <div className="flex flex-col divide-y divide-edge">
             {Object.entries(tokens.type).map(([name, v]) => (
               <div key={name} className="grid gap-2 py-4 md:grid-cols-[8rem_1fr_1fr] md:items-baseline">
-                <code className="text-small text-muted">
+                <code className="text-small text-subtle">
                   {name}
                   <br />
                   {v.family === 'display' ? 'Rozha One' : `Mukta ${v.weight}`}
                 </code>
-                <p lang="en" className={`text-${name} text-ink`}>
+                <p lang="en" className={`text-${name} text-content`}>
                   {TYPE_SAMPLE.en} {name === 'price' ? formatRupees(27999) : ''}
                 </p>
-                <p lang="hi" className={`text-${name} text-ink`}>
+                <p lang="hi" className={`text-${name} text-content`}>
                   {TYPE_SAMPLE.hi} {name === 'price' ? formatRupees(27999) : ''}
                 </p>
               </div>
@@ -246,13 +257,13 @@ export function StyleguideView({ locale, now }: { locale: Locale; now: number })
         <Section id="shape" title={s.shape}>
           <div className="grid gap-4 sm:grid-cols-4">
             {Object.entries(tokens.radius).map(([k, v]) => (
-              <div key={k} className="grid h-24 place-items-center bg-sand-100 text-small font-semibold ring-1 ring-gold-300" style={{ borderRadius: v }}>
+              <div key={k} className="grid h-24 place-items-center bg-sand-soft text-small font-semibold ring-1 ring-edge" style={{ borderRadius: v }}>
                 radius-{k} · {v}
               </div>
             ))}
-            <div className="grid h-24 place-items-center rounded-[var(--radius-md)] bg-white text-small font-semibold shadow-card">shadow-card</div>
-            <div className="grid h-24 place-items-center rounded-[var(--radius-md)] bg-white text-small font-semibold shadow-raised">shadow-raised</div>
-            <div className="grid h-24 place-items-center rounded-[var(--radius-md)] bg-white text-small font-semibold shadow-card transition-[transform,box-shadow] duration-[var(--dur)] ease-[var(--ease-out)] hover:-translate-y-1 hover:shadow-raised">
+            <div className="grid h-24 place-items-center rounded-[var(--radius-md)] bg-surface text-small font-semibold shadow-card">shadow-card</div>
+            <div className="grid h-24 place-items-center rounded-[var(--radius-md)] bg-surface text-small font-semibold shadow-raised">shadow-raised</div>
+            <div className="grid h-24 place-items-center rounded-[var(--radius-md)] bg-surface text-small font-semibold shadow-card transition-[transform,box-shadow] duration-[var(--dur)] ease-[var(--ease-out)] hover:-translate-y-1 hover:shadow-raised">
               {s.hover} · 250ms
             </div>
           </div>
@@ -272,13 +283,13 @@ export function StyleguideView({ locale, now }: { locale: Locale; now: number })
               </div>
               <div className="flex flex-col items-center gap-4">
                 <FortSun className="w-52" />
-                <div className="w-full rounded-[var(--radius-md)] bg-sand-200 p-3">
-                  <FortSun tone="silhouette" className="mx-auto w-40 text-maroon-700" />
+                <div className="w-full rounded-[var(--radius-md)] bg-alternate p-3">
+                  <FortSun tone="silhouette" className="mx-auto w-40 text-accent-strong" />
                 </div>
               </div>
             </div>
             <SparkleDivider className="mx-auto mt-8" />
-            <div className="relative mt-6 h-32 overflow-hidden rounded-[var(--radius-md)] bg-sand-100">
+            <div className="relative mt-6 h-32 overflow-hidden rounded-[var(--radius-md)] bg-sand-soft">
               <Jaali />
             </div>
             <div className="mt-6 space-y-2">
@@ -290,7 +301,7 @@ export function StyleguideView({ locale, now }: { locale: Locale; now: number })
         </Section>
 
         <Section id="parts" title={s.parts}>
-          <h3 className="text-h3 text-royal-700">{s.buttons}</h3>
+          <h3 className="text-h3 text-heading">{s.buttons}</h3>
           <div className="mt-4 flex flex-wrap items-center gap-3">
             <Button href="#parts">{t.cta.bookNow}</Button>
             <Button variant="secondary" href="#parts">
@@ -313,14 +324,14 @@ export function StyleguideView({ locale, now }: { locale: Locale; now: number })
             <Button loading>{t.cta.payNow}</Button>
           </div>
 
-          <h3 className="text-h3 mt-10 text-royal-700">{s.badges}</h3>
+          <h3 className="text-h3 mt-10 text-heading">{s.badges}</h3>
           <div className="mt-4 flex flex-wrap items-center gap-2">
             <Badge tone="sample">{t.pkg.sample}</Badge>
             <Badge tone="popular">{t.pkg.popular}</Badge>
             <Badge tone="new">{t.pkg.new}</Badge>
             <Badge tone="days">{t.pkg.daysNightsShort(7, 6)}</Badge>
             <Stars value={4.5} label={`${s.starsLabel}: ${t.common.rating(4.5)}`} />
-            <span className="text-small text-muted">({s.starsLabel})</span>
+            <span className="text-small text-subtle">({s.starsLabel})</span>
           </div>
           <div className="mt-4">
             <DemoChips labels={['Dzire', 'Ertiga', 'Innova Crysta']} />
@@ -329,7 +340,7 @@ export function StyleguideView({ locale, now }: { locale: Locale; now: number })
             <PriceTag rupees={27999} vehicle="Dzire" locale={locale} />
           </div>
 
-          <h3 className="text-h3 mt-10 text-royal-700">{s.cards}</h3>
+          <h3 className="text-h3 mt-10 text-heading">{s.cards}</h3>
           <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {PACKAGES.slice(0, 3).map((p, i) => (
               <PackageCard key={p.slug} tour={pkgIn(p, locale)} href="#parts" locale={locale} preload={i === 0} />
@@ -344,13 +355,13 @@ export function StyleguideView({ locale, now }: { locale: Locale; now: number })
             </div>
           </div>
 
-          <h3 className="text-h3 mt-10 text-royal-700">{s.timeline}</h3>
+          <h3 className="text-h3 mt-10 text-heading">{s.timeline}</h3>
           <div className="mt-4 grid gap-8 lg:grid-cols-2">
             <ItineraryTimeline days={royal.itinerary.slice(0, 3)} locale={locale} />
             <IncludesList includes={INCLUDES} excludes={EXCLUDES} locale={locale} />
           </div>
 
-          <h3 className="text-h3 mt-10 text-royal-700">{s.faq}</h3>
+          <h3 className="text-h3 mt-10 text-heading">{s.faq}</h3>
           <div className="mt-4 max-w-2xl">
             <FAQ items={[...s.sampleQs]} />
           </div>
@@ -365,7 +376,7 @@ export function StyleguideView({ locale, now }: { locale: Locale; now: number })
             />
           </div>
 
-          <h3 className="text-h3 mt-10 text-royal-700">{s.forms}</h3>
+          <h3 className="text-h3 mt-10 text-heading">{s.forms}</h3>
           <div className="mt-4 grid max-w-3xl gap-5 sm:grid-cols-2">
             <Field id="sg-name" label={t.form.name} required requiredLabel={t.form.required}>
               <TextInput id="sg-name" autoComplete="name" />
@@ -397,7 +408,7 @@ export function StyleguideView({ locale, now }: { locale: Locale; now: number })
             </Field>
           </div>
 
-          <h3 className="text-h3 mt-10 text-royal-700">{s.states}</h3>
+          <h3 className="text-h3 mt-10 text-heading">{s.states}</h3>
           <div className="mt-4 grid gap-6 md:grid-cols-2">
             <Loader label={s.loadingLine} />
             <EmptyState title={s.emptyTitle} body={s.emptyBody} action={<Button variant="whatsapp" href={whatsappLink(t.cta.whatsappMessage)}>{t.cta.whatsapp}</Button>} />
@@ -414,12 +425,12 @@ export function StyleguideView({ locale, now }: { locale: Locale; now: number })
         </Section>
 
         <Section id="sample" title={s.sample}>
-          <div className="overflow-hidden rounded-[var(--radius-lg)] ring-1 ring-gold-300">
-            <div className="sun-glow relative grid items-center gap-6 bg-ivory px-6 py-12 md:grid-cols-[1.2fr_1fr]">
+          <div className="overflow-hidden rounded-[var(--radius-lg)] ring-1 ring-edge">
+            <div className="sun-glow relative grid items-center gap-6 bg-page px-6 py-12 md:grid-cols-[1.2fr_1fr]">
               <div>
-                <p className="text-small font-semibold uppercase tracking-[0.12em] text-gold-700">{t.brand.name}</p>
-                <h2 className="text-display mt-2 text-royal-600">{s.heroTitle}</h2>
-                <p className="text-body-lg mt-4 text-ink/80">{s.heroLine}</p>
+                <p className="text-small font-semibold uppercase tracking-[0.12em] text-gold-text">{t.brand.name}</p>
+                <h2 className="text-display mt-2 text-link">{s.heroTitle}</h2>
+                <p className="text-body-lg mt-4 text-content/80">{s.heroLine}</p>
                 <div className="mt-6 flex flex-wrap gap-3">
                   <Button size="lg" href="#sample">{t.cta.planTrip}</Button>
                   <Button size="lg" variant="whatsapp" href={whatsappLink(t.cta.whatsappMessage)}>
@@ -430,7 +441,7 @@ export function StyleguideView({ locale, now }: { locale: Locale; now: number })
               <FortSun className="mx-auto w-full max-w-sm" />
             </div>
             <DuneDivider tone="ivory" flip />
-            <div className="bg-ivory px-6 pb-12">
+            <div className="bg-page px-6 pb-12">
               <SectionHeader eyebrow={t.nav.packages} title={locale === 'hi' ? 'लोकप्रिय टूर' : 'Popular tours'} intro={PACKAGES_ARE_SAMPLE ? `${t.pkg.sample} — ${s.warning}` : undefined} />
               <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {PACKAGES.slice(3, 6).map((p) => (
@@ -451,7 +462,7 @@ export function StyleguideView({ locale, now }: { locale: Locale; now: number })
                     <Badge tone="days">{t.pkg.daysNightsShort(royal.days, royal.nights)}</Badge>
                     <Badge tone="popular">{t.pkg.popular}</Badge>
                   </div>
-                  <h3 className="text-h1 mt-3 text-royal-600">{royal.name}</h3>
+                  <h3 className="text-h1 mt-3 text-link">{royal.name}</h3>
                   <PriceTag className="mt-3" rupees={Math.min(...royal.fromRupees.map((f) => f.rupees))} vehicle="Dzire" locale={locale} />
                   <div className="mt-6">
                     <ItineraryTimeline days={royal.itinerary.slice(0, 2)} locale={locale} />

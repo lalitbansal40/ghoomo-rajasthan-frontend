@@ -14,7 +14,7 @@ type Props = {
 };
 
 const field =
-  "min-h-12 w-full rounded-lg border border-ink/20 bg-white px-3 py-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-royal";
+  "min-h-12 w-full rounded-lg border border-line/20 bg-surface px-3 py-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-link";
 
 export function CityPicker({
   label,
@@ -101,7 +101,7 @@ export function CityPicker({
         <ul
           id={listId}
           role="listbox"
-          className="absolute inset-x-0 top-full z-20 mt-1 max-h-60 overflow-auto rounded-lg border border-ink/20 bg-white p-1 shadow-lg"
+          className="absolute inset-x-0 top-full z-20 mt-1 max-h-60 overflow-auto rounded-lg border border-line/20 bg-surface p-1 shadow-lg"
         >
           {results.map((city, index) => (
             <li key={city.name}>
@@ -110,13 +110,13 @@ export function CityPicker({
                 type="button"
                 role="option"
                 aria-selected={index === active}
-                className={`min-h-11 w-full rounded-md px-3 py-2 text-left font-normal hover:bg-royal/10 focus-visible:bg-royal/10 focus-visible:outline-2 focus-visible:outline-royal ${index === active ? "bg-royal/10" : ""}`}
+                className={`min-h-11 w-full rounded-md px-3 py-2 text-left font-normal hover:bg-primary/10 focus-visible:bg-primary/10 focus-visible:outline-2 focus-visible:outline-link ${index === active ? "bg-primary/10" : ""}`}
                 onMouseDown={(event) => event.preventDefault()}
                 onClick={() => choose(city)}
               >
                 {cityLabel(city)}
                 {city.state ? (
-                  <span className="ml-2 text-muted">{city.state}</span>
+                  <span className="ml-2 text-subtle">{city.state}</span>
                 ) : null}
               </button>
             </li>

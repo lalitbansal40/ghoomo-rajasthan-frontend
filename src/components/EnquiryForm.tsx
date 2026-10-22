@@ -57,22 +57,22 @@ export function EnquiryForm({ locale, initialType = 'custom', productSlug = 'cus
     }
   }
 
-  if (done) return <div role="status" className="rounded-xl border border-forest/30 bg-forest/5 p-5 text-ink">{t.success}</div>;
-  const field = 'min-h-12 w-full rounded-lg border border-ink/20 bg-white px-3 py-2 text-base text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-royal';
-  const label = 'flex flex-col gap-2 text-sm font-semibold text-ink';
+  if (done) return <div role="status" className="rounded-xl border border-forest/30 bg-forest/5 p-5 text-content">{t.success}</div>;
+  const field = 'min-h-12 w-full rounded-lg border border-control bg-surface px-3 py-2 text-base text-content focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-link';
+  const label = 'flex flex-col gap-2 text-sm font-semibold text-content';
   return <form onSubmit={submit} onChangeCapture={() => { if (!started.current) { started.current = true; enquiryEvent('enquiry_start'); } }} className="space-y-5" noValidate>
     <div className="grid gap-4 sm:grid-cols-2">
       <label className={label}>{t.name}<input className={field} autoComplete="name" maxLength={60} required value={name} onChange={e => setName(e.target.value)} /></label>
-      <label className={label}>{t.phone}<input className={field} type="tel" inputMode="numeric" autoComplete="tel-national" maxLength={16} aria-describedby="enquiry-phone-help" required value={phone} onChange={e => setPhone(e.target.value)} /><span id="enquiry-phone-help" className="font-normal text-muted">{locale === 'hi' ? '10 अंकों का भारतीय मोबाइल नंबर' : '10-digit Indian mobile number'}</span></label>
+      <label className={label}>{t.phone}<input className={field} type="tel" inputMode="numeric" autoComplete="tel-national" maxLength={16} aria-describedby="enquiry-phone-help" required value={phone} onChange={e => setPhone(e.target.value)} /><span id="enquiry-phone-help" className="font-normal text-subtle">{locale === 'hi' ? '10 अंकों का भारतीय मोबाइल नंबर' : '10-digit Indian mobile number'}</span></label>
       <label className={label}>{t.type}<select className={field} value={type} onChange={e => setType(e.target.value as EnquiryType)}><option value="package">{t.package}</option><option value="safari">{t.safari}</option><option value="cab">{t.cab}</option><option value="custom">{t.custom}</option></select></label>
       <label className={label}>{t.travellers}<input className={field} type="number" min={1} max={50} required value={travellers} onChange={e => setTravellers(e.target.value)} /></label>
       <label className={label}>{t.date}<input className={field} type="date" disabled={flexible} min={new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' })} required={!flexible} value={date} onChange={e => setDate(e.target.value)} /></label>
-      <label className="flex min-h-12 items-center gap-3 self-end text-sm"><input type="checkbox" className="size-5 accent-royal" checked={flexible} onChange={e => setFlexible(e.target.checked)} />{t.flexible}</label>
+      <label className="flex min-h-12 items-center gap-3 self-end text-sm"><input type="checkbox" className="size-5 accent-link" checked={flexible} onChange={e => setFlexible(e.target.checked)} />{t.flexible}</label>
       <label className={label}>{t.vehicle}<select className={field} value={vehicleType} onChange={e => setVehicleType(e.target.value)}><option value="">{t.choose}</option><option value="hatchback">{t.hatchback}</option><option value="dzire">{t.dzire}</option><option value="ertiga">{t.ertiga}</option><option value="crysta">{t.crysta}</option></select></label>
     </div>
     <label className={label}>{t.message}<textarea className={`${field} min-h-24`} maxLength={500} value={message} onChange={e => setMessage(e.target.value)} /></label>
-    <label className="flex items-start gap-3 text-sm leading-6"><input className="mt-1 size-5 shrink-0 accent-royal" type="checkbox" required checked={consent} onChange={e => setConsent(e.target.checked)} /><span>{t.consent} <a className="text-royal underline" href={locale === 'hi' ? '/hi/privacy' : '/privacy'}>{t.privacy}</a> · <a className="text-royal underline" href={locale === 'hi' ? '/hi/terms' : '/terms'}>{t.terms}</a>.</span></label>
+    <label className="flex items-start gap-3 text-sm leading-6"><input className="mt-1 size-5 shrink-0 accent-link" type="checkbox" required checked={consent} onChange={e => setConsent(e.target.checked)} /><span>{t.consent} <a className="text-link underline" href={locale === 'hi' ? '/hi/privacy' : '/privacy'}>{t.privacy}</a> · <a className="text-link underline" href={locale === 'hi' ? '/hi/terms' : '/terms'}>{t.terms}</a>.</span></label>
     {error ? <p role="alert" className="text-sm font-medium text-red-700">{error}</p> : null}
-    <button className="min-h-12 w-full rounded-lg bg-royal px-5 py-3 font-semibold text-white hover:bg-royal-700 disabled:cursor-wait disabled:opacity-60 sm:w-auto" disabled={busy}>{busy ? t.sending : t.submit}</button>
+    <button className="min-h-12 w-full rounded-lg bg-primary px-5 py-3 font-semibold text-white hover:bg-primary-hover disabled:cursor-wait disabled:opacity-60 sm:w-auto" disabled={busy}>{busy ? t.sending : t.submit}</button>
   </form>;
 }

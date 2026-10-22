@@ -14,7 +14,7 @@ export function Jaali({ opacity = 0.08, className = '' }: { opacity?: number; cl
     <div
       aria-hidden
       className={`pointer-events-none absolute inset-0 ${className}`}
-      style={{ backgroundImage: `url("data:image/svg+xml,${TILE}")`, backgroundSize: '32px 32px', opacity }}
+      style={{ maskImage: `url("data:image/svg+xml,${TILE}")`, maskSize: '32px 32px', backgroundColor: 'var(--gr-jaali)', opacity }}
     />
   );
 }

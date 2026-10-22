@@ -82,7 +82,7 @@ export function TourFilter({
     <div>
       <div className="flex flex-col gap-3">
         <div role="group" aria-label={labels.city} className="flex flex-wrap items-center gap-2">
-          <span className="mr-1 text-small font-semibold text-muted">{labels.city}</span>
+          <span className="mr-1 text-small font-semibold text-subtle">{labels.city}</span>
           <Chip pressed={!city} onChange={() => { setCity(null); write(null, days, order); }}>
             {labels.all}
           </Chip>
@@ -102,7 +102,7 @@ export function TourFilter({
         </div>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div role="group" aria-label={labels.days} className="flex flex-wrap items-center gap-2">
-            <span className="mr-1 text-small font-semibold text-muted">{labels.days}</span>
+            <span className="mr-1 text-small font-semibold text-subtle">{labels.days}</span>
             {dayBuckets.map((b) => (
               <Chip
                 key={b.key}
@@ -118,7 +118,7 @@ export function TourFilter({
             ))}
           </div>
           {sort ? (
-            <label className="flex items-center gap-2 text-small font-semibold text-muted">
+            <label className="flex items-center gap-2 text-small font-semibold text-subtle">
               {labels.sort}
               <select
                 value={order}
@@ -127,7 +127,7 @@ export function TourFilter({
                   setOrder(o);
                   write(city, days, o);
                 }}
-                className="min-h-11 rounded-full border border-royal-200 bg-white px-3 text-[0.9375rem] font-semibold text-royal-700"
+                className="min-h-11 rounded-full border border-edge-strong bg-surface px-3 text-[0.9375rem] font-semibold text-heading"
               >
                 <option value="recommended">{labels.recommended}</option>
                 <option value="days">{labels.byDays}</option>

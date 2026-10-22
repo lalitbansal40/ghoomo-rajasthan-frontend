@@ -65,18 +65,18 @@ export function ContactFab({ locale, t }: { locale: Locale; t: ContactFabWords }
   }, []);
 
   const away = typing ? 'max-md:pointer-events-none max-md:translate-y-4 max-md:opacity-0' : '';
-  const round = 'grid size-12 place-items-center rounded-full text-white shadow-raised ring-2 ring-gold-300 transition-[transform,opacity] duration-[var(--dur-fast)] hover:scale-105 active:scale-95 motion-reduce:transition-none motion-reduce:hover:scale-100 md:size-14';
+  const round = 'grid size-12 place-items-center rounded-full text-white shadow-raised ring-2 ring-edge transition-[transform,opacity] duration-[var(--dur-fast)] hover:scale-105 active:scale-95 motion-reduce:transition-none motion-reduce:hover:scale-100 md:size-14';
   return (
     <>
       <div
         className={`gr-contact-fab fixed bottom-4 right-4 z-40 flex flex-col gap-3 md:bottom-6 md:right-6 transition-[transform,opacity] duration-[var(--dur-fast)] motion-reduce:transition-none ${away}`}
         aria-hidden={typing ? true : undefined}
       >
-        <button type="button" onClick={show} aria-label={t.callback} aria-haspopup="dialog" tabIndex={typing ? -1 : undefined} className={`group relative bg-maroon-600 ${round}`}>
+        <button type="button" onClick={show} aria-label={t.callback} aria-haspopup="dialog" tabIndex={typing ? -1 : undefined} className={`group relative bg-action ${round}`}>
           <Icon name="phone" size={22} />
-          <span aria-hidden className="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-full bg-ink px-3 py-1.5 text-sm font-semibold text-white opacity-0 shadow-card transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100 md:block">{t.hint}</span>
+          <span aria-hidden className="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-full bg-tooltip px-3 py-1.5 text-sm font-semibold text-white opacity-0 shadow-card transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100 md:block">{t.hint}</span>
         </button>
-        <a href={whatsappLink(t.whatsappMessage)} target="_blank" rel="noopener" aria-label={t.whatsapp} tabIndex={typing ? -1 : undefined} className={`bg-success ${round}`}>
+        <a href={whatsappLink(t.whatsappMessage)} target="_blank" rel="noopener" aria-label={t.whatsapp} tabIndex={typing ? -1 : undefined} className={`bg-success-fill ${round}`}>
           <Icon name="whatsapp" size={26} />
         </a>
       </div>

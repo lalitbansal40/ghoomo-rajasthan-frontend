@@ -11,17 +11,17 @@ export interface FaqItem {
  */
 export function FAQ({ items }: { items: FaqItem[] }) {
   return (
-    <div className="divide-y divide-gold-300 rounded-[var(--radius-md)] bg-white ring-1 ring-black/5">
+    <div className="divide-y divide-edge rounded-[var(--radius-md)] bg-surface ring-1 ring-line/5">
       {items.map((it) => (
         <details key={it.q} className="group px-4">
-          <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 py-3 font-semibold text-royal-700 [&::-webkit-details-marker]:hidden">
+          <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 py-3 font-semibold text-heading [&::-webkit-details-marker]:hidden">
             <span>{it.q}</span>
-            <span aria-hidden className="relative grid h-7 w-7 shrink-0 place-items-center rounded-full bg-royal-50 text-royal-600">
+            <span aria-hidden className="relative grid h-7 w-7 shrink-0 place-items-center rounded-full bg-tint text-link">
               <Icon name="plus" size={16} className="group-open:hidden" />
               <Icon name="minus" size={16} className="hidden group-open:block" />
             </span>
           </summary>
-          <p className="pb-4 text-ink/85">{it.a}</p>
+          <p className="pb-4 text-content/85">{it.a}</p>
         </details>
       ))}
     </div>

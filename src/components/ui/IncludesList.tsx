@@ -7,22 +7,22 @@ export function IncludesList({ includes, excludes, locale }: { includes: readonl
   return (
     <div className="grid gap-6 sm:grid-cols-2">
       <div>
-        <h3 className="text-h3 text-success">{t.pkg.includes}</h3>
+        <h3 className="text-h3 text-positive">{t.pkg.includes}</h3>
         <ul className="mt-3 flex flex-col gap-2">
           {includes.map((x) => (
             <li key={x} className="flex gap-2">
-              <Icon name="check" className="mt-0.5 text-success" />
+              <Icon name="check" className="mt-0.5 text-positive" />
               <span>{x}</span>
             </li>
           ))}
         </ul>
       </div>
       <div>
-        <h3 className="text-h3 text-maroon-600">{t.pkg.excludes}</h3>
+        <h3 className="text-h3 text-accent">{t.pkg.excludes}</h3>
         <ul className="mt-3 flex flex-col gap-2">
           {excludes.map((x) => (
             <li key={x} className="flex gap-2">
-              <Icon name="cross" className="mt-0.5 text-maroon-600" />
+              <Icon name="cross" className="mt-0.5 text-accent" />
               <span>{x}</span>
             </li>
           ))}

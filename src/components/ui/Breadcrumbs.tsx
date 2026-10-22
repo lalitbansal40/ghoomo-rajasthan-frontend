@@ -11,17 +11,17 @@ export interface Crumb {
 export function Breadcrumbs({ items, locale }: { items: Crumb[]; locale: Locale }) {
   const t = dict(locale);
   return (
-    <nav aria-label={t.common.breadcrumb} className="text-small text-muted">
+    <nav aria-label={t.common.breadcrumb} className="text-small text-subtle">
       <ol className="flex flex-wrap items-center gap-x-1.5">
         {items.map((c, i) => (
           <li key={`${c.label}-${i}`} className="flex items-center gap-1.5">
-            {i > 0 ? <span aria-hidden className="text-gold-700">›</span> : null}
+            {i > 0 ? <span aria-hidden className="text-gold-text">›</span> : null}
             {c.href && i < items.length - 1 ? (
-              <Link href={c.href} className="underline-offset-4 hover:text-royal-700 hover:underline">
+              <Link href={c.href} className="underline-offset-4 hover:text-heading hover:underline">
                 {c.label}
               </Link>
             ) : (
-              <span aria-current={i === items.length - 1 ? 'page' : undefined} className="text-ink">
+              <span aria-current={i === items.length - 1 ? 'page' : undefined} className="text-content">
                 {c.label}
               </span>
             )}

@@ -13,20 +13,9 @@
   }
 }
 
-/**
- * Light only (owner, 16 Oct 2026: no dark mode yet). Without this a phone in dark mode can
- * darken form controls and scrollbars on an ivory page.
- *
- * Contrast (WCAG AA) is checked by `npm run contrast`. Never: white on gold or sun — on those,
- * write in ink.
- */
-:root {
-  color-scheme: light;
-}
-
 html {
-  background: var(--color-ivory);
-  color: var(--color-ink);
+  background: var(--gr-page);
+  color: var(--gr-content);
 }
 
 body {
@@ -88,8 +77,22 @@ body:lang(hi) {
 /* One focus ring for everything a keyboard can reach — gold-700, not the logo's gold-500:
    it has to stand 3:1 against ivory and sand (npm run contrast). */
 :focus-visible {
-  outline: 2px solid var(--color-gold-700);
+  outline: 2px solid var(--gr-focus);
   outline-offset: 2px;
+}
+
+/* The control's footprint is reserved before hydration and with JavaScript disabled. */
+.gr-theme-control:not([data-ready]) { visibility: hidden; }
+input, select, textarea { accent-color: var(--gr-link); caret-color: var(--gr-content); }
+input:autofill { box-shadow: 0 0 0 1000px var(--gr-surface) inset; -webkit-text-fill-color: var(--gr-content); }
+::selection { background: var(--gr-primary); color: white; }
+[data-theme='dark'] .gr-brand { background: #FBF7EF; border-radius: 8px; }
+.gr-night-only { display: none; }
+[data-theme='dark'] .gr-night-only { display: block; }
+[data-theme='dark'] .gr-day-only { display: none; }
+@media print {
+  .gr-theme-control, header, .gr-contact-fab { display: none !important; }
+  body { background: white !important; color: #1B1B1F !important; }
 }
 
 /* Headings never leave one word alone on a line, in either language. */
@@ -120,12 +123,7 @@ h3 {
 
 /* The sun behind a hero: a soft glow, not a picture. */
 .sun-glow {
-  background-image: radial-gradient(
-    circle at 50% 30%,
-    rgb(255 210 122 / 0.55) 0,
-    rgb(245 166 35 / 0.12) 34%,
-    rgb(251 247 239 / 0) 60%
-  );
+  background-image: radial-gradient(circle at 50% 30%, color-mix(in srgb, var(--gr-orb-start) 55%, transparent) 0, color-mix(in srgb, var(--gr-orb-mid) 12%, transparent) 34%, transparent 60%);
 }
 
 /* ── Motifs (src/components/motifs) — light motion, transform only ─────────────────────── */

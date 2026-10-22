@@ -54,11 +54,11 @@ export function TravelCustomRequest({ locale }: { locale: Locale }) {
   }
   const cityOptions = cities.map(c => <option key={c} value={c}>{hi ? cityNames[c] : c.replaceAll('_', ' ')}</option>);
   if (reference) return <div role="status" className="space-y-3 rounded-xl border p-5"><h2 className="text-h3">{label('Custom requirements received', 'कस्टम यात्रा के विवरण मिल गए')}</h2><p>{reference}</p><p>{label('This is not a confirmed booking. Verify the mobile used for this request to link the receipt to your account and review your quote.', 'यह पुष्टि की गई बुकिंग नहीं है। इसी रिक्वेस्ट का मोबाइल सत्यापित करके रसीद अपने खाते से जोड़ें और कोटेशन देखें।')}</p><p>{label('Keep this tab open while verifying. Your receipt proof stays in this tab only; it is not put in links or browser storage.', 'सत्यापन के दौरान यह टैब खुला रखें। रसीद का प्रमाण केवल इसी टैब में है; लिंक या ब्राउज़र स्टोरेज में नहीं रखा जाता।')}</p>
-    <button disabled={busy} className="min-h-12 rounded-lg bg-royal px-5 py-3 text-white" onClick={() => void openRequest()}>{label('Verify mobile and view my quote', 'मोबाइल सत्यापित करके कोटेशन देखें')}</button>
+    <button disabled={busy} className="min-h-12 rounded-lg bg-primary px-5 py-3 text-white" onClick={() => void openRequest()}>{label('Verify mobile and view my quote', 'मोबाइल सत्यापित करके कोटेशन देखें')}</button>
     {login ? <TravelLogin locale={locale} initialName={receipt?.name} initialPhone={receipt?.phone} onVerified={() => { setLogin(false); void openRequest(); }} /> : null}
     <Link className="inline-block underline" href={localePath('/trip-requests', locale)}>{label('Previously linked requests', 'पहले खाते से जोड़ी गई रिक्वेस्ट')}</Link>{error ? <p role="alert">{error}</p> : null}
   </div>;
-  return <details className="rounded-xl border bg-white p-5"><summary className="min-h-11 cursor-pointer font-semibold">{label('Need a different itinerary? Share custom requirements', 'अलग यात्रा चाहिए? कस्टम यात्रा के विवरण दें')}</summary>
+  return <details className="rounded-xl border bg-surface p-5"><summary className="min-h-11 cursor-pointer font-semibold">{label('Need a different itinerary? Share custom requirements', 'अलग यात्रा चाहिए? कस्टम यात्रा के विवरण दें')}</summary>
     <p className="my-4">{label('Use direct booking above for published options. Custom requirements need a reviewed quote; no price or supplier confirmation is promised here.', 'प्रकाशित विकल्प ऊपर से सीधे बुक करें। अलग विवरण के लिए समीक्षा किया हुआ कोटेशन चाहिए; यहाँ कीमत या आपूर्तिकर्ता की पुष्टि का वादा नहीं है।')}</p>
     <form onSubmit={submit} className="space-y-4">
       <fieldset disabled={busy} className="space-y-4">
@@ -75,7 +75,7 @@ export function TravelCustomRequest({ locale }: { locale: Locale }) {
         <label className="block">{label('Interests, comma separated (optional)', 'रुचियाँ, कॉमा से अलग (वैकल्पिक)')}<input name="interests" maxLength={300} className={input} /></label><label className="block">{label('Other requirements (optional; no sensitive document or health numbers)', 'अन्य जानकारी (वैकल्पिक; संवेदनशील दस्तावेज़ या स्वास्थ्य नंबर न दें)')}<textarea name="message" maxLength={500} className={input} /></label>
         <label className="block">{label('Service contact preference', 'इस सेवा के लिए संपर्क')}<select name="contactPreference" className={input}><option value="phone">{label('Phone', 'फोन')}</option><option value="whatsapp">WhatsApp</option></select></label>
         <label className="flex gap-3"><input name="consent" type="checkbox" required /><span>{label('I agree to be contacted about this trip and to the privacy policy.', 'मैं इस यात्रा के बारे में संपर्क और गोपनीयता नीति से सहमत हूँ।')} <Link href={localePath('/privacy', locale)} className="underline">{label('Privacy policy', 'गोपनीयता नीति')}</Link></span></label>
-        <button className="min-h-12 rounded-lg bg-royal px-5 py-3 text-white" type="submit">{busy ? label('Saving…', 'सेव हो रहा है…') : label('Send custom requirements', 'कस्टम यात्रा के विवरण भेजें')}</button>
+        <button className="min-h-12 rounded-lg bg-primary px-5 py-3 text-white" type="submit">{busy ? label('Saving…', 'सेव हो रहा है…') : label('Send custom requirements', 'कस्टम यात्रा के विवरण भेजें')}</button>
       </fieldset>
       <p ref={alert} tabIndex={-1} role={error ? 'alert' : undefined}>{error}</p>
     </form>

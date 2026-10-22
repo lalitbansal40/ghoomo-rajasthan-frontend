@@ -45,7 +45,7 @@ export function Footer({ locale, variant = 'full' }: { locale: Locale; variant?:
 
   if (variant === 'compact') {
     return (
-      <footer className="bg-sand-200 px-4 pb-8 pt-2 text-center text-small text-ink">
+      <footer className="bg-alternate px-4 pb-8 pt-2 text-center text-small text-content">
         <p>
           {t.brand.aHelloMyCabCompany} · {locale === 'hi' ? 'जयपुर' : brand.city}
         </p>
@@ -61,23 +61,23 @@ export function Footer({ locale, variant = 'full' }: { locale: Locale; variant?:
   return (
     <footer className="mt-16">
       <div className="relative">
-        <FortSun tone="silhouette" className="mx-auto -mb-6 w-56 text-maroon-700 sm:w-72" />
+        <FortSun tone="silhouette" className="mx-auto -mb-6 w-56 text-accent-strong sm:w-72" />
         <DuneDivider />
       </div>
-      <div className="bg-sand-200 px-4 pb-10 sm:px-6">
+      <div className="bg-alternate px-4 pb-10 sm:px-6">
         <div className="mx-auto grid max-w-[var(--container-site)] gap-8 sm:grid-cols-2 lg:grid-cols-5">
           <div>
-            <h2 className="text-h3 text-royal-700">{t.common.explore}</h2>
+            <h2 className="text-h3 text-heading">{t.common.explore}</h2>
             <ul className="mt-3 flex flex-col gap-2">
               {NAV.map((n) => (
-                <li key={n.key}>{exists(n.path, locale) ? link(n.path, t.nav[n.key]) : <span className="text-muted">{t.nav[n.key]} · {t.nav.soon}</span>}</li>
+                <li key={n.key}>{exists(n.path, locale) ? link(n.path, t.nav[n.key]) : <span className="text-subtle">{t.nav[n.key]} · {t.nav.soon}</span>}</li>
               ))}
               {exists('/about', locale) ? <li>{link('/about', t.nav.about)}</li> : null}
             </ul>
           </div>
           {exists('/destinations', locale) ? (
             <div>
-              <h2 className="text-h3 text-royal-700">{t.nav.destinations}</h2>
+              <h2 className="text-h3 text-heading">{t.nav.destinations}</h2>
               <ul className="mt-3 flex flex-col gap-2">
                 {REGIONS.filter((r) => PLACES.some((p) => p.region === r.key)).map((r) => (
                   <li key={r.key}>
@@ -91,7 +91,7 @@ export function Footer({ locale, variant = 'full' }: { locale: Locale; variant?:
           ) : null}
           {exists('/cab/x', locale) ? (
             <div>
-              <h2 className="text-h3 text-royal-700">{t.common.popularRoutes}</h2>
+              <h2 className="text-h3 text-heading">{t.common.popularRoutes}</h2>
               <ul className="mt-3 flex flex-col gap-2">
                 {FOOTER_ROUTES.map(routeBySlug)
                   .filter((r) => r && !r.held)
@@ -106,10 +106,10 @@ export function Footer({ locale, variant = 'full' }: { locale: Locale; variant?:
             </div>
           ) : null}
           <div>
-            <h2 className="text-h3 text-royal-700">{t.common.talkToUs}</h2>
+            <h2 className="text-h3 text-heading">{t.common.talkToUs}</h2>
             <ul className="mt-3 flex flex-col gap-2">
               <li>
-                <a className="font-semibold text-royal-700 underline-offset-4 hover:underline" href={brand.phoneHref}>
+                <a className="font-semibold text-heading underline-offset-4 hover:underline" href={brand.phoneHref}>
                   {brand.phone}
                 </a>
               </li>
@@ -130,11 +130,11 @@ export function Footer({ locale, variant = 'full' }: { locale: Locale; variant?:
                   </a>
                 </li>
               ) : null}
-              <li className="text-small text-ink/80">{brand.address}</li>
+              <li className="text-small text-content/80">{brand.address}</li>
             </ul>
           </div>
           <div>
-            <h2 className="text-h3 text-royal-700">{t.common.legal}</h2>
+            <h2 className="text-h3 text-heading">{t.common.legal}</h2>
             <ul className="mt-3 flex flex-col gap-2">
               {legal.map(([p, l]) => {
                 const a = link(p, l);
@@ -143,7 +143,7 @@ export function Footer({ locale, variant = 'full' }: { locale: Locale; variant?:
             </ul>
           </div>
         </div>
-        <p className="mx-auto mt-10 max-w-[var(--container-site)] border-t border-gold-500/50 pt-4 text-small text-ink/80">
+        <p className="mx-auto mt-10 max-w-[var(--container-site)] border-t border-gold-500/50 pt-4 text-small text-content/80">
           © {new Date().getFullYear()} {t.brand.name} · {t.brand.aHelloMyCabCompany}
         </p>
       </div>

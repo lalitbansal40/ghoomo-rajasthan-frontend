@@ -67,7 +67,7 @@ export default function TermsPage() {
       <DocSection title="Cancelling">
         <p>
           You can cancel any time before the trip starts. What it costs and what comes back is on the{' '}
-          <Link className="text-royal underline" href="/refund">
+          <Link className="text-link underline" href="/refund">
             cancellation and refund
           </Link>{' '}
           page.
@@ -92,19 +92,19 @@ export default function TermsPage() {
       <DocSection title="Talking to us">
         <p>
           Call or WhatsApp{' '}
-          <a className="font-semibold text-royal underline" href={brand.phoneHref}>
+          <a className="font-semibold text-link underline" href={brand.phoneHref}>
             {brand.phone}
           </a>
           {brand.email ? (
             <>
               , or write to{' '}
-              <a className="font-semibold text-royal underline" href={`mailto:${brand.email}`}>
+              <a className="font-semibold text-link underline" href={`mailto:${brand.email}`}>
                 {brand.email}
               </a>
             </>
           ) : null}
           . See also our{' '}
-          <Link className="text-royal underline" href="/privacy">
+          <Link className="text-link underline" href="/privacy">
             privacy
           </Link>{' '}
           page.

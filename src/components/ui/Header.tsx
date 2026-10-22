@@ -1,3 +1,4 @@
+import { ThemeToggle } from '@/components/theme/ThemeToggle';
 import Image from 'next/image';
 import Link from 'next/link';
 import { dict, localePath, type Locale } from '@/i18n';
@@ -16,7 +17,7 @@ import { motionAttr } from '@/lib/motion';
  * The top of every page: the logo home, the menu (owner, 16 Oct 2026: Packages · Destinations ·
  * Cab · Desert Safari · Contact), sign-in, call, and EN | हिं. A menu page not built yet in
  * this language is shown as "Soon", never as a link to a 404 (i18n/pages.ts). Sticky; the
- * phone menu is the only client code.
+ * interactive controls stay small client components.
  */
 export function Header({ locale, path }: { locale: Locale; /** This page's path — for the language switch. */ path: string }) {
   const t = dict(locale);
@@ -35,26 +36,26 @@ export function Header({ locale, path }: { locale: Locale; /** This page's path 
   return (
     // `data-motion` tells the page's CSS whether this page may move at all (src/lib/motion.ts):
     // off where somebody is booking, paying or signing in — the gold shine included.
-    <header {...motionAttr(path)} className="sticky top-0 z-40 border-b border-gold-300/70 bg-ivory/95 backdrop-blur supports-[backdrop-filter]:bg-ivory/80">
-      <div className="relative mx-auto flex min-h-16 max-w-[var(--container-site)] flex-wrap items-center gap-3 px-4 sm:px-6">
-        <Link href={localePath('/', locale)} aria-label={t.brand.home} className="shrink-0">
-          <Image src="/brand/logo-horizontal.svg" alt={t.brand.logoAlt} width={420} height={120} preload className="h-11 w-auto" />
+    <header {...motionAttr(path)} className="sticky top-0 z-40 border-b border-edge/70 bg-page/95 backdrop-blur supports-[backdrop-filter]:bg-page/80">
+      <div className="relative mx-auto flex min-h-16 max-w-[var(--container-site)] flex-wrap items-center gap-x-3 px-4 sm:gap-y-2 sm:px-6">
+        <Link href={localePath('/', locale)} aria-label={t.brand.home} className="gr-brand shrink-0 max-sm:my-2.5">
+          <Image src="/brand/logo-horizontal.svg" alt={t.brand.logoAlt} width={420} height={120} preload className="gr-brand h-11 w-auto max-[359px]:h-9" />
         </Link>
         <nav aria-label={t.nav.label} className="ml-4 hidden flex-1 lg:block">
           <ul className="flex items-center gap-1">
             {items.map((it) => (
               <li key={it.label} className={it.children?.length ? 'group relative' : undefined}>
                 {it.href ? (
-                  <Link href={it.href} className="rounded-full px-3 py-2 font-semibold text-royal-700 hover:bg-royal-50">
+                  <Link href={it.href} className="rounded-full px-3 py-2 font-semibold text-heading hover:bg-tint">
                     {it.label}
                   </Link>
                 ) : null}
                 {/* The regions: shown on hover, and on keyboard focus inside — no script. */}
                 {it.href && it.children?.length ? (
-                  <ul className="invisible absolute left-0 top-full z-50 w-64 rounded-[var(--radius-md)] bg-white p-2 opacity-0 shadow-raised ring-1 ring-black/5 transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                  <ul className="invisible absolute left-0 top-full z-50 w-64 rounded-[var(--radius-md)] bg-surface p-2 opacity-0 shadow-raised ring-1 ring-line/5 transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
                     {it.children.map((c) => (
                       <li key={c.href}>
-                        <Link href={c.href} className="block rounded-[var(--radius-sm)] px-3 py-2 text-royal-700 hover:bg-royal-50">
+                        <Link href={c.href} className="block rounded-[var(--radius-sm)] px-3 py-2 text-heading hover:bg-tint">
                           {c.label}
                         </Link>
                       </li>
@@ -62,7 +63,7 @@ export function Header({ locale, path }: { locale: Locale; /** This page's path 
                   </ul>
                 ) : null}
                 {it.href ? null : (
-                  <span aria-disabled className="cursor-default rounded-full px-3 py-2 font-semibold text-muted" title={it.soon}>
+                  <span aria-disabled className="cursor-default rounded-full px-3 py-2 font-semibold text-subtle" title={it.soon}>
                     {it.label}
                   </span>
                 )}
@@ -70,13 +71,17 @@ export function Header({ locale, path }: { locale: Locale; /** This page's path 
             ))}
           </ul>
         </nav>
-        <div className="ml-auto flex items-center gap-1.5">
+        <div className="relative order-3 flex h-12 w-full items-center justify-end gap-2 sm:order-none sm:ml-auto sm:w-auto">
+          <ThemeToggle key={path} t={t.theme} headerRow />
+          <span className="sm:hidden"><LangSwitch path={path} /></span>
+        </div>
+        <div className="ml-auto flex items-center gap-1.5 sm:ml-0">
           {/* WhatsApp lives on the floating button (ContactFab); here, the account. */}
           <AccountButton locale={locale} travel={env.travelEnabled} t={{ login: t.account.login, menu: t.account.menu, myBookings: t.account.myBookings, tripRequests: t.account.tripRequests, logout: t.account.logout }} />
           <a
             href={brand.phoneHref}
             aria-label={`${t.cta.call} ${brand.phone}`}
-            className="grid h-11 w-11 place-items-center rounded-full border-2 border-royal-600 text-royal-600 hover:bg-royal-50"
+            className="grid h-11 w-11 place-items-center rounded-full border-2 border-link text-link hover:bg-tint"
           >
             <Icon name="phone" size={20} />
           </a>
@@ -87,10 +92,7 @@ export function Header({ locale, path }: { locale: Locale; /** This page's path 
           <MobileMenu items={items} openLabel={t.nav.menu} closeLabel={t.nav.close} />
         </div>
       </div>
-      {/* On a phone the language switch sits under the bar, where there is room for it. */}
-      <div className="flex justify-end px-4 pb-2 sm:hidden">
-        <LangSwitch path={path} />
-      </div>
+
     </header>
   );
 }

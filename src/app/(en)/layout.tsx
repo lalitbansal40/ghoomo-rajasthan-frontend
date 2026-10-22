@@ -1,3 +1,5 @@
+import { ThemeBootstrap } from '@/components/theme/ThemeBootstrap';
+import { ThemeController } from '@/components/theme/ThemeController';
 import type { Metadata, Viewport } from 'next';
 import { ContactFab } from '@/components/ContactFab';
 import { dict } from '@/i18n';
@@ -9,7 +11,7 @@ import '../globals.css';
 
 /**
  * The English root layout. Hindi has its own (app/hi/layout.tsx) — two root layouts so each
- * page's <html lang> is right and the Hindi fonts never load on an English page. Going from
+ * page's <html lang data-theme="light" data-theme-mode="auto" suppressHydrationWarning> is right and the Hindi fonts never load on an English page. Going from
  * one to the other is a full page load (Next's rule for multiple root layouts) — fine for a
  * language switch.
  */
@@ -21,23 +23,22 @@ export const metadata: Metadata = baseMetadata(
 
 export const viewport: Viewport = {
   themeColor: '#1E3A7B',
-  // Light only (owner, 16 Oct 2026) — a phone in dark mode must not darken the page's controls.
-  colorScheme: 'light',
+  colorScheme: 'light dark',
   width: 'device-width',
   initialScale: 1,
 };
 
 export default function EnglishLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={display.variable}>
-      <head>
+    <html lang="en" className={display.variable} data-theme="light" data-theme-mode="auto" suppressHydrationWarning>
+      <head><ThemeBootstrap />
         {BODY_LATIN_PRELOADS.map((href) => <link key={href} rel="preload" as="font" type="font/woff2" href={href} crossOrigin="anonymous" />)}
       </head>
-      <body className="min-h-dvh bg-ivory text-ink">
+      <body className="min-h-dvh bg-page text-content">
         {children}
         <ContactFab locale="en" t={{ ...dict('en').contactFab, whatsappMessage: dict('en').cta.whatsappMessage }} />
         <Analytics />
-      </body>
+      <ThemeController /></body>
     </html>
   );
 }

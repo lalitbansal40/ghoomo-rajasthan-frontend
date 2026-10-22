@@ -98,14 +98,14 @@ export default function PrivacyPage() {
         <p>
           Ask us what we hold about you, ask us to correct it, or ask us to delete what the law does not
           require us to keep. Call or WhatsApp{' '}
-          <a className="font-semibold text-royal underline" href={brand.phoneHref}>
+          <a className="font-semibold text-link underline" href={brand.phoneHref}>
             {brand.phone}
           </a>
           {brand.email ? (
             <>
               {' '}
               or write to{' '}
-              <a className="font-semibold text-royal underline" href={`mailto:${brand.email}`}>
+              <a className="font-semibold text-link underline" href={`mailto:${brand.email}`}>
                 {brand.email}
               </a>
             </>
@@ -115,15 +115,15 @@ export default function PrivacyPage() {
       </DocSection>
       <DocSection title="Related">
         <p>
-          <Link className="text-royal underline" href="/terms">
+          <Link className="text-link underline" href="/terms">
             Terms
           </Link>{' '}
           ·{' '}
-          <Link className="text-royal underline" href="/refund">
+          <Link className="text-link underline" href="/refund">
             Cancellation and refund
           </Link>{' '}
           ·{' '}
-          <Link className="text-royal underline" href="/contact">
+          <Link className="text-link underline" href="/contact">
             Contact
           </Link>
         </p>

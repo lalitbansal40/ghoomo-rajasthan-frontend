@@ -38,8 +38,8 @@ export async function BookingPage({ locale, searchParams }: { locale: Locale; se
     </div>
   );
   const dead = (words: string, extra?: React.ReactNode) => shell(
-    <div className="space-y-5 rounded-2xl border border-gold-300 bg-white p-6 text-center shadow-card">
-      <p className="text-ink/80">{words}</p>
+    <div className="space-y-5 rounded-2xl border border-edge bg-surface p-6 text-center shadow-card">
+      <p className="text-content/80">{words}</p>
       {extra}
       <ContactButtons locale={locale} />
     </div>,
@@ -50,14 +50,14 @@ export async function BookingPage({ locale, searchParams }: { locale: Locale; se
     const tab = isTripType(searchParams.trip) ? searchParams.trip : undefined;
     const city = (v: unknown) => (typeof v === 'string' && /^[A-Z][A-Z_]{1,39}$/.test(v) ? v : undefined);
     const vehicle = typeof searchParams.vehicle === 'string' && /^[a-z0-9_]{2,30}$/.test(searchParams.vehicle) ? searchParams.vehicle : undefined;
-    return shell(<><h1 className="mb-5 text-h1 text-royal-600">{dict(locale).widget.heading}</h1><BookingWidget locale={locale} defaultTrip={tab} defaultPickup={city(searchParams.pickup)} defaultDrop={city(searchParams.drop)} defaultVehicle={vehicle} /></>);
+    return shell(<><h1 className="mb-5 text-h1 text-link">{dict(locale).widget.heading}</h1><BookingWidget locale={locale} defaultTrip={tab} defaultPickup={city(searchParams.pickup)} defaultDrop={city(searchParams.drop)} defaultVehicle={vehicle} /></>);
   }
 
   const capabilities = await fresh<{ booking: boolean }>('/ghoomo/booking/capabilities');
   if (capabilities && !capabilities.booking) return dead(dict(locale).flow.errors.BOOKING_DISABLED);
 
   if (tripProblem(trip) === 'held') {
-    return dead(t.held, <a href={`${localePath('/booking', locale)}?trip=local&pickup=${trip.pickup}`} className="inline-flex min-h-12 items-center justify-center rounded-full bg-royal-600 px-6 font-semibold text-white">{t.bookLocal}</a>);
+    return dead(t.held, <a href={`${localePath('/booking', locale)}?trip=local&pickup=${trip.pickup}`} className="inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-6 font-semibold text-white">{t.bookLocal}</a>);
   }
 
   const q = (o: Record<string, string>) => new URLSearchParams(o).toString();

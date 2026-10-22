@@ -49,8 +49,8 @@ export async function BookingWidget({
           defaultVehicle={defaultVehicle}
         />
       ) : (
-        <div className="rounded-2xl border border-gold-300 bg-white/95 p-5 text-center shadow-raised">
-          <p className="mb-4 text-ink/80">{dict(locale).widget.unavailable}</p>
+        <div className="rounded-2xl border border-edge bg-surface/95 p-5 text-center shadow-raised">
+          <p className="mb-4 text-content/80">{dict(locale).widget.unavailable}</p>
           <ContactButtons locale={locale} />
         </div>
       )}

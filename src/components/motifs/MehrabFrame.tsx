@@ -62,11 +62,11 @@ export function MehrabFrame({
         aria-hidden
       >
         <g dangerouslySetInnerHTML={{ __html: ARCH_CUSPS_SVG }} />
-        <path fill="#1E3A7B" fillRule="evenodd" d={`${ARCH_OUTER_D} ${ARCH_INNER_D}`} />
-        <path fill="none" stroke="#E0A93B" strokeWidth="2.2" d="M 44 214 L 44 104 M 156 214 L 156 104" />
-        <path fill="none" stroke="#E0A93B" strokeWidth="3.4" d={ARCH_OUTER_D} />
-        <path fill="#E0A93B" d="M 100 0 C 104 7 105 11 100 17 C 95 11 96 7 100 0 Z" />
-        <rect x="20" y="211" width="160" height="7" rx="3.5" fill="#E0A93B" />
+        <path fill="var(--gr-frame)" fillRule="evenodd" d={`${ARCH_OUTER_D} ${ARCH_INNER_D}`} />
+        <path fill="none" stroke="var(--gr-ornament)" strokeWidth="2.2" d="M 44 214 L 44 104 M 156 214 L 156 104" />
+        <path fill="none" stroke="var(--gr-ornament)" strokeWidth="3.4" d={ARCH_OUTER_D} />
+        <path fill="var(--gr-ornament)" d="M 100 0 C 104 7 105 11 100 17 C 95 11 96 7 100 0 Z" />
+        <rect x="20" y="211" width="160" height="7" rx="3.5" fill="var(--gr-ornament)" />
       </svg>
     </div>
   );

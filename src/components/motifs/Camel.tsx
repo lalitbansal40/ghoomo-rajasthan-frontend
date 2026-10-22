@@ -23,8 +23,8 @@ export function Camel({
       height={(size * 50) / 64}
       className={`${walking ? 'gr-camel-walk' : ''} ${className}`}
     >
-      <path fill="#8E1B1B" d={CAMEL_D} />
-      {saddle ? <path fill="#E0A93B" d={SADDLE_D} /> : null}
+      <path fill="var(--gr-accent)" d={CAMEL_D} />
+      {saddle ? <path fill="var(--gr-ornament)" d={SADDLE_D} /> : null}
     </svg>
   );
 }

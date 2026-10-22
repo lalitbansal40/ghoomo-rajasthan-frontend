@@ -31,23 +31,23 @@ export function Field({
   const ids = fieldIds(id);
   return (
     <div className={`flex flex-col gap-1.5 ${className}`}>
-      <label htmlFor={id} className="font-semibold text-ink">
+      <label htmlFor={id} className="font-semibold text-content">
         {label}
         {required ? (
           <>
-            <span aria-hidden className="ml-0.5 text-maroon-600">*</span>
+            <span aria-hidden className="ml-0.5 text-accent">*</span>
             <span className="sr-only"> ({requiredLabel})</span>
           </>
         ) : null}
       </label>
       {children}
       {error ? (
-        <p id={ids.error} className="text-small flex items-center gap-1.5 font-semibold text-maroon-600">
+        <p id={ids.error} className="text-small flex items-center gap-1.5 font-semibold text-accent">
           <Icon name="alert" size={16} />
           {error}
         </p>
       ) : help ? (
-        <p id={ids.help} className="text-small text-muted">
+        <p id={ids.help} className="text-small text-subtle">
           {help}
         </p>
       ) : null}
@@ -58,9 +58,9 @@ export function Field({
 /** The look every control shares: 48 px, a soft radius, a clear border, red when wrong. */
 export const controlClass = (invalid: boolean) =>
   [
-    'w-full min-h-12 rounded-[var(--radius-sm)] border bg-white px-3.5 text-base text-ink',
-    'placeholder:text-muted/70 transition-colors duration-[var(--dur-fast)]',
-    invalid ? 'border-maroon-600 bg-maroon-50' : 'border-royal-200 hover:border-royal-500 focus:border-royal-600',
+    'w-full min-h-12 rounded-[var(--radius-sm)] border bg-surface px-3.5 text-base text-content',
+    'placeholder:text-subtle transition-colors duration-[var(--dur-fast)]',
+    invalid ? 'border-accent bg-error-surface' : 'border-control hover:border-link focus:border-link',
   ].join(' ');
 
 /** The aria props a control takes from its Field. */

@@ -118,7 +118,7 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
                 <PhotoCredit photo={p} label={t.common.photoBy} />
               </>
             ) : (
-              <div className="grid aspect-[148/218] place-items-center rounded-t-full bg-royal-700 p-8">
+              <div className="grid aspect-[148/218] place-items-center rounded-t-full bg-primary-hover p-8">
                 <FortSun tone="silhouette" className="w-full text-gold-500" />
               </div>
             )}
@@ -132,8 +132,8 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
                 </Badge>
               ))}
             </div>
-            <h1 className="text-h1 mt-3 text-royal-600">{txt.name}</h1>
-            <p className="text-body-lg mt-2 text-maroon-600">{txt.line}</p>
+            <h1 className="text-h1 mt-3 text-link">{txt.name}</h1>
+            <p className="text-body-lg mt-2 text-accent">{txt.line}</p>
             <div className="mt-5 space-y-4">
               {txt.intro.map((para) => (
                 <p key={para.slice(0, 24)}>{para}</p>
@@ -159,15 +159,15 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
 
         {/* ── What to see ──────────────────────────────────────────────── */}
         <section className="mt-12">
-          <h2 className="text-h2 text-royal-600">{pt.see}</h2>
+          <h2 className="text-h2 text-link">{pt.see}</h2>
           <ul className="mt-5 grid gap-3 sm:grid-cols-2">
             {txt.see.map((s) => (
-              <li key={s.name} className="rounded-[var(--radius-md)] bg-sand-50 p-4 ring-1 ring-gold-300/60">
-                <h3 className="text-h3 flex items-start gap-2 text-royal-700">
-                  <span aria-hidden className="mt-0.5 text-gold-700">✦</span>
+              <li key={s.name} className="rounded-[var(--radius-md)] bg-soft p-4 ring-1 ring-edge/60">
+                <h3 className="text-h3 flex items-start gap-2 text-heading">
+                  <span aria-hidden className="mt-0.5 text-gold-text">✦</span>
                   {s.name}
                 </h3>
-                <p className="mt-1 text-ink/80">{s.line}</p>
+                <p className="mt-1 text-content/80">{s.line}</p>
               </li>
             ))}
           </ul>
@@ -180,8 +180,8 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
             { icon: 'calendar' as const, title: pt.howLong, body: txt.days },
             { icon: 'mapPin' as const, title: pt.reach, body: txt.reach },
           ].map((b) => (
-            <div key={b.title} className="rounded-[var(--radius-md)] bg-royal-50 p-5">
-              <h2 className="text-h3 flex items-center gap-2 text-royal-700">
+            <div key={b.title} className="rounded-[var(--radius-md)] bg-tint p-5">
+              <h2 className="text-h3 flex items-center gap-2 text-heading">
                 <Icon name={b.icon} /> {b.title}
               </h2>
               <p className="mt-2">{b.body}</p>
@@ -192,7 +192,7 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
         {/* ── Roads here, with their fares ──────────────────────────────── */}
         {roadFares.length ? (
           <section className="mt-12">
-            <h2 className="text-h2 text-royal-600">{pt.roadsHere(txt.name)}</h2>
+            <h2 className="text-h2 text-link">{pt.roadsHere(txt.name)}</h2>
             <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {roadFares.map(({ r, f }) => (
                 <RouteCard
@@ -212,8 +212,8 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
         {/* ── A car there ──────────────────────────────────────────────── */}
         {town ? (
           <section className="mt-12 max-w-2xl">
-            <h2 className="text-h2 text-royal-600">{pt.carThere(txt.name)}</h2>
-            <p className="mt-2 text-muted">
+            <h2 className="text-h2 text-link">{pt.carThere(txt.name)}</h2>
+            <p className="mt-2 text-subtle">
               {place.nearest
                 ? place.nearest.how === 'roundTrip'
                   ? pt.carRoundTrip(txt.name, cityName(place.nearest.cityKey, locale))
@@ -226,7 +226,7 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
               ) : perKm ? (
                 <PerKmTable view={perKm} locale={locale} />
               ) : (
-                <p className="font-semibold text-royal-700" data-fare="none">
+                <p className="font-semibold text-heading" data-fare="none">
                   {t.fare.onWhatsapp}
                 </p>
               )}
@@ -237,7 +237,7 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
         {/* ── Tours that go here ───────────────────────────────────────── */}
         {tours.length ? (
           <section className="mt-12">
-            <h2 className="text-h2 text-royal-600">{pt.toursHere}</h2>
+            <h2 className="text-h2 text-link">{pt.toursHere}</h2>
             <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {tours.map((x) => (
                 <PackageCard key={x.slug} tour={x} href={localePath(`/packages/${x.slug}`, locale)} locale={locale} />
@@ -251,21 +251,21 @@ export async function PlacePage({ place, locale }: { place: Place; locale: Local
           <section className="mt-12">
             <a
               href={`${localePath('/desert-safari', locale)}#${place.slug}`}
-              className="flex items-center gap-4 rounded-[var(--radius-lg)] bg-sand-200 p-5 ring-1 ring-gold-300 hover:ring-gold-500"
+              className="flex items-center gap-4 rounded-[var(--radius-lg)] bg-alternate p-5 ring-1 ring-edge hover:ring-gold-500"
             >
               <FortSun className="w-16 shrink-0" />
               <span>
-                <span className="text-h3 block text-royal-700">{pt.safariHere}</span>
-                <span className="text-muted">{pt.safariLine}</span>
+                <span className="text-h3 block text-heading">{pt.safariHere}</span>
+                <span className="text-subtle">{pt.safariLine}</span>
               </span>
-              <Icon name="arrow" className="ml-auto text-royal-600" />
+              <Icon name="arrow" className="ml-auto text-link" />
             </a>
           </section>
         ) : null}
 
         {/* ── Nearby ───────────────────────────────────────────────────── */}
         <section className="mt-12">
-          <h2 className="text-h2 text-royal-600">{pt.nearby}</h2>
+          <h2 className="text-h2 text-link">{pt.nearby}</h2>
           <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3">
             {others.map((x) => (
               <DestinationCard

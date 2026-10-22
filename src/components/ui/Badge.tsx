@@ -6,11 +6,11 @@ import type { ReactNode } from 'react';
  * white on sun does not — so it is ink.
  */
 const TONE = {
-  sample: 'bg-sun-500 text-ink',
-  popular: 'bg-maroon-600 text-white',
-  new: 'bg-royal-600 text-white',
-  days: 'bg-sand-100 text-ink ring-1 ring-gold-500/60',
-  neutral: 'bg-royal-50 text-royal-700',
+  sample: 'bg-sun-500 text-on-gold',
+  popular: 'bg-action text-white',
+  new: 'bg-primary text-white',
+  days: 'bg-sand-soft text-content ring-1 ring-gold-500/60',
+  neutral: 'bg-tint text-heading',
 } as const;
 
 export function Badge({ tone = 'neutral', children, className = '' }: { tone?: keyof typeof TONE; children: ReactNode; className?: string }) {

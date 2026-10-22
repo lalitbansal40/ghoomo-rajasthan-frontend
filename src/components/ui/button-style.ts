@@ -1,9 +1,9 @@
 const VARIANT = {
-  primary: 'bg-royal-600 text-white shadow-card hover:bg-royal-700 active:bg-royal-800',
-  secondary: 'border-2 border-maroon-600 text-maroon-600 hover:bg-maroon-600 hover:text-white active:bg-maroon-700',
-  ghost: 'text-royal-600 hover:bg-royal-50 active:bg-royal-100',
-  whatsapp: 'bg-success text-white shadow-card hover:brightness-110 active:brightness-95',
-  call: 'border-2 border-royal-600 text-royal-600 hover:bg-royal-50 active:bg-royal-100',
+  primary: 'bg-primary text-white shadow-card hover:bg-primary-hover active:bg-primary-active',
+  secondary: 'border-2 border-accent text-accent hover:bg-action hover:text-white active:bg-action-hover',
+  ghost: 'text-link hover:bg-tint active:bg-tint-hover',
+  whatsapp: 'bg-success-fill text-white shadow-card hover:brightness-110 active:brightness-95',
+  call: 'border-2 border-link text-link hover:bg-tint active:bg-tint-hover',
 } as const;
 const SIZE = {
   sm: 'min-h-10 px-4 text-[0.9375rem] gap-1.5',
