@@ -1,0 +1,169 @@
+{
+  "checkedAtUtc": "2026-10-22T15:40:34.102998+00:00",
+  "userAgentNote": "Spoofed Googlebot UA over public GETs; not proof of Google-owned crawler network access or GSC live test",
+  "records": [
+    {
+      "url": "http://ghoomorajasthan.com/",
+      "redirects": [
+        {
+          "url": "http://ghoomorajasthan.com/",
+          "status": 301,
+          "location": "https://ghoomorajasthan.com/"
+        }
+      ],
+      "finalUrl": "https://ghoomorajasthan.com/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "xRobotsTag": null,
+      "cacheControl": "no-store",
+      "robots": [
+        "<meta name=\"robots\" content=\"index, follow\"/>",
+        "<meta name=\"googlebot\" content=\"index, follow\"/>"
+      ],
+      "canonical": [
+        "<link rel=\"canonical\" href=\"https://ghoomorajasthan.com\"/>"
+      ]
+    },
+    {
+      "url": "http://ghoomorajasthan.com/robots.txt",
+      "redirects": [
+        {
+          "url": "http://ghoomorajasthan.com/robots.txt",
+          "status": 301,
+          "location": "https://ghoomorajasthan.com/robots.txt"
+        }
+      ],
+      "finalUrl": "https://ghoomorajasthan.com/robots.txt",
+      "status": 200,
+      "contentType": "text/plain",
+      "xRobotsTag": null,
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "body": "User-Agent: *\nAllow: /\n\nSitemap: https://ghoomorajasthan.com/sitemap.xml\n"
+    },
+    {
+      "url": "https://www.ghoomorajasthan.com/",
+      "redirects": [
+        {
+          "url": "https://www.ghoomorajasthan.com/",
+          "status": 301,
+          "location": "https://ghoomorajasthan.com/"
+        }
+      ],
+      "finalUrl": "https://ghoomorajasthan.com/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "xRobotsTag": null,
+      "cacheControl": "no-store",
+      "robots": [
+        "<meta name=\"robots\" content=\"index, follow\"/>",
+        "<meta name=\"googlebot\" content=\"index, follow\"/>"
+      ],
+      "canonical": [
+        "<link rel=\"canonical\" href=\"https://ghoomorajasthan.com\"/>"
+      ]
+    },
+    {
+      "url": "https://www.ghoomorajasthan.com/robots.txt",
+      "redirects": [
+        {
+          "url": "https://www.ghoomorajasthan.com/robots.txt",
+          "status": 301,
+          "location": "https://ghoomorajasthan.com/robots.txt"
+        }
+      ],
+      "finalUrl": "https://ghoomorajasthan.com/robots.txt",
+      "status": 200,
+      "contentType": "text/plain",
+      "xRobotsTag": null,
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "body": "User-Agent: *\nAllow: /\n\nSitemap: https://ghoomorajasthan.com/sitemap.xml\n"
+    },
+    {
+      "url": "http://www.ghoomorajasthan.com/",
+      "redirects": [
+        {
+          "url": "http://www.ghoomorajasthan.com/",
+          "status": 301,
+          "location": "https://www.ghoomorajasthan.com/"
+        },
+        {
+          "url": "https://www.ghoomorajasthan.com/",
+          "status": 301,
+          "location": "https://ghoomorajasthan.com/"
+        }
+      ],
+      "finalUrl": "https://ghoomorajasthan.com/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "xRobotsTag": null,
+      "cacheControl": "no-store",
+      "robots": [
+        "<meta name=\"robots\" content=\"index, follow\"/>",
+        "<meta name=\"googlebot\" content=\"index, follow\"/>"
+      ],
+      "canonical": [
+        "<link rel=\"canonical\" href=\"https://ghoomorajasthan.com\"/>"
+      ]
+    },
+    {
+      "url": "http://www.ghoomorajasthan.com/robots.txt",
+      "redirects": [
+        {
+          "url": "http://www.ghoomorajasthan.com/robots.txt",
+          "status": 301,
+          "location": "https://www.ghoomorajasthan.com/robots.txt"
+        },
+        {
+          "url": "https://www.ghoomorajasthan.com/robots.txt",
+          "status": 301,
+          "location": "https://ghoomorajasthan.com/robots.txt"
+        }
+      ],
+      "finalUrl": "https://ghoomorajasthan.com/robots.txt",
+      "status": 200,
+      "contentType": "text/plain",
+      "xRobotsTag": null,
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "body": "User-Agent: *\nAllow: /\n\nSitemap: https://ghoomorajasthan.com/sitemap.xml\n"
+    },
+    {
+      "url": "https://ghoomorajasthan.com/",
+      "redirects": [],
+      "finalUrl": "https://ghoomorajasthan.com/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "xRobotsTag": null,
+      "cacheControl": "no-store",
+      "robots": [
+        "<meta name=\"robots\" content=\"index, follow\"/>",
+        "<meta name=\"googlebot\" content=\"index, follow\"/>"
+      ],
+      "canonical": [
+        "<link rel=\"canonical\" href=\"https://ghoomorajasthan.com\"/>"
+      ]
+    },
+    {
+      "url": "https://ghoomorajasthan.com/robots.txt",
+      "redirects": [],
+      "finalUrl": "https://ghoomorajasthan.com/robots.txt",
+      "status": 200,
+      "contentType": "text/plain",
+      "xRobotsTag": null,
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "body": "User-Agent: *\nAllow: /\n\nSitemap: https://ghoomorajasthan.com/sitemap.xml\n"
+    },
+    {
+      "url": "https://ghoomorajasthan.com/sitemap.xml",
+      "finalUrl": "https://ghoomorajasthan.com/sitemap.xml",
+      "status": 200,
+      "contentType": "application/xml; charset=utf-8",
+      "urlCount": 328,
+      "uniqueUrls": 328,
+      "origins": [
+        "ghoomorajasthan.com"
+      ],
+      "homePresent": true,
+      "hindiHomePresent": true
+    }
+  ]
+}
