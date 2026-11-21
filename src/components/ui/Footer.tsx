@@ -144,7 +144,11 @@ export function Footer({ locale, variant = 'full' }: { locale: Locale; variant?:
           </div>
         </div>
         <p className="mx-auto mt-10 max-w-[var(--container-site)] border-t border-gold-500/50 pt-4 text-small text-content/80">
-          © {new Date().getFullYear()} {t.brand.name} · {t.brand.aHelloMyCabCompany}
+          © {new Date().getFullYear()} {t.brand.name} · {t.brand.aHelloMyCabCompany} ·{' '}
+          {/* The sister brand, for trips beyond Rajasthan (20 Nov 2026). Its site links here too. */}
+          <a href="https://www.hellomycabs.com/" className="underline-offset-4 hover:underline">
+            {t.brand.hmcOutstation}
+          </a>
         </p>
       </div>
     </footer>

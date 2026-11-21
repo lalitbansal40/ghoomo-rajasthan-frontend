@@ -12,6 +12,8 @@ export const en = {
     name: 'Ghoomo Rajasthan',
     tagline: 'Tours across Rajasthan with a car and a driver who knows the road.',
     aHelloMyCabCompany: 'A Hello My Cab company',
+    /** Footer link to the sister brand (20 Nov 2026). */
+    hmcOutstation: 'Outstation cabs across North India — hellomycabs.com',
     logoAlt: 'Ghoomo Rajasthan',
     home: 'Ghoomo Rajasthan — home',
   },

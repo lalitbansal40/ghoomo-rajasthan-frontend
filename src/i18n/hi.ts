@@ -16,6 +16,8 @@ export const hi: Dictionary = {
     name: 'घूमो राजस्थान',
     tagline: 'राजस्थान घूमिए — गाड़ी और ऐसे ड्राइवर के साथ जो रास्ता जानता है।',
     aHelloMyCabCompany: 'हैलो माय कैब की एक कंपनी',
+    /** Footer link to the sister brand (20 Nov 2026). */
+    hmcOutstation: 'उत्तर भारत में आउटस्टेशन कैब — hellomycabs.com',
     logoAlt: 'घूमो राजस्थान',
     home: 'घूमो राजस्थान — होम',
   },
