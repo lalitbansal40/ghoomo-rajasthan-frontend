@@ -18,6 +18,8 @@ export const hi: Dictionary = {
     aHelloMyCabCompany: 'हैलो माय कैब की एक कंपनी',
     /** Footer link to the sister brand (20 Nov 2026). */
     hmcOutstation: 'उत्तर भारत में आउटस्टेशन कैब — hellomycabs.com',
+    /** Footer credit: Autochatix runs our WhatsApp automation (owner, 28 Nov 2026). The brand name after it stays in Latin script. */
+    autochatixCredit: 'व्हाट्सऐप ऑटोमेशन:',
     logoAlt: 'घूमो राजस्थान',
     home: 'घूमो राजस्थान — होम',
   },

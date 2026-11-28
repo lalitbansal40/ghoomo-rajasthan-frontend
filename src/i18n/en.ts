@@ -14,6 +14,8 @@ export const en = {
     aHelloMyCabCompany: 'A Hello My Cab company',
     /** Footer link to the sister brand (20 Nov 2026). */
     hmcOutstation: 'Outstation cabs across North India — hellomycabs.com',
+    /** Footer credit: Autochatix runs our WhatsApp automation (owner, 28 Nov 2026). The brand name after it stays in Latin script. */
+    autochatixCredit: 'WhatsApp automation by',
     logoAlt: 'Ghoomo Rajasthan',
     home: 'Ghoomo Rajasthan — home',
   },

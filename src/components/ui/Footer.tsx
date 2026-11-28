@@ -149,6 +149,13 @@ export function Footer({ locale, variant = 'full' }: { locale: Locale; variant?:
           <a href="https://www.hellomycabs.com/" className="underline-offset-4 hover:underline">
             {t.brand.hmcOutstation}
           </a>
+          {/* Autochatix runs the WhatsApp automation for Hello My Cab and Ghoomo Rajasthan (owner,
+              28 Nov 2026). A plain, followed link with the brand name as its text. */}
+          {' · '}
+          {t.brand.autochatixCredit}{' '}
+          <a href="https://autochatix.com/" className="underline-offset-4 hover:underline">
+            Autochatix
+          </a>
         </p>
       </div>
     </footer>
